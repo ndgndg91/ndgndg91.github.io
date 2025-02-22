@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  min-height: 100vh;
+  min-height: 100vh; /* 페이지가 최소 화면 높이를 가지도록 */
   display: flex;
   flex-direction: column;
 }
@@ -23,8 +23,8 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center; /* 중앙 정렬 유지 */
-  align-items: center; /* 모든 항목을 세로 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 
@@ -35,7 +35,7 @@ body {
 .home-btn {
   color: #333;
   text-decoration: none;
-  padding: 14px 16px; /* 기존 카테고리 메뉴와 동일한 패딩 */
+  padding: 14px 16px;
   text-align: center;
   font-weight: bold;
 }
@@ -43,7 +43,7 @@ body {
 .dropbtn {
   color: #333;
   text-decoration: none;
-  padding: 14px 16px; /* 동일한 패딩을 유지 */
+  padding: 14px 16px;
   text-align: center;
   display: inline-block;
 }
@@ -76,26 +76,116 @@ body {
 }
 
 .content {
-  flex: 1;
-  margin-top: 60px;
+  flex: 1 0 auto; /* 콘텐츠가 늘어날 수 있도록 flex-grow 설정, 최소 높이 auto */
+  margin-top: 60px; /* 헤더 높이만큼 상단 여백 */
+  padding: 20px;
+}
+
+.section {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   background-color: #333;
   color: white;
   text-align: center;
   padding: 10px 0;
-  z-index: 1000;
+  flex-shrink: 0; /* 푸터가 축소되지 않도록 */
+  margin-top: 20px; /* 콘텐츠와 푸터 사이에 일정 간격 추가 */
+}
+
+/* 나머지 스타일은 그대로 유지 */
+.contact-links a {
+  text-decoration: none;
+  color: #0078d4;
+  margin: 0 15px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}
+
+.contact-links svg {
+  margin-right: 5px;
+}
+
+/* 블로그 스타일 */
+.blog-post {
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.blog-post h3 {
+  margin: 0 0 5px;
+}
+
+.blog-post a {
+  color: #0078d4;
+  text-decoration: none;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
+
+.blog-post p {
+  margin: 0;
+  color: #666;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+}
+
+/* Encode/Decode 도구 스타일 */
+.section textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.section button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.section button:hover {
+  background-color: #005bb5;
 }
 
 @media (max-width: 768px) {
   .menu {
     flex-direction: column;
-    align-items: flex-start; /* 작은 화면에서는 왼쪽 정렬 */
+    align-items: flex-start;
   }
 
   .menu li {
@@ -116,5 +206,9 @@ body {
 
   .dropdown:hover .dropdown-content {
     display: block;
+  }
+
+  .content {
+    padding: 10px;
   }
 }
