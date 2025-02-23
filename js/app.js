@@ -94,19 +94,16 @@ document.getElementById("next-page").addEventListener("click", () => {
 function updateTimestamp() {
   const now = new Date();
 
-  // Unix Timestamp
   const timestampElement = document.getElementById("current-timestamp");
   if (timestampElement) {
     timestampElement.textContent = Math.floor(now.getTime() / 1000);
   }
 
-  // 현재 타임존
   const timezoneElement = document.getElementById("current-timezone");
   if (timezoneElement) {
     timezoneElement.textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
   }
 
-  // 선택한 타임존의 시간 (실시간 표시용)
   const timezoneSelect = document.getElementById("timezone-select");
   const selectedTimezone = timezoneSelect ? timezoneSelect.value : Intl.DateTimeFormat().resolvedOptions().timeZone;
   const datetimeElement = document.getElementById("current-datetime");
@@ -136,7 +133,7 @@ function updateTimestamp() {
 // Timestamp -> Datetime 변환
 function convertTimestampToDatetime() {
   const timestampInput = document.getElementById("timestamp-input").value;
-  const timezoneSelect = document.getElementById("timestamp-timezone").value; // 변환용 타임존
+  const timezoneSelect = document.getElementById("timestamp-timezone").value;
   const resultElement = document.getElementById("timestamp-to-datetime-result");
 
   if (!timestampInput || isNaN(timestampInput)) {
@@ -144,7 +141,7 @@ function convertTimestampToDatetime() {
     return;
   }
 
-  const timestamp = parseInt(timestampInput) * 1000; // 초 단위를 밀리초로 변환
+  const timestamp = parseInt(timestampInput) * 1000;
   const date = new Date(timestamp);
   const options = {
     timeZone: timezoneSelect,
@@ -170,7 +167,7 @@ function convertTimestampToDatetime() {
 // Datetime -> Timestamp 변환
 function convertDatetimeToTimestamp() {
   const datetimeInput = document.getElementById("datetime-input").value.trim();
-  const timezoneSelect = document.getElementById("datetime-timezone").value; // 변환용 타임존
+  const timezoneSelect = document.getElementById("datetime-timezone").value;
   const resultElement = document.getElementById("datetime-to-timestamp-result");
 
   const parts = datetimeInput.split(" ");
@@ -188,7 +185,6 @@ function convertDatetimeToTimestamp() {
     return;
   }
 
-  // 타임존 적용하여 UTC로 변환
   const options = { timeZone: timezoneSelect };
   const utcDate = new Date(date.toLocaleString('en-US', options));
   resultElement.textContent = Math.floor(utcDate.getTime() / 1000);
@@ -246,5 +242,20 @@ document.querySelectorAll(".dropdown .dropbtn").forEach(dropbtn => {
   });
 });
 
-// 초기 상태
-showSection("blog");
+// 페이지 로드 시 URL 해시 확인 및 섹션 표시
+window.addEventListener("load", () => {
+  const hash = window.location.hash.substring(1); // '#' 제거
+  if (hash) {
+    showSection(hash);
+  } else {
+    showSection("blog"); // 기본 섹션
+  }
+});
+
+// 해시 변경 시 섹션 업데이트 (선택적, 브라우저 뒤로/앞으로 버튼 지원)
+window.addEventListener("hashchange", () => {
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    showSection(hash);
+  }
+});
