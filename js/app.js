@@ -17,13 +17,13 @@ function decodeBase64() {
 function encodeURL() {
   const input = document.getElementById("url-input").value;
   try {
-    const url = new URL(input); // URL 객체로 파싱
+    const url = new URL(input);
     const encodedParams = Array.from(url.searchParams.entries()).map(
       ([key, value]) => `${key}=${encodeURIComponent(value)}`
     ).join('&');
     document.getElementById("url-output").value = `${url.origin}${url.pathname}${encodedParams ? '?' + encodedParams : ''}`;
   } catch (e) {
-    document.getElementById("url-output").value = encodeURIComponent(input); // 파싱 실패 시 전체 인코딩
+    document.getElementById("url-output").value = encodeURIComponent(input);
   }
 }
 
@@ -36,7 +36,7 @@ function decodeURL() {
   }
 }
 
-// 블로그 포스트 데이터 (예시)
+// 블로그 포스트 데이터
 const blogPosts = [
   { title: "포스트 5", date: "2025-02-20", url: "https://ndgndg91.blogspot.com/post5" },
   { title: "포스트 4", date: "2025-01-15", url: "https://ndgndg91.blogspot.com/post4" },
@@ -90,7 +90,112 @@ document.getElementById("next-page").addEventListener("click", () => {
   }
 });
 
+// Unix Timestamp 및 타임존 실시간 업데이트
+function updateTimestamp() {
+  const now = new Date();
+
+  // Unix Timestamp
+  const timestampElement = document.getElementById("current-timestamp");
+  if (timestampElement) {
+    timestampElement.textContent = Math.floor(now.getTime() / 1000);
+  }
+
+  // 현재 타임존
+  const timezoneElement = document.getElementById("current-timezone");
+  if (timezoneElement) {
+    timezoneElement.textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  }
+
+  // 선택한 타임존의 시간 (실시간 표시용)
+  const timezoneSelect = document.getElementById("timezone-select");
+  const selectedTimezone = timezoneSelect ? timezoneSelect.value : Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const datetimeElement = document.getElementById("current-datetime");
+  if (datetimeElement) {
+    const options = {
+      timeZone: selectedTimezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    };
+    const formatter = new Intl.DateTimeFormat('en-US', options);
+    const parts = formatter.formatToParts(now);
+    const year = parts.find(part => part.type === 'year').value;
+    const month = parts.find(part => part.type === 'month').value;
+    const day = parts.find(part => part.type === 'day').value;
+    const hours = parts.find(part => part.type === 'hour').value;
+    const minutes = parts.find(part => part.type === 'minute').value;
+    const seconds = parts.find(part => part.type === 'second').value;
+    datetimeElement.textContent = `${year} ${month} ${day} ${hours} ${minutes} ${seconds}`;
+  }
+}
+
+// Timestamp -> Datetime 변환
+function convertTimestampToDatetime() {
+  const timestampInput = document.getElementById("timestamp-input").value;
+  const timezoneSelect = document.getElementById("timestamp-timezone").value; // 변환용 타임존
+  const resultElement = document.getElementById("timestamp-to-datetime-result");
+
+  if (!timestampInput || isNaN(timestampInput)) {
+    resultElement.textContent = "유효한 Unix Timestamp를 입력하세요.";
+    return;
+  }
+
+  const timestamp = parseInt(timestampInput) * 1000; // 초 단위를 밀리초로 변환
+  const date = new Date(timestamp);
+  const options = {
+    timeZone: timezoneSelect,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  };
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  const parts = formatter.formatToParts(date);
+  const year = parts.find(part => part.type === 'year').value;
+  const month = parts.find(part => part.type === 'month').value;
+  const day = parts.find(part => part.type === 'day').value;
+  const hours = parts.find(part => part.type === 'hour').value;
+  const minutes = parts.find(part => part.type === 'minute').value;
+  const seconds = parts.find(part => part.type === 'second').value;
+  resultElement.textContent = `${year} ${month} ${day} ${hours} ${minutes} ${seconds}`;
+}
+
+// Datetime -> Timestamp 변환
+function convertDatetimeToTimestamp() {
+  const datetimeInput = document.getElementById("datetime-input").value.trim();
+  const timezoneSelect = document.getElementById("datetime-timezone").value; // 변환용 타임존
+  const resultElement = document.getElementById("datetime-to-timestamp-result");
+
+  const parts = datetimeInput.split(" ");
+  if (parts.length !== 6) {
+    resultElement.textContent = "형식: YYYY MM DD HH MM SS";
+    return;
+  }
+
+  const [year, month, day, hours, minutes, seconds] = parts;
+  const dateString = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+  const date = new Date(dateString);
+
+  if (isNaN(date.getTime())) {
+    resultElement.textContent = "유효한 날짜/시간을 입력하세요.";
+    return;
+  }
+
+  // 타임존 적용하여 UTC로 변환
+  const options = { timeZone: timezoneSelect };
+  const utcDate = new Date(date.toLocaleString('en-US', options));
+  resultElement.textContent = Math.floor(utcDate.getTime() / 1000);
+}
+
 // 섹션 토글 함수
+let timestampInterval = null;
 function showSection(sectionId) {
   const sections = document.querySelectorAll(".section");
   sections.forEach(section => {
@@ -99,16 +204,26 @@ function showSection(sectionId) {
 
   if (sectionId === "blog") {
     displayPosts();
+    if (timestampInterval) clearInterval(timestampInterval);
+  } else if (sectionId === "timestamp-tool") {
+    updateTimestamp();
+    if (timestampInterval) clearInterval(timestampInterval);
+    timestampInterval = setInterval(updateTimestamp, 1000);
+    const timezoneSelect = document.getElementById("timezone-select");
+    if (timezoneSelect) {
+      timezoneSelect.addEventListener("change", updateTimestamp);
+    }
+  } else {
+    if (timestampInterval) clearInterval(timestampInterval);
   }
 }
 
-// 메뉴 클릭 이벤트 추가 (상위 메뉴와 하위 메뉴 모두)
+// 메뉴 클릭 이벤트 추가
 document.querySelectorAll("[data-section]").forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     const sectionId = link.getAttribute("data-section");
     showSection(sectionId);
-    // 모바일에서 메뉴 닫기
     if (window.innerWidth <= 768) {
       document.querySelector(".nav").classList.remove("active");
     }
@@ -120,7 +235,7 @@ document.querySelector(".menu-toggle").addEventListener("click", () => {
   document.querySelector(".nav").classList.toggle("active");
 });
 
-// 드롭다운 클릭 토글 (모바일에서만)
+// 드롭다운 클릭 토글 (모바일)
 document.querySelectorAll(".dropdown .dropbtn").forEach(dropbtn => {
   dropbtn.addEventListener("click", (e) => {
     if (window.innerWidth <= 768) {

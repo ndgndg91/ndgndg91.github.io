@@ -112,7 +112,7 @@ body {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 20px 0; /* 패딩을 약간 늘려 여유 공간 확보 */
+  padding: 20px 0;
   flex-shrink: 0;
   margin-top: 20px;
 }
@@ -126,8 +126,8 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* 모바일에서 줄바꿈 허용 */
-  gap: 10px; /* 링크 간 간격 조정 */
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .contact-links a {
@@ -135,7 +135,7 @@ body {
   color: #0078d4;
   display: inline-flex;
   align-items: center;
-  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 */
+  white-space: nowrap;
 }
 
 .contact-links a:hover {
@@ -201,7 +201,7 @@ body {
   margin: 0 10px;
 }
 
-/* Encode/Decode 도구 스타일 */
+/* Encode/Decode 및 Timestamp 스타일 */
 .section textarea {
   width: 100%;
   margin: 10px 0;
@@ -220,6 +220,65 @@ body {
 
 .section button:hover {
   background-color: #005bb5;
+}
+
+.timestamp-display, .timezone-display, .timezone-select, .datetime-display, .timestamp-converter {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.timestamp-display strong, .timezone-display strong, .timezone-select strong, .datetime-display strong, .timestamp-converter strong {
+  margin-right: 10px;
+}
+
+#current-timestamp, #current-timezone, #current-datetime, #timestamp-to-datetime-result, #datetime-to-timestamp-result {
+  color: #0078d4;
+  font-weight: bold;
+}
+
+.timezone-select select, .timestamp-converter select {
+  padding: 5px;
+  font-size: 1em;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.timestamp-converter input {
+  padding: 5px;
+  font-size: 1em;
+  width: 200px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.timestamp-converter button {
+  margin: 5px 10px 5px 0;
+}
+
+.timestamp-converter h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.converter-section {
+  margin-bottom: 20px;
+}
+
+.converter-section label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.converter-section select {
+  margin-left: 0; /* 데스크톱에서 입력 필드와의 간격 제거 */
+}
+
+/* 광고 스타일 */
+.ad-container {
+  margin: 20px 0;
+  text-align: center;
+  max-width: 100%;
 }
 
 /* 반응형 디자인 */
@@ -305,21 +364,50 @@ body {
   }
 
   .footer {
-    padding: 15px 10px; /* 모바일에서 패딩 조정 */
+    padding: 15px 10px;
   }
 
   .contact-links p {
-    flex-direction: column; /* 모바일에서 세로 정렬 */
+    flex-direction: column;
     gap: 8px;
   }
 
   .contact-links a {
-    font-size: 0.9em; /* 텍스트 크기 약간 축소 */
+    font-size: 0.9em;
   }
 
   .contact-links svg {
-    width: 14px; /* 아이콘 크기 축소 */
+    width: 14px;
     height: 14px;
+  }
+
+  .ad-container {
+    margin: 15px 0;
+  }
+
+  .timezone-select select, .timestamp-converter select {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .timestamp-converter input {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .timestamp-converter button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .timestamp-converter .converter-section, .timestamp-converter p {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timestamp-converter strong {
+    margin-right: 0;
   }
 }
 
@@ -334,11 +422,19 @@ body {
   }
 
   .contact-links a {
-    font-size: 0.85em; /* 더 작은 화면에서 추가 축소 */
+    font-size: 0.85em;
   }
 
   .contact-links svg {
     width: 12px;
     height: 12px;
+  }
+
+  .timestamp-display, .timezone-display, .timezone-select, .datetime-display, .timestamp-converter {
+    font-size: 1em; /* 더 작은 화면에서 글씨 크기 축소 */
+  }
+
+  .timestamp-converter h3 {
+    font-size: 1.1em;
   }
 }
