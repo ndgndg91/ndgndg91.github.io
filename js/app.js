@@ -214,12 +214,13 @@ function showSection(sectionId) {
   }
 }
 
-// 메뉴 클릭 이벤트 추가
+// 메뉴 클릭 이벤트 추가 (상위 및 서브메뉴 모두)
 document.querySelectorAll("[data-section]").forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     const sectionId = link.getAttribute("data-section");
     showSection(sectionId);
+    window.location.hash = sectionId; // URL 해시 업데이트
     if (window.innerWidth <= 768) {
       document.querySelector(".nav").classList.remove("active");
     }
@@ -244,15 +245,15 @@ document.querySelectorAll(".dropdown .dropbtn").forEach(dropbtn => {
 
 // 페이지 로드 시 URL 해시 확인 및 섹션 표시
 window.addEventListener("load", () => {
-  const hash = window.location.hash.substring(1); // '#' 제거
+  const hash = window.location.hash.substring(1);
   if (hash) {
     showSection(hash);
   } else {
-    showSection("timestamp-tool"); // 기본 섹션
+    showSection("timestamp-tool");
   }
 });
 
-// 해시 변경 시 섹션 업데이트 (선택적, 브라우저 뒤로/앞으로 버튼 지원)
+// 해시 변경 시 섹션 업데이트
 window.addEventListener("hashchange", () => {
   const hash = window.location.hash.substring(1);
   if (hash) {
