@@ -108,8 +108,28 @@ document.querySelectorAll("[data-section]").forEach(link => {
     e.preventDefault();
     const sectionId = link.getAttribute("data-section");
     showSection(sectionId);
+    // 모바일에서 메뉴 닫기
+    if (window.innerWidth <= 768) {
+      document.querySelector(".nav").classList.remove("active");
+    }
   });
 });
 
-// 초기 상태: 아무 섹션도 표시되지 않음
-showSection("blog"); // 기본 섹션 설정하려면 주석 해제
+// 모바일 메뉴 토글
+document.querySelector(".menu-toggle").addEventListener("click", () => {
+  document.querySelector(".nav").classList.toggle("active");
+});
+
+// 드롭다운 클릭 토글 (모바일에서만)
+document.querySelectorAll(".dropdown .dropbtn").forEach(dropbtn => {
+  dropbtn.addEventListener("click", (e) => {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      const dropdown = dropbtn.parentElement;
+      dropdown.classList.toggle("active");
+    }
+  });
+});
+
+// 초기 상태
+showSection("blog");
