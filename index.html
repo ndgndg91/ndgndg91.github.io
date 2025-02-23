@@ -49,102 +49,68 @@
   </div>
 </header>
 
-<main class="content">
-  <section id="blog" class="section" style="display: none;">
-    <h2>블로그</h2>
-    <div id="blog-posts"></div>
+<div class="page-container">
+  <aside class="ad-sidebar left">
     <div class="ad-container">
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-           data-ad-slot="YYYYYYYYYY"
+           data-ad-slot="LEFT_AD_SLOT_ID"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
       </script>
     </div>
-    <div class="pagination">
-      <button id="prev-page" disabled>이전</button>
-      <span id="page-info"></span>
-      <button id="next-page">다음</button>
-    </div>
-  </section>
+  </aside>
 
-  <section id="base64-tool" class="section" style="display: none;">
-    <h2>Base64 Encode/Decode</h2>
-    <p>Base64는 텍스트나 파일을 64개의 문자로 변환하여 데이터를 안전하게 전송하거나 저장할 수 있게 하는 방법입니다.</p>
-    <label for="base64-input"></label><textarea id="base64-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
-    <br>
-    <button onclick="encodeBase64()">Encode</button>
-    <button onclick="decodeBase64()">Decode</button>
-    <br>
-    <div class="ad-container">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-           data-ad-slot="ZZZZZZZZZZ"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </div>
-    <label for="base64-output"></label><textarea id="base64-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
-  </section>
+  <main class="content">
+    <section id="blog" class="section" style="display: none;">
+      <h2>블로그</h2>
+      <div id="blog-posts"></div>
+      <div class="pagination">
+        <button id="prev-page" disabled>이전</button>
+        <span id="page-info"></span>
+        <button id="next-page">다음</button>
+      </div>
+    </section>
 
-  <section id="url-tool" class="section" style="display: none;">
-    <h2>URL Encode/Decode</h2>
-    <label for="url-input"></label><textarea id="url-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
-    <br>
-    <button onclick="encodeURL()">Encode</button>
-    <button onclick="decodeURL()">Decode</button>
-    <br>
-    <label for="url-output"></label><textarea id="url-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
-    <p>URL 인코딩은 URL에서 특정 문자를 퍼센트 기호(%)와 두 자리 16진수로 바꾸는 것을 의미합니다.</p>
-  </section>
+    <section id="base64-tool" class="section" style="display: none;">
+      <h2>Base64 Encode/Decode</h2>
+      <p>Base64는 텍스트나 파일을 64개의 문자로 변환하여 데이터를 안전하게 전송하거나 저장할 수 있게 하는 방법입니다.</p>
+      <label for="base64-input"></label><textarea id="base64-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
+      <br>
+      <button onclick="encodeBase64()">Encode</button>
+      <button onclick="decodeBase64()">Decode</button>
+      <br>
+      <label for="base64-output"></label><textarea id="base64-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
+    </section>
 
-  <section id="timestamp-tool" class="section" style="display: none;">
-    <h2>Unix Timestamp</h2>
-    <p>Unix Timestamp는 1970년 1월 1일 00:00:00 UTC(협정 세계시)부터 경과한 초 단위의 시간을 나타냅니다. 이를 "에포크(Epoch)"라고도 부르며, 주로 컴퓨터 시스템에서 시간을 기록하거나 계산할 때 사용됩니다.</p>
-    <div class="timestamp-display">
-      <strong>현재 Unix Timestamp:</strong>
-      <span id="current-timestamp">0</span>
-    </div>
-    <div class="timezone-display">
-      <strong>현재 타임존:</strong>
-      <span id="current-timezone">Loading...</span>
-    </div>
-    <div class="timezone-select">
-      <label for="timezone-select"><strong>타임존 선택 (실시간):</strong></label>
-      <select id="timezone-select">
-        <option value="Asia/Seoul">Asia/Seoul</option>
-        <option value="Asia/Tokyo">Asia/Tokyo</option>
-        <option value="Asia/Shanghai">Asia/Shanghai</option>
-        <option value="Asia/Dubai">Asia/Dubai</option>
-        <option value="America/New_York">America/New_York</option>
-        <option value="America/Los_Angeles">America/Los_Angeles</option>
-        <option value="America/Chicago">America/Chicago</option>
-        <option value="America/Sao_Paulo">America/Sao_Paulo</option>
-        <option value="Europe/London">Europe/London</option>
-        <option value="Europe/Paris">Europe/Paris</option>
-        <option value="Europe/Moscow">Europe/Moscow</option>
-        <option value="Australia/Sydney">Australia/Sydney</option>
-        <option value="Pacific/Auckland">Pacific/Auckland</option>
-        <option value="Africa/Johannesburg">Africa/Johannesburg</option>
-        <option value="UTC">UTC</option>
-      </select>
-    </div>
-    <div class="datetime-display">
-      <strong>선택한 타임존 시간:</strong>
-      <span id="current-datetime">YYYY MM DD HH MM SS</span>
-    </div>
-    <div class="timestamp-converter">
-      <h3>Timestamp 변환</h3>
-      <div class="converter-section">
-        <label for="timestamp-input">Unix Timestamp 입력:</label>
-        <input type="number" id="timestamp-input" placeholder="예: 1708765432">
-        <label for="timestamp-timezone"></label><select id="timestamp-timezone">
+    <section id="url-tool" class="section" style="display: none;">
+      <h2>URL Encode/Decode</h2>
+      <label for="url-input"></label><textarea id="url-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
+      <br>
+      <button onclick="encodeURL()">Encode</button>
+      <button onclick="decodeURL()">Decode</button>
+      <br>
+      <label for="url-output"></label><textarea id="url-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
+      <p>URL 인코딩은 URL에서 특정 문자를 퍼센트 기호(%)와 두 자리 16진수로 바꾸는 것을 의미합니다.</p>
+    </section>
+
+    <section id="timestamp-tool" class="section" style="display: none;">
+      <h2>Unix Timestamp</h2>
+      <p>Unix Timestamp는 1970년 1월 1일 00:00:00 UTC(협정 세계시)부터 경과한 초 단위의 시간을 나타냅니다. 이를 "에포크(Epoch)"라고도 부르며, 주로 컴퓨터 시스템에서 시간을 기록하거나 계산할 때 사용됩니다.</p>
+      <div class="timestamp-display">
+        <strong>현재 Unix Timestamp:</strong>
+        <span id="current-timestamp">0</span>
+      </div>
+      <div class="timezone-display">
+        <strong>현재 타임존:</strong>
+        <span id="current-timezone">Loading...</span>
+      </div>
+      <div class="timezone-select">
+        <label for="timezone-select"><strong>타임존 선택 (실시간):</strong></label>
+        <select id="timezone-select">
           <option value="Asia/Seoul">Asia/Seoul</option>
           <option value="Asia/Tokyo">Asia/Tokyo</option>
           <option value="Asia/Shanghai">Asia/Shanghai</option>
@@ -161,35 +127,77 @@
           <option value="Africa/Johannesburg">Africa/Johannesburg</option>
           <option value="UTC">UTC</option>
         </select>
-        <button onclick="convertTimestampToDatetime()">변환</button>
-        <p><strong>결과:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span></p>
       </div>
-      <div class="converter-section">
-        <label for="datetime-input">날짜/시간 입력 (YYYY MM DD HH MM SS):</label>
-        <input type="text" id="datetime-input" placeholder="예: 2025 02 23 14 23 45">
-        <label for="datetime-timezone"></label><select id="datetime-timezone">
-          <option value="Asia/Seoul">Asia/Seoul</option>
-          <option value="Asia/Tokyo">Asia/Tokyo</option>
-          <option value="Asia/Shanghai">Asia/Shanghai</option>
-          <option value="Asia/Dubai">Asia/Dubai</option>
-          <option value="America/New_York">America/New_York</option>
-          <option value="America/Los_Angeles">America/Los_Angeles</option>
-          <option value="America/Chicago">America/Chicago</option>
-          <option value="America/Sao_Paulo">America/Sao_Paulo</option>
-          <option value="Europe/London">Europe/London</option>
-          <option value="Europe/Paris">Europe/Paris</option>
-          <option value="Europe/Moscow">Europe/Moscow</option>
-          <option value="Australia/Sydney">Australia/Sydney</option>
-          <option value="Pacific/Auckland">Pacific/Auckland</option>
-          <option value="Africa/Johannesburg">Africa/Johannesburg</option>
-          <option value="UTC">UTC</option>
-        </select>
-        <button onclick="convertDatetimeToTimestamp()">변환</button>
-        <p><strong>결과:</strong> <span id="datetime-to-timestamp-result">0</span></p>
+      <div class="datetime-display">
+        <strong>선택한 타임존 시간:</strong>
+        <span id="current-datetime">YYYY MM DD HH MM SS</span>
       </div>
+      <div class="timestamp-converter">
+        <h3>Timestamp 변환</h3>
+        <div class="converter-section">
+          <label for="timestamp-input">Unix Timestamp 입력:</label>
+          <input type="number" id="timestamp-input" placeholder="예: 1708765432">
+          <label for="timestamp-timezone"></label><select id="timestamp-timezone">
+            <option value="Asia/Seoul">Asia/Seoul</option>
+            <option value="Asia/Tokyo">Asia/Tokyo</option>
+            <option value="Asia/Shanghai">Asia/Shanghai</option>
+            <option value="Asia/Dubai">Asia/Dubai</option>
+            <option value="America/New_York">America/New_York</option>
+            <option value="America/Los_Angeles">America/Los_Angeles</option>
+            <option value="America/Chicago">America/Chicago</option>
+            <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+            <option value="Europe/London">Europe/London</option>
+            <option value="Europe/Paris">Europe/Paris</option>
+            <option value="Europe/Moscow">Europe/Moscow</option>
+            <option value="Australia/Sydney">Australia/Sydney</option>
+            <option value="Pacific/Auckland">Pacific/Auckland</option>
+            <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+            <option value="UTC">UTC</option>
+          </select>
+          <button onclick="convertTimestampToDatetime()">변환</button>
+          <p><strong>결과:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span></p>
+        </div>
+        <div class="converter-section">
+          <label for="datetime-input">날짜/시간 입력 (YYYY MM DD HH MM SS):</label>
+          <input type="text" id="datetime-input" placeholder="예: 2025 02 23 14 23 45">
+          <label for="datetime-timezone"></label><select id="datetime-timezone">
+            <option value="Asia/Seoul">Asia/Seoul</option>
+            <option value="Asia/Tokyo">Asia/Tokyo</option>
+            <option value="Asia/Shanghai">Asia/Shanghai</option>
+            <option value="Asia/Dubai">Asia/Dubai</option>
+            <option value="America/New_York">America/New_York</option>
+            <option value="America/Los_Angeles">America/Los_Angeles</option>
+            <option value="America/Chicago">America/Chicago</option>
+            <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+            <option value="Europe/London">Europe/London</option>
+            <option value="Europe/Paris">Europe/Paris</option>
+            <option value="Europe/Moscow">Europe/Moscow</option>
+            <option value="Australia/Sydney">Australia/Sydney</option>
+            <option value="Pacific/Auckland">Pacific/Auckland</option>
+            <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+            <option value="UTC">UTC</option>
+          </select>
+          <button onclick="convertDatetimeToTimestamp()">변환</button>
+          <p><strong>결과:</strong> <span id="datetime-to-timestamp-result">0</span></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="ad-sidebar right">
+    <div class="ad-container">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="RIGHT_AD_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
     </div>
-  </section>
-</main>
+  </aside>
+</div>
 
 <footer class="footer">
   <p>© Giri</p>
