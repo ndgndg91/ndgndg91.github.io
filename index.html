@@ -44,6 +44,13 @@
             <a href="#timestamp-tool" data-section="timestamp-tool">Timestamp</a>
           </div>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">Encrypt/Decrypt</a>
+          <div class="dropdown-content">
+            <a href="#aes-tool" data-section="aes-tool">AES</a>
+            <a href="#rsa-tool" data-section="rsa-tool">RSA</a>
+          </div>
+        </li>
       </ul>
     </nav>
   </div>
@@ -182,6 +189,60 @@
         </div>
       </div>
     </section>
+
+    <section id="aes-tool" class="section" style="display: none;">
+      <h2>AES Encrypt/Decrypt</h2>
+      <p>AES(Advanced Encryption Standard)는 대칭 키 암호화 알고리즘으로, 동일한 키를 사용하여 데이터를 암호화하고 복호화합니다.</p>
+      <div class="aes-options">
+        <label for="aes-mode">모드:</label>
+        <select id="aes-mode">
+          <option value="CBC">CBC</option>
+          <option value="ECB">ECB</option>
+        </select>
+        <label for="aes-key-size">키 사이즈:</label>
+        <select id="aes-key-size">
+          <option value="16">AES-128 (16자)</option>
+          <option value="24">AES-192 (24자)</option>
+          <option value="32">AES-256 (32자)</option>
+        </select>
+        <label for="aes-output-format">출력 형식:</label>
+        <select id="aes-output-format">
+          <option value="base64">Base64</option>
+          <option value="hex">Hex</option>
+        </select>
+      </div>
+      <label for="aes-key">키:</label>
+      <input type="text" id="aes-key" placeholder="키를 입력하세요 (길이에 맞게)">
+      <br>
+      <label for="aes-iv" id="aes-iv-label" style="display: none;">IV (CBC 모드, 16자):</label>
+      <input type="text" id="aes-iv" placeholder="예: initializationv" style="display: none;">
+      <br>
+      <label for="aes-input"></label><textarea id="aes-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
+      <br>
+      <button onclick="encryptAES()">Encrypt</button>
+      <button onclick="decryptAES()">Decrypt</button>
+      <br>
+      <label for="aes-output"></label><textarea id="aes-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
+    </section>
+
+    <section id="rsa-tool" class="section" style="display: none;">
+      <h2>RSA Encrypt/Decrypt</h2>
+      <p>RSA는 공개 키와 개인 키를 사용하는 비대칭 암호화 알고리즘입니다. 공개 키로 암호화하고 개인 키로 복호화합니다.</p>
+      <button onclick="generateRSAKeys()">키 쌍 생성</button>
+      <br>
+      <label for="rsa-public-key">공개 키:</label>
+      <textarea id="rsa-public-key" rows="3" cols="50" readonly placeholder="키 쌍 생성 후 표시"></textarea>
+      <br>
+      <label for="rsa-private-key">개인 키:</label>
+      <textarea id="rsa-private-key" rows="3" cols="50" readonly placeholder="키 쌍 생성 후 표시"></textarea>
+      <br>
+      <label for="rsa-input"></label><textarea id="rsa-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
+      <br>
+      <button onclick="encryptRSA()">Encrypt</button>
+      <button onclick="decryptRSA()">Decrypt</button>
+      <br>
+      <label for="rsa-output"></label><textarea id="rsa-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
+    </section>
   </main>
 
   <aside class="ad-sidebar right">
@@ -221,6 +282,8 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.3.2/jsencrypt.min.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

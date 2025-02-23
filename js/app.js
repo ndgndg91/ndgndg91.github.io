@@ -36,6 +36,173 @@ function decodeURL() {
   }
 }
 
+// AES 모드에 따른 IV 필드 표시/숨김 함수
+function toggleIVField() {
+  const mode = document.getElementById("aes-mode").value;
+  const ivLabel = document.getElementById("aes-iv-label");
+  const ivInput = document.getElementById("aes-iv");
+  if (mode === "CBC") {
+    ivLabel.style.display = "block";
+    ivInput.style.display = "block";
+  } else {
+    ivLabel.style.display = "none";
+    ivInput.style.display = "none";
+  }
+}
+
+// AES 모드 변경 시 IV 필드 표시/숨김
+document.getElementById("aes-mode").addEventListener("change", toggleIVField);
+
+// AES 암호화
+function encryptAES() {
+  const input = document.getElementById("aes-input").value;
+  const key = document.getElementById("aes-key").value;
+  const mode = document.getElementById("aes-mode").value;
+  const keySize = parseInt(document.getElementById("aes-key-size").value); // 비트 단위 (128, 192, 256)
+  const outputFormat = document.getElementById("aes-output-format").value;
+  const ivInput = document.getElementById("aes-iv").value;
+  const outputElement = document.getElementById("aes-output");
+
+  // 입력 검증
+  if (!input || !key) {
+    outputElement.value = "텍스트와 키를 입력하세요.";
+    return;
+  }
+
+  // 키를 명시적으로 파싱하고 바이트 길이 검증
+  const keyParsed = CryptoJS.enc.Utf8.parse(key);
+  const keyBytes = keyParsed.words.length * 4; // WordArray의 바이트 수 계산
+  const expectedBytes = keySize; // AES 요구 바이트 (16, 24, 32)
+  if (keyBytes !== expectedBytes) {
+    console.log(keyBytes)
+    console.log(expectedBytes)
+    outputElement.value = `키는 ${keySize}비트(${expectedBytes}바이트)여야 합니다. 현재: ${keyBytes}바이트`;
+    return;
+  }
+
+  // IV 검증 및 파싱 (CBC 모드에서만 필요)
+  let iv = null;
+  if (mode === "CBC") {
+    if (!ivInput || ivInput.length !== 16) {
+      outputElement.value = "CBC 모드에서는 16자의 IV를 입력해야 합니다.";
+      return;
+    }
+    iv = CryptoJS.enc.Utf8.parse(ivInput); // IV를 명시적으로 파싱
+  }
+
+  try {
+    const modeObj = {
+      CBC: CryptoJS.mode.CBC,
+      ECB: CryptoJS.mode.ECB,
+    }[mode];
+
+    const encrypted = CryptoJS.AES.encrypt(input, keyParsed, {
+      mode: modeObj,
+      iv: iv, // ECB에서는 무시됨
+      padding: CryptoJS.pad.Pkcs7
+    });
+
+    outputElement.value = outputFormat === "base64" ? encrypted.toString() : encrypted.ciphertext.toString(CryptoJS.enc.Hex);
+  } catch (e) {
+    outputElement.value = "암호화 실패: " + e.message;
+  }
+}
+
+// AES 복호화
+function decryptAES() {
+  const input = document.getElementById("aes-input").value;
+  const key = document.getElementById("aes-key").value;
+  const mode = document.getElementById("aes-mode").value;
+  const keySize = parseInt(document.getElementById("aes-key-size").value); // 비트 단위 (128, 192, 256)
+  const outputFormat = document.getElementById("aes-output-format").value;
+  const ivInput = document.getElementById("aes-iv").value;
+  const outputElement = document.getElementById("aes-output");
+
+  // 입력 검증
+  if (!input || !key) {
+    outputElement.value = "텍스트와 키를 입력하세요.";
+    return;
+  }
+
+  // 키를 명시적으로 파싱하고 바이트 길이 검증
+  const keyParsed = CryptoJS.enc.Utf8.parse(key);
+  const keyBytes = keyParsed.words.length * 4; // WordArray의 바이트 수 계산
+  const expectedBytes = keySize; // AES 요구 바이트 (16, 24, 32)
+  if (keyBytes !== expectedBytes) {
+    outputElement.value = `키는 ${keySize}비트(${expectedBytes}바이트)여야 합니다. 현재: ${keyBytes}바이트`;
+    return;
+  }
+
+  // IV 검증 및 파싱 (CBC 모드에서만 필요)
+  let iv = null;
+  if (mode === "CBC") {
+    if (!ivInput || ivInput.length !== 16) {
+      outputElement.value = "CBC 모드에서는 16자의 IV를 입력해야 합니다.";
+      return;
+    }
+    iv = CryptoJS.enc.Utf8.parse(ivInput); // IV를 명시적으로 파싱
+  }
+
+  try {
+    const modeObj = {
+      CBC: CryptoJS.mode.CBC,
+      ECB: CryptoJS.mode.ECB,
+    }[mode];
+
+    const decrypted = CryptoJS.AES.decrypt(
+      input, // Base64 입력만 처리
+      keyParsed,
+      { mode: modeObj, iv: iv, padding: CryptoJS.pad.Pkcs7 }
+    );
+
+    const result = decrypted.toString(CryptoJS.enc.Utf8);
+    outputElement.value = result || "복호화 실패: 잘못된 키 또는 데이터";
+  } catch (e) {
+    outputElement.value = "복호화 실패: " + e.message;
+  }
+}
+
+
+// RSA 키 생성 및 암호화/복호화
+let rsaEncryptor = new JSEncrypt();
+function generateRSAKeys() {
+  rsaEncryptor = new JSEncrypt({ default_key_size: 2048 });
+  document.getElementById("rsa-public-key").value = rsaEncryptor.getPublicKey();
+  document.getElementById("rsa-private-key").value = rsaEncryptor.getPrivateKey();
+}
+
+function encryptRSA() {
+  const input = document.getElementById("rsa-input").value;
+  const publicKey = document.getElementById("rsa-public-key").value;
+  if (!input || !publicKey) {
+    document.getElementById("rsa-output").value = "텍스트와 공개 키를 입력하세요.";
+    return;
+  }
+  try {
+    rsaEncryptor.setPublicKey(publicKey);
+    const encrypted = rsaEncryptor.encrypt(input);
+    document.getElementById("rsa-output").value = encrypted || "암호화 실패";
+  } catch (e) {
+    document.getElementById("rsa-output").value = "암호화 실패: " + e.message;
+  }
+}
+
+function decryptRSA() {
+  const input = document.getElementById("rsa-input").value;
+  const privateKey = document.getElementById("rsa-private-key").value;
+  if (!input || !privateKey) {
+    document.getElementById("rsa-output").value = "텍스트와 개인 키를 입력하세요.";
+    return;
+  }
+  try {
+    rsaEncryptor.setPrivateKey(privateKey);
+    const decrypted = rsaEncryptor.decrypt(input);
+    document.getElementById("rsa-output").value = decrypted || "복호화 실패: 잘못된 키 또는 데이터";
+  } catch (e) {
+    document.getElementById("rsa-output").value = "복호화 실패: " + e.message;
+  }
+}
+
 // 블로그 포스트 데이터
 const blogPosts = [
   { title: "포스트 5", date: "2025-02-20", url: "https://ndgndg91.blogspot.com/post5" },
@@ -205,13 +372,18 @@ function showSection(sectionId) {
     updateTimestamp();
     if (timestampInterval) clearInterval(timestampInterval);
     timestampInterval = setInterval(updateTimestamp, 1000);
-    const timezoneSelect = document.getElementById("timezone-select");
-    if (timezoneSelect) {
-      timezoneSelect.addEventListener("change", updateTimestamp);
-    }
+  } else if (sectionId === "aes-tool") {
+    toggleIVField(); // AES 섹션 진입 시 IV 필드 상태 업데이트
   } else {
     if (timestampInterval) clearInterval(timestampInterval);
   }
+}
+
+// 타임존 선택 이벤트 (Timestamp 섹션 전용)
+const timezoneSelect = document.getElementById("timezone-select");
+if (timezoneSelect && !timezoneSelect.dataset.listenerAdded) {
+  timezoneSelect.addEventListener("change", updateTimestamp);
+  timezoneSelect.dataset.listenerAdded = "true";
 }
 
 // 메뉴 클릭 이벤트 추가 (상위 및 서브메뉴 모두)
@@ -220,7 +392,7 @@ document.querySelectorAll("[data-section]").forEach(link => {
     e.preventDefault();
     const sectionId = link.getAttribute("data-section");
     showSection(sectionId);
-    window.location.hash = sectionId; // URL 해시 업데이트
+    window.location.hash = sectionId;
     if (window.innerWidth <= 768) {
       document.querySelector(".nav").classList.remove("active");
     }
