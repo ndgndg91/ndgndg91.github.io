@@ -248,7 +248,7 @@ window.addEventListener("load", () => {
   if (hash) {
     showSection(hash);
   } else {
-    showSection("blog"); // 기본 섹션
+    showSection("timestamp-tool"); // 기본 섹션
   }
 });
 
