@@ -41,7 +41,8 @@
         <li class="dropdown">
           <a href="#" class="dropbtn">String</a>
           <div class="dropdown-content">
-            <a href="#uuid-tool" data-section="uuid-tool">UUID</a>
+            <a href="#uuid-tool" data-section="uuid-tool">UUID Generator</a>
+            <a href="#random-hex-tool" data-section="random-hex-tool">Random Hex Generator</a>
           </div>
         </li>
         <li class="dropdown">
@@ -169,6 +170,18 @@
           <p><strong>결과:</strong> <span id="uuid-v3-result">00000000-0000-0000-0000-000000000000</span>
             <button class="copy-btn" onclick="copyToClipboard('uuid-v3-result')">복사</button></p>
         </div>
+    </section>
+
+    <section id="random-hex-tool" class="section" style="display: none;">
+      <h2>Random Hex 생성기</h2>
+      <p>랜덤한 16진수 문자열을 생성합니다. 길이를 입력하여 원하는 크기의 hex 문자열을 얻을 수 있습니다.</p>
+      <div class="random-hex-generator">
+        <label for="hex-length">길이 (문자 수):</label>
+        <input type="number" id="hex-length" min="1" max="128" value="64" placeholder="예: 64">
+        <button onclick="generateRandomHex()">Hex 생성</button>
+        <p><strong>결과:</strong> <span id="random-hex-result">00000000</span>
+          <button class="copy-btn" onclick="copyToClipboard('random-hex-result')">복사</button></p>
+      </div>
     </section>
 
     <section id="timestamp-tool" class="section" style="display: none;">

@@ -565,3 +565,78 @@ body {
 .copy-btn:hover {
   background-color: #e0e0e0;
 }
+
+.random-hex-generator {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex; /* 요소를 유연하게 배치 */
+  flex-direction: column;
+  gap: 10px; /* 요소 간 간격 */
+}
+
+.random-hex-generator label {
+  margin-bottom: 5px;
+}
+
+.random-hex-generator input {
+  width: 100%;
+  max-width: 200px; /* 최대 폭 제한 */
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* 패딩 포함 계산 */
+}
+
+.random-hex-generator button {
+  padding: 5px 10px;
+  width: auto;
+}
+
+.random-hex-generator p {
+  margin: 10px 0;
+  word-break: break-all; /* 긴 문자열 줄바꿈 */
+}
+
+#random-hex-result {
+  color: #0078d4;
+  font-weight: bold;
+  display: inline-block; /* inline-block으로 설정 */
+  max-width: 100%; /* 부모 너비 초과 방지 */
+  word-break: break-all; /* 긴 문자열 줄바꿈 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .random-hex-generator {
+    padding: 15px;
+  }
+
+  .random-hex-generator input {
+    max-width: 100%; /* 모바일에서 전체 너비 사용 */
+  }
+
+  .random-hex-generator button {
+    width: 100%; /* 버튼도 전체 너비로 */
+    margin: 5px 0;
+  }
+
+  .random-hex-generator p {
+    font-size: 0.9em; /* 모바일에서 글자 크기 조정 */
+  }
+
+  #random-hex-result {
+    font-size: 0.85em; /* 긴 문자열 시 가독성 개선 */
+  }
+}
+
+@media (max-width: 480px) {
+  .random-hex-generator p {
+    font-size: 0.8em;
+  }
+
+  #random-hex-result {
+    font-size: 0.75em; /* 더 작은 화면에서 조정 */
+  }
+}

@@ -537,3 +537,28 @@ function generateUUIDv5() {
     console.error(error);
   }
 }
+
+// Random Hex 생성 함수
+function generateRandomHex() {
+  const lengthInput = document.getElementById('hex-length').value;
+  const length = parseInt(lengthInput);
+  const resultElement = document.getElementById('random-hex-result');
+
+  if (isNaN(length) || length < 1 || length > 128) {
+    alert('길이는 1에서 128 사이의 숫자여야 합니다.');
+    return;
+  }
+
+  const byteLength = Math.ceil(length / 2); // 2 hex 문자 = 1 byte
+  const bytes = new Uint8Array(byteLength);
+  crypto.getRandomValues(bytes);
+  let result = Array.from(bytes)
+    .map(byte => byte.toString(16).padStart(2, '0'))
+    .join('')
+    .slice(0, length); // 정확한 길이 조정
+  if (result.length < length) {
+    result += '0'.repeat(length - result.length); // 부족한 길이 채우기
+  }
+
+  resultElement.textContent = result;
+}
