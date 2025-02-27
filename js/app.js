@@ -432,3 +432,108 @@ window.addEventListener("hashchange", () => {
     showSection(hash);
   }
 });
+
+// UUID 형식 유효성 검사 함수
+function isValidUUID(str) {
+  const uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  return uuidRegex.test(str);
+}
+
+// 클립보드에 복사하는 함수
+function copyToClipboard(elementId) {
+  const text = document.getElementById(elementId).textContent;
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      alert('복사되었습니다: ' + text);
+    })
+    .catch(err => {
+      alert('복사에 실패했습니다.');
+      console.error('복사 오류:', err);
+    });
+}
+
+// 16진수로 변환하는 유틸리티 함수
+function toHex(value, length) {
+  return value.toString(16).padStart(length, '0');
+}
+
+// UUIDv7 생성 함수
+function generateUUIDv7() {
+  // 현재 유닉스 타임스탬프 (밀리초, 48비트)
+  const timestamp = Date.now();
+  const timestampHex = toHex(timestamp, 12); // 48비트 -> 12자리 16진수
+
+  // 랜덤 값 생성 (74비트)
+  const rand1 = Math.floor(Math.random() * 0x10000); // 16비트
+  const rand2 = Math.floor(Math.random() * 0x100000000); // 32비트
+  const rand3 = Math.floor(Math.random() * 0x100000000); // 32비트
+
+  // 버전 (7)과 변형 비트 설정
+  const version = 7; // 버전 7
+  const variant = 0x8000 | (rand1 & 0x3FFF); // 변형 비트 10xx
+
+  // UUID 조합
+  document.getElementById('uuid-v7-result').textContent = [
+    timestampHex.slice(0, 8),              // 첫 32비트
+    timestampHex.slice(8, 12),             // 다음 16비트
+    toHex(version, 1) + toHex(variant, 3), // 버전(7) + 랜덤 12비트
+    toHex(rand2 >>> 16, 4),                // 랜덤 16비트
+    toHex(rand2 & 0xFFFF, 4) + toHex(rand3, 8) // 나머지 48비트
+  ].join('-');
+}
+
+// UUID v1 생성
+function generateUUIDv1() {
+  document.getElementById('uuid-v1-result').textContent = uuid.v1();
+}
+
+// UUID v3 생성
+function generateUUIDv3() {
+  const namespace = document.getElementById('uuid-v3-namespace').value.trim();
+  const name = document.getElementById('uuid-v3-name').value.trim();
+
+  if (!namespace || !name) {
+    alert('네임스페이스와 이름을 모두 입력해주세요.');
+    return;
+  }
+
+  if (!isValidUUID(namespace)) {
+    alert('네임스페이스는 유효한 UUID 형식이어야 합니다. 예: 6ba7b810-9dad-11d1-80b4-00c04fd430c8');
+    return;
+  }
+
+  try {
+    document.getElementById('uuid-v3-result').textContent = uuid.v3(name, namespace);
+  } catch (error) {
+    alert('UUID v3 생성 중 오류가 발생했습니다. 입력값을 확인해주세요.');
+    console.error(error);
+  }
+}
+
+// UUID v4 생성
+function generateUUIDv4() {
+  document.getElementById('uuid-v4-result').textContent = uuid.v4();
+}
+
+// UUID v5 생성
+function generateUUIDv5() {
+  const namespace = document.getElementById('uuid-v5-namespace').value.trim();
+  const name = document.getElementById('uuid-v5-name').value.trim();
+
+  if (!namespace || !name) {
+    alert('네임스페이스와 이름을 모두 입력해주세요.');
+    return;
+  }
+
+  if (!isValidUUID(namespace)) {
+    alert('네임스페이스는 유효한 UUID 형식이어야 합니다. 예: 6ba7b810-9dad-11d1-80b4-00c04fd430c8');
+    return;
+  }
+
+  try {
+    document.getElementById('uuid-v5-result').textContent = uuid.v5(name, namespace);
+  } catch (error) {
+    alert('UUID v5 생성 중 오류가 발생했습니다. 입력값을 확인해주세요.');
+    console.error(error);
+  }
+}

@@ -519,3 +519,49 @@ body {
     width: 100%;
   }
 }
+
+.uuid-generator {
+  margin-top: 20px;
+}
+
+.uuid-version {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.uuid-version h3 {
+  margin-top: 0;
+}
+
+.uuid-version label {
+  display: block;
+  margin-top: 10px;
+}
+
+.uuid-version input {
+  width: 100%;
+  max-width: 400px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.uuid-version button {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+
+.copy-btn {
+  margin-left: 10px;
+  padding: 3px 8px;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background-color: #e0e0e0;
+}
