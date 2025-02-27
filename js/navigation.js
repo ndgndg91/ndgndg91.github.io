@@ -6,10 +6,7 @@ function showSection(sectionId) {
     section.style.display = section.id === sectionId ? "block" : "none";
   });
 
-  if (sectionId === "blog") {
-    displayPosts(); // blog.js에서 정의
-    if (timestampInterval) clearInterval(timestampInterval);
-  } else if (sectionId === "timestamp-tool") {
+  if (sectionId === "timestamp-tool") {
     updateTimestamp(); // timestamp.js에서 정의
     if (timestampInterval) clearInterval(timestampInterval);
     timestampInterval = setInterval(updateTimestamp, 1000);

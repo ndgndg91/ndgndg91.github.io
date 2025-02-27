@@ -34,7 +34,6 @@
     <button class="menu-toggle" aria-label="Toggle menu">☰</button>
     <nav class="nav">
       <ul class="menu">
-        <li><a href="#blog" class="dropbtn" data-section="blog">블로그</a></li>
         <li class="dropdown">
           <a href="#" class="dropbtn">Encode/Decode</a>
           <div class="dropdown-content">
@@ -84,16 +83,6 @@
   </aside>
 
   <main class="content">
-    <section id="blog" class="section" style="display: none;">
-      <h2>블로그</h2>
-      <div id="blog-posts"></div>
-      <div class="pagination">
-        <button id="prev-page" disabled>이전</button>
-        <span id="page-info"></span>
-        <button id="next-page">다음</button>
-      </div>
-    </section>
-
     <section id="base64-tool" class="section" style="display: none;">
       <h2>Base64 Encode/Decode</h2>
       <p>Base64는 텍스트나 파일을 64개의 문자로 변환하여 데이터를 안전하게 전송하거나 저장할 수 있게 하는 방법입니다.</p>
@@ -387,7 +376,6 @@
 <script src="js/navigation.js"></script>
 <script src="js/encode-decode.js"></script>
 <script src="js/crypto.js"></script>
-<script src="js/blog.js"></script>
 <script src="js/timestamp.js"></script>
 <script src="js/string-tools.js"></script>
 </body>
