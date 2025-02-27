@@ -562,3 +562,27 @@ function generateRandomHex() {
 
   resultElement.textContent = result;
 }
+
+// 문자열 바이트 크기 계산 함수 (UTF-8)
+function getByteLength(str) {
+  return new TextEncoder().encode(str).length;
+}
+
+// 문자열 분석 함수
+function analyzeString() {
+  const input = document.getElementById('string-input').value;
+  const lengthElement = document.getElementById('string-length');
+  const bytesElement = document.getElementById('string-bytes');
+
+  if (!input) {
+    lengthElement.textContent = '0';
+    bytesElement.textContent = '0';
+    return;
+  }
+
+  const charLength = input.length;
+  const byteLength = getByteLength(input);
+
+  lengthElement.textContent = charLength;
+  bytesElement.textContent = byteLength;
+}

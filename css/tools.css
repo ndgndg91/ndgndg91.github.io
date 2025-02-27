@@ -1,0 +1,174 @@
+.uuid-generator {
+  margin-top: 20px;
+}
+
+.uuid-version {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.uuid-version h3 {
+  margin-top: 0;
+}
+
+.uuid-version label {
+  display: block;
+  margin-top: 10px;
+}
+
+.uuid-version input {
+  width: 100%;
+  max-width: 400px;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.uuid-version button {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+
+.copy-btn {
+  margin-left: 10px;
+  padding: 3px 8px;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.copy-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.random-hex-generator, .string-analyzer {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.random-hex-generator label, .string-analyzer label {
+  margin-bottom: 5px;
+}
+
+.random-hex-generator input {
+  width: 100%;
+  max-width: 200px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.string-analyzer textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.random-hex-generator button, .string-analyzer button {
+  padding: 5px 10px;
+  width: auto;
+}
+
+.random-hex-generator p, .string-analyzer p {
+  margin: 5px 0;
+  word-break: break-all;
+}
+
+#random-hex-result, #string-length, #string-bytes {
+  color: #0078d4;
+  font-weight: bold;
+  display: inline-block;
+  max-width: 100%;
+  word-break: break-all;
+}
+
+.timestamp-display, .timezone-display, .timezone-select, .datetime-display, .timestamp-converter {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.timestamp-display strong, .timezone-display strong, .timezone-select strong, .datetime-display strong, .timestamp-converter strong {
+  margin-right: 10px;
+}
+
+#current-timestamp, #current-timezone, #current-datetime, #timestamp-to-datetime-result, #datetime-to-timestamp-result {
+  color: #0078d4;
+  font-weight: bold;
+}
+
+.timezone-select select, .timestamp-converter select {
+  padding: 5px;
+  font-size: 1em;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+.timestamp-converter input {
+  padding: 5px;
+  font-size: 1em;
+  width: 200px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.timestamp-converter button {
+  margin: 5px 10px 5px 0;
+}
+
+.timestamp-converter h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.converter-section {
+  margin-bottom: 20px;
+}
+
+.converter-section label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.converter-section select {
+  margin-left: 0;
+}
+
+#aes-tool input {
+  padding: 5px;
+  font-size: 1em;
+  width: 200px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.aes-options {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.aes-options label {
+  margin-right: 5px;
+}
+
+.aes-options select {
+  padding: 5px;
+  font-size: 1em;
+  border-radius: 4px;
+}

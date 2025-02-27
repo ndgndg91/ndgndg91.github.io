@@ -1,0 +1,102 @@
+.section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#blog.section {
+  max-width: 100%;
+}
+
+.section textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.section button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.section button:hover {
+  background-color: #005bb5;
+}
+
+.ad-sidebar {
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+}
+
+.ad-sidebar.left {
+  justify-content: flex-end;
+}
+
+.ad-sidebar.right {
+  justify-content: flex-start;
+}
+
+.ad-sidebar .ad-container {
+  width: 160px;
+  height: 600px;
+  margin: 0;
+}
+
+.blog-post {
+  margin: 20px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.blog-post h3 {
+  margin: 0 0 5px;
+}
+
+.blog-post a {
+  color: #0078d4;
+  text-decoration: none;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
+
+.blog-post p {
+  margin: 0;
+  color: #666;
+}
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+}
