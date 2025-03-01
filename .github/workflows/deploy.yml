@@ -6,6 +6,12 @@ on:
     branches:
       - main
 
+# 워크플로우 수준의 권한 설정
+permissions:
+  contents: write # 리포지토리 콘텐츠에 대한 쓰기 권한
+  pages: write # GitHub Pages에 대한 쓰기 권한
+  id-token: write # OIDC 토큰 인증을 위한 권한
+
 # 작업 정의
 jobs:
   build-and-deploy:
@@ -40,15 +46,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-        # 배포에 필요한 권한은 워크플로우 상단에서 설정
-        # 별도로 입력값이 필요 없음
-
-    # GitHub Pages 배포에 필요한 권한 설정
-    permissions:
-      contents: write # 리포지토리 콘텐츠에 대한 쓰기 권한
-      pages: write # GitHub Pages에 대한 쓰기 권한
-      id-token: write # OIDC 토큰 인증을 위한 권한
 
     # GitHub Pages 환경 설정
     environment:
