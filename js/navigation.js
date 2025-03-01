@@ -1,6 +1,9 @@
+import { updateTimestamp } from './timestamp.js'; // 함수 가져오기
+import { toggleIVField } from './crypto.js'; // crypto.js에서도 가져오기
+
 let timestampInterval = null;
 
-function showSection(sectionId) {
+export function showSection(sectionId) {
   const sections = document.querySelectorAll(".section");
   sections.forEach(section => {
     section.style.display = section.id === sectionId ? "block" : "none";

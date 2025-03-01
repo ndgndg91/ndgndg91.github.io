@@ -1,6 +1,8 @@
-function generateUUIDv7() {
+import { isValidUUID, toHex } from './utils.js'; // 의존성 가져오기
+
+export function generateUUIDv7() {
   const timestamp = Date.now();
-  const timestampHex = toHex(timestamp, 12);
+  const timestampHex = toHex(timestamp, 12);1
   const rand1 = Math.floor(Math.random() * 0x10000);
   const rand2 = Math.floor(Math.random() * 0x100000000);
   const rand3 = Math.floor(Math.random() * 0x100000000);
@@ -16,11 +18,11 @@ function generateUUIDv7() {
   ].join('-');
 }
 
-function generateUUIDv1() {
+export function generateUUIDv1() {
   document.getElementById('uuid-v1-result').textContent = uuid.v1();
 }
 
-function generateUUIDv3() {
+export function generateUUIDv3() {
   const namespace = document.getElementById('uuid-v3-namespace').value.trim();
   const name = document.getElementById('uuid-v3-name').value.trim();
 
@@ -42,11 +44,11 @@ function generateUUIDv3() {
   }
 }
 
-function generateUUIDv4() {
+export function generateUUIDv4() {
   document.getElementById('uuid-v4-result').textContent = uuid.v4();
 }
 
-function generateUUIDv5() {
+export function generateUUIDv5() {
   const namespace = document.getElementById('uuid-v5-namespace').value.trim();
   const name = document.getElementById('uuid-v5-name').value.trim();
 
@@ -68,7 +70,7 @@ function generateUUIDv5() {
   }
 }
 
-function generateRandomHex() {
+export function generateRandomHex() {
   const lengthInput = document.getElementById('hex-length').value;
   const length = parseInt(lengthInput);
   const resultElement = document.getElementById('random-hex-result');
@@ -92,11 +94,11 @@ function generateRandomHex() {
   resultElement.textContent = result;
 }
 
-function getByteLength(str) {
+export function getByteLength(str) {
   return new TextEncoder().encode(str).length;
 }
 
-function analyzeString() {
+export function analyzeString() {
   const input = document.getElementById('string-input').value;
   const lengthElement = document.getElementById('string-length');
   const bytesElement = document.getElementById('string-bytes');

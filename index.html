@@ -4,11 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Giri's Place</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/navigation.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/tools.css">
-  <link rel="stylesheet" href="css/responsive.css">
   <meta name="description" content="UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash 등 유용한 도구와 개발 블로그를 제공하는 Giri 의 개인 사이트입니다.">
 
   <meta property="og:title" content="Giri's Place - dev tools and dev blog">
@@ -74,8 +69,8 @@
       <p>Base64는 텍스트나 파일을 64개의 문자로 변환하여 데이터를 안전하게 전송하거나 저장할 수 있게 하는 방법입니다.</p>
       <label for="base64-input"></label><textarea id="base64-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
       <br>
-      <button onclick="encodeBase64()">Encode</button>
-      <button onclick="decodeBase64()">Decode</button>
+      <button id="encode-base64">Encode</button>
+      <button id="decode-base64">Decode</button>
       <br>
       <label for="base64-output"></label><textarea id="base64-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
     </section>
@@ -84,8 +79,8 @@
       <h2>URL Encode/Decode</h2>
       <label for="url-input"></label><textarea id="url-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
       <br>
-      <button onclick="encodeURL()">Encode</button>
-      <button onclick="decodeURL()">Decode</button>
+      <button id="encode-url">Encode</button>
+      <button id="decode-url">Decode</button>
       <br>
       <label for="url-output"></label><textarea id="url-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
       <p>URL 인코딩은 URL에서 특정 문자를 퍼센트 기호(%)와 두 자리 16진수로 바꾸는 것을 의미합니다.</p>
@@ -96,82 +91,81 @@
       <p>UUID(Universally Unique Identifier)는 고유한 식별자를 생성하는 데 사용됩니다. 각 버전은 서로 다른 생성 방식과 용도를 가지고 있습니다.</p>
 
       <div class="uuid-generator">
-
         <!-- UUID v4: 랜덤 기반 -->
         <div class="uuid-version">
           <h3>UUID v4 (랜덤 기반)</h3>
-          <p>완전히 랜덤으로 생성되며, 가장 널리 사용됩니다. 충돌 가능성이 매우 낮습니다.</p>
-          <button onclick="generateUUIDv4()">UUID v4 생성</button>
+          <p>완전히 랜덤으로 생성되며, 가장 널리 사용됩니다. 충돌 가능성이 매우 낮습니다。</p>
+          <button id="generate-uuid-v4">UUID v4 생성</button>
           <p><strong>결과:</strong> <span id="uuid-v4-result">00000000-0000-0000-0000-000000000000</span>
-            <button class="copy-btn" onclick="copyToClipboard('uuid-v4-result')">복사</button></p>
+            <button class="copy-btn">복사</button></p>
         </div>
 
         <!-- UUID v7 -->
         <div class="uuid-version">
           <h3>UUID v7 (시간순 정렬 가능)</h3>
-          <p>유닉스 타임스탬프와 랜덤 값을 결합하여 생성됩니다. 시간순 정렬이 가능하며 데이터베이스 인덱싱에 유리합니다.</p>
-          <button onclick="generateUUIDv7()">UUID v7 생성</button>
+          <p>유닉스 타임스탬프와 랜덤 값을 결합하여 생성됩니다. 시간순 정렬이 가능하며 데이터베이스 인덱싱에 유리합니다。</p>
+          <button id="generate-uuid-v7">UUID v7 생성</button>
           <p><strong>결과:</strong> <span id="uuid-v7-result">00000000-0000-0000-0000-000000000000</span>
-            <button class="copy-btn" onclick="copyToClipboard('uuid-v7-result')">복사</button></p>
+            <button class="copy-btn">복사</button></p>
         </div>
-      </div>
 
         <!-- UUID v1: 시간 기반 -->
         <div class="uuid-version">
           <h3>UUID v1 (시간 기반)</h3>
-          <p>현재 시간과 MAC 주소를 기반으로 생성됩니다. 고유하지만 시간 정보를 노출할 수 있습니다.</p>
-          <button onclick="generateUUIDv1()">UUID v1 생성</button>
+          <p>현재 시간과 MAC 주소를 기반으로 생성됩니다. 고유하지만 시간 정보를 노출할 수 있습니다。</p>
+          <button id="generate-uuid-v1">UUID v1 생성</button>
           <p><strong>결과:</strong> <span id="uuid-v1-result">00000000-0000-0000-0000-000000000000</span>
-            <button class="copy-btn" onclick="copyToClipboard('uuid-v1-result')">복사</button></p>
+            <button class="copy-btn">복사</button></p>
         </div>
 
         <!-- UUID v5: 이름 기반 (SHA-1) -->
         <div class="uuid-version">
           <h3>UUID v5 (이름 기반, SHA-1)</h3>
-          <p>네임스페이스와 이름 문자열을 SHA-1 해시로 변환하여 생성합니다. v3보다 보안성이 높습니다.</p>
+          <p>네임스페이스와 이름 문자열을 SHA-1 해시로 변환하여 생성합니다. v3보다 보안성이 높습니다。</p>
           <label for="uuid-v5-namespace">네임스페이스:</label>
           <input type="text" id="uuid-v5-namespace" placeholder="예: 6ba7b810-9dad-11d1-80b4-00c04fd430c8">
           <label for="uuid-v5-name">이름:</label>
           <input type="text" id="uuid-v5-name" placeholder="예: my-unique-name">
-          <button onclick="generateUUIDv5()">UUID v5 생성</button>
+          <button id="generate-uuid-v5">UUID v5 생성</button>
           <p><strong>결과:</strong> <span id="uuid-v5-result">00000000-0000-0000-0000-000000000000</span>
-            <button class="copy-btn" onclick="copyToClipboard('uuid-v5-result')">복사</button></p>
+            <button class="copy-btn">복사</button></p>
         </div>
 
         <!-- UUID v3: 이름 기반 (MD5) -->
         <div class="uuid-version">
           <h3>UUID v3 (이름 기반, MD5)</h3>
-          <p>네임스페이스와 이름 문자열을 MD5 해시로 변환하여 생성합니다. 동일한 입력에 대해 항상 동일한 결과가 나옵니다.</p>
+          <p>네임스페이스와 이름 문자열을 MD5 해시로 변환하여 생성합니다. 동일한 입력에 대해 항상 동일한 결과가 나옵니다。</p>
           <label for="uuid-v3-namespace">네임스페이스:</label>
           <input type="text" id="uuid-v3-namespace" placeholder="예: 6ba7b810-9dad-11d1-80b4-00c04fd430c8">
           <label for="uuid-v3-name">이름:</label>
           <input type="text" id="uuid-v3-name" placeholder="예: my-unique-name">
-          <button onclick="generateUUIDv3()">UUID v3 생성</button>
+          <button id="generate-uuid-v3">UUID v3 생성</button>
           <p><strong>결과:</strong> <span id="uuid-v3-result">00000000-0000-0000-0000-000000000000</span>
-            <button class="copy-btn" onclick="copyToClipboard('uuid-v3-result')">복사</button></p>
+            <button class="copy-btn">복사</button></p>
         </div>
+      </div>
     </section>
 
     <section id="random-hex-tool" class="section" style="display: none;">
       <h2>Random Hex 생성기</h2>
-      <p>랜덤한 16진수 문자열을 생성합니다. 길이를 입력하여 원하는 크기의 hex 문자열을 얻을 수 있습니다.</p>
+      <p>랜덤한 16진수 문자열을 생성합니다. 길이를 입력하여 원하는 크기의 hex 문자열을 얻을 수 있습니다。</p>
       <div class="random-hex-generator">
         <label for="hex-length">길이 (문자 수):</label>
         <input type="number" id="hex-length" min="1" max="128" value="64" placeholder="예: 64">
-        <button onclick="generateRandomHex()">Hex 생성</button>
+        <button id="generate-random-hex">Hex 생성</button>
         <p><strong>결과:</strong> <span id="random-hex-result">00000000</span>
-          <button class="copy-btn" onclick="copyToClipboard('random-hex-result')">복사</button></p>
+          <button class="copy-btn">복사</button></p>
       </div>
     </section>
 
     <!-- String Analyzer 섹션 -->
     <section id="string-analyzer-tool" class="section" style="display: none;">
       <h2>String Analyzer (UTF-8)</h2>
-      <p>입력한 문자열의 길이와 UTF-8 바이트 크기를 확인할 수 있습니다.</p>
+      <p>입력한 문자열의 길이와 UTF-8 바이트 크기를 확인할 수 있습니다。</p>
       <div class="string-analyzer">
         <label for="string-input">문자열 입력:</label>
         <textarea id="string-input" rows="3" cols="50" placeholder="여기에 문자열을 입력하세요"></textarea>
-        <button onclick="analyzeString()">분석</button>
+        <button id="analyze-string">분석</button>
         <p><strong>길이 (문자 수):</strong> <span id="string-length">0</span></p>
         <p><strong>바이트 크기 (UTF-8):</strong> <span id="string-bytes">0</span></p>
       </div>
@@ -179,7 +173,7 @@
 
     <section id="timestamp-tool" class="section" style="display: none;">
       <h2>Unix Timestamp</h2>
-      <p>Unix Timestamp는 1970년 1월 1일 00:00:00 UTC(협정 세계시)부터 경과한 초 단위의 시간을 나타냅니다. 이를 "에포크(Epoch)"라고도 부르며, 주로 컴퓨터 시스템에서 시간을 기록하거나 계산할 때 사용됩니다.</p>
+      <p>Unix Timestamp는 1970년 1월 1일 00:00:00 UTC(협정 세계시)부터 경과한 초 단위의 시간을 나타냅니다. 이를 "에포크(Epoch)"라고도 부르며, 주로 컴퓨터 시스템에서 시간을 기록하거나 계산할 때 사용됩니다。</p>
       <div class="timestamp-display">
         <strong>현재 Unix Timestamp:</strong>
         <span id="current-timestamp">0</span>
@@ -218,46 +212,46 @@
           <label for="timestamp-input">Unix Timestamp 입력:</label>
           <input type="number" id="timestamp-input" placeholder="예: 1708765432">
           <label for="timestamp-timezone"></label><select id="timestamp-timezone">
-            <option value="Asia/Seoul">Asia/Seoul</option>
-            <option value="Asia/Tokyo">Asia/Tokyo</option>
-            <option value="Asia/Shanghai">Asia/Shanghai</option>
-            <option value="Asia/Dubai">Asia/Dubai</option>
-            <option value="America/New_York">America/New_York</option>
-            <option value="America/Los_Angeles">America/Los_Angeles</option>
-            <option value="America/Chicago">America/Chicago</option>
-            <option value="America/Sao_Paulo">America/Sao_Paulo</option>
-            <option value="Europe/London">Europe/London</option>
-            <option value="Europe/Paris">Europe/Paris</option>
-            <option value="Europe/Moscow">Europe/Moscow</option>
-            <option value="Australia/Sydney">Australia/Sydney</option>
-            <option value="Pacific/Auckland">Pacific/Auckland</option>
-            <option value="Africa/Johannesburg">Africa/Johannesburg</option>
-            <option value="UTC">UTC</option>
-          </select>
-          <button onclick="convertTimestampToDatetime()">변환</button>
+          <option value="Asia/Seoul">Asia/Seoul</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="Asia/Shanghai">Asia/Shanghai</option>
+          <option value="Asia/Dubai">Asia/Dubai</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="America/Los_Angeles">America/Los_Angeles</option>
+          <option value="America/Chicago">America/Chicago</option>
+          <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+          <option value="Europe/London">Europe/London</option>
+          <option value="Europe/Paris">Europe/Paris</option>
+          <option value="Europe/Moscow">Europe/Moscow</option>
+          <option value="Australia/Sydney">Australia/Sydney</option>
+          <option value="Pacific/Auckland">Pacific/Auckland</option>
+          <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+          <option value="UTC">UTC</option>
+        </select>
+          <button id="convert-timestamp-to-datetime">변환</button>
           <p><strong>결과:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span></p>
         </div>
         <div class="converter-section">
           <label for="datetime-input">날짜/시간 입력 (YYYY MM DD HH MM SS):</label>
           <input type="text" id="datetime-input" placeholder="예: 2025 02 23 14 23 45">
           <label for="datetime-timezone"></label><select id="datetime-timezone">
-            <option value="Asia/Seoul">Asia/Seoul</option>
-            <option value="Asia/Tokyo">Asia/Tokyo</option>
-            <option value="Asia/Shanghai">Asia/Shanghai</option>
-            <option value="Asia/Dubai">Asia/Dubai</option>
-            <option value="America/New_York">America/New_York</option>
-            <option value="America/Los_Angeles">America/Los_Angeles</option>
-            <option value="America/Chicago">America/Chicago</option>
-            <option value="America/Sao_Paulo">America/Sao_Paulo</option>
-            <option value="Europe/London">Europe/London</option>
-            <option value="Europe/Paris">Europe/Paris</option>
-            <option value="Europe/Moscow">Europe/Moscow</option>
-            <option value="Australia/Sydney">Australia/Sydney</option>
-            <option value="Pacific/Auckland">Pacific/Auckland</option>
-            <option value="Africa/Johannesburg">Africa/Johannesburg</option>
-            <option value="UTC">UTC</option>
-          </select>
-          <button onclick="convertDatetimeToTimestamp()">변환</button>
+          <option value="Asia/Seoul">Asia/Seoul</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="Asia/Shanghai">Asia/Shanghai</option>
+          <option value="Asia/Dubai">Asia/Dubai</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="America/Los_Angeles">America/Los_Angeles</option>
+          <option value="America/Chicago">America/Chicago</option>
+          <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+          <option value="Europe/London">Europe/London</option>
+          <option value="Europe/Paris">Europe/Paris</option>
+          <option value="Europe/Moscow">Europe/Moscow</option>
+          <option value="Australia/Sydney">Australia/Sydney</option>
+          <option value="Pacific/Auckland">Pacific/Auckland</option>
+          <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+          <option value="UTC">UTC</option>
+        </select>
+          <button id="convert-datetime-to-timestamp">변환</button>
           <p><strong>결과:</strong> <span id="datetime-to-timestamp-result">0</span></p>
         </div>
       </div>
@@ -265,7 +259,7 @@
 
     <section id="aes-tool" class="section" style="display: none;">
       <h2>AES Encrypt/Decrypt</h2>
-      <p>AES(Advanced Encryption Standard)는 대칭 키 암호화 알고리즘으로, 동일한 키를 사용하여 데이터를 암호화하고 복호화합니다.</p>
+      <p>AES(Advanced Encryption Standard)는 대칭 키 암호화 알고리즘으로, 동일한 키를 사용하여 데이터를 암호화하고 복호화합니다。</p>
       <div class="aes-options">
         <label for="aes-mode">모드:</label>
         <select id="aes-mode">
@@ -292,16 +286,16 @@
       <br>
       <label for="aes-input"></label><textarea id="aes-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
       <br>
-      <button onclick="encryptAES()">Encrypt</button>
-      <button onclick="decryptAES()">Decrypt</button>
+      <button id="encrypt-aes">Encrypt</button>
+      <button id="decrypt-aes">Decrypt</button>
       <br>
       <label for="aes-output"></label><textarea id="aes-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
     </section>
 
     <section id="rsa-tool" class="section" style="display: none;">
       <h2>RSA Encrypt/Decrypt</h2>
-      <p>RSA는 공개 키와 개인 키를 사용하는 비대칭 암호화 알고리즘입니다. 공개 키로 암호화하고 개인 키로 복호화합니다.</p>
-      <button onclick="generateRSAKeys()">키 쌍 생성</button>
+      <p>RSA는 공개 키와 개인 키를 사용하는 비대칭 암호화 알고리즘입니다. 공개 키로 암호화하고 개인 키로 복호화합니다。</p>
+      <button id="generate-rsa-keys">키 쌍 생성</button>
       <br>
       <label for="rsa-public-key">공개 키:</label>
       <textarea id="rsa-public-key" rows="3" cols="50" readonly placeholder="키 쌍 생성 후 표시"></textarea>
@@ -311,8 +305,8 @@
       <br>
       <label for="rsa-input"></label><textarea id="rsa-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
       <br>
-      <button onclick="encryptRSA()">Encrypt</button>
-      <button onclick="decryptRSA()">Decrypt</button>
+      <button id="encrypt-rsa">Encrypt</button>
+      <button id="decrypt-rsa">Decrypt</button>
       <br>
       <label for="rsa-output"></label><textarea id="rsa-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
     </section>
@@ -344,11 +338,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.3.2/jsencrypt.min.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/navigation.js"></script>
-<script src="js/encode-decode.js"></script>
-<script src="js/crypto.js"></script>
-<script src="js/timestamp.js"></script>
-<script src="js/string-tools.js"></script>
 </body>
 </html>

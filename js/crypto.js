@@ -1,4 +1,4 @@
-function toggleIVField() {
+export function toggleIVField() {
   const mode = document.getElementById("aes-mode").value;
   const ivLabel = document.getElementById("aes-iv-label");
   const ivInput = document.getElementById("aes-iv");
@@ -13,7 +13,7 @@ function toggleIVField() {
 
 document.getElementById("aes-mode").addEventListener("change", toggleIVField);
 
-function encryptAES() {
+export function encryptAES() {
   const input = document.getElementById("aes-input").value;
   const key = document.getElementById("aes-key").value;
   const mode = document.getElementById("aes-mode").value;
@@ -57,7 +57,7 @@ function encryptAES() {
   }
 }
 
-function decryptAES() {
+export function decryptAES() {
   const input = document.getElementById("aes-input").value;
   const key = document.getElementById("aes-key").value;
   const mode = document.getElementById("aes-mode").value;
@@ -89,11 +89,27 @@ function decryptAES() {
 
   try {
     const modeObj = { CBC: CryptoJS.mode.CBC, ECB: CryptoJS.mode.ECB }[mode];
-    const decrypted = CryptoJS.AES.decrypt(input, keyParsed, {
-      mode: modeObj,
-      iv: iv,
-      padding: CryptoJS.pad.Pkcs7
-    });
+
+    // Hex 입력 처리: hex 문자열을 WordArray로 변환
+    let decrypted;
+    if (/^[0-9A-Fa-f]+$/.test(input)) { // 입력이 hex인지 확인
+      const ciphertext = CryptoJS.enc.Hex.parse(input); // hex -> WordArray
+      const cipherParams = CryptoJS.lib.CipherParams.create({
+        ciphertext: ciphertext
+      });
+      decrypted = CryptoJS.AES.decrypt(cipherParams, keyParsed, {
+        mode: modeObj,
+        iv: iv,
+        padding: CryptoJS.pad.Pkcs7
+      });
+    } else { // Base64 입력 처리 (기존 로직)
+      decrypted = CryptoJS.AES.decrypt(input, keyParsed, {
+        mode: modeObj,
+        iv: iv,
+        padding: CryptoJS.pad.Pkcs7
+      });
+    }
+
     const result = decrypted.toString(CryptoJS.enc.Utf8);
     outputElement.value = result || "복호화 실패: 잘못된 키 또는 데이터";
   } catch (e) {
@@ -102,13 +118,13 @@ function decryptAES() {
 }
 
 let rsaEncryptor = new JSEncrypt();
-function generateRSAKeys() {
+export function generateRSAKeys() {
   rsaEncryptor = new JSEncrypt({ default_key_size: 2048 });
   document.getElementById("rsa-public-key").value = rsaEncryptor.getPublicKey();
   document.getElementById("rsa-private-key").value = rsaEncryptor.getPrivateKey();
 }
 
-function encryptRSA() {
+export function encryptRSA() {
   const input = document.getElementById("rsa-input").value;
   const publicKey = document.getElementById("rsa-public-key").value;
   if (!input || !publicKey) {
@@ -124,7 +140,7 @@ function encryptRSA() {
   }
 }
 
-function decryptRSA() {
+export function decryptRSA() {
   const input = document.getElementById("rsa-input").value;
   const privateKey = document.getElementById("rsa-private-key").value;
   if (!input || !privateKey) {

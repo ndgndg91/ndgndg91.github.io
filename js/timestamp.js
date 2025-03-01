@@ -1,4 +1,4 @@
-function updateTimestamp() {
+export function updateTimestamp() {
   const now = new Date();
   const timestampElement = document.getElementById("current-timestamp");
   if (timestampElement) {
@@ -36,7 +36,7 @@ function updateTimestamp() {
   }
 }
 
-function convertTimestampToDatetime() {
+export function convertTimestampToDatetime() {
   const timestampInput = document.getElementById("timestamp-input").value;
   const timezoneSelect = document.getElementById("timestamp-timezone").value;
   const resultElement = document.getElementById("timestamp-to-datetime-result");
@@ -69,7 +69,7 @@ function convertTimestampToDatetime() {
   resultElement.textContent = `${year} ${month} ${day} ${hours} ${minutes} ${seconds}`;
 }
 
-function convertDatetimeToTimestamp() {
+export function convertDatetimeToTimestamp() {
   const datetimeInput = document.getElementById("datetime-input").value.trim();
   const timezoneSelect = document.getElementById("datetime-timezone").value;
   const resultElement = document.getElementById("datetime-to-timestamp-result");

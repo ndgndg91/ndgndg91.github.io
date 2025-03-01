@@ -1,9 +1,9 @@
-function encodeBase64() {
+export function encodeBase64() {
   const input = document.getElementById("base64-input").value;
   document.getElementById("base64-output").value = btoa(input);
 }
 
-function decodeBase64() {
+export function decodeBase64() {
   const input = document.getElementById("base64-input").value;
   try {
     document.getElementById("base64-output").value = atob(input);
@@ -12,7 +12,7 @@ function decodeBase64() {
   }
 }
 
-function encodeURL() {
+export function encodeURL() {
   const input = document.getElementById("url-input").value;
   try {
     const url = new URL(input);
@@ -25,7 +25,7 @@ function encodeURL() {
   }
 }
 
-function decodeURL() {
+export function decodeURL() {
   const input = document.getElementById("url-input").value;
   try {
     document.getElementById("url-output").value = decodeURIComponent(input);
