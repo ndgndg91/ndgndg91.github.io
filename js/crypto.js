@@ -1,3 +1,6 @@
+import CryptoJS from 'crypto-js'; // crypto-js 모듈 가져오기
+import JSEncrypt from 'jsencrypt'; // jsencrypt 모듈 가져오기
+
 export function toggleIVField() {
   const mode = document.getElementById("aes-mode").value;
   const ivLabel = document.getElementById("aes-iv-label");
@@ -10,8 +13,6 @@ export function toggleIVField() {
     ivInput.style.display = "none";
   }
 }
-
-document.getElementById("aes-mode").addEventListener("change", toggleIVField);
 
 export function encryptAES() {
   const input = document.getElementById("aes-input").value;
@@ -49,9 +50,12 @@ export function encryptAES() {
     const encrypted = CryptoJS.AES.encrypt(input, keyParsed, {
       mode: modeObj,
       iv: iv,
-      padding: CryptoJS.pad.Pkcs7
+      padding: CryptoJS.pad.Pkcs7,
     });
-    outputElement.value = outputFormat === "base64" ? encrypted.toString() : encrypted.ciphertext.toString(CryptoJS.enc.Hex);
+    outputElement.value =
+      outputFormat === "base64"
+        ? encrypted.toString()
+        : encrypted.ciphertext.toString(CryptoJS.enc.Hex);
   } catch (e) {
     outputElement.value = "암호화 실패: " + e.message;
   }
@@ -90,23 +94,22 @@ export function decryptAES() {
   try {
     const modeObj = { CBC: CryptoJS.mode.CBC, ECB: CryptoJS.mode.ECB }[mode];
 
-    // Hex 입력 처리: hex 문자열을 WordArray로 변환
     let decrypted;
     if (/^[0-9A-Fa-f]+$/.test(input)) { // 입력이 hex인지 확인
-      const ciphertext = CryptoJS.enc.Hex.parse(input); // hex -> WordArray
+      const ciphertext = CryptoJS.enc.Hex.parse(input);
       const cipherParams = CryptoJS.lib.CipherParams.create({
-        ciphertext: ciphertext
+        ciphertext: ciphertext,
       });
       decrypted = CryptoJS.AES.decrypt(cipherParams, keyParsed, {
         mode: modeObj,
         iv: iv,
-        padding: CryptoJS.pad.Pkcs7
+        padding: CryptoJS.pad.Pkcs7,
       });
-    } else { // Base64 입력 처리 (기존 로직)
+    } else { // Base64 입력 처리
       decrypted = CryptoJS.AES.decrypt(input, keyParsed, {
         mode: modeObj,
         iv: iv,
-        padding: CryptoJS.pad.Pkcs7
+        padding: CryptoJS.pad.Pkcs7,
       });
     }
 
@@ -117,7 +120,7 @@ export function decryptAES() {
   }
 }
 
-let rsaEncryptor = new JSEncrypt();
+let rsaEncryptor = new JSEncrypt(); // JSEncrypt 인스턴스 생성
 export function generateRSAKeys() {
   rsaEncryptor = new JSEncrypt({ default_key_size: 2048 });
   document.getElementById("rsa-public-key").value = rsaEncryptor.getPublicKey();

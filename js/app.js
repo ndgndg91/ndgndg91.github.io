@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('convert-datetime-to-timestamp')?.addEventListener('click', convertDatetimeToTimestamp);
 
     // AES
+    document.getElementById("aes-mode").addEventListener("change", toggleIVField);
     document.getElementById('encrypt-aes')?.addEventListener('click', encryptAES);
     document.getElementById('decrypt-aes')?.addEventListener('click', decryptAES);
 

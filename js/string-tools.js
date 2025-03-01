@@ -1,8 +1,9 @@
 import { isValidUUID, toHex } from './utils.js'; // 의존성 가져오기
+import { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5 } from 'uuid'; // uuid 모듈 추가
 
 export function generateUUIDv7() {
   const timestamp = Date.now();
-  const timestampHex = toHex(timestamp, 12);1
+  const timestampHex = toHex(timestamp, 12);
   const rand1 = Math.floor(Math.random() * 0x10000);
   const rand2 = Math.floor(Math.random() * 0x100000000);
   const rand3 = Math.floor(Math.random() * 0x100000000);
@@ -14,12 +15,12 @@ export function generateUUIDv7() {
     timestampHex.slice(8, 12),
     toHex(version, 1) + toHex(variant, 3),
     toHex(rand2 >>> 16, 4),
-    toHex(rand2 & 0xFFFF, 4) + toHex(rand3, 8)
+    toHex(rand2 & 0xFFFF, 4) + toHex(rand3, 8),
   ].join('-');
 }
 
 export function generateUUIDv1() {
-  document.getElementById('uuid-v1-result').textContent = uuid.v1();
+  document.getElementById('uuid-v1-result').textContent = uuidv1(); // uuid.v1() -> uuidv1()
 }
 
 export function generateUUIDv3() {
@@ -37,7 +38,7 @@ export function generateUUIDv3() {
   }
 
   try {
-    document.getElementById('uuid-v3-result').textContent = uuid.v3(name, namespace);
+    document.getElementById('uuid-v3-result').textContent = uuidv3(name, namespace); // uuid.v3() -> uuidv3()
   } catch (error) {
     alert('UUID v3 생성 중 오류가 발생했습니다. 입력값을 확인해주세요.');
     console.error(error);
@@ -45,7 +46,7 @@ export function generateUUIDv3() {
 }
 
 export function generateUUIDv4() {
-  document.getElementById('uuid-v4-result').textContent = uuid.v4();
+  document.getElementById('uuid-v4-result').textContent = uuidv4(); // uuid.v4() -> uuidv4()
 }
 
 export function generateUUIDv5() {
@@ -63,7 +64,7 @@ export function generateUUIDv5() {
   }
 
   try {
-    document.getElementById('uuid-v5-result').textContent = uuid.v5(name, namespace);
+    document.getElementById('uuid-v5-result').textContent = uuidv5(name, namespace); // uuid.v5() -> uuidv5()
   } catch (error) {
     alert('UUID v5 생성 중 오류가 발생했습니다. 입력값을 확인해주세요.');
     console.error(error);
