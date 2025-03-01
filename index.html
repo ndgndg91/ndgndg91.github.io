@@ -160,6 +160,7 @@
       <div class="timestamp-display">
         <strong>현재 Unix Timestamp:</strong>
         <span id="current-timestamp">0</span>
+        <button class="copy-btn">복사</button>
       </div>
       <div class="timezone-display">
         <strong>현재 타임존:</strong>
@@ -188,6 +189,7 @@
       <div class="datetime-display">
         <strong>선택한 타임존 시간:</strong>
         <span id="current-datetime">YYYY MM DD HH MM SS</span>
+        <button class="copy-btn">복사</button>
       </div>
       <div class="timestamp-converter">
         <h3>Timestamp 변환</h3>
@@ -212,7 +214,8 @@
           <option value="UTC">UTC</option>
         </select>
           <button id="convert-timestamp-to-datetime">변환</button>
-          <p><strong>결과:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span></p>
+          <p><strong>결과:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span>
+            <button class="copy-btn">복사</button></p>
         </div>
         <div class="converter-section">
           <label for="datetime-input">날짜/시간 입력 (YYYY MM DD HH MM SS):</label>
@@ -235,7 +238,8 @@
           <option value="UTC">UTC</option>
         </select>
           <button id="convert-datetime-to-timestamp">변환</button>
-          <p><strong>결과:</strong> <span id="datetime-to-timestamp-result">0</span></p>
+          <p><strong>결과:</strong> <span id="datetime-to-timestamp-result">0</span>
+            <button class="copy-btn">복사</button></p>
         </div>
       </div>
     </section>
