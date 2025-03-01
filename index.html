@@ -5,17 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Giri's Place</title>
   <meta name="description" content="UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash 등 유용한 도구와 개발 블로그를 제공하는 Giri 의 개인 사이트입니다.">
-
   <meta property="og:title" content="Giri's Place - dev tools and dev blog">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ndgndg91.github.io/">
   <meta property="og:image" content="">
   <meta property="og:image:alt" content="">
-
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
-
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
   <meta name="google-adsense-account" content="ca-pub-6419722318302962">
@@ -23,46 +20,43 @@
 </head>
 
 <body>
-<header class="header">
-  <div class="header-container">
-    <a href="#" class="home-btn" data-section="timestamp-tool">Giri's Place</a>
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-    <nav class="nav">
-      <ul class="menu">
-        <li class="dropdown">
-          <a href="#" class="dropbtn">Encode/Decode</a>
-          <div class="dropdown-content">
-            <a href="#base64-tool" data-section="base64-tool">Base64 Encode/Decode</a>
-            <a href="#url-tool" data-section="url-tool">URL Encode/Decode</a>
-          </div>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropbtn">String</a>
-          <div class="dropdown-content">
-            <a href="#uuid-tool" data-section="uuid-tool">UUID Generator</a>
-            <a href="#random-hex-tool" data-section="random-hex-tool">Random Hex Generator</a>
-            <a href="#string-analyzer-tool" data-section="string-analyzer-tool">String Analyzer</a>
-          </div>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropbtn">Time</a>
-          <div class="dropdown-content">
-            <a href="#timestamp-tool" data-section="timestamp-tool">Timestamp</a>
-          </div>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropbtn">Encrypt/Decrypt</a>
-          <div class="dropdown-content">
-            <a href="#aes-tool" data-section="aes-tool">AES</a>
-            <a href="#rsa-tool" data-section="rsa-tool">RSA</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
 <div class="page-container">
+  <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+  <nav class="nav">
+    <ul class="menu">
+      <li><a href="#" class="home-btn" data-section="timestamp-tool">Giri's Place</a></li>
+      <li>
+        <span class="menu-category">Encode/Decode</span>
+        <ul class="submenu">
+          <li><a href="#base64-tool" data-section="base64-tool">Base64 Encode/Decode</a></li>
+          <li><a href="#url-tool" data-section="url-tool">URL Encode/Decode</a></li>
+        </ul>
+      </li>
+      <li>
+        <span class="menu-category">String</span>
+        <ul class="submenu">
+          <li><a href="#uuid-tool" data-section="uuid-tool">UUID Generator</a></li>
+          <li><a href="#random-hex-tool" data-section="random-hex-tool">Random Hex Generator</a></li>
+          <li><a href="#string-analyzer-tool" data-section="string-analyzer-tool">String Analyzer</a></li>
+        </ul>
+      </li>
+      <li>
+        <span class="menu-category">Time</span>
+        <ul class="submenu">
+          <li><a href="#timestamp-tool" data-section="timestamp-tool">Timestamp</a></li>
+        </ul>
+      </li>
+      <li>
+        <span class="menu-category">Encrypt/Decrypt</span>
+        <ul class="submenu">
+          <li><a href="#aes-tool" data-section="aes-tool">AES</a></li>
+          <li><a href="#rsa-tool" data-section="rsa-tool">RSA</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
   <main class="content">
     <section id="base64-tool" class="section" style="display: none;">
       <h2>Base64 Encode/Decode</h2>
@@ -89,9 +83,7 @@
     <section id="uuid-tool" class="section" style="display: none;">
       <h2>UUID 생성기</h2>
       <p>UUID(Universally Unique Identifier)는 고유한 식별자를 생성하는 데 사용됩니다. 각 버전은 서로 다른 생성 방식과 용도를 가지고 있습니다.</p>
-
       <div class="uuid-generator">
-        <!-- UUID v4: 랜덤 기반 -->
         <div class="uuid-version">
           <h3>UUID v4 (랜덤 기반)</h3>
           <p>완전히 랜덤으로 생성되며, 가장 널리 사용됩니다. 충돌 가능성이 매우 낮습니다。</p>
@@ -99,8 +91,6 @@
           <p><strong>결과:</strong> <span id="uuid-v4-result">00000000-0000-0000-0000-000000000000</span>
             <button class="copy-btn">복사</button></p>
         </div>
-
-        <!-- UUID v7 -->
         <div class="uuid-version">
           <h3>UUID v7 (시간순 정렬 가능)</h3>
           <p>유닉스 타임스탬프와 랜덤 값을 결합하여 생성됩니다. 시간순 정렬이 가능하며 데이터베이스 인덱싱에 유리합니다。</p>
@@ -108,8 +98,6 @@
           <p><strong>결과:</strong> <span id="uuid-v7-result">00000000-0000-0000-0000-000000000000</span>
             <button class="copy-btn">복사</button></p>
         </div>
-
-        <!-- UUID v1: 시간 기반 -->
         <div class="uuid-version">
           <h3>UUID v1 (시간 기반)</h3>
           <p>현재 시간과 MAC 주소를 기반으로 생성됩니다. 고유하지만 시간 정보를 노출할 수 있습니다。</p>
@@ -117,8 +105,6 @@
           <p><strong>결과:</strong> <span id="uuid-v1-result">00000000-0000-0000-0000-000000000000</span>
             <button class="copy-btn">복사</button></p>
         </div>
-
-        <!-- UUID v5: 이름 기반 (SHA-1) -->
         <div class="uuid-version">
           <h3>UUID v5 (이름 기반, SHA-1)</h3>
           <p>네임스페이스와 이름 문자열을 SHA-1 해시로 변환하여 생성합니다. v3보다 보안성이 높습니다。</p>
@@ -130,8 +116,6 @@
           <p><strong>결과:</strong> <span id="uuid-v5-result">00000000-0000-0000-0000-000000000000</span>
             <button class="copy-btn">복사</button></p>
         </div>
-
-        <!-- UUID v3: 이름 기반 (MD5) -->
         <div class="uuid-version">
           <h3>UUID v3 (이름 기반, MD5)</h3>
           <p>네임스페이스와 이름 문자열을 MD5 해시로 변환하여 생성합니다. 동일한 입력에 대해 항상 동일한 결과가 나옵니다。</p>
@@ -158,7 +142,6 @@
       </div>
     </section>
 
-    <!-- String Analyzer 섹션 -->
     <section id="string-analyzer-tool" class="section" style="display: none;">
       <h2>String Analyzer (UTF-8)</h2>
       <p>입력한 문자열의 길이와 UTF-8 바이트 크기를 확인할 수 있습니다。</p>

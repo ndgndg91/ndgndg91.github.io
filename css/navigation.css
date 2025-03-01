@@ -1,20 +1,12 @@
-.home-btn {
-  color: #333;
-  text-decoration: none;
-  padding: 14px 16px;
-  font-weight: bold;
-}
-
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
 .nav {
-  display: block;
+  grid-column: 1; /* 첫 번째 열에 배치 */
+  position: sticky; /* 스크롤 시 고정 */
+  top: 0; /* 상단에 붙임 */
+  height: fit-content;
+  background-color: #f9f9f9; /* 사이드바 배경 */
+  padding: 10px;
+  border-radius: 0; /* 왼쪽에 붙이기 위해 둥근 모서리 제거 */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); /* 오른쪽 그림자만 */
 }
 
 .menu {
@@ -22,47 +14,47 @@
   margin: 0;
   padding: 0;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column; /* 세로 배치 */
+  gap: 10px;
 }
 
 .menu li {
-  display: inline-block;
+  display: block; /* 블록 요소로 변경 */
 }
 
-.dropbtn {
+.home-btn, .menu-category {
   color: #333;
   text-decoration: none;
-  padding: 14px 16px;
-  display: inline-block;
+  padding: 10px 15px;
+  display: block;
+  font-weight: bold;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+.submenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0 0 20px; /* 들여쓰기 */
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  z-index: 1;
+.submenu li {
+  margin: 5px 0;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
+.submenu a {
+  color: #333;
   text-decoration: none;
+  padding: 8px 15px;
   display: block;
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
 }
 
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
+.submenu a:hover {
+  background-color: #e0e0e0;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+.submenu a.active {
+  background-color: #0078d4; /* 선택된 항목 스타일 */
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
 }

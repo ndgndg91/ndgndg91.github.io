@@ -1,76 +1,79 @@
 @media (max-width: 1024px) {
   .page-container {
     grid-template-columns: 1fr; /* 단일 열 */
-    padding: 20px;
-    max-width: 100%;
+    padding: 0; /* 모든 여백 제거 */
   }
 
   .content {
-    grid-column: auto; /* 열 지정 해제 */
-    margin-top: 60px;
-    padding: 0;
-    max-width: 100%;
+    grid-column: 1; /* 단일 열로 변경 */
+    margin-top: 0;
+    padding: 0; /* 여백 제거 */
+    max-width: 100%; /* 최대 너비 100% */
+  }
+
+  .nav {
+    grid-column: 1;
+    position: static; /* 고정 해제 */
+    width: 100%;
+    margin-bottom: 0; /* 본문과 간격 제거 */
   }
 }
 
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: block; /* 모바일에서 햄버거 버튼 표시 */
+  }
+
+  .nav.active + .menu-toggle {
+    display: none; /* 메뉴가 열리면 햄버거 버튼 숨김 */
   }
 
   .nav {
-    display: none;
-    position: absolute;
-    top: 60px;
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%;
-    background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: 250px; /* 고정 너비 */
+    height: 100vh; /* 전체 높이 */
+    transform: translateX(-100%); /* 기본적으로 왼쪽으로 숨김 */
+    transition: transform 0.3s ease-in-out; /* 슬라이드 애니메이션 */
+    z-index: 1002; /* .menu-toggle보다 위에 표시 */
+    margin: 0;
+    background-color: #f9f9f9;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2); /* 메뉴 오른쪽 그림자 */
   }
 
   .nav.active {
-    display: block;
+    transform: translateX(0); /* 버튼 클릭 시 나타남 */
+  }
+
+  .content {
+    margin-top: 50px; /* 햄버거 버튼 공간 확보 */
+    padding: 0; /* 좌우 여백 제거 */
+    border-top: 1px solid #ddd; /* 본문 상단에 경계 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 효과 */
+    background-color: #fff; /* 본문 배경 구분 */
   }
 
   .menu {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0;
-  }
-
-  .menu li {
-    width: 100%;
-    text-align: left;
-  }
-
-  .home-btn, .dropbtn {
-    display: block;
-    width: 100%;
-    padding: 14px 20px;
-    box-sizing: border-box;
-  }
-
-  .dropdown-content {
-    position: static;
-    width: 100%;
-    display: none;
-    background-color: #f1f1f1;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: none;
-  }
-
-  .dropdown.active .dropdown-content {
-    display: block;
-  }
-
-  .dropdown-content a {
-    padding: 12px 30px;
   }
 
   .section {
     max-width: 100%;
+    padding: 10px; /* 내부 콘텐츠에 최소 여백 */
+  }
+
+  /* 모바일에서 인풋 길이 조정 */
+  .uuid-version input,
+  .random-hex-generator input,
+  .timestamp-converter input,
+  #aes-tool input,
+  .string-analyzer textarea {
+    width: 100%; /* 모바일에서 100%로 통일 */
+    max-width: none; /* 최대 너비 제한 제거 */
+    padding: 5px;
+    box-sizing: border-box;
   }
 
   .section button {
@@ -91,7 +94,7 @@
   }
 
   .footer {
-    padding: 15px 10px;
+    padding: 15px 0; /* 좌우 여백 제거 */
   }
 
   .contact-links p {
@@ -138,7 +141,7 @@
   }
 
   .random-hex-generator input {
-    max-width: 100%;
+    width: 100%;
   }
 
   .random-hex-generator button, .string-analyzer button {

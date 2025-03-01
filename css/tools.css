@@ -19,10 +19,10 @@
 }
 
 .uuid-version input {
-  width: 100%;
-  max-width: 400px;
+  width: 100%; /* 고정 너비 제거, 100%로 통일 */
   padding: 5px;
   margin-top: 5px;
+  box-sizing: border-box; /* 패딩 포함 */
 }
 
 .uuid-version button {
@@ -59,8 +59,7 @@
 }
 
 .random-hex-generator input {
-  width: 100%;
-  max-width: 200px;
+  width: 100%; /* 고정 너비 제거, 100%로 통일 */
   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -68,7 +67,7 @@
 }
 
 .string-analyzer textarea {
-  width: 100%;
+  width: 100%; /* 이미 100%지만 명시적으로 유지 */
   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -116,12 +115,13 @@
 }
 
 .timestamp-converter input {
+  width: 100%; /* 고정 너비 제거, 100%로 통일 */
   padding: 5px;
   font-size: 1em;
-  width: 200px;
   margin: 5px 0;
   border: 1px solid #ddd;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .timestamp-converter button {
@@ -147,12 +147,13 @@
 }
 
 #aes-tool input {
+  width: 100%; /* 고정 너비 제거, 100%로 통일 */
   padding: 5px;
   font-size: 1em;
-  width: 200px;
   margin: 5px 0;
   border: 1px solid #ddd;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 
 .aes-options {
