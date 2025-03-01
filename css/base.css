@@ -29,8 +29,8 @@ body {
 
 .page-container {
   display: grid;
-  grid-template-columns: 160px 1fr 160px;
-  max-width: 1280px;
+  grid-template-columns: minmax(150px, 1fr) minmax(0, 1200px) minmax(150px, 1fr);
+  max-width: 100%;
   margin: 60px auto 0;
   padding: 20px;
   gap: 20px;
@@ -38,9 +38,10 @@ body {
 }
 
 .content {
+  grid-column: 2; /* 가운데 열에 배치 */
   padding: 0;
+  max-width: 1200px;
 }
-
 .footer {
   width: 100%;
   background-color: #333;

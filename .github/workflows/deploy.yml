@@ -2,9 +2,11 @@ name: Deploy to GitHub Pages
 
 # 워크플로우 트리거 설정
 on:
-  push:
-    branches:
-      - main  # 기본 브랜치가 main이라고 가정 (변경 가능)
+  workflow_dispatch:
+
+#  push:
+#    branches:
+#      - main  # 기본 브랜치가 main이라고 가정 (변경 가능)
 
 # 퍼미션 설정
 permissions:

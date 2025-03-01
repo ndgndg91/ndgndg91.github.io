@@ -1,12 +1,15 @@
 @media (max-width: 1024px) {
   .page-container {
-    grid-template-columns: 1fr;
-    padding: 10px;
+    grid-template-columns: 1fr; /* 단일 열 */
+    padding: 20px;
+    max-width: 100%;
   }
 
   .content {
+    grid-column: auto; /* 열 지정 해제 */
     margin-top: 60px;
-    padding: 10px;
+    padding: 0;
+    max-width: 100%;
   }
 }
 
