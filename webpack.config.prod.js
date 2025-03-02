@@ -7,6 +7,7 @@ module.exports = merge(common, {
   plugins: [
     new CopyPlugin({
       patterns: [
+        { from: 'ads.txt', to: 'ads.txt' },
         { from: 'img', to: 'img' },
         { from: 'icon.svg', to: 'icon.svg' },
         { from: 'favicon.ico', to: 'favicon.ico' },
