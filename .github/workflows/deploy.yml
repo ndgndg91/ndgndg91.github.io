@@ -12,11 +12,9 @@ permissions:
   pages: write # GitHub Pages에 대한 쓰기 권한
   id-token: write # OIDC 토큰 인증을 위한 권한
 
-# 작업 정의
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # 실행 환경
-
+    runs-on: ubuntu-latest
     steps:
       # 1. 리포지토리 체크아웃
       - name: Checkout repository
@@ -26,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Node.js 버전을 설정하세요. 필요에 따라 변경 가능
+          node-version: '18'
 
       # 3. 의존성 설치
       - name: Install dependencies

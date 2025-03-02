@@ -1,5 +1,20 @@
-import { isValidUUID, toHex } from './utils.js'; // 의존성 가져오기
+import '../../../css/base.css';
+import '../../../css/navigation.css';
+import '../../../css/sections.css';
+import '../../../css/tools.css';
+import '../../../css/responsive.css';
 import { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5 } from 'uuid'; // uuid 모듈 추가
+
+// UUID 형식 유효성 검사 함수
+export function isValidUUID(str) {
+  const uuidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+  return uuidRegex.test(str);
+}
+
+// 16진수로 변환하는 유틸리티 함수
+export function toHex(value, length) {
+  return value.toString(16).padStart(length, '0');
+}
 
 export function generateUUIDv7() {
   const timestamp = Date.now();
