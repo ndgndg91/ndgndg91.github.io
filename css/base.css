@@ -15,8 +15,7 @@ body {
   margin: 0;
   padding: 0;
   gap: 0;
-  flex: 1 0 auto;
-  position: relative;
+  flex: 1 0 auto; /* .page-container가 남은 공간을 채우도록 */
 }
 
 .content {
@@ -24,6 +23,8 @@ body {
   padding: 0;
   max-width: 100%;
   width: 100%;
+  /* min-height를 추가하여 footer가 하단으로 밀리도록 보장 */
+  min-height: calc(100vh - 60px); /* footer 높이(예상 60px)를 뺀 값 */
 }
 
 .nav {
@@ -90,8 +91,7 @@ body {
   background-color: #333;
   color: white;
   padding: 20px 0;
-  flex-shrink: 0;
-  margin-top: 0;
+  flex-shrink: 0; /* footer가 줄어들지 않도록 */
   display: flex;
   flex-direction: column;
   align-items: center;

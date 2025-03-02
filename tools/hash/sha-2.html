@@ -66,16 +66,21 @@
 
 
   <main class="content">
-    <section id="string-analyzer-tool" class="section">
-      <h2>String Analyzer (UTF-8)</h2>
-      <p>입력한 문자열의 길이와 UTF-8 바이트 크기를 확인할 수 있습니다。</p>
-      <div class="string-analyzer">
-        <label for="string-input">문자열 입력:</label>
-        <textarea id="string-input" rows="3" cols="50" placeholder="여기에 문자열을 입력하세요"></textarea>
-        <button id="analyze-string">분석</button>
-        <p><strong>길이 (문자 수):</strong> <span id="string-length">0</span></p>
-        <p><strong>바이트 크기 (UTF-8):</strong> <span id="string-bytes">0</span></p>
+    <section id="sha2-tool" class="section">
+      <h2>SHA-2 (SHA-256) Hash</h2>
+      <p>SHA-2(Secure Hash Algorithm 2)는 안전한 해시 함수로, SHA-256은 256비트(32바이트) 해시 값을 생성합니다. 현재 보안 애플리케이션에 널리 사용됩니다.</p>
+      <div class="sha2-options">
+        <label for="sha2-output-format">출력 형식:</label>
+        <select id="sha2-output-format">
+          <option value="hex">Hex</option>
+          <option value="base64">Base64</option>
+        </select>
       </div>
+      <label for="sha2-input"></label><textarea id="sha2-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
+      <br>
+      <button id="calculate-sha2">Calculate Hash</button>
+      <br>
+      <label for="sha2-output"></label><textarea id="sha2-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
     </section>
   </main>
 </div>

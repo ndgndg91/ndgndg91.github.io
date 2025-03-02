@@ -14,6 +14,9 @@ module.exports = {
     string_analyzer: './js/tools/string/string-analyzer.js',
     uuid: './js/tools/string/uuid.js',
     timestamp: './js/tools/time/timestamp.js',
+    sha1: './js/tools/hash/sha1.js',
+    sha2: './js/tools/hash/sha2.js',
+    sha3: './js/tools/hash/sha3.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -68,6 +71,21 @@ module.exports = {
       template: './tools/string/random-hex.html',
       filename: 'tools/string/random-hex.html',
       chunks: ['random_hex'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './tools/hash/sha-1.html',
+      filename: 'tools/hash/sha-1.html',
+      chunks: ['sha1'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './tools/hash/sha-2.html',
+      filename: 'tools/hash/sha-2.html',
+      chunks: ['sha2'],
+    }),
+    new HtmlWebpackPlugin({
+      template: './tools/hash/sha-3.html',
+      filename: 'tools/hash/sha-3.html',
+      chunks: ['sha3'],
     }),
     new HtmlWebpackPlugin({
       template: './tools/string/string-analyzer.html',
