@@ -98,6 +98,10 @@ body {
   justify-content: center;
 }
 
+.contact-links a {
+  color: lightgray;
+}
+
 /* 데스크톱에서만 적용 */
 @media (min-width: 1025px) {
   .footer {
