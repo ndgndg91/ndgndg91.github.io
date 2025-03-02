@@ -3,7 +3,8 @@ import '../../../css/navigation.css';
 import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
-import { encodeURL, decodeURL } from './encode-decode.js';
+import '../../navigation';
+import { encodeURL, decodeURL } from './encode-decode-func.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('encode-url')?.addEventListener('click', encodeURL);

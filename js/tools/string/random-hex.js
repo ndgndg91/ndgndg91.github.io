@@ -3,6 +3,7 @@ import '../../../css/navigation.css';
 import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
+import '../../navigation';
 import { generateRandomHex } from './string-tools-func.js';
 import { copyToClipboard } from "../../utils";
 

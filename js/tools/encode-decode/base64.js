@@ -3,7 +3,9 @@ import '../../../css/navigation.css';
 import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
-import { encodeBase64, decodeBase64 } from './encode-decode.js';
+import '../../navigation';
+import { encodeBase64, decodeBase64 } from './encode-decode-func.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('encode-base64')?.addEventListener('click', encodeBase64);

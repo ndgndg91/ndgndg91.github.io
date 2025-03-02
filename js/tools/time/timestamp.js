@@ -3,6 +3,7 @@ import '../../../css/navigation.css';
 import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
+import '../../navigation';
 import { updateTimestamp, convertTimestampToDatetime, convertDatetimeToTimestamp } from './timestamp-func.js';
 import { copyToClipboard } from "../../utils";
 

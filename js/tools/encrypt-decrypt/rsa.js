@@ -3,7 +3,8 @@ import '../../../css/navigation.css';
 import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
-import { encryptRSA, generateRSAKeys, decryptRSA } from "./crypto";
+import '../../navigation';
+import { encryptRSA, generateRSAKeys, decryptRSA } from "./crypto-func";
 
 document.addEventListener('DOMContentLoaded', () => {
   // RSA
