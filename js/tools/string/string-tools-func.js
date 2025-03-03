@@ -3,7 +3,7 @@ import '../../../css/navigation.css';
 import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
-import { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5 } from 'uuid'; // uuid 모듈 추가
+import { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5, v7 as uuidv7 } from 'uuid'; // uuid 모듈 추가
 
 // UUID 형식 유효성 검사 함수
 export function isValidUUID(str) {
@@ -11,27 +11,8 @@ export function isValidUUID(str) {
   return uuidRegex.test(str);
 }
 
-// 16진수로 변환하는 유틸리티 함수
-export function toHex(value, length) {
-  return value.toString(16).padStart(length, '0');
-}
-
 export function generateUUIDv7() {
-  const timestamp = Date.now();
-  const timestampHex = toHex(timestamp, 12);
-  const rand1 = Math.floor(Math.random() * 0x10000);
-  const rand2 = Math.floor(Math.random() * 0x100000000);
-  const rand3 = Math.floor(Math.random() * 0x100000000);
-  const version = 7;
-  const variant = 0x8000 | (rand1 & 0x3FFF);
-
-  document.getElementById('uuid-v7-result').textContent = [
-    timestampHex.slice(0, 8),
-    timestampHex.slice(8, 12),
-    toHex(version, 1) + toHex(variant, 3),
-    toHex(rand2 >>> 16, 4),
-    toHex(rand2 & 0xFFFF, 4) + toHex(rand3, 8),
-  ].join('-');
+  document.getElementById('uuid-v7-result').textContent = uuidv7();
 }
 
 export function generateUUIDv1() {
