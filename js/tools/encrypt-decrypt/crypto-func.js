@@ -24,7 +24,7 @@ export function encryptAES() {
   const outputElement = document.getElementById("aes-output");
 
   if (!input || !key) {
-    outputElement.value = "텍스트와 키를 입력하세요.";
+    outputElement.value = "Enter Text and Key.";
     return;
   }
 
@@ -32,14 +32,14 @@ export function encryptAES() {
   const keyBytes = keyParsed.words.length * 4;
   const expectedBytes = keySize;
   if (keyBytes !== expectedBytes) {
-    outputElement.value = `키는 ${keySize}비트(${expectedBytes}바이트)여야 합니다. 현재: ${keyBytes}바이트`;
+    outputElement.value = `key must be ${keySize}bits(${expectedBytes}bytes). current: ${keyBytes}bytes.`;
     return;
   }
 
   let iv = null;
   if (mode === "CBC") {
     if (!ivInput || ivInput.length !== 16) {
-      outputElement.value = "CBC 모드에서는 16자의 IV를 입력해야 합니다.";
+      outputElement.value = "when using CBC mode, enter 16 length IV.";
       return;
     }
     iv = CryptoJS.enc.Utf8.parse(ivInput);
@@ -57,7 +57,7 @@ export function encryptAES() {
         ? encrypted.toString()
         : encrypted.ciphertext.toString(CryptoJS.enc.Hex);
   } catch (e) {
-    outputElement.value = "암호화 실패: " + e.message;
+    outputElement.value = "encryption failed : " + e.message;
   }
 }
 
@@ -70,7 +70,7 @@ export function decryptAES() {
   const outputElement = document.getElementById("aes-output");
 
   if (!input || !key) {
-    outputElement.value = "텍스트와 키를 입력하세요.";
+    outputElement.value = "Enter Text and Key.";
     return;
   }
 
@@ -78,14 +78,14 @@ export function decryptAES() {
   const keyBytes = keyParsed.words.length * 4;
   const expectedBytes = keySize;
   if (keyBytes !== expectedBytes) {
-    outputElement.value = `키는 ${keySize}비트(${expectedBytes}바이트)여야 합니다. 현재: ${keyBytes}바이트`;
+    outputElement.value = `key must be ${keySize}bits(${expectedBytes}bytes). current: ${keyBytes}bytes.`;
     return;
   }
 
   let iv = null;
   if (mode === "CBC") {
     if (!ivInput || ivInput.length !== 16) {
-      outputElement.value = "CBC 모드에서는 16자의 IV를 입력해야 합니다.";
+      outputElement.value = "when using CBC mode, enter 16 length IV.";
       return;
     }
     iv = CryptoJS.enc.Utf8.parse(ivInput);
@@ -114,9 +114,9 @@ export function decryptAES() {
     }
 
     const result = decrypted.toString(CryptoJS.enc.Utf8);
-    outputElement.value = result || "복호화 실패: 잘못된 키 또는 데이터";
+    outputElement.value = result || "decryption failed: wrong key or data";
   } catch (e) {
-    outputElement.value = "복호화 실패: " + e.message;
+    outputElement.value = "decryption failed: " + e.message;
   }
 }
 
@@ -131,15 +131,15 @@ export function encryptRSA() {
   const input = document.getElementById("rsa-input").value;
   const publicKey = document.getElementById("rsa-public-key").value;
   if (!input || !publicKey) {
-    document.getElementById("rsa-output").value = "텍스트와 공개 키를 입력하세요.";
+    document.getElementById("rsa-output").value = "enter text and public key.";
     return;
   }
   try {
     rsaEncryptor.setPublicKey(publicKey);
     const encrypted = rsaEncryptor.encrypt(input);
-    document.getElementById("rsa-output").value = encrypted || "암호화 실패";
+    document.getElementById("rsa-output").value = encrypted || "encryption failed";
   } catch (e) {
-    document.getElementById("rsa-output").value = "암호화 실패: " + e.message;
+    document.getElementById("rsa-output").value = "encryption failed: " + e.message;
   }
 }
 
@@ -147,14 +147,14 @@ export function decryptRSA() {
   const input = document.getElementById("rsa-input").value;
   const privateKey = document.getElementById("rsa-private-key").value;
   if (!input || !privateKey) {
-    document.getElementById("rsa-output").value = "텍스트와 개인 키를 입력하세요.";
+    document.getElementById("rsa-output").value = "enter text and private key.";
     return;
   }
   try {
     rsaEncryptor.setPrivateKey(privateKey);
     const decrypted = rsaEncryptor.decrypt(input);
-    document.getElementById("rsa-output").value = decrypted || "복호화 실패: 잘못된 키 또는 데이터";
+    document.getElementById("rsa-output").value = decrypted || "decryption failed: wrong key or data";
   } catch (e) {
-    document.getElementById("rsa-output").value = "복호화 실패: " + e.message;
+    document.getElementById("rsa-output").value = "decryption failed: " + e.message;
   }
 }

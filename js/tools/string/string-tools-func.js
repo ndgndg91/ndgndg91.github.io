@@ -43,19 +43,19 @@ export function generateUUIDv3() {
   const name = document.getElementById('uuid-v3-name').value.trim();
 
   if (!namespace || !name) {
-    alert('네임스페이스와 이름을 모두 입력해주세요.');
+    alert('enter namespace and name.');
     return;
   }
 
   if (!isValidUUID(namespace)) {
-    alert('네임스페이스는 유효한 UUID 형식이어야 합니다. 예: 6ba7b810-9dad-11d1-80b4-00c04fd430c8');
+    alert('namespace format must be uuid. ex) : 6ba7b810-9dad-11d1-80b4-00c04fd430c8');
     return;
   }
 
   try {
     document.getElementById('uuid-v3-result').textContent = uuidv3(name, namespace); // uuid.v3() -> uuidv3()
   } catch (error) {
-    alert('UUID v3 생성 중 오류가 발생했습니다. 입력값을 확인해주세요.');
+    alert('error occurred when creating UUID v3. check input.');
     console.error(error);
   }
 }
@@ -69,19 +69,19 @@ export function generateUUIDv5() {
   const name = document.getElementById('uuid-v5-name').value.trim();
 
   if (!namespace || !name) {
-    alert('네임스페이스와 이름을 모두 입력해주세요.');
+    alert('enter namespace and name.');
     return;
   }
 
   if (!isValidUUID(namespace)) {
-    alert('네임스페이스는 유효한 UUID 형식이어야 합니다. 예: 6ba7b810-9dad-11d1-80b4-00c04fd430c8');
+    alert('namespace format must be uuid. ex) : 6ba7b810-9dad-11d1-80b4-00c04fd430c8');
     return;
   }
 
   try {
     document.getElementById('uuid-v5-result').textContent = uuidv5(name, namespace); // uuid.v5() -> uuidv5()
   } catch (error) {
-    alert('UUID v5 생성 중 오류가 발생했습니다. 입력값을 확인해주세요.');
+    alert('error occurred when creating UUID v5. check input.');
     console.error(error);
   }
 }
@@ -92,7 +92,7 @@ export function generateRandomHex() {
   const resultElement = document.getElementById('random-hex-result');
 
   if (isNaN(length) || length < 1 || length > 128) {
-    alert('길이는 1에서 128 사이의 숫자여야 합니다.');
+    alert('Length must be a number between 1 and 128.');
     return;
   }
 

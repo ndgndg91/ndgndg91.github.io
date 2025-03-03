@@ -77,7 +77,7 @@ export function convertDatetimeToTimestamp() {
   // 입력 형식이 올바른지 확인 (YYYY MM DD HH MM SS)
   const parts = datetimeInput.split(" ");
   if (parts.length !== 6) {
-    resultElement.textContent = "형식: YYYY MM DD HH MM SS";
+    resultElement.textContent = "format: YYYY MM DD HH MM SS";
     return;
   }
 
@@ -87,7 +87,7 @@ export function convertDatetimeToTimestamp() {
   // 날짜 유효성 검사
   const date = new Date(dateString);
   if (isNaN(date.getTime())) {
-    resultElement.textContent = "유효한 날짜/시간을 입력하세요.";
+    resultElement.textContent = "enter valid date/time.";
     return;
   }
 

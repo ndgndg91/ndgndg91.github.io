@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="ko">
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Giri's Place</title>
-  <meta name="description" content="UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash 등 유용한 도구와 개발 블로그를 제공하는 Giri 의 개인 사이트입니다.">
+  <meta name="description" content="Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash, etc.">
   <meta property="og:title" content="Giri's Place - dev tools and dev blog">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://developer-playground.com/">
@@ -77,21 +77,21 @@
   <main class="content">
     <section id="rsa-tool" class="section">
       <h2>RSA Encrypt/Decrypt</h2>
-      <p>RSA는 공개 키와 개인 키를 사용하는 비대칭 암호화 알고리즘입니다. 공개 키로 암호화하고 개인 키로 복호화합니다。</p>
-      <button id="generate-rsa-keys">키 쌍 생성</button>
+      <p>RSA is an asymmetric encryption algorithm that uses public and private keys. It encrypts with the public key and decrypts with the private key.</p>
+      <button id="generate-rsa-keys">Generate key pair</button>
       <br>
-      <label for="rsa-public-key">공개 키:</label>
-      <textarea id="rsa-public-key" rows="3" cols="50" readonly placeholder="키 쌍 생성 후 표시"></textarea>
+      <label for="rsa-public-key">Public Key:</label>
+      <textarea id="rsa-public-key" rows="3" cols="50" readonly placeholder="Display after generating key pair"></textarea>
       <br>
-      <label for="rsa-private-key">개인 키:</label>
-      <textarea id="rsa-private-key" rows="3" cols="50" readonly placeholder="키 쌍 생성 후 표시"></textarea>
+      <label for="rsa-private-key">Private Key:</label>
+      <textarea id="rsa-private-key" rows="3" cols="50" readonly placeholder="Display after generating key pair"></textarea>
       <br>
-      <label for="rsa-input"></label><textarea id="rsa-input" rows="5" cols="50" placeholder="여기에 텍스트를 입력하세요"></textarea>
+      <label for="rsa-input"></label><textarea id="rsa-input" rows="5" cols="50" placeholder="Enter your text here"></textarea>
       <br>
       <button id="encrypt-rsa">Encrypt</button>
       <button id="decrypt-rsa">Decrypt</button>
       <br>
-      <label for="rsa-output"></label><textarea id="rsa-output" rows="5" cols="50" placeholder="결과가 여기 표시됩니다" readonly></textarea>
+      <label for="rsa-output"></label><textarea id="rsa-output" rows="5" cols="50" placeholder="Results are displayed here" readonly></textarea>
     </section>
   </main>
 </div>

@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="ko">
+<html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Giri's Place</title>
-  <meta name="description" content="UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash 등 유용한 도구와 개발 블로그를 제공하는 Giri 의 개인 사이트입니다.">
+  <meta name="description" content="Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash, etc.">
   <meta property="og:title" content="Giri's Place - dev tools and dev blog">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://developer-playground.com/">
@@ -77,18 +77,18 @@
   <main class="content">
     <section id="timestamp-tool" class="section">
       <h2>Unix Timestamp</h2>
-      <p>Unix Timestamp는 1970년 1월 1일 00:00:00 UTC(협정 세계시)부터 경과한 초 단위의 시간을 나타냅니다. 이를 "에포크(Epoch)"라고도 부르며, 주로 컴퓨터 시스템에서 시간을 기록하거나 계산할 때 사용됩니다。</p>
+      <p>A Unix Timestamp represents the number of seconds elapsed since January 1, 1970, 00:00:00 UTC (Coordinated Universal Time). It is also called the "Epoch" and is commonly used in computer systems to record or calculate time.</p>
       <div class="timestamp-display">
-        <strong>현재 Unix Timestamp:</strong>
+        <strong>Current Unix Timestamp:</strong>
         <span id="current-timestamp">0</span>
-        <button class="copy-btn">복사</button>
+        <button class="copy-btn">Copy</button>
       </div>
       <div class="timezone-display">
-        <strong>현재 타임존:</strong>
+        <strong>Current Timezone:</strong>
         <span id="current-timezone">Loading...</span>
       </div>
       <div class="timezone-select">
-        <label for="timezone-select"><strong>타임존 선택 (실시간):</strong></label>
+        <label for="timezone-select"><strong>Select Timezone (Real-time):</strong></label>
         <select id="timezone-select">
           <option value="Asia/Seoul">Asia/Seoul</option>
           <option value="Asia/Tokyo">Asia/Tokyo</option>
@@ -108,15 +108,15 @@
         </select>
       </div>
       <div class="datetime-display">
-        <strong>선택한 타임존 시간:</strong>
+        <strong>Selected Timezone Date/Time:</strong>
         <span id="current-datetime">YYYY MM DD HH MM SS</span>
-        <button class="copy-btn">복사</button>
+        <button class="copy-btn">Copy</button>
       </div>
       <div class="timestamp-converter">
-        <h3>Timestamp 변환</h3>
+        <h3>Timestamp Converter</h3>
         <div class="converter-section">
-          <label for="timestamp-input">Unix Timestamp 입력:</label>
-          <input type="number" id="timestamp-input" placeholder="예: 1708765432">
+          <label for="timestamp-input">Enter Unix Timestamp:</label>
+          <input type="number" id="timestamp-input" placeholder="e.g., 1708765432">
           <label for="timestamp-timezone"></label><select id="timestamp-timezone">
           <option value="Asia/Seoul">Asia/Seoul</option>
           <option value="Asia/Tokyo">Asia/Tokyo</option>
@@ -134,13 +134,13 @@
           <option value="Africa/Johannesburg">Africa/Johannesburg</option>
           <option value="UTC">UTC</option>
         </select>
-          <button id="convert-timestamp-to-datetime">변환</button>
-          <p><strong>결과:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span>
-            <button class="copy-btn">복사</button></p>
+          <button id="convert-timestamp-to-datetime">Convert</button>
+          <p><strong>Result:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span>
+            <button class="copy-btn">Copy</button></p>
         </div>
         <div class="converter-section">
-          <label for="datetime-input">날짜/시간 입력 (YYYY MM DD HH MM SS):</label>
-          <input type="text" id="datetime-input" placeholder="예: 2025 02 23 14 23 45">
+          <label for="datetime-input">Enter Date/Time (YYYY MM DD HH MM SS):</label>
+          <input type="text" id="datetime-input" placeholder="e.g., 2025 02 23 14 23 45">
           <label for="datetime-timezone"></label><select id="datetime-timezone">
           <option value="Asia/Seoul">Asia/Seoul</option>
           <option value="Asia/Tokyo">Asia/Tokyo</option>
@@ -158,9 +158,9 @@
           <option value="Africa/Johannesburg">Africa/Johannesburg</option>
           <option value="UTC">UTC</option>
         </select>
-          <button id="convert-datetime-to-timestamp">변환</button>
-          <p><strong>결과:</strong> <span id="datetime-to-timestamp-result">0</span>
-            <button class="copy-btn">복사</button></p>
+          <button id="convert-datetime-to-timestamp">Convert</button>
+          <p><strong>Result:</strong> <span id="datetime-to-timestamp-result">0</span>
+            <button class="copy-btn">Copy</button></p>
         </div>
       </div>
     </section>

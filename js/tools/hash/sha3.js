@@ -12,7 +12,7 @@ document.getElementById('calculate-sha3').addEventListener('click', () => {
   const outputTextarea = document.getElementById('sha3-output');
 
   if (!inputText) {
-    outputTextarea.value = '입력값을 제공해주세요.';
+    outputTextarea.value = 'enter input.';
     return;
   }
 
@@ -28,7 +28,7 @@ document.getElementById('calculate-sha3').addEventListener('click', () => {
       outputTextarea.value = btoa(String.fromCharCode(...hashArray));
     }
   } catch (error) {
-    outputTextarea.value = '해시 계산 중 오류가 발생했습니다: ' + error.message;
+    outputTextarea.value = 'error occurred when calculating hash: ' + error.message;
   }
 
   // 헥스를 바이트 배열로 변환하는 헬퍼 함수
