@@ -6,32 +6,45 @@ import '../../../css/responsive.css';
 import '../../navigation';
 
 
-document.getElementById('calculate-sha1').addEventListener('click', async () => {
+import CryptoJS from 'crypto-js';
+
+// 모드 변경 시 키 입력 필드 표시/숨김
+document.getElementById('sha1-mode').addEventListener('change', (e) => {
+  const isHmac = e.target.value === 'hmac';
+  document.getElementById('sha1-key').style.display = isHmac ? 'block' : 'none';
+  document.getElementById('sha1-key-label').style.display = isHmac ? 'block' : 'none';
+});
+
+document.getElementById('calculate-sha1').addEventListener('click', () => {
   const inputText = document.getElementById('sha1-input').value;
+  const mode = document.getElementById('sha1-mode').value;
   const outputFormat = document.getElementById('sha1-output-format').value;
+  const key = document.getElementById('sha1-key').value;
   const outputTextarea = document.getElementById('sha1-output');
 
   if (!inputText) {
-    outputTextarea.value = 'enter input.';
+    outputTextarea.value = 'Please enter input text.';
+    return;
+  }
+  if (mode === 'hmac' && !key) {
+    outputTextarea.value = 'Please enter a secret key for HMAC.';
     return;
   }
 
   try {
-    // 텍스트를 Uint8Array로 변환
-    const encoder = new TextEncoder();
-    const data = encoder.encode(inputText);
+    let result;
+    if (mode === 'hash') {
+      result = CryptoJS.SHA1(inputText);
+    } else if (mode === 'hmac') {
+      result = CryptoJS.HmacSHA1(inputText, key);
+    }
 
-    // SHA-1 해시 계산
-    const hashBuffer = await crypto.subtle.digest('SHA-1', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-
-    // 출력 형식에 따라 변환
     if (outputFormat === 'hex') {
-      outputTextarea.value = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      outputTextarea.value = result.toString(CryptoJS.enc.Hex);
     } else if (outputFormat === 'base64') {
-      outputTextarea.value = btoa(String.fromCharCode(...hashArray));
+      outputTextarea.value = result.toString(CryptoJS.enc.Base64);
     }
   } catch (error) {
-    outputTextarea.value = 'error occurred when calculating hash: ' + error.message;
+    outputTextarea.value = 'Error occurred: ' + error.message;
   }
 });

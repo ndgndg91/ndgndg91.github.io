@@ -173,3 +173,50 @@
   font-size: 1em;
   border-radius: 4px;
 }
+/* 셀렉트 박스 스타일 (SHA-1, SHA-2, SHA-3 공통) */
+.sha1-options,
+.sha2-options,
+.sha3-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.sha1-options label,
+.sha2-options label,
+.sha3-options label {
+  font-size: 1em;
+  color: #333;
+  margin-right: 5px;
+  white-space: nowrap;
+}
+
+.sha1-options select,
+.sha2-options select,
+.sha3-options select {
+  padding: 6px 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 150px; /* 최대 너비 제한 */
+  box-sizing: border-box;
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6"><path fill="%23333" d="M0 0h10L5 6z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.sha1-options select:hover,
+.sha2-options select:hover,
+.sha3-options select:hover,
+.sha1-options select:focus,
+.sha2-options select:focus,
+.sha3-options select:focus {
+  border-color: #0078d4;
+  outline: none;
+}

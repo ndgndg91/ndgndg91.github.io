@@ -1,4 +1,3 @@
-/* base.css */
 body {
   margin: 0;
   padding: 0;
@@ -20,10 +19,9 @@ body {
 
 .content {
   grid-column: 2;
-  padding: 0;
+  padding: 20px; /* 콘텐츠에 약간의 패딩 추가 */
   max-width: 100%;
   width: 100%;
-  /* min-height를 추가하여 footer가 하단으로 밀리도록 보장 */
   min-height: calc(100vh - 60px); /* footer 높이(예상 60px)를 뺀 값 */
 }
 
@@ -100,6 +98,11 @@ body {
 
 .contact-links a {
   color: lightgray;
+}
+
+/* 셀렉트 박스 기본 전환 효과 */
+select {
+  transition: border-color 0.2s ease;
 }
 
 /* 데스크톱에서만 적용 */
