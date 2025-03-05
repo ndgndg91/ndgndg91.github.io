@@ -1,3 +1,5 @@
+/* base.css */
+
 body {
   margin: 0;
   padding: 0;
@@ -5,6 +7,53 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* 최상단 메뉴바 스타일 */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+  z-index: 1000; /* 다른 요소 위에 표시 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.topbar-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 버튼과 메뉴를 양쪽으로 배치 */
+}
+
+.topbar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.topbar-menu li {
+  display: inline-block;
+}
+
+.topbar-btn {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  font-weight: bold;
+  display: block;
+}
+
+.topbar-btn:hover {
+  background-color: #555;
+  border-radius: 4px;
 }
 
 .page-container {
@@ -15,6 +64,7 @@ body {
   padding: 0;
   gap: 0;
   flex: 1 0 auto; /* .page-container가 남은 공간을 채우도록 */
+  margin-top: 50px; /* topbar 높이만큼 여백 추가 */
 }
 
 .content {
@@ -22,15 +72,15 @@ body {
   padding: 20px; /* 콘텐츠에 약간의 패딩 추가 */
   max-width: 100%;
   width: 100%;
-  min-height: calc(100vh - 60px); /* footer 높이(예상 60px)를 뺀 값 */
+  min-height: calc(100vh - 110px); /* topbar(50px) + footer(60px) 고려 */
 }
 
 .nav {
   grid-column: 1;
   width: 250px;
-  height: 100vh;
+  height: calc(100vh - 50px); /* topbar 높이만큼 빼기 */
   position: fixed;
-  top: 0;
+  top: 50px; /* topbar 아래에 위치 */
   left: 0;
   background-color: #f4f4f4;
   padding: 10px;
@@ -73,14 +123,13 @@ body {
 }
 
 .menu-toggle {
-  display: none;
+  display: none; /* 기본적으로 숨김 */
   background: none;
   border: none;
   font-size: 1.5em;
+  color: white; /* topbar와 색상 맞춤 */
   cursor: pointer;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+  padding: 5px 10px;
   z-index: 1001;
 }
 
