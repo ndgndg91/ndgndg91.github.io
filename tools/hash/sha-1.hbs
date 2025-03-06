@@ -1,0 +1,25 @@
+
+  <section id="sha1-tool" class="section">
+    <h2>SHA-1 Hash & HMAC</h2>
+    <p>SHA-1 (Secure Hash Algorithm 1) is a cryptographic hash function that converts input data into a 160-bit (20-byte) hash value. <strong>Currently not recommended due to security vulnerabilities.</strong> Optionally, enable HMAC mode to use a secret key.</p>
+    <div class="sha1-options">
+      <label for="sha1-mode">Mode:</label>
+      <select id="sha1-mode">
+        <option value="hash" selected>Hash</option>
+        <option value="hmac">HMAC</option>
+      </select>
+      <label for="sha1-output-format">Output Format:</label>
+      <select id="sha1-output-format">
+        <option value="hex">Hex</option>
+        <option value="base64">Base64</option>
+      </select>
+    </div>
+    <label for="sha1-key" id="sha1-key-label" style="display: none;">Secret Key:</label>
+    <textarea id="sha1-key" rows="2" cols="50" placeholder="Enter your secret key here (required for HMAC)" style="display: none;"></textarea>
+    <label for="sha1-input"></label><textarea id="sha1-input" rows="5" cols="50" placeholder="Enter your text here"></textarea>
+    <br>
+    <button id="calculate-sha1">Calculate</button>
+    <br>
+    <label for="sha1-output"></label><textarea id="sha1-output" rows="5" cols="50" placeholder="Results are displayed here" readonly></textarea>
+  </section>
+

@@ -39,68 +39,110 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.hbs$/, // Handlebars 파일을 처리하기 위한 규칙 추가
+        use: {
+          loader: 'handlebars-loader',
+        },
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: './layouts/main.hbs',
       filename: 'index.html',
       chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'index.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/encode-decode/base64.html',
+      template: './layouts/main.hbs',
       filename: 'tools/encode-decode/base64.html',
       chunks: ['base64'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/encode-decode/base64.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/encode-decode/url.html',
+      template: './layouts/main.hbs',
       filename: 'tools/encode-decode/url.html',
       chunks: ['url'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/encode-decode/url.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/encrypt-decrypt/aes.html',
+      template: './layouts/main.hbs',
       filename: 'tools/encrypt-decrypt/aes.html',
       chunks: ['aes'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/encrypt-decrypt/aes.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/encrypt-decrypt/rsa.html',
+      template: './layouts/main.hbs',
       filename: 'tools/encrypt-decrypt/rsa.html',
       chunks: ['rsa'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/encrypt-decrypt/rsa.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/string/random-hex.html',
+      template: './layouts/main.hbs',
       filename: 'tools/string/random-hex.html',
       chunks: ['random_hex'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/random-hex.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/hash/sha-1.html',
-      filename: 'tools/hash/sha-1.html',
-      chunks: ['sha1'],
-    }),
-    new HtmlWebpackPlugin({
-      template: './tools/hash/sha-2.html',
-      filename: 'tools/hash/sha-2.html',
-      chunks: ['sha2'],
-    }),
-    new HtmlWebpackPlugin({
-      template: './tools/hash/sha-3.html',
-      filename: 'tools/hash/sha-3.html',
-      chunks: ['sha3'],
-    }),
-    new HtmlWebpackPlugin({
-      template: './tools/string/string-analyzer.html',
+      template: './layouts/main.hbs',
       filename: 'tools/string/string-analyzer.html',
       chunks: ['string_analyzer'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/string-analyzer.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/string/uuid.html',
+      template: './layouts/main.hbs',
       filename: 'tools/string/uuid.html',
       chunks: ['uuid'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/uuid.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new HtmlWebpackPlugin({
-      template: './tools/time/timestamp.html',
+      template: './layouts/main.hbs',
+      filename: 'tools/hash/sha-1.html',
+      chunks: ['sha1'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/hash/sha-1.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/hash/sha-2.html',
+      chunks: ['sha2'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/hash/sha-2.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/hash/sha-3.html',
+      chunks: ['sha3'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/hash/sha-3.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: 'tools/time/timestamp.html',
       chunks: ['timestamp'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/time/timestamp.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
     }),
     new MiniCssExtractPlugin({
       filename: '[name].bundle.css',

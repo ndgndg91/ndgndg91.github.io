@@ -1,0 +1,91 @@
+
+<section id="timestamp-tool" class="section">
+  <h2>Unix Timestamp</h2>
+  <p>A Unix Timestamp represents the number of seconds elapsed since January 1, 1970, 00:00:00 UTC (Coordinated Universal Time). It is also called the "Epoch" and is commonly used in computer systems to record or calculate time.</p>
+  <div class="timestamp-display">
+    <strong>Current Unix Timestamp:</strong>
+    <span id="current-timestamp">0</span>
+    <button class="copy-btn">Copy</button>
+  </div>
+  <div class="timezone-display">
+    <strong>Current Timezone:</strong>
+    <span id="current-timezone">Loading...</span>
+  </div>
+  <div class="timezone-select">
+    <label for="timezone-select"><strong>Select Timezone (Real-time):</strong></label>
+    <select id="timezone-select">
+      <option value="Asia/Seoul">Asia/Seoul</option>
+      <option value="Asia/Tokyo">Asia/Tokyo</option>
+      <option value="Asia/Shanghai">Asia/Shanghai</option>
+      <option value="Asia/Dubai">Asia/Dubai</option>
+      <option value="America/New_York">America/New_York</option>
+      <option value="America/Los_Angeles">America/Los_Angeles</option>
+      <option value="America/Chicago">America/Chicago</option>
+      <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+      <option value="Europe/London">Europe/London</option>
+      <option value="Europe/Paris">Europe/Paris</option>
+      <option value="Europe/Moscow">Europe/Moscow</option>
+      <option value="Australia/Sydney">Australia/Sydney</option>
+      <option value="Pacific/Auckland">Pacific/Auckland</option>
+      <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+      <option value="UTC">UTC</option>
+    </select>
+  </div>
+  <div class="datetime-display">
+    <strong>Selected Timezone Date/Time:</strong>
+    <span id="current-datetime">YYYY MM DD HH MM SS</span>
+    <button class="copy-btn">Copy</button>
+  </div>
+  <div class="timestamp-converter">
+    <h3>Timestamp Converter</h3>
+    <div class="converter-section">
+      <label for="timestamp-input">Enter Unix Timestamp:</label>
+      <input type="number" id="timestamp-input" placeholder="e.g., 1708765432">
+      <label for="timestamp-timezone"></label><select id="timestamp-timezone">
+      <option value="Asia/Seoul">Asia/Seoul</option>
+      <option value="Asia/Tokyo">Asia/Tokyo</option>
+      <option value="Asia/Shanghai">Asia/Shanghai</option>
+      <option value="Asia/Dubai">Asia/Dubai</option>
+      <option value="America/New_York">America/New_York</option>
+      <option value="America/Los_Angeles">America/Los_Angeles</option>
+      <option value="America/Chicago">America/Chicago</option>
+      <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+      <option value="Europe/London">Europe/London</option>
+      <option value="Europe/Paris">Europe/Paris</option>
+      <option value="Europe/Moscow">Europe/Moscow</option>
+      <option value="Australia/Sydney">Australia/Sydney</option>
+      <option value="Pacific/Auckland">Pacific/Auckland</option>
+      <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+      <option value="UTC">UTC</option>
+    </select>
+      <button id="convert-timestamp-to-datetime">Convert</button>
+      <p><strong>Result:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span>
+        <button class="copy-btn">Copy</button></p>
+    </div>
+    <div class="converter-section">
+      <label for="datetime-input">Enter Date/Time (YYYY MM DD HH MM SS):</label>
+      <input type="text" id="datetime-input" placeholder="e.g., 2025 02 23 14 23 45">
+      <label for="datetime-timezone"></label><select id="datetime-timezone">
+      <option value="Asia/Seoul">Asia/Seoul</option>
+      <option value="Asia/Tokyo">Asia/Tokyo</option>
+      <option value="Asia/Shanghai">Asia/Shanghai</option>
+      <option value="Asia/Dubai">Asia/Dubai</option>
+      <option value="America/New_York">America/New_York</option>
+      <option value="America/Los_Angeles">America/Los_Angeles</option>
+      <option value="America/Chicago">America/Chicago</option>
+      <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+      <option value="Europe/London">Europe/London</option>
+      <option value="Europe/Paris">Europe/Paris</option>
+      <option value="Europe/Moscow">Europe/Moscow</option>
+      <option value="Australia/Sydney">Australia/Sydney</option>
+      <option value="Pacific/Auckland">Pacific/Auckland</option>
+      <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+      <option value="UTC">UTC</option>
+    </select>
+      <button id="convert-datetime-to-timestamp">Convert</button>
+      <p><strong>Result:</strong> <span id="datetime-to-timestamp-result">0</span>
+        <button class="copy-btn">Copy</button></p>
+    </div>
+  </div>
+</section>
+

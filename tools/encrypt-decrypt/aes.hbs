@@ -1,0 +1,36 @@
+
+  <section id="aes-tool" class="section">
+    <h2>AES Encrypt/Decrypt</h2>
+    <p>AES (Advanced Encryption Standard) is a symmetric key encryption algorithm that uses the same key to encrypt and decrypt data.</p>
+    <div class="aes-options">
+      <label for="aes-mode">Mode:</label>
+      <select id="aes-mode">
+        <option value="CBC">CBC</option>
+        <option value="ECB">ECB</option>
+      </select>
+      <label for="aes-key-size">Key Size:</label>
+      <select id="aes-key-size">
+        <option value="16">AES-128 (16)</option>
+        <option value="24">AES-192 (24)</option>
+        <option value="32">AES-256 (32)</option>
+      </select>
+      <label for="aes-output-format">output format:</label>
+      <select id="aes-output-format">
+        <option value="base64">Base64</option>
+        <option value="hex">Hex</option>
+      </select>
+    </div>
+    <label for="aes-key">Key:</label>
+    <input type="text" id="aes-key" placeholder="Enter your key (to fit the length)">
+    <br>
+    <label for="aes-iv" id="aes-iv-label" style="display: none;">IV (CBC Mode, 16):</label>
+    <input type="text" id="aes-iv" placeholder="ex) : initializationv" style="display: none;">
+    <br>
+    <label for="aes-input"></label><textarea id="aes-input" rows="5" cols="50" placeholder="Enter your text here"></textarea>
+    <br>
+    <button id="encrypt-aes">Encrypt</button>
+    <button id="decrypt-aes">Decrypt</button>
+    <br>
+    <label for="aes-output"></label><textarea id="aes-output" rows="5" cols="50" placeholder="Results are displayed here" readonly></textarea>
+  </section>
+
