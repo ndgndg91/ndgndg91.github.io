@@ -27,8 +27,8 @@ body {
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
-  align-items: center;
-  justify-content: space-between; /* 버튼과 메뉴를 양쪽으로 배치 */
+  align-items: center; /* 수직 정렬 */
+  justify-content: space-between; /* 좌우 공간 분배 */
 }
 
 .topbar-menu {
@@ -36,7 +36,10 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center; /* 수직 정렬 */
   gap: 20px;
+  flex-grow: 1; /* 공간을 채우도록 */
+  justify-content: flex-end; /* 오른쪽 정렬 */
 }
 
 .topbar-menu li {
@@ -56,6 +59,23 @@ body {
   border-radius: 4px;
 }
 
+/* 북마크 추가하기 버튼 스타일 */
+.bookmark-btn {
+  background: none;
+  border: 1px solid #fff;
+  color: white;
+  padding: 4px 8px; /* 작게 설정 */
+  font-size: 0.8em; /* 글씨 크기 작게 */
+  cursor: pointer;
+  border-radius: 4px;
+  line-height: 1; /* 수직 정렬 보정 */
+}
+
+.bookmark-btn:hover {
+  background-color: #555;
+}
+
+/* 나머지 스타일 */
 .page-container {
   display: grid;
   grid-template-columns: 250px minmax(0, 1fr);

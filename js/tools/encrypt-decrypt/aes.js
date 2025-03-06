@@ -4,6 +4,7 @@ import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
 import '../../navigation';
+import '../../utils'
 import { toggleIVField, decryptAES, encryptAES } from "./crypto-func";
 
 document.addEventListener('DOMContentLoaded', () => {

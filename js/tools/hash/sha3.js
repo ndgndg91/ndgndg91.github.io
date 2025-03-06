@@ -4,6 +4,7 @@ import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
 import '../../navigation';
+import '../../utils'
 import { sha3_224, sha3_256, sha3_384, sha3_512 } from 'js-sha3';
 
 // 모드 변경 시 키 입력 필드 표시/숨김

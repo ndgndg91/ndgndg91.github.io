@@ -4,6 +4,7 @@ import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
 import '../../navigation';
+import '../../utils'
 import { encryptRSA, generateRSAKeys, decryptRSA } from "./crypto-func";
 
 document.addEventListener('DOMContentLoaded', () => {

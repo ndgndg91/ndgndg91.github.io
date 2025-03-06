@@ -4,6 +4,7 @@ import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
 import '../../navigation';
+import '../../utils'
 import { generateUUIDv7, generateUUIDv1, generateUUIDv3, generateUUIDv4, generateUUIDv5 } from './string-tools-func.js';
 import { copyToClipboard } from "../../utils";
 

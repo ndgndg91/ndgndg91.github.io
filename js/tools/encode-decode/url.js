@@ -4,6 +4,7 @@ import '../../../css/sections.css';
 import '../../../css/tools.css';
 import '../../../css/responsive.css';
 import '../../navigation';
+import '../../utils'
 import { encodeURL, decodeURL } from './encode-decode-func.js';
 
 document.addEventListener('DOMContentLoaded', () => {
