@@ -10,6 +10,7 @@ module.exports = {
     url: './js/tools/encode-decode/url.js',
     aes: './js/tools/encrypt-decrypt/aes.js',
     rsa: './js/tools/encrypt-decrypt/rsa.js',
+    json_parser: './js/tools/string/json-parser.js',
     random_hex: './js/tools/string/random-hex.js',
     string_analyzer: './js/tools/string/string-analyzer.js',
     uuid: './js/tools/string/uuid.js',
@@ -86,6 +87,14 @@ module.exports = {
       chunks: ['rsa'],
       templateParameters: {
         content: require('fs').readFileSync(path.resolve(__dirname, 'tools/encrypt-decrypt/rsa.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/string/json-parser.html',
+      chunks: ['json_parser'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/json-parser.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new HtmlWebpackPlugin({
