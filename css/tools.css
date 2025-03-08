@@ -220,8 +220,3 @@
   border-color: #0078d4;
   outline: none;
 }
-
-/* JSON Parser 섹션 스타일 추가 */
-#json-parser-tool .section {
-  padding: 0; /* 내부 패딩은 container에서 처리 */
-}

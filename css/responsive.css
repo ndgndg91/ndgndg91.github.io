@@ -69,13 +69,6 @@
     width: 100%;
   }
 
-  /* JSON Parser 반응형 추가 */
-  #json-parser-tool {
-    max-width: 100%;
-    margin: 10px;
-    padding: 15px;
-  }
-
   #json-input,
   #json-output {
     min-height: 150px;
@@ -245,11 +238,6 @@
     width: 100%;
   }
 
-  /* JSON Parser 반응형 추가 */
-  #json-parser-tool {
-    margin: 5px;
-    padding: 10px;
-  }
 
   .input-section h3,
   .output-section h3 {
@@ -349,13 +337,6 @@
   #string-length,
   #string-bytes {
     font-size: 0.75em;
-  }
-
-  /* JSON Parser 반응형 추가 */
-  #json-parser-tool {
-    margin: 0;
-    padding: 8px;
-    border-radius: 0;
   }
 
   .input-section h3,

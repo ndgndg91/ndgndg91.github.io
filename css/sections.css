@@ -1,6 +1,14 @@
 .section {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.section-inner {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  padding: 20px;
 }
 
 #blog.section {
