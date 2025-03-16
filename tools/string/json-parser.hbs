@@ -1,7 +1,7 @@
 <div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
   <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
     <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
-      data-section="true">
+       data-section="true">
       Developer Playground
     </p>
     <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
@@ -16,8 +16,8 @@
         Input
       </label>
       <textarea id="json-input"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Enter JSON..." rows="10"></textarea>
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Enter JSON..." rows="10"></textarea>
       <br>
       <label for="indent-level" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indent</label>
       <select id="indent-level"
@@ -27,16 +27,24 @@
         <option value="8">8 space</option>
       </select>
       <br>
-      <button id="format-button" class="btn-primary-violet">format</button>
-      <button id="copy-button" class="btn-primary-sky">copy</button>
-      <br>
+      <div class="flex gap-4">
+        <button id="format-button" class="btn-primary-violet">Parse</button>
+        <button id="copy-button" class="btn-primary-sky">Copy</button>
+      </div>
       <br>
       <h3 class="text-2xl font-medium">Output</h3>
       <br>
-      <pre id="json-output"
-           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-      <code class="language json"></code>
-    </pre>
+      <div id="json-output" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+        <div class="flex gap-4 mb-4">
+          <button id="tree-view-button" class="px-3 py-1 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+            Tree View
+          </button>
+          <button id="pretty-print-button" class="px-3 py-1 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+            Pretty Print
+          </button>
+        </div>
+        <div id="output-content" class="font-mono text-sm"></div>
+      </div>
       <br>
       <ins class="kakao_ad_area" style="display:none;"
            data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
