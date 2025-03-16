@@ -11,6 +11,7 @@ module.exports = {
     aes: './js/tools/encrypt-decrypt/aes.js',
     rsa: './js/tools/encrypt-decrypt/rsa.js',
     json_parser: './js/tools/string/json-parser.js',
+    xml_parser: './js/tools/string/xml-parser.js',
     random_hex: './js/tools/string/random-hex.js',
     string_diff_checker: './js/tools/string/string-diff-checker.js',
     string_analyzer: './js/tools/string/string-analyzer.js',
@@ -48,6 +49,13 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    fallback: {
+      "stream": require.resolve("stream-browserify"),
+      "buffer": require.resolve("buffer/"),
+      "timers": require.resolve("timers-browserify"),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -96,6 +104,14 @@ module.exports = {
       chunks: ['json_parser'],
       templateParameters: {
         content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/json-parser.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/string/xml-parser.html',
+      chunks: ['xml_parser'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/xml-parser.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new HtmlWebpackPlugin({

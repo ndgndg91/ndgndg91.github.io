@@ -1,0 +1,62 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+       data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      XML Parser
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      Parse XML strings into Parse Pretty Print Output.
+    </p>
+    <br>
+
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <!-- XML 입력 -->
+      <div class="relative">
+        <label for="xml-input" class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+          Input
+        </label>
+          <textarea id="xml-input"
+                    class="w-full min-h-[16rem] p-4 text-gray-800 bg-gray-50 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-600"
+                    placeholder="Enter XML String."></textarea>
+      </div>
+
+      <!-- 버튼 영역 -->
+      <div class="mt-4 flex gap-4">
+        <button id="parse-button" class="btn-primary-violet">Parse</button>
+        <button id="clear-button" class="btn-primary-sky">Clear</button>
+      </div>
+
+
+    </div>
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Result
+        </h5>
+      </a>
+      <!-- 파싱 결과 -->
+      <div id="parse-result" class="mt-6 p-4 bg-gray-50 rounded-lg dark:bg-gray-900 overflow-y-auto">
+        <div id="parse-output" class="mt-2 text-gray-700 dark:text-gray-300 font-mono text-sm"></div>
+      </div>
+    </div>
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="728"
+           data-ad-height="90"></ins>
+    </div>
+  </div>
+  <div class="max-xl:hidden">
+    <div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
+      <div class="flex flex-col gap-3">
+        <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit="DAN-2nMLIisQJKH9qMpe"
+             data-ad-width="160"
+             data-ad-height="600"></ins>
+      </div>
+    </div>
+  </div>
+</div>

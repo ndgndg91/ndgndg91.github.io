@@ -1,5 +1,5 @@
-<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
-  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
     <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
       data-section="true">
       Developer Playground
@@ -12,11 +12,12 @@
     </p>
     <br>
     <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-      <h3 class="text-2xl font-medium">Input</h3>
-      <br>
-      <label for="json-input"></label><textarea id="json-input"
-                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="Enter JSON..." rows="10"></textarea>
+      <label for="json-input" class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+        Input
+      </label>
+      <textarea id="json-input"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Enter JSON..." rows="10"></textarea>
       <br>
       <label for="indent-level" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indent</label>
       <select id="indent-level"
