@@ -1,6 +1,6 @@
-import '../../../css/tailwind.css'
+import '../../../css/tailwind.css';
 import '../../navigation';
-import '../../utils'
+import '../../utils';
 
 const xml2js = require('xml2js');
 
@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const parseResult = document.getElementById('parse-result');
   const parseButton = document.getElementById('parse-button');
   const clearButton = document.getElementById('clear-button');
+  const treeViewButton = document.getElementById('tree-view-button');
+  const prettyPrintButton = document.getElementById('pretty-print-button');
+
+  let parsedData = null; // 파싱된 데이터 저장
+  let originalXml = ''; // 원본 XML 저장
 
   // XML 파싱 함수
   function parseXml() {
@@ -19,11 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    originalXml = xmlString;
     xml2js.parseString(xmlString, { explicitArray: false }, (err, result) => {
       if (err) {
         parseOutput.textContent = `파싱 오류: ${err.message}`;
       } else {
-        renderTree(result, parseOutput, 'root');
+        parsedData = result;
+        renderTree(parsedData, parseOutput, 'root'); // 초기 뷰는 트리
+        treeViewButton.classList.add('bg-blue-500', 'text-white');
+        prettyPrintButton.classList.remove('bg-blue-500', 'text-white');
       }
     });
   }
@@ -33,14 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
     parentElement.innerHTML = ''; // 기존 내용 초기화
 
     const container = document.createElement('div');
-    container.className = 'flex flex-col'; // 수직 정렬
+    container.className = 'flex flex-col';
 
-    // 시작 태그
     const startTagDiv = document.createElement('div');
     startTagDiv.className = 'flex items-center';
     const toggleButton = document.createElement('span');
     toggleButton.textContent = '▶ ';
-    toggleButton.className = 'cursor-pointer text-blue-500 w-6'; // 고정 너비로 정렬 보장
+    toggleButton.className = 'cursor-pointer text-blue-500 w-6';
     const startTag = document.createElement('span');
     startTag.textContent = `<${tagName}>`;
     startTag.className = 'text-blue-700 dark:text-blue-300';
@@ -48,18 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
     startTagDiv.appendChild(startTag);
     container.appendChild(startTagDiv);
 
-    // 하위 노드 컨테이너
     const childrenContainer = document.createElement('div');
-    childrenContainer.className = 'pl-6 hidden'; // 들여쓰기 증가
+    childrenContainer.className = 'pl-6 hidden';
 
     if (typeof obj === 'object' && obj !== null) {
       for (const [key, value] of Object.entries(obj)) {
         const childDiv = document.createElement('div');
         if (typeof value === 'object' && value !== null) {
-          // 하위 객체가 있으면 재귀 호출
           renderTree(value, childDiv, key);
         } else {
-          // 기본 값 표시
           const valueDiv = document.createElement('div');
           valueDiv.className = 'flex items-center';
           valueDiv.innerHTML = `<span class="w-6"></span><span>${key}: ${value}</span>`;
@@ -69,11 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 종료 태그
     const endTagDiv = document.createElement('div');
     endTagDiv.className = 'flex items-center';
     const endTagSpacer = document.createElement('span');
-    endTagSpacer.className = 'w-6'; // 토글 버튼 자리 맞춤
+    endTagSpacer.className = 'w-6';
     const endTag = document.createElement('span');
     endTag.textContent = `</${tagName}>`;
     endTag.className = 'text-blue-700 dark:text-blue-300';
@@ -90,22 +94,84 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (typeof obj === 'object' && obj !== null) {
       container.appendChild(endTagDiv);
     } else {
-      // 값이 기본 타입이면 태그와 함께 표시
       startTagDiv.textContent += ` ${obj}`;
       startTagDiv.appendChild(endTag);
-      toggleButton.remove(); // 기본 값에는 토글 필요 없음
+      toggleButton.remove();
     }
 
     parentElement.appendChild(container);
+  }
+
+  // Pretty Print 렌더링 함수
+  function renderPrettyPrint(xmlString, parentElement) {
+    parentElement.innerHTML = '';
+    const pre = document.createElement('pre');
+    try {
+      pre.textContent = formatXml(xmlString);
+    } catch (e) {
+      pre.textContent = `Pretty Print 오류: ${e.message}`;
+    }
+    pre.className = 'whitespace-pre-wrap';
+    parentElement.appendChild(pre);
+  }
+
+  // XML 포맷팅 함수 (Pretty Print)
+  function formatXml(xml) {
+    let formatted = '';
+    let indent = 0;
+    const tab = '  '; // 들여쓰기 단위
+
+    // 태그 분리 시 꺾쇠 괄호를 유지하도록 수정
+    const nodes = xml.match(/<[^>]+>|[^<>]+/g) || [];
+    nodes.forEach((node) => {
+      node = node.trim();
+      if (!node) return;
+
+      if (node.startsWith('</')) {
+        // 종료 태그
+        indent = Math.max(0, indent - 1); // indent가 음수가 되지 않도록 보호
+        formatted += `${tab.repeat(indent)}${node}\n`;
+      } else if (node.startsWith('<') && !node.endsWith('/>')) {
+        // 시작 태그
+        formatted += `${tab.repeat(indent)}${node}\n`;
+        indent++;
+      } else if (node.startsWith('<') && node.endsWith('/>')) {
+        // 셀프 클로징 태그
+        formatted += `${tab.repeat(indent)}${node}\n`;
+      } else {
+        // 텍스트 노드
+        formatted += `${tab.repeat(indent)}${node}\n`;
+      }
+    });
+
+    return formatted.trim();
   }
 
   // 클리어 함수
   function clearAll() {
     xmlInput.value = '';
     parseOutput.innerHTML = '';
+    parsedData = null;
+    originalXml = '';
+    treeViewButton.classList.remove('bg-blue-500', 'text-white');
+    prettyPrintButton.classList.remove('bg-blue-500', 'text-white');
   }
 
   // 이벤트 리스너 설정
   parseButton.addEventListener('click', parseXml);
   clearButton.addEventListener('click', clearAll);
+  treeViewButton.addEventListener('click', () => {
+    if (parsedData) {
+      renderTree(parsedData, parseOutput, 'root');
+      treeViewButton.classList.add('bg-blue-500', 'text-white');
+      prettyPrintButton.classList.remove('bg-blue-500', 'text-white');
+    }
+  });
+  prettyPrintButton.addEventListener('click', () => {
+    if (originalXml) {
+      renderPrettyPrint(originalXml, parseOutput);
+      prettyPrintButton.classList.add('bg-blue-500', 'text-white');
+      treeViewButton.classList.remove('bg-blue-500', 'text-white');
+    }
+  });
 });

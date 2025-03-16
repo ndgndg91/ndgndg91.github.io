@@ -18,9 +18,9 @@
         <label for="xml-input" class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
           Input
         </label>
-          <textarea id="xml-input"
-                    class="w-full min-h-[16rem] p-4 text-gray-800 bg-gray-50 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-600"
-                    placeholder="Enter XML String."></textarea>
+        <textarea id="xml-input"
+                  class="w-full min-h-[16rem] p-4 text-gray-800 bg-gray-50 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-600"
+                  placeholder="Enter XML String."></textarea>
       </div>
 
       <!-- 버튼 영역 -->
@@ -28,9 +28,8 @@
         <button id="parse-button" class="btn-primary-violet">Parse</button>
         <button id="clear-button" class="btn-primary-sky">Clear</button>
       </div>
-
-
     </div>
+
     <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -39,9 +38,18 @@
       </a>
       <!-- 파싱 결과 -->
       <div id="parse-result" class="mt-6 p-4 bg-gray-50 rounded-lg dark:bg-gray-900 overflow-y-auto">
+        <div class="flex gap-4 mb-4">
+          <button id="tree-view-button" class="px-3 py-1 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+            Tree View
+          </button>
+          <button id="pretty-print-button" class="px-3 py-1 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600">
+            Pretty Print
+          </button>
+        </div>
         <div id="parse-output" class="mt-2 text-gray-700 dark:text-gray-300 font-mono text-sm"></div>
       </div>
     </div>
+
     <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
       <ins class="kakao_ad_area" style="display:none;"
            data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
