@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Develop Playground</title>
-  <meta name="description" content="Developer Playground is Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash, etc.">
+  <meta name="description"
+        content="Developer Playground is Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String, Encode/Decode, Encrypt/Decrypt, Hash, etc.">
   <meta property="og:title" content="Developer Playground Giri's Place - dev tools and dev blog">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://developer-playground.com/">
@@ -16,99 +17,421 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
   <meta name="google-adsense-account" content="ca-pub-6419722318302962">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6419722318302962" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6419722318302962"
+          crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYH7DX3HRP"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
     gtag('config', 'G-SYH7DX3HRP');
   </script>
-    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+  <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
 </head>
 
 <body>
-<header class="topbar">
-  <nav class="topbar-nav">
-    <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-    <ul class="topbar-menu">
-      <li><a href="/" class="topbar-btn">Giri's Place</a></li>
-      <li><button class="bookmark-btn">Bookmark This Page</button></li>
-    </ul>
-  </nav>
-</header>
+<div class="isolate">
+  <div>
+    <div class="fixed inset-x-0 top-0 z-10 border-b border-gray-950/5 dark:border-white/10">
+      <div class="bg-white dark:bg-gray-950">
+        <div class="flex h-14 items-center justify-between gap-8 px-4 sm:px-6">
+          <div class="flex items-center gap-4"><a class="shrink-0" aria-label="Home" href="/">
+            <svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+              <!-- 배경 원 -->
+<!--              <circle cx="30" cy="30" r="50" fill="skyblue" />-->
+              <!-- 텍스트 -->
+              <text x="100" y="35" font-size="20" text-anchor="middle" fill="black">Developer Playground</text>
+              <text x="100" y="50" font-size="10" text-anchor="middle" fill="gray">Giri's Place</text>
+            </svg>
+          </a>
+          </div>
+          <div class="flex items-center gap-6 max-md:hidden">
+            <!--    <button type="button" class="inline-flex items-center gap-1 rounded-full bg-gray-950/2 px-2 py-1 inset-ring inset-ring-gray-950/8 dark:bg-white/5 dark:inset-ring-white/2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="-ml-0.5 size-4 fill-gray-600 dark:fill-gray-500"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd"></path></svg><kbd class="hidden font-sans text-xs/4 text-gray-500 dark:text-gray-400 [.os-macos_&amp;]:block">⌘K</kbd><kbd class="hidden font-sans text-xs/4 text-gray-500 not-[.os-macos_&amp;]:block dark:text-gray-400">Ctrl&nbsp;K</kbd></button>-->
+<!--            <a class="text-sm/6 text-gray-950 dark:text-white" href="/docs">Docs</a>-->
+<!--            <a class="text-sm/6 text-gray-950 dark:text-white" href="/blog">Blog</a>-->
+            <a id="addBookmark" class="text-sm/6 text-gray-950 dark:text-white" href="#">Add Bookmark</a>
 
-<div class="page-container">
-  <nav class="nav">
-    <ul class="menu">
-      <li>
-        <span class="menu-category">Encode/Decode</span>
-        <ul class="submenu">
-          <li><a href="/tools/encode-decode/base64.html">Base64 Encode/Decode</a></li>
-          <li><a href="/tools/encode-decode/url.html">URL Encode/Decode</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="menu-category">String</span>
-        <ul class="submenu">
-          <li><a href="/tools/string/json-parser.html">Json Parser</a></li>
-          <li><a href="/tools/string/uuid.html">UUID Generator</a></li>
-          <li><a href="/tools/string/random-hex.html">Random Hex Generator</a></li>
-          <li><a href="/tools/string/string-analyzer.html">String Analyzer</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="menu-category">Time</span>
-        <ul class="submenu">
-          <li><a href="/tools/time/timestamp.html">Timestamp</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="menu-category">Hash</span>
-        <ul class="submenu">
-          <li><a href="/tools/hash/sha-1.html">SHA-1</a></li>
-          <li><a href="/tools/hash/sha-2.html">SHA-2</a></li>
-          <li><a href="/tools/hash/sha-3.html">SHA-3</a></li>
-        </ul>
-      </li>
-      <li>
-        <span class="menu-category">Encrypt/Decrypt</span>
-        <ul class="submenu">
-          <li><a href="/tools/encrypt-decrypt/aes.html">AES</a></li>
-          <li><a href="/tools/encrypt-decrypt/rsa.html">RSA</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+            <!--    <a aria-label="GitHub repository" href="https://github.com/tailwindlabs/tailwindcss"><svg viewBox="0 0 20 20" class="size-5 fill-black/40 dark:fill-gray-400"><path d="M10 0C4.475 0 0 4.475 0 10a9.994 9.994 0 006.838 9.488c.5.087.687-.213.687-.476 0-.237-.013-1.024-.013-1.862-2.512.463-3.162-.612-3.362-1.175-.113-.287-.6-1.175-1.025-1.412-.35-.188-.85-.65-.013-.663.788-.013 1.35.725 1.538 1.025.9 1.512 2.337 1.087 2.912.825.088-.65.35-1.088.638-1.338-2.225-.25-4.55-1.112-4.55-4.937 0-1.088.387-1.987 1.025-2.688-.1-.25-.45-1.274.1-2.65 0 0 .837-.262 2.75 1.026a9.28 9.28 0 012.5-.338c.85 0 1.7.112 2.5.337 1.912-1.3 2.75-1.024 2.75-1.024.55 1.375.2 2.4.1 2.65.637.7 1.025 1.587 1.025 2.687 0 3.838-2.337 4.688-4.562 4.938.362.312.675.912.675 1.85 0 1.337-.013 2.412-.013 2.75 0 .262.188.574.688.474A10.016 10.016 0 0020 10c0-5.525-4.475-10-10-10z"></path></svg></a>-->
+          </div>
+          <div class="flex items-center gap-2.5 md:hidden">
+<!--            <button type="button" aria-label="Search" class="inline-grid size-7 place-items-center rounded-md">-->
+<!--              <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">-->
+<!--                <path fill-rule="evenodd"-->
+<!--                      d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"-->
+<!--                      clip-rule="evenodd"></path>-->
+<!--              </svg>-->
+<!--            </button>-->
+            <button type="button"
+                    class="relative inline-grid size-7 place-items-center rounded-md text-gray-950 hover:bg-gray-950/5 dark:text-white dark:hover:bg-white/10 undefined"
+                    aria-label="Navigation"><span
+              class="absolute top-1/2 left-1/2 size-11 -translate-1/2 [@media(pointer:fine)]:hidden"></span>
+              <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">
+                <path
+                  d="M8 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM8 6.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM9.5 12.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex h-14 items-center border-t border-gray-950/5 bg-white px-4 sm:px-6 lg:hidden dark:border-white/10 dark:bg-gray-950">
+        <button type="button"
+                id="hamburger"
+                class="relative inline-grid size-7 place-items-center rounded-md text-gray-950 hover:bg-gray-950/5 dark:text-white dark:hover:bg-white/10 -ml-1.5"
+                aria-label="Open navigation menu"><span
+          class="absolute top-1/2 left-1/2 size-11 -translate-1/2 [@media(pointer:fine)]:hidden"></span>
+          <svg viewBox="0 0 16 16" fill="currentColor" class="size-4">
+            <path fill-rule="evenodd"
+                  d="M2 4.75A.75.75 0 0 1 2.75 4h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75Zm0 6.5a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75Z"
+                  clip-rule="evenodd"></path>
+          </svg>
+        </button>
+<!--        <ol class="sticky ml-4 flex min-w-0 items-center gap-2 text-sm/6 whitespace-nowrap">-->
+<!--          <li class="flex items-center gap-2"><span class="text-gray-500 dark:text-gray-400">Interactivity</span>-->
+<!--            <svg viewBox="0 0 16 16" class="size-4 fill-gray-950 dark:fill-gray-500">-->
+<!--              <path fill-rule="evenodd"-->
+<!--                    d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z"-->
+<!--                    clip-rule="evenodd"></path>-->
+<!--            </svg>-->
+<!--          </li>-->
+<!--          <li class="truncate text-gray-950 dark:text-white">touch-action</li>-->
+<!--        </ol>-->
+      </div>
+    </div>
 
+    <!-- 모바일 메뉴  -->
+    <div id="mobileMenu" class="fixed top-14 left-0 w-64 h-[calc(100vh-56px)] bg-white dark:bg-gray-950 z-50 overflow-y-auto p-6 shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden">
+      <nav class="flex flex-col gap-8">
+        <div class="flex flex-col gap-3">
+          <h3 class="font-mono text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">Encode Decode</h3>
+          <ul class="flex flex-col gap-2 border-l border-gray-950/10 dark:border-white/20">
+            <li class="-ml-px"><a href="/tools/encode-decode/base64.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">Base64</a></li>
+            <li class="-ml-px"><a href="/tools/encode-decode/url.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">URL</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h3 class="font-mono text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">String</h3>
+          <ul class="flex flex-col gap-2 border-l border-gray-950/10 dark:border-white/20">
+            <li class="-ml-px"><a href="/tools/string/json-parser.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">Json Parser</a></li>
+            <li class="-ml-px"><a href="/tools/string/uuid.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">UUID Generator</a></li>
+            <li class="-ml-px"><a href="/tools/string/random-hex.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">Random Hex Generator</a></li>
+            <li class="-ml-px"><a href="/tools/string/string-analyzer.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">String Analyzer</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h3 class="font-mono text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">Time</h3>
+          <ul class="flex flex-col gap-2 border-l border-gray-950/10 dark:border-white/20">
+            <li class="-ml-px"><a href="/tools/time/timestamp.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">Timestamp</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h3 class="font-mono text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">Hash</h3>
+          <ul class="flex flex-col gap-2 border-l border-gray-950/10 dark:border-white/20">
+            <li class="-ml-px"><a href="/tools/hash/sha-1.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">SHA-1</a></li>
+            <li class="-ml-px"><a href="/tools/hash/sha-2.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">SHA-2</a></li>
+            <li class="-ml-px"><a href="/tools/hash/sha-3.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">SHA-3</a></li>
+          </ul>
+        </div>
+        <div class="flex flex-col gap-3">
+          <h3 class="font-mono text-sm font-medium tracking-widest text-gray-500 uppercase dark:text-gray-400">Encrypt Decrypt</h3>
+          <ul class="flex flex-col gap-2 border-l border-gray-950/10 dark:border-white/20">
+            <li class="-ml-px"><a href="/tools/encrypt-decrypt/aes.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">AES</a></li>
+            <li class="-ml-px"><a href="/tools/encrypt-decrypt/rsa.html" class="block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white">RSA</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- 모바일 메뉴  -->
 
-  <main class="content">
-    {{{content}}}
-  </main>
-</div>
+    <div class="grid min-h-dvh grid-cols-1 grid-rows-[1fr_1px_auto_1px_auto] pt-26.25 lg:grid-cols-[var(--container-2xs)_2.5rem_minmax(0,1fr)_2.5rem] lg:pt-14.25 xl:grid-cols-[var(--container-2xs)_2.5rem_minmax(0,1fr)_2.5rem]">
+      <div class="relative col-start-1 row-span-full row-start-1 max-lg:hidden">
+        <div class="absolute inset-0">
+          <div class="sticky top-14.25 bottom-0 left-0 h-full max-h-[calc(100dvh-(var(--spacing)*14.25))] w-2xs overflow-y-auto p-6">
+            <div>
+              <nav class="flex flex-col gap-8">
+<!--                <ul class="flex flex-col gap-2">-->
+<!--                  <li><a-->
+<!--                    class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 **:data-outline:stroke-gray-400 dark:**:data-outline:stroke-gray-500 **:[svg]:first:size-5 **:[svg]:first:sm:size-4 hover:text-gray-950 hover:**:data-highlight:fill-gray-300 hover:**:data-outline:stroke-gray-950 dark:hover:text-white dark:hover:**:data-highlight:fill-gray-600 dark:hover:**:data-outline:stroke-white aria-[current]:font-semibold aria-[current]:text-gray-950 aria-[current]:**:data-highlight:fill-gray-300 aria-[current]:**:data-outline:stroke-gray-950 dark:aria-[current]:text-white dark:aria-[current]:**:data-highlight:fill-gray-600 dark:aria-[current]:**:data-outline:stroke-white"-->
+<!--                    aria-current="page" href="/docs/installation">-->
+<!--                    <svg viewBox="0 0 16 16" fill="none">-->
+<!--                      <path data-highlight="true"-->
+<!--                            d="M3.5 1.5C2.4264 1.5 1.40926 1.74169 0.5 2.17363V13.1736C1.40926 12.7417 2.4264 12.5 3.5 12.5C5.21352 12.5 6.78323 13.1157 8 14.1379V3.13789C6.78323 2.11568 5.21352 1.5 3.5 1.5Z"></path>-->
+<!--                      <path data-outline="true"-->
+<!--                            d="M8 14.1379C9.21677 13.1157 10.7865 12.5 12.5 12.5C13.5736 12.5 14.5907 12.7417 15.5 13.1736V2.17363C14.5907 1.74169 13.5736 1.5 12.5 1.5C10.7865 1.5 9.21677 2.11568 8 3.13789M8 14.1379C6.78323 13.1157 5.21352 12.5 3.5 12.5C2.4264 12.5 1.40926 12.7417 0.5 13.1736V2.17363C1.40926 1.74169 2.4264 1.5 3.5 1.5C5.21352 1.5 6.78323 2.11568 8 3.13789M8 14.1379V3.13789"></path>-->
+<!--                    </svg>-->
+<!--                    Documentation</a>-->
+<!--                  </li>-->
+<!--                  <li><a-->
+<!--                    class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 **:data-outline:stroke-gray-400 dark:**:data-outline:stroke-gray-500 **:[svg]:first:size-5 **:[svg]:first:sm:size-4 hover:text-gray-950 hover:**:data-highlight:fill-gray-300 hover:**:data-outline:stroke-gray-950 dark:hover:text-white dark:hover:**:data-highlight:fill-gray-600 dark:hover:**:data-outline:stroke-white aria-[current]:font-semibold aria-[current]:text-gray-950 aria-[current]:**:data-highlight:fill-gray-300 aria-[current]:**:data-outline:stroke-gray-950 dark:aria-[current]:text-white dark:aria-[current]:**:data-highlight:fill-gray-600 dark:aria-[current]:**:data-outline:stroke-white"-->
+<!--                    href="/plus/ui-blocks?ref=sidebar">-->
+<!--                    <svg viewBox="0 0 16 16" fill="none">-->
+<!--                      <path data-outline="true" d="m11 8 .5.25L15 10.5 8 15l-7-4.5 3.5-2.25L5 8"></path>-->
+<!--                      <path data-highlight="true" d="M8 1 1 5.5 8 10l7-4.5L8 1Z"></path>-->
+<!--                      <path data-outline="true" d="M8 1 1 5.5 8 10l7-4.5L8 1Z"></path>-->
+<!--                    </svg>-->
+<!--                    Components</a></li>-->
+<!--                  <li><a-->
+<!--                    class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 **:data-outline:stroke-gray-400 dark:**:data-outline:stroke-gray-500 **:[svg]:first:size-5 **:[svg]:first:sm:size-4 hover:text-gray-950 hover:**:data-highlight:fill-gray-300 hover:**:data-outline:stroke-gray-950 dark:hover:text-white dark:hover:**:data-highlight:fill-gray-600 dark:hover:**:data-outline:stroke-white aria-[current]:font-semibold aria-[current]:text-gray-950 aria-[current]:**:data-highlight:fill-gray-300 aria-[current]:**:data-outline:stroke-gray-950 dark:aria-[current]:text-white dark:aria-[current]:**:data-highlight:fill-gray-600 dark:aria-[current]:**:data-outline:stroke-white"-->
+<!--                    href="/plus/templates?ref=sidebar">-->
+<!--                    <svg viewBox="0 0 16 16" fill="none">-->
+<!--                      <path data-highlight="true"-->
+<!--                            d="M12.5 1.5H3.5C2.39543 1.5 1.5 2.39543 1.5 3.5V4.5V12.5C1.5 13.6046 2.39543 14.5 3.5 14.5H5.5V4.5H14.5V3.5C14.5 2.39543 13.6046 1.5 12.5 1.5Z"></path>-->
+<!--                      <path data-outline="true"-->
+<!--                            d="M5.5 4.5H14.5M5.5 4.5H1.5M5.5 4.5V14.5M14.5 4.5V3.5C14.5 2.39543 13.6046 1.5 12.5 1.5H3.5C2.39543 1.5 1.5 2.39543 1.5 3.5V4.5M14.5 4.5V12.5C14.5 13.6046 13.6046 14.5 12.5 14.5H5.5M1.5 4.5V12.5C1.5 13.6046 2.39543 14.5 3.5 14.5H5.5"></path>-->
+<!--                    </svg>-->
+<!--                    Templates</a></li>-->
+<!--                  <li><a-->
+<!--                    class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 **:data-outline:stroke-gray-400 dark:**:data-outline:stroke-gray-500 **:[svg]:first:size-5 **:[svg]:first:sm:size-4 hover:text-gray-950 hover:**:data-highlight:fill-gray-300 hover:**:data-outline:stroke-gray-950 dark:hover:text-white dark:hover:**:data-highlight:fill-gray-600 dark:hover:**:data-outline:stroke-white aria-[current]:font-semibold aria-[current]:text-gray-950 aria-[current]:**:data-highlight:fill-gray-300 aria-[current]:**:data-outline:stroke-gray-950 dark:aria-[current]:text-white dark:aria-[current]:**:data-highlight:fill-gray-600 dark:aria-[current]:**:data-outline:stroke-white"-->
+<!--                    href="/plus/ui-kit?ref=sidebar">-->
+<!--                    <svg viewBox="0 0 16 16" fill="none">-->
+<!--                      <path data-highlight="true" d="M15.5 11.5V4.5L8 8.5L0.5 4.5V11.5L8 15.5L15.5 11.5Z"></path>-->
+<!--                      <path data-outline="true"-->
+<!--                            d="M0.5 4.5V11.5L8 15.5M0.5 4.5L8 0.5L15.5 4.5M0.5 4.5L8 8.5M15.5 4.5V11.5L8 15.5M15.5 4.5L8 8.5M8 15.5V8.5"></path>-->
+<!--                    </svg>-->
+<!--                    UI Kit</a></li>-->
+<!--                  <li><a-->
+<!--                    class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 **:data-outline:stroke-gray-400 dark:**:data-outline:stroke-gray-500 **:[svg]:first:size-5 **:[svg]:first:sm:size-4 hover:text-gray-950 hover:**:data-highlight:fill-gray-300 hover:**:data-outline:stroke-gray-950 dark:hover:text-white dark:hover:**:data-highlight:fill-gray-600 dark:hover:**:data-outline:stroke-white aria-[current]:font-semibold aria-[current]:text-gray-950 aria-[current]:**:data-highlight:fill-gray-300 aria-[current]:**:data-outline:stroke-gray-950 dark:aria-[current]:text-white dark:aria-[current]:**:data-highlight:fill-gray-600 dark:aria-[current]:**:data-outline:stroke-white"-->
+<!--                    href="https://play.tailwindcss.com/">-->
+<!--                    <svg viewBox="0 0 16 16" fill="none">-->
+<!--                      <rect data-highlight="true" x="1.5" y="1.5" width="13" height="13" rx="2"></rect>-->
+<!--                      <rect data-outline="true" x="1.5" y="1.5" width="13" height="13" rx="2"></rect>-->
+<!--                      <path data-outline="true" d="M6.5 6L4.5 8L6.5 10" stroke-linecap="round"-->
+<!--                            stroke-linejoin="round"></path>-->
+<!--                      <path data-outline="true" d="M9.5 6L11.5 8L9.5 10" stroke-linecap="round"-->
+<!--                            stroke-linejoin="round"></path>-->
+<!--                    </svg>-->
+<!--                    Playground</a></li>-->
+<!--                  <li class="flex items-center gap-3"><a-->
+<!--                    class="group inline-flex items-center gap-3 text-base/8 text-gray-600 sm:text-sm/7 dark:text-gray-300 **:data-outline:stroke-gray-400 dark:**:data-outline:stroke-gray-500 **:[svg]:first:size-5 **:[svg]:first:sm:size-4 hover:text-gray-950 hover:**:data-highlight:fill-gray-300 hover:**:data-outline:stroke-gray-950 dark:hover:text-white dark:hover:**:data-highlight:fill-gray-600 dark:hover:**:data-outline:stroke-white aria-[current]:font-semibold aria-[current]:text-gray-950 aria-[current]:**:data-highlight:fill-gray-300 aria-[current]:**:data-outline:stroke-gray-950 dark:aria-[current]:text-white dark:aria-[current]:**:data-highlight:fill-gray-600 dark:aria-[current]:**:data-outline:stroke-white"-->
+<!--                    href="/build-uis-that-dont-suck">-->
+<!--                    <svg viewBox="0 0 16 16" fill="none">-->
+<!--                      <path data-highlight="true" d="M8 2 1 6l7 4 7-4-7-4Z"></path>-->
+<!--                      <path data-outline="true" stroke-linecap="round"-->
+<!--                            d="M3.5 7.429V13A7.466 7.466 0 0 0 8 14.5a7.466 7.466 0 0 0 4.5-1.5V7.43m-9 0L8 10l4.5-2.571m-9 0-2-1.143m11 1.143L15 6 8 2 1 6l.5.286m0 5.214V6.286"></path>-->
+<!--                    </svg>-->
+<!--                    <span>Course</span><span-->
+<!--                    class="relative px-1.5 font-mono text-[0.625rem]/[1.125rem] font-medium tracking-widest text-sky-800 uppercase dark:text-sky-300"><span-->
+<!--                    class="absolute inset-0 border border-dashed border-sky-300/60 bg-sky-400/10 group-hover:bg-sky-400/15 dark:border-sky-300/30"></span>New<svg-->
+<!--                    width="5" height="5" viewBox="0 0 5 5"-->
+<!--                    class="absolute top-[-2px] left-[-2px] fill-sky-300 dark:fill-sky-300/50"><path-->
+<!--                    d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg><svg width="5" height="5" viewBox="0 0 5 5"-->
+<!--                                                                           class="absolute top-[-2px] right-[-2px] fill-sky-300 dark:fill-sky-300/50"><path-->
+<!--                    d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg><svg width="5" height="5" viewBox="0 0 5 5"-->
+<!--                                                                           class="absolute bottom-[-2px] left-[-2px] fill-sky-300 dark:fill-sky-300/50"><path-->
+<!--                    d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg><svg width="5" height="5" viewBox="0 0 5 5"-->
+<!--                                                                           class="absolute right-[-2px] bottom-[-2px] fill-sky-300 dark:fill-sky-300/50"><path-->
+<!--                    d="M2 0h1v2h2v1h-2v2h-1v-2h-2v-1h2z"></path></svg></span></a></li>-->
+<!--                </ul>-->
+                <div class="flex flex-col gap-3" data-autoscroll="true"><h3
+                  class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">
+                  Encode Decode</h3>
+                  <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4" type="button" data-headlessui-state="" href="/tools/encode-decode/base64.html">Base64</a>
+                    </li>
+                    <li class="-ml-px flex flex-col items-start gap-2"><a
+                      class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4"
+                      type="button" data-headlessui-state="" href="/tools/encode-decode/url.html">URL</a></li>
+                  </ul>
+                </div>
+                <div class="flex flex-col gap-3" data-autoscroll="true">
+                  <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">
+                    String</h3>
+                  <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4"
+                      type="button" data-headlessui-state="" href="/tools/string/json-parser.html">Json Parser</a></li>
+                    <li class="-ml-px flex flex-col items-start gap-2"><a
+                      class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4"
+                      type="button" data-headlessui-state="" href="/tools/string/uuid.html">UUID Generator</a></li>
+                    <li class="-ml-px flex flex-col items-start gap-2"><a
+                      class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4"
+                      type="button" data-headlessui-state="" href="/tools/string/random-hex.html">Random Hex Generator</a></li>
+                    <li class="-ml-px flex flex-col items-start gap-2"><a
+                      class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4"
+                      type="button" data-headlessui-state="" href="/tools/string/string-analyzer.html">String Analyzer</a></li>
+                  </ul>
+                </div>
 
-<footer class="footer">
-  <p>© Giri</p>
-  <div class="contact-links">
-    <p>
-      <a href="mailto:ndgndg91@gmail.com">ndgndg91@gmail.com</a> |
-      <a href="https://github.com/ndgndg91" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.135 1.84 1.235 1.84 1.235 1.095 1.88 2.98 1.34 3.705 1.025.115-.795.445-1.34.81-1.645-2.83-.32-5.805-1.415-5.805-6.295 0-1.39.495-2.53 1.305-3.42-.13-.32-.565-1.61.125-3.355 0 0 1.065-.34 3.49 1.3 1.01-.275 2.095-.41 3.175-.415 1.08.005 2.165.14 3.175.415 2.42-1.64 3.485-1.3 3.485-1.3.69 1.745.26 3.035.13 3.355.81.89 1.305 2.03 1.305 3.42 0 4.895-2.98 5.97-5.82 6.285.455.39.86 1.165.86 2.35 0 1.695-.015 3.06-.015 3.475 0 .32.215.695.825.575C20.565 21.8 24 17.3 24 12 24 5.37 18.63 0 12 0z"/>
-        </svg>
-        GitHub
-      </a> |
-      <a href="https://www.linkedin.com/in/동길-남-7a1417141" target="_blank" rel="noopener noreferrer">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-        LinkedIn
-      </a> |
-      <a href="https://ndgndg91.blogspot.com" target="_blank" rel="noopener noreferrer">Blog</a>
-    </p>
+                <div class="flex flex-col gap-3" data-autoscroll="true">
+                  <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Time</h3>
+                  <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4" type="button" data-headlessui-state="" href="/tools/time/timestamp.html">Timestamp</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="flex flex-col gap-3" data-autoscroll="true">
+                  <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Hash</h3>
+                  <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4" type="button" data-headlessui-state="" href="/tools/hash/sha-1.html">SHA-1</a>
+                    </li>
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4" type="button" data-headlessui-state="" href="/tools/hash/sha-2.html">SHA-2</a>
+                    </li>
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4" type="button" data-headlessui-state="" href="/tools/hash/sha-3.html">SHA-3</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="flex flex-col gap-3" data-autoscroll="true">
+                  <h3 class="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Encrypt Decrypt</h3>
+                  <ul class="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4" type="button" data-headlessui-state="" href="/tools/encrypt-decrypt/aes.html">AES</a>
+                    </li>
+                    <li class="-ml-px flex flex-col items-start gap-2">
+                      <a class="inline-block border-l border-transparent text-base/8 text-gray-600 hover:border-gray-950/25 hover:text-gray-950 sm:text-sm/6 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white aria-[current]:border-gray-950 aria-[current]:font-semibold aria-[current]:text-gray-950 dark:aria-[current]:border-white dark:aria-[current]:text-white pl-5 sm:pl-4" type="button" data-headlessui-state="" href="/tools/encrypt-decrypt/rsa.html">RSA</a>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-start-2 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"></div>
+      <div class="relative row-start-1 grid grid-cols-subgrid lg:col-start-3">
+        <div hidden=""></div>
+        {{{content}}}
+      </div>
+      <div
+        class="col-start-4 row-span-5 row-start-1 border-x border-x-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-gray-950)]/5 max-lg:hidden dark:[--pattern-fg:var(--color-white)]/10"></div>
+      <div class="col-span-full col-start-2 row-start-2 h-px bg-gray-950/5 dark:bg-white/10"></div>
+      <div class="row-start-3 lg:col-start-3">
+        <footer class="bg-white text-sm/loose text-gray-950 dark:bg-gray-950 dark:text-white">
+          <div class="flex gap-4 p-4 md:hidden max-w-2xl lg:max-w-5xl">
+            <div class="flex flex-1 flex-col gap-10">
+              <div><h3 class="font-semibold">Email</h3>
+                <ul class="mt-4 grid gap-4">
+                  <li><a  href="mailto:ndgndg91@gmail.com" class="hover:underline">ndgndg91@gmail.com</a></li>
+                </ul>
+              </div>
+              <div><h3 class="font-semibold">Github</h3>
+                <ul class="mt-4 grid gap-4">
+                  <li>
+                    <a href="https://github.com/ndgndg91" target="_blank" rel="noopener noreferrer"
+                       class="hover:underline">
+                      github.com/ndgndg91
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col gap-10">
+              <div><h3 class="mb-2 font-semibold">LinkedIn
+              </h3>
+                <ul class="mt-4 grid gap-4">
+                  <li>
+                    <a href="https://www.linkedin.com/in/동길-남-7a1417141" target="_blank" rel="noopener noreferrer"
+                       class="hover:underline">동길-남-7a1417141</a>
+                  </li>
+                </ul>
+              </div>
+              <div><h3 class="font-semibold">Blog</h3>
+                <ul class="mt-4 grid gap-4">
+                  <li>
+                    <a href="https://ndgndg91.blogspot.com" target="_blank" rel="noopener noreferrer" class="hover:underline">ndgndg91.blogspot.com</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mx-auto hidden w-full grid-cols-4 justify-between gap-y-0 md:grid md:grid-cols-4 md:gap-6 md:gap-x-4 lg:gap-8 max-w-2xl lg:max-w-5xl">
+            <div class="border-x border-b border-gray-950/5 py-10 pl-2 not-md:border-0 md:border-b-0 dark:border-white/10">
+              <h3 class="font-semibold">Email</h3>
+              <ul class="mt-4 grid gap-4">
+                <li><a  href="mailto:ndgndg91@gmail.com" class="hover:underline">ndgndg91@gmail.com</a></li>
+              </ul>
+            </div>
+            <div
+              class="border-x border-b border-gray-950/5 py-10 pl-2 not-md:border-0 md:border-b-0 dark:border-white/10">
+              <h3 class="mb-2 font-semibold">Github</h3>
+              <ul class="mt-4 grid gap-4">
+                <li>
+                  <a href="https://github.com/ndgndg91" target="_blank" rel="noopener noreferrer"
+                     class="hover:underline">
+                    github.com/ndgndg91
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div
+              class="border-x border-b border-gray-950/5 py-10 pl-2 not-md:border-0 sm:border-b-0 dark:border-white/10">
+              <h3 class="font-semibold">LinkedIn</h3>
+              <ul class="mt-4 grid gap-4">
+                <li>
+                  <a href="https://www.linkedin.com/in/동길-남-7a1417141" target="_blank" rel="noopener noreferrer"
+                       class="hover:underline">동길-남-7a1417141</a>
+                </li>
+              </ul>
+            </div>
+            <div class="border-x border-gray-950/5 py-10 pl-2 not-md:border-0 dark:border-white/10"><h3
+              class="font-semibold">Blog</h3>
+              <ul class="mt-4 grid gap-4">
+                <li>
+                  <a href="https://ndgndg91.blogspot.com" target="_blank" rel="noopener noreferrer" class="hover:underline">ndgndg91.blogspot.com</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div class="col-span-full col-start-2 row-start-4 h-px bg-gray-950/5 dark:bg-white/10"></div>
+      <div class="row-start-5 grid lg:col-start-3">
+        <div class="px-2 pt-10 pb-24">
+          <div class="mx-auto flex w-full flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 max-w-2xl lg:max-w-5xl">
+<!--            <div class="relative z-0 inline-grid grid-cols-3 gap-0.5 rounded-full bg-gray-950/5 p-0.75 text-gray-950 dark:bg-white/10 dark:text-white"-->
+<!--              id="headlessui-radiogroup-:rg:" role="radiogroup"><span-->
+<!--              class="rounded-full p-1.5 *:size-7 data-checked:bg-white data-checked:ring data-checked:inset-ring data-checked:ring-gray-950/10 data-checked:inset-ring-white/10 sm:p-0 dark:data-checked:bg-gray-700 dark:data-checked:text-white dark:data-checked:ring-transparent"-->
+<!--              aria-label="System theme" id="headlessui-radio-:rh:" role="radio" aria-checked="true" tabindex="0"-->
+<!--              data-headlessui-state="checked" data-checked=""><svg viewBox="0 0 28 28" fill="none"><path-->
+<!--              d="M7.5 8.5C7.5 7.94772 7.94772 7.5 8.5 7.5H19.5C20.0523 7.5 20.5 7.94772 20.5 8.5V16.5C20.5 17.0523 20.0523 17.5 19.5 17.5H8.5C7.94772 17.5 7.5 17.0523 7.5 16.5V8.5Z"-->
+<!--              stroke="currentColor"></path><path-->
+<!--              d="M7.5 8.5C7.5 7.94772 7.94772 7.5 8.5 7.5H19.5C20.0523 7.5 20.5 7.94772 20.5 8.5V14.5C20.5 15.0523 20.0523 15.5 19.5 15.5H8.5C7.94772 15.5 7.5 15.0523 7.5 14.5V8.5Z"-->
+<!--              stroke="currentColor"></path><path-->
+<!--              d="M16.5 20.5V17.5H11.5V20.5M16.5 20.5H11.5M16.5 20.5H17.5M11.5 20.5H10.5" stroke="currentColor"-->
+<!--              stroke-linecap="round"></path></svg></span><span-->
+<!--              class="rounded-full p-1.5 *:size-7 data-checked:bg-white data-checked:ring data-checked:inset-ring data-checked:ring-gray-950/10 data-checked:inset-ring-white/10 sm:p-0 dark:data-checked:bg-gray-700 dark:data-checked:text-white dark:data-checked:ring-transparent"-->
+<!--              aria-label="Light theme" id="headlessui-radio-:ri:" role="radio" aria-checked="false" tabindex="-1"-->
+<!--              data-headlessui-state=""><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="3.5"-->
+<!--                                                                                    stroke="currentColor"></circle><path-->
+<!--              d="M14 8.5V6.5" stroke="currentColor" stroke-linecap="round"></path><path-->
+<!--              d="M17.889 10.1115L19.3032 8.69727" stroke="currentColor" stroke-linecap="round"></path><path-->
+<!--              d="M19.5 14L21.5 14" stroke="currentColor" stroke-linecap="round"></path><path-->
+<!--              d="M17.889 17.8885L19.3032 19.3027" stroke="currentColor" stroke-linecap="round"></path><path-->
+<!--              d="M14 21.5V19.5" stroke="currentColor" stroke-linecap="round"></path><path-->
+<!--              d="M8.69663 19.3029L10.1108 17.8887" stroke="currentColor" stroke-linecap="round"></path><path-->
+<!--              d="M6.5 14L8.5 14" stroke="currentColor" stroke-linecap="round"></path><path-->
+<!--              d="M8.69663 8.69711L10.1108 10.1113" stroke="currentColor"-->
+<!--              stroke-linecap="round"></path></svg></span><span-->
+<!--              class="rounded-full p-1.5 *:size-7 data-checked:bg-white data-checked:ring data-checked:inset-ring data-checked:ring-gray-950/10 data-checked:inset-ring-white/10 sm:p-0 dark:data-checked:bg-gray-700 dark:data-checked:text-white dark:data-checked:ring-transparent"-->
+<!--              aria-label="Dark theme" id="headlessui-radio-:rj:" role="radio" aria-checked="false" tabindex="-1"-->
+<!--              data-headlessui-state=""><svg viewBox="0 0 28 28" fill="none"><path-->
+<!--              d="M10.5 9.99914C10.5 14.1413 13.8579 17.4991 18 17.4991C19.0332 17.4991 20.0176 17.2902 20.9132 16.9123C19.7761 19.6075 17.109 21.4991 14 21.4991C9.85786 21.4991 6.5 18.1413 6.5 13.9991C6.5 10.8902 8.39167 8.22304 11.0868 7.08594C10.7089 7.98159 10.5 8.96597 10.5 9.99914Z"-->
+<!--              stroke="currentColor" stroke-linejoin="round"></path><path-->
+<!--              d="M16.3561 6.50754L16.5 5.5L16.6439 6.50754C16.7068 6.94752 17.0525 7.29321 17.4925 7.35607L18.5 7.5L17.4925 7.64393C17.0525 7.70679 16.7068 8.05248 16.6439 8.49246L16.5 9.5L16.3561 8.49246C16.2932 8.05248 15.9475 7.70679 15.5075 7.64393L14.5 7.5L15.5075 7.35607C15.9475 7.29321 16.2932 6.94752 16.3561 6.50754Z"-->
+<!--              fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path-->
+<!--              d="M20.3561 11.5075L20.5 10.5L20.6439 11.5075C20.7068 11.9475 21.0525 12.2932 21.4925 12.3561L22.5 12.5L21.4925 12.6439C21.0525 12.7068 20.7068 13.0525 20.6439 13.4925L20.5 14.5L20.3561 13.4925C20.2932 13.0525 19.9475 12.7068 19.5075 12.6439L18.5 12.5L19.5075 12.3561C19.9475 12.2932 20.2932 11.9475 20.3561 11.5075Z"-->
+<!--              fill="currentColor" stroke="currentColor" stroke-linecap="round"-->
+<!--              stroke-linejoin="round"></path></svg></span>-->
+<!--            </div>-->
+            <div class="flex flex-col gap-4 text-sm/6 text-gray-700 sm:flex-row sm:gap-2 sm:pr-4 dark:text-gray-400">
+              <span>Copyright ©&nbsp;2025&nbsp;Giri Labs Inc.</span><span class="max-sm:hidden">·</span>Trademark Policy</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</footer>
+</div>
 </body>
 </html>

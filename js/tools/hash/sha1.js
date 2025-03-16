@@ -1,8 +1,4 @@
-import '../../../css/base.css';
-import '../../../css/navigation.css';
-import '../../../css/sections.css';
-import '../../../css/tools.css';
-import '../../../css/responsive.css';
+import '../../../css/tailwind.css'
 import '../../navigation';
 import '../../utils'
 

@@ -1,8 +1,3 @@
-import '../../../css/base.css';
-import '../../../css/navigation.css';
-import '../../../css/sections.css';
-import '../../../css/tools.css';
-import '../../../css/responsive.css';
 import { v1 as uuidv1, v3 as uuidv3, v4 as uuidv4, v5 as uuidv5, v7 as uuidv7 } from 'uuid'; // uuid 모듈 추가
 
 // UUID 형식 유효성 검사 함수
@@ -34,7 +29,7 @@ export function generateUUIDv3() {
   }
 
   try {
-    document.getElementById('uuid-v3-result').textContent = uuidv3(name, namespace); // uuid.v3() -> uuidv3()
+    document.getElementById('uuid-v3-result').value = uuidv3(name, namespace); // uuid.v3() -> uuidv3()
   } catch (error) {
     alert('error occurred when creating UUID v3. check input.');
     console.error(error);
@@ -72,7 +67,7 @@ export function generateRandomHex() {
   const length = parseInt(lengthInput);
   const resultElement = document.getElementById('random-hex-result');
 
-  if (isNaN(length) || length < 1 || length > 128) {
+  if (isNaN(length) || length < 1 || length > 512) {
     alert('Length must be a number between 1 and 128.');
     return;
   }

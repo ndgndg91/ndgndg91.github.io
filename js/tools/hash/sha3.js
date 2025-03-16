@@ -1,8 +1,4 @@
-import '../../../css/base.css';
-import '../../../css/navigation.css';
-import '../../../css/sections.css';
-import '../../../css/tools.css';
-import '../../../css/responsive.css';
+import '../../../css/tailwind.css'
 import '../../navigation';
 import '../../utils'
 import { sha3_224, sha3_256, sha3_384, sha3_512 } from 'js-sha3';

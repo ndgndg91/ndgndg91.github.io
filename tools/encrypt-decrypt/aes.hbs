@@ -1,44 +1,101 @@
-<section id="aes-tool" class="section">
-  <div class="section-inner">
-    <h2>AES Encrypt/Decrypt</h2>
-    <p>AES (Advanced Encryption Standard) is a symmetric key encryption algorithm that uses the same key to encrypt and
-      decrypt data.</p>
-    <div class="aes-options">
-      <label for="aes-mode">Mode:</label>
-      <select id="aes-mode">
-        <option value="CBC">CBC</option>
-        <option value="ECB">ECB</option>
-      </select>
-      <label for="aes-key-size">Key Size:</label>
-      <select id="aes-key-size">
-        <option value="16">AES-128 (16)</option>
-        <option value="24">AES-192 (24)</option>
-        <option value="32">AES-256 (32)</option>
-      </select>
-      <label for="aes-output-format">output format:</label>
-      <select id="aes-output-format">
-        <option value="base64">Base64</option>
-        <option value="hex">Hex</option>
-      </select>
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+      data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      AES Encrypt/Decrypt
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      AES (Advanced Encryption Standard) is a symmetric key encryption algorithm that uses the same key to encrypt and
+      decrypt data.
+    </p>
+    <br>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="aes-options">
+        <div class="mb-6">
+          <label for="aes-mode"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Mode
+          </label>
+          <select id="aes-mode"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="CBC">CBC</option>
+            <option value="ECB">ECB</option>
+          </select>
+        </div>
+        <div class="mb-6">
+          <label for="aes-key-size"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Key Size
+          </label>
+          <select id="aes-key-size"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="16">AES-128 (16)</option>
+            <option value="24">AES-192 (24)</option>
+            <option value="32">AES-256 (32)</option>
+          </select>
+        </div>
+        <div class="mb-6">
+          <label for="aes-output-format"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            output format
+          </label>
+          <select id="aes-output-format"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="base64">Base64</option>
+            <option value="hex">Hex</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-6">
+        <label for="aes-key"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Key
+        </label>
+        <input type="text" id="aes-key"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="Enter your key (to fit the length)"/>
+      </div>
+      <div class="mb-6">
+        <label for="aes-iv" id="aes-iv-label"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" style="display: none;">
+          IV (CBC Mode, 16)
+        </label>
+        <input type="text" id="aes-iv"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="ex) : initializationv" style="display: none;"/>
+      </div>
+      <div class="mb-6">
+        <label for="aes-input"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Input
+        </label>
+        <textarea id="aes-input" rows="5" cols="50"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your text here"></textarea>
+      </div>
+      <div class="mb-6">
+        <button id="encrypt-aes" class="btn-primary-violet">Encrypt</button>
+        <button id="decrypt-aes" class="btn-primary-sky">Decrypt</button>
+      </div>
+      <div class="mb-6">
+        <label for="aes-output"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Output
+        </label>
+        <textarea id="aes-output" rows="5" cols="50"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Results are displayed here" readonly></textarea>
+      </div>
     </div>
-    <label for="aes-key">Key:</label>
-    <input type="text" id="aes-key" placeholder="Enter your key (to fit the length)">
-    <br>
-    <label for="aes-iv" id="aes-iv-label" style="display: none;">IV (CBC Mode, 16):</label>
-    <input type="text" id="aes-iv" placeholder="ex) : initializationv" style="display: none;">
-    <br>
-    <label for="aes-input"></label><textarea id="aes-input" rows="5" cols="50"
-                                             placeholder="Enter your text here"></textarea>
-    <br>
-    <button id="encrypt-aes">Encrypt</button>
-    <button id="decrypt-aes">Decrypt</button>
-    <br>
-    <label for="aes-output"></label><textarea id="aes-output" rows="5" cols="50"
-                                              placeholder="Results are displayed here" readonly></textarea>
-    <ins class="kakao_ad_area" style="display:none;"
-         data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
-         data-ad-width="300"
-         data-ad-height="250"></ins>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="300"
+           data-ad-height="250"></ins>
+    </div>
   </div>
-</section>
+</div>
 

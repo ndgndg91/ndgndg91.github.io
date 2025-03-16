@@ -11,7 +11,7 @@ export function copyToClipboard(elementId) {
     });
 }
 
-document.querySelector('.bookmark-btn').addEventListener('click', function() {
+document.querySelector('#addBookmark').addEventListener('click', function() {
   if (window.sidebar && window.sidebar.addPanel) { // Firefox <23
 
     window.sidebar.addPanel(document.title,window.location.href,'');

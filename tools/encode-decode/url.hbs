@@ -1,20 +1,46 @@
-<section id="url-tool" class="section">
-    <div class="section-inner">
-        <h2>URL Encode/Decode</h2>
-        <label for="url-input"></label><textarea id="url-input" rows="5" cols="50"
-                                                 placeholder="Enter your text here"></textarea>
-        <br>
-        <button id="encode-url">Encode</button>
-        <button id="decode-url">Decode</button>
-        <br>
-        <label for="url-output"></label><textarea id="url-output" rows="5" cols="50"
-                                                  placeholder="Results are displayed here" readonly></textarea>
-        <p>URL encoding means replacing certain characters in a URL with a percent sign (%) followed by two hexadecimal
-            digits.</p>
-        <ins class="kakao_ad_area" style="display:none;"
-             data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
-             data-ad-width="728"
-             data-ad-height="90"></ins>
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+      data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      URL Encode/Decode
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      URL encoding means replacing certain characters in a URL with a percent sign (%) followed by two hexadecimal
+      digits.
+    </p>
+    <br>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="mb-6">
+      <label for="url-input"
+             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        Input
+      </label>
+        <textarea id="url-input" rows="10" cols="50"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your text here"></textarea>
+      </div>
+      <div class="mb-6">
+        <button id="encode-url" class="btn-primary-violet">Encode</button>
+        <button id="decode-url" class="btn-primary-sky">Decode</button>
+      </div>
+      <div class="mb-6">
+      <label for="url-output"
+             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+        Output
+      </label>
+      <textarea id="url-output" rows="10" cols="50"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Results are displayed here" readonly></textarea>
+      </div>
     </div>
-</section>
-
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+    <ins class="kakao_ad_area" style="display:none;"
+         data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+         data-ad-width="728"
+         data-ad-height="90"></ins>
+    </div>
+  </div>
+</div>

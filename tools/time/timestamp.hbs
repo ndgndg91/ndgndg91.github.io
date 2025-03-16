@@ -1,97 +1,155 @@
-
-<section id="timestamp-tool" class="section">
-  <div class="section-inner">
-  <h2>Unix Timestamp</h2>
-  <p>A Unix Timestamp represents the number of seconds elapsed since January 1, 1970, 00:00:00 UTC (Coordinated Universal Time). It is also called the "Epoch" and is commonly used in computer systems to record or calculate time.</p>
-  <div class="timestamp-display">
-    <strong>Current Unix Timestamp:</strong>
-    <span id="current-timestamp">0</span>
-    <button class="copy-btn">Copy</button>
-  </div>
-  <div class="timezone-display">
-    <strong>Current Timezone:</strong>
-    <span id="current-timezone">Loading...</span>
-  </div>
-  <div class="timezone-select">
-    <label for="timezone-select"><strong>Select Timezone (Real-time):</strong></label>
-    <select id="timezone-select">
-      <option value="Asia/Seoul">Asia/Seoul</option>
-      <option value="Asia/Tokyo">Asia/Tokyo</option>
-      <option value="Asia/Shanghai">Asia/Shanghai</option>
-      <option value="Asia/Dubai">Asia/Dubai</option>
-      <option value="America/New_York">America/New_York</option>
-      <option value="America/Los_Angeles">America/Los_Angeles</option>
-      <option value="America/Chicago">America/Chicago</option>
-      <option value="America/Sao_Paulo">America/Sao_Paulo</option>
-      <option value="Europe/London">Europe/London</option>
-      <option value="Europe/Paris">Europe/Paris</option>
-      <option value="Europe/Moscow">Europe/Moscow</option>
-      <option value="Australia/Sydney">Australia/Sydney</option>
-      <option value="Pacific/Auckland">Pacific/Auckland</option>
-      <option value="Africa/Johannesburg">Africa/Johannesburg</option>
-      <option value="UTC">UTC</option>
-    </select>
-  </div>
-  <div class="datetime-display">
-    <strong>Selected Timezone Date/Time:</strong>
-    <span id="current-datetime">YYYY MM DD HH MM SS</span>
-    <button class="copy-btn">Copy</button>
-  </div>
-  <div class="timestamp-converter">
-    <h3>Timestamp Converter</h3>
-    <div class="converter-section">
-      <label for="timestamp-input">Enter Unix Timestamp:</label>
-      <input type="number" id="timestamp-input" placeholder="e.g., 1708765432">
-      <label for="timestamp-timezone"></label><select id="timestamp-timezone">
-      <option value="Asia/Seoul">Asia/Seoul</option>
-      <option value="Asia/Tokyo">Asia/Tokyo</option>
-      <option value="Asia/Shanghai">Asia/Shanghai</option>
-      <option value="Asia/Dubai">Asia/Dubai</option>
-      <option value="America/New_York">America/New_York</option>
-      <option value="America/Los_Angeles">America/Los_Angeles</option>
-      <option value="America/Chicago">America/Chicago</option>
-      <option value="America/Sao_Paulo">America/Sao_Paulo</option>
-      <option value="Europe/London">Europe/London</option>
-      <option value="Europe/Paris">Europe/Paris</option>
-      <option value="Europe/Moscow">Europe/Moscow</option>
-      <option value="Australia/Sydney">Australia/Sydney</option>
-      <option value="Pacific/Auckland">Pacific/Auckland</option>
-      <option value="Africa/Johannesburg">Africa/Johannesburg</option>
-      <option value="UTC">UTC</option>
-    </select>
-      <button id="convert-timestamp-to-datetime">Convert</button>
-      <p><strong>Result:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span>
-        <button class="copy-btn">Copy</button></p>
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+      data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      Unix Timestamp
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      A Unix Timestamp represents the number of seconds elapsed since January 1, 1970, 00:00:00 UTC (Coordinated
+      Universal Time). It is also called the "Epoch" and is commonly used in computer systems to record or calculate
+      time.
+    </p>
+    <br>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Current Unix Timestamp
+        </h5>
+      </a>
+      <span id="current-timestamp" class="mb-3 font-stretch-expanded text-gray-700 dark:text-gray-400">0</span>
+      <button class="copy-btn btn-primary-sky">Copy</button>
     </div>
-    <div class="converter-section">
-      <label for="datetime-input">Enter Date/Time (YYYY MM DD HH MM SS):</label>
-      <input type="text" id="datetime-input" placeholder="e.g., 2025 02 23 14 23 45">
-      <label for="datetime-timezone"></label><select id="datetime-timezone">
-      <option value="Asia/Seoul">Asia/Seoul</option>
-      <option value="Asia/Tokyo">Asia/Tokyo</option>
-      <option value="Asia/Shanghai">Asia/Shanghai</option>
-      <option value="Asia/Dubai">Asia/Dubai</option>
-      <option value="America/New_York">America/New_York</option>
-      <option value="America/Los_Angeles">America/Los_Angeles</option>
-      <option value="America/Chicago">America/Chicago</option>
-      <option value="America/Sao_Paulo">America/Sao_Paulo</option>
-      <option value="Europe/London">Europe/London</option>
-      <option value="Europe/Paris">Europe/Paris</option>
-      <option value="Europe/Moscow">Europe/Moscow</option>
-      <option value="Australia/Sydney">Australia/Sydney</option>
-      <option value="Pacific/Auckland">Pacific/Auckland</option>
-      <option value="Africa/Johannesburg">Africa/Johannesburg</option>
-      <option value="UTC">UTC</option>
-    </select>
-      <button id="convert-datetime-to-timestamp">Convert</button>
-      <p><strong>Result:</strong> <span id="datetime-to-timestamp-result">0</span>
-        <button class="copy-btn">Copy</button></p>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="300"
+           data-ad-height="250"></ins>
     </div>
-    <ins class="kakao_ad_area" style="display:none;"
-       data-ad-unit = "DAN-nZOLt6AO6PDMGqAR"
-       data-ad-width = "300"
-       data-ad-height = "250"></ins>
-  </div>
-  </div>
-</section>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Current Timezone
+          <span id="current-timezone">Loading...</span>
+        </h5>
+      </a>
 
+      <div class="timezone-select">
+        <div class="mb-6">
+          <label for="timezone-select"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            <strong>Select Timezone (Real-time):</strong>
+          </label>
+          <select id="timezone-select"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="Asia/Seoul">Asia/Seoul</option>
+            <option value="Asia/Tokyo">Asia/Tokyo</option>
+            <option value="Asia/Shanghai">Asia/Shanghai</option>
+            <option value="Asia/Dubai">Asia/Dubai</option>
+            <option value="America/New_York">America/New_York</option>
+            <option value="America/Los_Angeles">America/Los_Angeles</option>
+            <option value="America/Chicago">America/Chicago</option>
+            <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+            <option value="Europe/London">Europe/London</option>
+            <option value="Europe/Paris">Europe/Paris</option>
+            <option value="Europe/Moscow">Europe/Moscow</option>
+            <option value="Australia/Sydney">Australia/Sydney</option>
+            <option value="Pacific/Auckland">Pacific/Auckland</option>
+            <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+            <option value="UTC">UTC</option>
+          </select>
+        </div>
+      </div>
+      <strong>Selected Timezone Date/Time:</strong>
+      <span id="current-datetime">YYYY MM DD HH MM SS</span>
+      <button class="copy-btn btn-primary-sky">Copy</button>
+    </div>
+
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Timestamp Converter
+        </h5>
+      </a>
+      <div class="converter-section">
+        <label for="timestamp-input"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Enter Unix Timestamp:
+        </label>
+        <input type="number" id="timestamp-input" placeholder="e.g., 1708765432"
+               aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <label for="timestamp-timezone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
+        <select id="timestamp-timezone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="Asia/Seoul">Asia/Seoul</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="Asia/Shanghai">Asia/Shanghai</option>
+          <option value="Asia/Dubai">Asia/Dubai</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="America/Los_Angeles">America/Los_Angeles</option>
+          <option value="America/Chicago">America/Chicago</option>
+          <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+          <option value="Europe/London">Europe/London</option>
+          <option value="Europe/Paris">Europe/Paris</option>
+          <option value="Europe/Moscow">Europe/Moscow</option>
+          <option value="Australia/Sydney">Australia/Sydney</option>
+          <option value="Pacific/Auckland">Pacific/Auckland</option>
+          <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+          <option value="UTC">UTC</option>
+        </select>
+        <br>
+        <button id="convert-timestamp-to-datetime" class="btn-primary-violet">Convert</button>
+        <p><strong>Result:</strong> <span id="timestamp-to-datetime-result">YYYY MM DD HH MM SS</span>
+          <button class="copy-btn btn-primary-sky">Copy</button>
+        </p>
+      </div>
+    </div>
+
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Datetime Format Converter
+        </h5>
+      </a>
+      <div class="converter-section">
+        <label for="datetime-input"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Enter Date/Time (YYYY MM DD HH MM SS):
+        </label>
+        <input type="text" id="datetime-input"
+               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="e.g., 2025 02 23 14 23 45">
+        <label for="datetime-timezone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
+        <select id="datetime-timezone"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option value="Asia/Seoul">Asia/Seoul</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="Asia/Shanghai">Asia/Shanghai</option>
+          <option value="Asia/Dubai">Asia/Dubai</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="America/Los_Angeles">America/Los_Angeles</option>
+          <option value="America/Chicago">America/Chicago</option>
+          <option value="America/Sao_Paulo">America/Sao_Paulo</option>
+          <option value="Europe/London">Europe/London</option>
+          <option value="Europe/Paris">Europe/Paris</option>
+          <option value="Europe/Moscow">Europe/Moscow</option>
+          <option value="Australia/Sydney">Australia/Sydney</option>
+          <option value="Pacific/Auckland">Pacific/Auckland</option>
+          <option value="Africa/Johannesburg">Africa/Johannesburg</option>
+          <option value="UTC">UTC</option>
+        </select>
+        <br>
+        <button id="convert-datetime-to-timestamp" class="btn-primary-violet">Convert</button>
+        <br>
+        <br>
+        <p><strong>Result:</strong> <span id="datetime-to-timestamp-result">0</span>
+          <button class="copy-btn btn-primary-sky">Copy</button>
+        </p>
+      </div>
+    </div>
+
+
+  </div>
+</div>

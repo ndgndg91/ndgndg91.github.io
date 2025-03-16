@@ -1,19 +1,46 @@
-<section id="random-hex-tool" class="section">
-  <div class="section-inner">
-    <h2>Random Hex Generator</h2>
-    <p>Generate a random hexadecimal string. Enter a length to get a hex string of the desired size.</p>
-    <div class="random-hex-generator">
-      <label for="hex-length">Length (number of characters):</label>
-      <input type="number" id="hex-length" min="1" max="128" value="64" placeholder="e.g., 64">
-      <button id="generate-random-hex">Generate Hex</button>
-      <p><strong>Result:</strong> <span id="random-hex-result">00000000</span>
-        <button class="copy-btn">Copy</button>
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p
+      class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+      data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      Random Hex Generator
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      Generate a random hexadecimal string. Enter a length to get a hex string of the desired size.
+    </p>
+
+    <br>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="mb-6">
+        <label for="hex-length"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Length (number of characters):
+        </label>
+        <input type="number" id="hex-length" min="1" max="512" value="64"
+               aria-describedby="helper-text-explanation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+               placeholder="e.g., 64" required>
+      </div>
+      <button id="generate-random-hex" class="btn-primary-violet">Generate Hex</button>
+      <br>
+      <br>
+      <p>
+        <strong>Result:</strong>
+        <label for="random-hex-result"></label>
+        <textarea id="random-hex-result"
+                  rows="10"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        </textarea>
+        <br>
+        <button class="copy-btn btn-primary-sky">Copy</button>
       </p>
+      <br>
       <ins class="kakao_ad_area" style="display:none;"
            data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
            data-ad-width="300"
            data-ad-height="250"></ins>
     </div>
   </div>
-</section>
-
+</div>

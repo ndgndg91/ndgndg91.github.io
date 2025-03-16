@@ -1,8 +1,4 @@
-import '../../../css/base.css';
-import '../../../css/navigation.css';
-import '../../../css/sections.css';
-import '../../../css/tools.css';
-import '../../../css/responsive.css';
+import '../../../css/tailwind.css'
 import '../../navigation';
 import '../../utils'
 import { generateUUIDv7, generateUUIDv1, generateUUIDv3, generateUUIDv4, generateUUIDv5 } from './string-tools-func.js';

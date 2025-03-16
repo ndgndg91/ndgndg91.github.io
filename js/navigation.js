@@ -1,34 +1,38 @@
 // js/navigation.js
 document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const nav = document.querySelector('.nav');
-  const links = document.querySelectorAll('.menu a'); // 모든 메뉴 링크 선택
+  const toggleButton = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-  // 현재 페이지에 .active 클래스 추가
-  const currentPath = window.location.pathname;
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    // 현재 경로와 href가 일치하거나, 홈 버튼의 경우 '/'와 '/index.html' 모두 처리
-    if (href === currentPath || (href === '/index.html' && (currentPath === '/' || currentPath === ''))) {
-      link.classList.add('active');
-    }
-  });
+  if (toggleButton && mobileMenu) {
+    const toggleMenu = () => {
+      mobileMenu.classList.toggle('translate-x-0');
+      mobileMenu.classList.toggle('-translate-x-full');
+    };
 
-  // 햄버거 메뉴 토글
-  if (menuToggle && nav) {
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('active');
-    });
+    // 클릭 이벤트
+    toggleButton.addEventListener('click', toggleMenu);
 
-    // 메뉴 외부 클릭 시 닫기
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth <= 1024 && nav.classList.contains('active')) {
-        const isClickInsideNav = nav.contains(e.target);
-        const isClickOnToggle = menuToggle.contains(e.target);
-        if (!isClickInsideNav && !isClickOnToggle) {
-          nav.classList.remove('active');
-        }
+    // 터치 이벤트 (태블릿/모바일)
+    toggleButton.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    }, { passive: false });
+
+    // 외부 클릭/터치로 메뉴 닫기
+    document.addEventListener('click', (event) => {
+      if (!mobileMenu.contains(event.target) && !toggleButton.contains(event.target)) {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('-translate-x-full');
       }
     });
+
+    document.addEventListener('touchstart', (event) => {
+      if (!mobileMenu.contains(event.target) && !toggleButton.contains(event.target)) {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('-translate-x-full');
+      }
+    });
+  } else {
+    console.warn('Hamburger button or mobile menu not found:', { toggleButton, mobileMenu });
   }
 });

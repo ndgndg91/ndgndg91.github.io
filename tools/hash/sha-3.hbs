@@ -1,42 +1,95 @@
-<section id="sha3-tool" class="section">
-  <div class="section-inner">
-    <h2>SHA-3 Hash & HMAC</h2>
-    <p>SHA-3 (Secure Hash Algorithm 3) is the latest hash function based on the Keccak algorithm. It supports multiple
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+       data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      SHA-3 Hash & HMAC
+    </h1>
+
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      SHA-3 (Secure Hash Algorithm 3) is the latest hash function based on the Keccak algorithm. It supports multiple
       output sizes: SHA3-224 (224-bit), SHA3-256 (256-bit), SHA3-384 (384-bit), and SHA3-512 (512-bit). Optionally,
-      enable HMAC mode to use a secret key.</p>
-    <div class="sha3-options">
-      <label for="sha3-mode">Mode:</label>
-      <select id="sha3-mode">
-        <option value="hash" selected>Hash</option>
-        <option value="hmac">HMAC</option>
-      </select>
-      <label for="sha3-variant">Hash Variant:</label>
-      <select id="sha3-variant">
-        <option value="224">SHA3-224</option>
-        <option value="256" selected>SHA3-256</option>
-        <option value="384">SHA3-384</option>
-        <option value="512">SHA3-512</option>
-      </select>
-      <label for="sha3-output-format">Output Format:</label>
-      <select id="sha3-output-format">
-        <option value="hex">Hex</option>
-        <option value="base64">Base64</option>
-      </select>
+      enable HMAC mode to use a secret key.
+    </p>
+    <br>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="sha3-options">
+        <div class="mb-6">
+          <label for="sha3-mode"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Mode
+          </label>
+          <select id="sha3-mode"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="hash" selected>Hash</option>
+            <option value="hmac">HMAC</option>
+          </select>
+        </div>
+        <div class="mb-6">
+          <label for="sha3-variant"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Hash Variant
+          </label>
+          <select id="sha3-variant"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="224">SHA3-224</option>
+            <option value="256" selected>SHA3-256</option>
+            <option value="384">SHA3-384</option>
+            <option value="512">SHA3-512</option>
+          </select>
+        </div>
+        <div class="mb-6">
+          <label for="sha3-output-format"
+                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+            Output Format
+          </label>
+          <select id="sha3-output-format"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="hex">Hex</option>
+            <option value="base64">Base64</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-6">
+        <label for="sha3-key" id="sha3-key-label"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+               style="display: none;">
+          Secret Key
+        </label>
+        <textarea id="sha3-key" rows="2" cols="50" placeholder="Enter your secret key here (required for HMAC)"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  style="display: none;"></textarea>
+      </div>
+      <div class="mb-6">
+        <label for="sha3-input"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Input
+        </label>
+        <textarea id="sha3-input" rows="5" cols="50"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your text here"></textarea>
+      </div>
+      <div class="mb-6">
+        <button id="calculate-sha3" class="btn-primary-violet">Calculate</button>
+      </div>
+      <div class="mb-6">
+        <label for="sha3-output"
+               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Output
+        </label>
+        <textarea id="sha3-output" rows="5" cols="50"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Results are displayed here" readonly></textarea>
+      </div>
     </div>
-    <label for="sha3-key" id="sha3-key-label" style="display: none;">Secret Key:</label>
-    <textarea id="sha3-key" rows="2" cols="50" placeholder="Enter your secret key here (required for HMAC)"
-              style="display: none;"></textarea>
-    <label for="sha3-input"></label><textarea id="sha3-input" rows="5" cols="50"
-                                              placeholder="Enter your text here"></textarea>
-    <br>
-    <button id="calculate-sha3">Calculate</button>
-    <br>
-    <label for="sha3-output"></label><textarea id="sha3-output" rows="5" cols="50"
-                                               placeholder="Results are displayed here" readonly></textarea>
-    <ins class="kakao_ad_area" style="display:none;"
-         data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
-         data-ad-width="300"
-         data-ad-height="250"></ins>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="300"
+           data-ad-height="250"></ins>
+    </div>
   </div>
-</section>
+</div>
 

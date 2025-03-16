@@ -1,27 +1,47 @@
-<section class="section">
-  <div class="section-inner">
-    <div class="container">
-      <div class="input-section">
-        <h3>Input</h3>
-        <label for="json-input"></label><textarea id="json-input" placeholder="Enter JSON..." rows="10"></textarea>
-      </div>
-      <div class="controls">
-        <label for="indent-level"></label><select id="indent-level">
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p
+      class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+      data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      JSON Parser
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      Input JSON String and Parse Pretty Print Output.
+    </p>
+    <br>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <h3 class="text-2xl font-medium">Input</h3>
+      <br>
+      <label for="json-input"></label><textarea id="json-input"
+                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Enter JSON..." rows="10"></textarea>
+      <br>
+      <label for="indent-level" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Indent</label>
+      <select id="indent-level"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option value="2">2 space</option>
         <option value="4">4 space</option>
         <option value="8">8 space</option>
       </select>
-        <button id="format-button">format</button>
-        <button id="copy-button">copy</button>
-      </div>
-      <div class="output-section">
-        <h3>Output</h3>
-        <pre id="json-output"><code class="language json"></code></pre>
-      </div>
+      <br>
+      <button id="format-button" class="btn-primary-violet">format</button>
+      <button id="copy-button" class="btn-primary-sky">copy</button>
+      <br>
+      <br>
+      <h3 class="text-2xl font-medium">Output</h3>
+      <br>
+      <pre id="json-output"
+           class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      <code class="language json"></code>
+    </pre>
+      <br>
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="728"
+           data-ad-height="90"></ins>
     </div>
-    <ins class="kakao_ad_area" style="display:none;"
-         data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
-         data-ad-width="728"
-         data-ad-height="90"></ins>
   </div>
-</section>
+</div>

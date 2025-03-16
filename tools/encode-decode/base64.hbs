@@ -1,19 +1,51 @@
-<section id="base64-tool" class="section">
-    <div class="section-inner">
-        <h2>Base64 Encode/Decode</h2>
-        <p>Base64 is a method of converting text or files into 64 characters so that the data can be transmitted or
-            stored safely.</p>
-        <label for="base64-input"></label><textarea id="base64-input" rows="5" cols="50"
-                                                    placeholder="Enter your text here"></textarea>
-        <br>
-        <button id="encode-base64">Encode</button>
-        <button id="decode-base64">Decode</button>
-        <br>
-        <label for="base64-output"></label><textarea id="base64-output" rows="5" cols="50"
-                                                     placeholder="Results are displayed here" readonly></textarea>
-        <ins class="kakao_ad_area" style="display:none;"
-             data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
-             data-ad-width="300"
-             data-ad-height="250"></ins>
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+      data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      Base64
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      Base64 is a method of converting text or files into 64 characters so that the data can be transmitted or
+      stored safely.
+    </p>
+    <br>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="mb-6">
+        <label for="base64-input"
+               class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+          Input
+        </label>
+        <textarea id="base64-input" rows="10" cols="70"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your text here"></textarea>
+      </div>
+      <div class="mb-6">
+        <button class="btn-primary-violet" id="encode-base64">Encode</button>
+        <button class="btn-primary-sky" id="decode-base64">Decode</button>
+      </div>
+      <div class="mb-6">
+        <label for="base64-output"
+               class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+          Output
+        </label>
+
+        <textarea id="base64-output" rows="10" cols="70"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Results are displayed here" readonly></textarea>
+
+      </div>
     </div>
-</section>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="300"
+           data-ad-height="250"></ins>
+    </div>
+  </div>
+</div>
+
+
+

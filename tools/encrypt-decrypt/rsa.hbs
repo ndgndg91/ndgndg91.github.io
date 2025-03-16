@@ -1,30 +1,69 @@
-<section id="rsa-tool" class="section">
-  <div class="section-inner">
-    <h2>RSA Encrypt/Decrypt</h2>
-    <p>RSA is an asymmetric encryption algorithm that uses public and private keys. It encrypts with the public key and
-      decrypts with the private key.</p>
-    <button id="generate-rsa-keys">Generate key pair</button>
+<div class="mx-auto grid w-full max-w-2xl grid-cols-1 gap-10 xl:max-w-5xl xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-4 pt-10 pb-24 sm:px-6 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+       data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      RSA Encrypt/Decrypt
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      RSA is an asymmetric encryption algorithm that uses public and private keys. It encrypts with the public key and
+      decrypts with the private key.
+    </p>
     <br>
-    <label for="rsa-public-key">Public Key:</label>
-    <textarea id="rsa-public-key" rows="3" cols="50" readonly
-              placeholder="Display after generating key pair"></textarea>
-    <br>
-    <label for="rsa-private-key">Private Key:</label>
-    <textarea id="rsa-private-key" rows="3" cols="50" readonly
-              placeholder="Display after generating key pair"></textarea>
-    <br>
-    <label for="rsa-input"></label><textarea id="rsa-input" rows="5" cols="50"
-                                             placeholder="Enter your text here"></textarea>
-    <br>
-    <button id="encrypt-rsa">Encrypt</button>
-    <button id="decrypt-rsa">Decrypt</button>
-    <br>
-    <label for="rsa-output"></label><textarea id="rsa-output" rows="5" cols="50"
-                                              placeholder="Results are displayed here" readonly></textarea>
-    <ins class="kakao_ad_area" style="display:none;"
-         data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
-         data-ad-width="300"
-         data-ad-height="250"></ins>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="mb-6">
+        <button id="generate-rsa-keys" class="btn-primary-sky">Generate key pair</button>
+      </div>
+      <div class="mb-6">
+        <label for="rsa-public-key"
+               class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+          Public Key
+        </label>
+        <textarea id="rsa-public-key" rows="3" cols="50" readonly
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Display after generating key pair"></textarea>
+      </div>
+      <div class="mb-6">
+        <label for="rsa-private-key"
+               class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+          Private Key
+        </label>
+        <textarea id="rsa-private-key" rows="3" cols="50" readonly
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Display after generating key pair"></textarea>
+      </div>
+    </div>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="mb-6">
+        <label for="rsa-input"
+               class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+          Input
+        </label>
+        <textarea id="rsa-input" rows="5" cols="50"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Enter your text here"></textarea>
+      </div>
+      <div class="mb-6">
+        <button id="encrypt-rsa" class="btn-primary-violet">Encrypt</button>
+        <button id="decrypt-rsa" class="btn-primary-sky">Decrypt</button>
+      </div>
+      <div class="mb-6">
+        <label for="rsa-output"
+               class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
+          Output
+        </label>
+        <textarea id="rsa-output" rows="5" cols="50"
+                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Results are displayed here" readonly></textarea>
+      </div>
+    </div>
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="300"
+           data-ad-height="250"></ins>
+    </div>
   </div>
-</section>
-
+</div>
