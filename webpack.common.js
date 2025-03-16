@@ -12,6 +12,7 @@ module.exports = {
     rsa: './js/tools/encrypt-decrypt/rsa.js',
     json_parser: './js/tools/string/json-parser.js',
     random_hex: './js/tools/string/random-hex.js',
+    string_diff_checker: './js/tools/string/string-diff-checker.js',
     string_analyzer: './js/tools/string/string-analyzer.js',
     uuid: './js/tools/string/uuid.js',
     timestamp: './js/tools/time/timestamp.js',
@@ -103,6 +104,14 @@ module.exports = {
       chunks: ['random_hex'],
       templateParameters: {
         content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/random-hex.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/string/string-diff-checker.html',
+      chunks: ['string_diff_checker'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/string-diff-checker.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new HtmlWebpackPlugin({

@@ -1,0 +1,68 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      String Diff Checker
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      Finding it hard to visually compare strings and spot differences? Try String Diff Checker.
+    </p>
+    <br>
+
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Compare Diff
+        </h5>
+      </a>
+      <!-- 입력 필드 -->
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-2 mb-6">
+        <!-- 첫 번째 텍스트 입력 -->
+        <div class="relative flex">
+          <div id="text1-lines" class="w-10 pr-2 text-right text-gray-500 bg-gray-100 border-r border-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600 overflow-hidden"></div>
+          <label for="text1"></label>
+          <textarea id="text1"
+                    class="w-full min-h-[16rem] p-4 text-gray-800 bg-gray-50 border border-gray-300 rounded-r-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-600"
+                    placeholder="첫 번째 텍스트를 입력하세요"></textarea>
+        </div>
+        <!-- 두 번째 텍스트 입력 -->
+        <div class="relative flex">
+          <div id="text2-lines" class="w-10 pr-2 text-right text-gray-500 bg-gray-100 border-r border-gray-300 dark:bg-gray-700 dark:text-gray-400 dark:border-gray-600 overflow-hidden"></div>
+          <label for="text2"></label>
+          <textarea id="text2"
+                    class="w-full min-h-[16rem] p-4 text-gray-800 bg-gray-50 border border-gray-300 rounded-r-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-600"
+                    placeholder="두 번째 텍스트를 입력하세요"></textarea>
+        </div>
+      </div>
+
+      <!-- 비교 버튼 -->
+      <div class="mb-6">
+        <button id="compare-button" class="btn-primary-violet">Compare</button>
+        <button id="clear-button" class="btn-primary-sky">Clear</button>
+      </div>
+    </div>
+    <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <a href="#">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          Result
+        </h5>
+      </a>
+      <!-- 비교 결과 -->
+      <div id="diff-result" class="mt-6 p-4 bg-gray-50 rounded-lg dark:bg-gray-900 overflow-y-auto">
+        <div id="diff-output" class="mt-2 space-y-1 text-gray-700 dark:text-gray-300"></div>
+      </div>
+    </div>
+  </div>
+  <div class="max-xl:hidden">
+    <div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
+      <div class="flex flex-col gap-3">
+        <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit="DAN-2nMLIisQJKH9qMpe"
+             data-ad-width="160"
+             data-ad-height="600"></ins>
+      </div>
+    </div>
+  </div>
+</div>
