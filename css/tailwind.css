@@ -2,8 +2,19 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer components {
+  @media (max-width: 768px) {
+    .mobile-wrap {
+      white-space: normal !important;
+    }
+  }
+
   .mobile-menu-item {
     @apply block border-l border-transparent pl-5 text-gray-600 dark:text-gray-300 hover:border-gray-950/25 hover:text-gray-950 dark:hover:border-white/25 dark:hover:text-white;
+  }
+
+  /* styles.css 파일에 추가 */
+  .inline-code {
+    @apply bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded font-mono text-sm border border-gray-200;
   }
 
   .btn-primary-violet {

@@ -1,11 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: 'production',
   entry: {
     index: './js/index.js',
+    software_engineer: './js/blog/software-engineer.js',
     base64: './js/tools/encode-decode/base64.js',
     url: './js/tools/encode-decode/url.js',
     aes: './js/tools/encrypt-decrypt/aes.js',
@@ -58,12 +60,40 @@ module.exports = {
     },
   },
   plugins: [
+    new CopyPlugin({
+      patterns: [
+        { from: 'ads.txt', to: 'ads.txt' },
+        { from: 'img', to: 'img' },
+        { from: 'icon.svg', to: 'icon.svg' },
+        { from: 'favicon.ico', to: 'favicon.ico' },
+        { from: 'robots.txt', to: 'robots.txt' },
+        { from: 'icon.png', to: 'icon.png' },
+        { from: '404.html', to: '404.html' },
+        { from: 'site.webmanifest', to: 'site.webmanifest' },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
       filename: 'index.html',
       chunks: ['index'],
       templateParameters: {
         content: require('fs').readFileSync(path.resolve(__dirname, 'index.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/kafka-basic.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/kafka-basic.hbs'), 'utf8'),
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'blog/software-engineer/software-engineer.html',
+      chunks: ['software_engineer'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/software-engineer.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new HtmlWebpackPlugin({
