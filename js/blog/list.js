@@ -1,4 +1,4 @@
-// software-engineer/software-engineer.js
+// software-engineer/list.js
 import '../../css/tailwind.css'
 import '../navigation';
 import '../utils'

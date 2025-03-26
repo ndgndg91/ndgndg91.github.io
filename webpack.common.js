@@ -7,7 +7,7 @@ module.exports = {
   mode: 'production',
   entry: {
     index: './js/index.js',
-    software_engineer: './js/blog/software-engineer.js',
+    blog_software_engineer_list: './js/blog/list.js',
     base64: './js/tools/encode-decode/base64.js',
     url: './js/tools/encode-decode/url.js',
     aes: './js/tools/encrypt-decrypt/aes.js',
@@ -90,10 +90,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
-      filename: 'blog/software-engineer/software-engineer.html',
-      chunks: ['software_engineer'],
+      filename: 'blog/software-engineer/list.html',
+      chunks: ['blog_software_engineer_list'],
       templateParameters: {
-        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/software-engineer.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new HtmlWebpackPlugin({
