@@ -1,0 +1,353 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true">
+      Developer Playground
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      Controlling Processing Rate in Kafka Consumers
+    </h1>
+    <div class="mt-6 prose dark:prose-invert">
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Introduction</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          One of the most common challenges when working with message brokers like Kafka is controlling the rate at which messages are processed.
+          Especially when a large volume of messages arrives in a short period, it can lead to system overload or impact downstream services.
+          This article explores how to implement rate limiting in Spring Kafka consumers using an internal queue approach.
+        </p>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">The Problem</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Need to send push notifications to many users simultaneously</li>
+          <li class="whitespace-nowrap mobile-wrap">Processing all notifications at once can overwhelm notification services</li>
+          <li class="whitespace-nowrap mobile-wrap">Want to control the processing rate (e.g., X notifications per second)</li>
+          <li class="whitespace-nowrap mobile-wrap">Need to maintain message ordering and ensure delivery</li>
+        </ul>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+        <!-- Background -->
+        <rect width="800" height="400" fill="#f8f9fa" rx="10" ry="10"/>
+
+        <!-- Title -->
+        <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Kafka Consumer with Rate Limiting Queue and DLT</text>
+
+        <!-- Kafka Input Topic -->
+        <rect x="50" y="100" width="160" height="120" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="130" y="125" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Kafka Topic</text>
+
+        <!-- Messages in Kafka -->
+        <rect x="70" y="140" width="30" height="20" fill="#1890ff" rx="2" ry="2"/>
+        <rect x="110" y="140" width="30" height="20" fill="#1890ff" rx="2" ry="2"/>
+        <rect x="150" y="140" width="30" height="20" fill="#1890ff" rx="2" ry="2"/>
+        <rect x="70" y="170" width="30" height="20" fill="#1890ff" rx="2" ry="2"/>
+        <rect x="110" y="170" width="30" height="20" fill="#1890ff" rx="2" ry="2"/>
+        <rect x="150" y="170" width="30" height="20" fill="#1890ff" rx="2" ry="2"/>
+
+        <!-- Consumer -->
+        <rect x="280" y="100" width="160" height="120" fill="#fff7e6" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="360" y="125" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Kafka Consumer</text>
+        <text x="360" y="155" font-family="Arial" font-size="14" text-anchor="middle">Reads messages</text>
+        <text x="360" y="175" font-family="Arial" font-size="14" text-anchor="middle">from Kafka</text>
+        <text x="360" y="195" font-family="Arial" font-size="14" text-anchor="middle">and enqueues</text>
+
+        <!-- Queue -->
+        <rect x="510" y="100" width="240" height="120" fill="#f6ffed" stroke="#52c41a" stroke-width="2" rx="5" ry="5"/>
+        <text x="630" y="125" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">ConcurrentLinkedQueue</text>
+
+        <!-- Items in Queue -->
+        <rect x="530" y="150" width="30" height="20" fill="#52c41a" rx="2" ry="2"/>
+        <rect x="570" y="150" width="30" height="20" fill="#52c41a" rx="2" ry="2"/>
+        <rect x="610" y="150" width="30" height="20" fill="#52c41a" rx="2" ry="2"/>
+        <rect x="650" y="150" width="30" height="20" fill="#52c41a" rx="2" ry="2"/>
+        <rect x="690" y="150" width="30" height="20" fill="#52c41a" rx="2" ry="2"/>
+
+        <!-- Scheduled Task -->
+        <rect x="480" y="250" width="300" height="30" fill="#fff2e8" stroke="#fa541c" stroke-width="2" rx="5" ry="5"/>
+        <text x="630" y="270" font-family="Arial" font-size="14" text-anchor="middle">Scheduled Task (1/sec): Process N messages</text>
+
+        <!-- Dead Letter Topic -->
+        <rect x="240" y="320" width="180" height="60" fill="#fff1f0" stroke="#f5222d" stroke-width="2" rx="5" ry="5"/>
+        <text x="330" y="345" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Dead Letter Topic</text>
+        <text x="330" y="365" font-family="Arial" font-size="12" text-anchor="middle">Failed messages with error info</text>
+
+        <!-- Success and Error boxes - fixed positions to match labels -->
+        <rect x="650" y="320" width="100" height="60" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="700" y="345" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Success</text>
+        <text x="700" y="365" font-family="Arial" font-size="12" text-anchor="middle">Process message</text>
+
+        <rect x="510" y="320" width="100" height="60" fill="#fff1f0" stroke="#f5222d" stroke-width="2" rx="5" ry="5"/>
+        <text x="560" y="345" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Failure</text>
+        <text x="560" y="365" font-family="Arial" font-size="12" text-anchor="middle">Send to DLT</text>
+
+        <!-- Arrows -->
+        <!-- Incoming message flow -->
+        <path d="M210,160 L280,160" stroke="#1890ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M440,160 L510,160" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M630,220 L630,250" stroke="#52c41a" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- From Scheduled Task to Success/Failure branches -->
+        <path d="M700,280 L700,320" stroke="#1890ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M560,280 L560,320" stroke="#f5222d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- From Failure to DLT -->
+        <path d="M510,350 L420,350" stroke="#f5222d" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- Arrow marker definition -->
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#000"/>
+          </marker>
+        </defs>
+
+        <!-- Labels -->
+        <text x="245" y="140" font-family="Arial" font-size="12" text-anchor="middle">1. Consume</text>
+        <text x="475" y="140" font-family="Arial" font-size="12" text-anchor="middle">2. Queue</text>
+        <text x="670" y="240" font-family="Arial" font-size="12" text-anchor="middle">3. Process</text>
+        <text x="740" y="300" font-family="Arial" font-size="12" text-anchor="middle">4a. Success</text>
+        <text x="530" y="300" font-family="Arial" font-size="12" text-anchor="middle">4b. Error</text>
+        <text x="465" y="340" font-family="Arial" font-size="12" text-anchor="middle" fill="#f5222d">5. Send to DLT</text>
+      </svg>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">The Solution</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          We'll implement a rate-limited consumer using Spring Kafka with the following approach:
+        </p>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Use a <code class="inline-code">ConcurrentLinkedQueue</code> as an internal buffer</li>
+          <li class="whitespace-nowrap mobile-wrap">Configure a Kafka listener to add messages to the queue</li>
+          <li class="whitespace-nowrap mobile-wrap">Create a scheduled task to process messages at a controlled rate</li>
+          <li class="whitespace-nowrap mobile-wrap">Make the processing rate configurable via application properties</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Implementation</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          Let's look at the key parts of the implementation:
+        </p>
+
+        <pre class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-x-auto text-sm">
+<code>@Component
+class MobilePushRequestConsumer(
+    private val historyService: MobilePushHistoryWriteService,
+    private val producer: MobilePushProducer
+) {
+    private val logger = LoggerFactory.getLogger(javaClass)
+    private val queue: ConcurrentLinkedQueue&lt;MobilePushRequest&gt; = ConcurrentLinkedQueue()
+
+    @Value("\${mobile-push.process-per-second}")
+    private lateinit var processPerSecond: String
+
+    @PostConstruct
+    private fun setup() {
+        logger.info("plus reward push process per second : {}", processPerSecond)
+    }
+
+    @KafkaListener(
+        topics = [MOBILE_PUSH_FROM_OTHER_SERVICE],
+        containerFactory = DEFAULT_KAFKA_LISTENER_CONTAINER_FACTORY
+    )
+    fun consumeTargetMobilePushRequest(message: CloudEvent) {
+        try {
+            // Deserialize the message
+            val data = CloudEventUtils.mapData(
+                message,
+                PojoCloudEventDataMapper.from(jacksonObjectMapper(), MobilePushRequest::class.java)
+            )?.value!!
+
+            val type = MobilePushType.fromParamKey(data.type)
+
+            // For specific message type, add to queue instead of processing immediately
+            if (type == MobilePushType.HEAVY) {
+                queue.add(data)
+                logger.info("Added to queue: {}", data)
+            } else {
+                // Process other types immediately
+                // ...processing logic omitted...
+            }
+        } catch (e: Exception) {
+            logger.error("An error occurred while consuming the request", e)
+            throw e
+        }
+    }
+
+    // Scheduled task that runs every second to process messages from the queue
+    @Scheduled(fixedRate = 1000)
+    fun processQueue() {
+        val batch = mutableListOf&lt;MobilePushRequest&gt;()
+
+        // Take only the configured number of messages from the queue
+        repeat(processPerSecond.toInt()) {
+            val request = queue.poll() ?: return@repeat
+            batch.add(request)
+        }
+
+        if (batch.isNotEmpty()) {
+            logger.info("Processing batch of size: {}", batch.size)
+            try {
+                // Process each message in the batch
+                batch.forEach { request ->
+                    // Processing logic omitted...
+                }
+                logger.info("Batch processing complete")
+            } catch (e: Exception) {
+                logger.error("Error during batch processing", e)
+            }
+        }
+    }
+}</code>
+        </pre>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Key Components</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap"><strong>ConcurrentLinkedQueue:</strong> A thread-safe queue that serves as our buffer for incoming messages</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Message Type Filtering:</strong> Only specific message types (in this case, reward notifications) are added to the queue</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Scheduled Method:</strong> A method annotated with <code class="inline-code">@Scheduled</code> that runs at a fixed rate (1000ms)</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Configurable Rate:</strong> The number of messages processed per batch is controlled by a configuration property</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">How It Works</h2>
+        <ol class="max-w-md space-y-1 text-gray-700 list-decimal list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">The Kafka listener receives messages from the configured topic</li>
+          <li class="whitespace-nowrap mobile-wrap">For regular messages, they are processed immediately in the listener</li>
+          <li class="whitespace-nowrap mobile-wrap">For reward push notifications (SYSTEM_PLUS_REWARD), messages are added to the queue</li>
+          <li class="whitespace-nowrap mobile-wrap">A scheduled task runs every second, taking up to N messages from the queue</li>
+          <li class="whitespace-nowrap mobile-wrap">This creates a controlled flow of notifications, limiting to N per second</li>
+        </ol>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Configuration</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          The processing rate is controlled by a configuration property:
+        </p>
+        <pre class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-x-auto text-sm">
+<code># application.properties or application.yml
+mobile-push:
+  process-per-second: 50  # Process 50 notifications per second</code>
+        </pre>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Benefits</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Throttles message processing to prevent system overload</li>
+          <li class="whitespace-nowrap mobile-wrap">Provides backpressure mechanism to handle traffic spikes</li>
+          <li class="whitespace-nowrap mobile-wrap">Reduces load on downstream notification services</li>
+          <li class="whitespace-nowrap mobile-wrap">Configurable rate without application restart</li>
+          <li class="whitespace-nowrap mobile-wrap">No message loss - all messages are eventually processed</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Error Handling with Dead Letter Topics</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          Proper error handling is crucial in any message processing system. When processing fails, we can use a Dead Letter Topic (DLT) to store messages that couldn't be processed:
+        </p>
+
+        <pre class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-x-auto text-sm">
+<code>@Scheduled(fixedRate = 1000)
+fun processQueue() {
+    val batch = mutableListOf&lt;MobilePushRequest&gt;()
+    repeat(processPerSecond.toInt()) {
+        val request = queue.poll() ?: return@repeat
+        batch.add(request)
+    }
+
+    if (batch.isNotEmpty()) {
+        logger.info("Processing batch of size: {}", batch.size)
+        batch.forEach { request ->
+            try {
+                // ...processing logic omitted...
+            } catch (e: Exception) {
+                logger.error("Error processing message: {}", request, e)
+                // Send to Dead Letter Topic
+                sendToDLT(request, e)
+            }
+        }
+        logger.info("Batch processing complete")
+    }
+}
+
+private fun sendToDLT(request: MobilePushRequest, exception: Exception) {
+    try {
+        // Create a wrapped message with the original request and error details
+        val dltMessage = DeadLetterMessage(
+            originalMessage = request,
+            exceptionMessage = exception.message,
+            exceptionClass = exception.javaClass.name,
+            timestamp = System.currentTimeMillis()
+        )
+
+        // Send to a dedicated Dead Letter Topic
+        deadLetterProducer.send("mobile-push-dlt", dltMessage)
+        logger.info("Message sent to DLT: {}", request)
+    } catch (e: Exception) {
+        logger.error("Failed to send message to DLT: {}", request, e)
+    }
+}</code>
+        </pre>
+
+        <p class="text-gray-700 dark:text-gray-400 mt-4">
+          With this approach, messages that fail processing are:
+        </p>
+        <ol class="max-w-md space-y-1 text-gray-700 list-decimal list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Logged with detailed error information</li>
+          <li class="whitespace-nowrap mobile-wrap">Wrapped with additional metadata about the failure</li>
+          <li class="whitespace-nowrap mobile-wrap">Sent to a dedicated Dead Letter Topic for later analysis or retry</li>
+        </ol>
+        <p class="text-gray-700 dark:text-gray-400 mt-4">
+          You can also implement a separate consumer for the DLT that could attempt to reprocess messages after a delay or alert operations staff about persistent failures.
+        </p>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Considerations</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap"><strong>Memory Usage:</strong> The queue uses memory, so consider the potential queue size during traffic spikes</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Application Restart:</strong> Queue contents are lost on application restart - consider persistent queues for critical notifications</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Monitoring:</strong> Implement monitoring for queue size to detect potential backlog issues</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Error Handling:</strong> Implement robust error handling to prevent queue processing from stopping</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Scaling:</strong> In clustered environments, each instance will have its own queue and rate limit</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Alternative Approaches</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap"><strong>Kafka Consumer Pause/Resume:</strong> Temporarily pause consumption when processing is backed up</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>External Rate Limiters:</strong> Use libraries like Resilience4j or Bucket4j</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Distributed Rate Limiting:</strong> Use Redis-based rate limiters for clustered environments</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Kafka Streams:</strong> For more complex throttling requirements</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Conclusion</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          Implementing rate limiting for Kafka consumers using an internal queue is a simple yet effective approach for controlling message processing rates. This pattern is particularly useful for high-volume notification systems where controlling the throughput is essential for system stability and downstream service protection.
+        </p>
+        <p class="text-gray-700 dark:text-gray-400 mt-2">
+          The implementation shown here provides a configurable, stable way to handle varying loads while ensuring all messages are eventually processed. For production systems, consider the additional factors mentioned in the considerations section to ensure reliability and robustness.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="max-xl:hidden">
+    <div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
+      <div class="flex flex-col gap-3">
+        <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit="DAN-2nMLIisQJKH9qMpe"
+             data-ad-width="160"
+             data-ad-height="600"></ins>
+      </div>
+    </div>
+  </div>
+</div>

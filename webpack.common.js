@@ -98,6 +98,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/kafka-consumer-rate.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/kafka-consumer-rate.hbs'), 'utf8'),
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: 'blog/software-engineer/list.html',
       chunks: ['blog_software_engineer_list'],
       templateParameters: {
