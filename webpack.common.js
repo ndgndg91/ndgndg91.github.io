@@ -16,7 +16,7 @@ module.exports = {
     xml_parser: './js/tools/string/xml-parser.js',
     random_hex: './js/tools/string/random-hex.js',
     string_diff_checker: './js/tools/string/string-diff-checker.js',
-    string_analyzer: './js/tools/string/string-analyzer.js',
+    byte_counter: './js/tools/string/byte-counter.js',
     uuid: './js/tools/string/uuid.js',
     timestamp: './js/tools/time/timestamp.js',
     sha1: './js/tools/hash/sha1.js',
@@ -186,10 +186,10 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
-      filename: 'tools/string/string-analyzer.html',
-      chunks: ['string_analyzer'],
+      filename: 'tools/string/byte-counter.html',
+      chunks: ['byte_counter'],
       templateParameters: {
-        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/string-analyzer.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/byte-counter.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new HtmlWebpackPlugin({

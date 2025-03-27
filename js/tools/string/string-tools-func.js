@@ -90,7 +90,7 @@ export function getByteLength(str) {
   return new TextEncoder().encode(str).length;
 }
 
-export function analyzeString() {
+export function counteByte() {
   const input = document.getElementById('string-input').value;
   const lengthElement = document.getElementById('string-length');
   const bytesElement = document.getElementById('string-bytes');
