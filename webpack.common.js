@@ -106,6 +106,14 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/simple-distributed-id-generation.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/simple-distributed-id-generation.hbs'), 'utf8'),
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: 'blog/software-engineer/list.html',
       chunks: ['blog_software_engineer_list'],
       templateParameters: {

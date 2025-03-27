@@ -1,0 +1,318 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true">
+      Developer Blog
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      Effective Identifier Generation Strategies in Distributed Environments
+    </h1>
+    <div class="mt-6 prose dark:prose-invert">
+      <div class="mt-6">
+        <p>
+          Generating unique identifiers in distributed systems presents significant challenges. While single-server environments can easily rely on auto-increment values or sequences, distributed environments where multiple servers must simultaneously generate IDs require careful consideration to ensure efficiency and avoid duplication.
+        </p>
+
+        <p>
+          In this article, we'll explore an effective implementation of a unique identifier generator designed for distributed environments: the <code class="inline-code">DistributedIdGenerator</code>.
+        </p>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Requirements for Distributed Identifiers</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap"><strong>Uniqueness:</strong> Each identifier must be unique across the entire system.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Scalability:</strong> The system should be capable of generating thousands or millions of identifiers per second.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Time-sortability:</strong> Being able to sort identifiers chronologically is often valuable.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Compactness:</strong> Identifiers should be appropriately sized, considering storage space and transmission bandwidth.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Unpredictability:</strong> In security-sensitive contexts, identifiers should not be easily predictable.</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Implementation Example: DistributedIdGenerator</h2>
+        <p>Here's an example implementation of an identifier generator for distributed environments:</p>
+
+        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-auto">
+          <code>
+import kr.co.example.global.extension.now
+import java.time.ZoneOffset
+import java.util.concurrent.atomic.AtomicLong
+
+class DistributedIdGenerator(
+    private val serverId: Int
+) {
+    companion object {
+        const val MAX_SERVER_ID = 1000
+    }
+
+    private val maxSequence = 999999
+    private val counter = AtomicLong()
+
+    init {
+        require(serverId &lt; MAX_SERVER_ID) {
+            throw IllegalStateException("exceed max server id $serverId")
+        }
+    }
+
+    fun generate(): String {
+        val timestamp = now().toEpochSecond(ZoneOffset.UTC)
+        val uniqueId = counter.updateAndGet { current ->
+            if (current >= maxSequence) 0 else current + 1
+        }
+        return String.format("%s%03d%06d", timestamp, serverId, uniqueId)
+    }
+}</code></pre>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Implementation Analysis</h2>
+        <p>This implementation works as follows:</p>
+
+        <div class="bg-gray-100 dark:bg-gray-800 border-l-4 border-blue-500 p-4 my-4 rounded-r">
+          <ol class="space-y-2">
+            <li><strong>Timestamp Utilization:</strong> Uses the current time in seconds (UTC) as a timestamp.</li>
+            <li><strong>Server ID:</strong> Each server has a unique ID (0-999), which is included in the identifier.</li>
+            <li><strong>Sequence Number:</strong> Uses an AtomicLong-managed sequence number (0-999999) to distinguish identifiers generated within the same second.</li>
+            <li><strong>Reset Logic:</strong> When the sequence number reaches its maximum value, it resets to 0.</li>
+          </ol>
+        </div>
+
+        <p>The final identifier format is: "Timestamp (seconds) + Server ID (3 digits) + Sequence Number (6 digits)".</p>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+          <!-- Background -->
+          <rect width="800" height="420" fill="#f8f9fa" rx="10" ry="10"/>
+
+          <!-- Title -->
+          <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Distributed ID Generation Architecture</text>
+
+          <!-- Server 1 -->
+          <rect x="80" y="100" width="180" height="220" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="8" ry="8"/>
+          <text x="170" y="130" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Server 1</text>
+          <text x="170" y="155" font-family="Arial" font-size="14" text-anchor="middle">ServerId = 001</text>
+
+          <!-- Server 1 ID Generator -->
+          <rect x="100" y="170" width="140" height="70" fill="#bae7ff" stroke="#1890ff" stroke-width="1" rx="5" ry="5"/>
+          <text x="170" y="195" font-family="Arial" font-size="14" text-anchor="middle">ID Generator</text>
+          <text x="170" y="220" font-family="Arial" font-size="12" text-anchor="middle">counter = 000001</text>
+
+          <!-- Server 1 Generated IDs -->
+          <rect x="100" y="250" width="140" height="60" fill="#f0f5ff" stroke="#2f54eb" stroke-width="1" rx="5" ry="5"/>
+          <text x="170" y="270" font-family="Arial" font-size="12" text-anchor="middle">Generated IDs:</text>
+          <text x="170" y="290" font-size="11" text-anchor="middle" font-family="monospace">1679558400001000001</text>
+          <text x="170" y="305" font-size="11" text-anchor="middle" font-family="monospace">1679558400001000002</text>
+
+          <!-- Server 2 -->
+          <rect x="310" y="100" width="180" height="220" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="8" ry="8"/>
+          <text x="400" y="130" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Server 2</text>
+          <text x="400" y="155" font-family="Arial" font-size="14" text-anchor="middle">ServerId = 002</text>
+
+          <!-- Server 2 ID Generator -->
+          <rect x="330" y="170" width="140" height="70" fill="#bae7ff" stroke="#1890ff" stroke-width="1" rx="5" ry="5"/>
+          <text x="400" y="195" font-family="Arial" font-size="14" text-anchor="middle">ID Generator</text>
+          <text x="400" y="220" font-family="Arial" font-size="12" text-anchor="middle">counter = 000003</text>
+
+          <!-- Server 2 Generated IDs -->
+          <rect x="330" y="250" width="140" height="60" fill="#f0f5ff" stroke="#2f54eb" stroke-width="1" rx="5" ry="5"/>
+          <text x="400" y="270" font-family="Arial" font-size="12" text-anchor="middle">Generated IDs:</text>
+          <text x="400" y="290" font-size="11" text-anchor="middle" font-family="monospace">1679558400002000001</text>
+          <text x="400" y="305" font-size="11" text-anchor="middle" font-family="monospace">1679558400002000002</text>
+
+          <!-- Server 3 -->
+          <rect x="540" y="100" width="180" height="220" fill="#e6f7ff" stroke="#1890ff" stroke-width="2" rx="8" ry="8"/>
+          <text x="630" y="130" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Server 3</text>
+          <text x="630" y="155" font-family="Arial" font-size="14" text-anchor="middle">ServerId = 003</text>
+
+          <!-- Server 3 ID Generator -->
+          <rect x="560" y="170" width="140" height="70" fill="#bae7ff" stroke="#1890ff" stroke-width="1" rx="5" ry="5"/>
+          <text x="630" y="195" font-family="Arial" font-size="14" text-anchor="middle">ID Generator</text>
+          <text x="630" y="220" font-family="Arial" font-size="12" text-anchor="middle">counter = 000002</text>
+
+          <!-- Server 3 Generated IDs -->
+          <rect x="560" y="250" width="140" height="60" fill="#f0f5ff" stroke="#2f54eb" stroke-width="1" rx="5" ry="5"/>
+          <text x="630" y="270" font-family="Arial" font-size="12" text-anchor="middle">Generated IDs:</text>
+          <text x="630" y="290" font-size="11" text-anchor="middle" font-family="monospace">1679558400003000001</text>
+          <text x="630" y="305" font-size="11" text-anchor="middle" font-family="monospace">1679558400003000002</text>
+
+          <!-- ID Structure Explanation -->
+          <rect x="110" y="340" width="580" height="60" fill="#f9f0ff" stroke="#722ed1" stroke-width="2" rx="5" ry="5"/>
+          <text x="400" y="365" font-family="Arial" font-size="14" text-anchor="middle">
+            <tspan x="400" dy="0" font-weight="bold">ID Structure:</tspan>
+            <tspan x="400" dy="20"> Timestamp (10 digits) + ServerId (3 digits) + Sequence (6 digits)</tspan>
+          </text>
+
+          <!-- Lines connecting components -->
+          <path d="M170,240 L170,250" stroke="#1890ff" stroke-width="2" fill="none"/>
+          <path d="M400,240 L400,250" stroke="#1890ff" stroke-width="2" fill="none"/>
+          <path d="M630,240 L630,250" stroke="#1890ff" stroke-width="2" fill="none"/>
+        </svg>
+
+        <p class="mt-4">The diagram above illustrates how multiple servers can generate unique IDs simultaneously without coordination. Each server:</p>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Uses the same timestamp component (when generating IDs in the same second)</li>
+          <li class="whitespace-nowrap mobile-wrap">Incorporates its unique server ID in the middle section</li>
+          <li class="whitespace-nowrap mobile-wrap">Maintains its own sequence counter that increments independently</li>
+        </ul>
+        <p>This ensures that even if multiple servers generate IDs at the exact same millisecond, the resulting IDs will still be globally unique.</p>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Key Benefits</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap"><strong>Distributed by Design:</strong> By incorporating a server ID, the generator ensures uniqueness across multiple servers.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>High Throughput:</strong> Can generate up to 1 million unique IDs per second per server.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Time-ordered:</strong> IDs are naturally sorted by time due to the timestamp prefix.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Bounded Length:</strong> Maximum length is predictable (usually around 19-20 characters for current timestamps).</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>No Coordination Needed:</strong> Servers don't need to communicate to generate unique IDs.</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Verification with Tests</h2>
+        <p>The following test code verifies that the identifier generator meets the requirements:</p>
+
+        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-auto">
+<code>import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.RepeatedTest
+import org.junit.jupiter.api.Test
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+
+class DistributedIdGeneratorTest {
+    private val DistributedIdGenerator = DistributedIdGenerator(1)
+
+    @Test
+    @DisplayName("serverId_validation")
+    fun test_constructor() {
+        // given
+        val invalidServerId = 1000
+        val maxServerId = 999
+        // when
+        val failedResult = runCatching { DistributedIdGenerator(invalidServerId) }
+            .onFailure { it.printStackTrace() }
+        val successResult = runCatching { DistributedIdGenerator(maxServerId) }
+            .onFailure { it.printStackTrace() }
+        // then
+        assertThat(failedResult.isFailure).isTrue
+        assertThat(failedResult.exceptionOrNull()).isInstanceOf(IllegalStateException::class.java)
+        assertThat(successResult.isSuccess).isTrue
+    }
+
+    @RepeatedTest(10)
+    @DisplayName("should_generate_1M_ids_per_second_with_max_length_20")
+    fun test_generate_should_not_over_20_length_should_not_duplicated_value() {
+        val totalKeys = 1_000_000 // Total number of keys to generate
+        val threadCount = 10 // Number of threads to use
+        val keysPerThread = totalKeys / threadCount // Keys to generate per thread
+        val generatedKeys = ConcurrentHashMap.newKeySet&lt;String&gt;() // ConcurrentHashSet to check for duplicates
+        val executor = Executors.newFixedThreadPool(threadCount) // Thread pool creation
+
+        (1..threadCount).forEach { i ->
+            executor.submit {
+                (1..keysPerThread).forEach { j ->
+                    val key = DistributedIdGenerator.generate()
+                    assertTrue(key.length &lt;= 20, "Key length exceeded 20 characters: $key")
+                    generatedKeys.add(key) // Add the generated key to the Set
+                }
+            }
+        }
+
+        // Wait for all threads to complete their work
+        executor.shutdown()
+        executor.awaitTermination(1, TimeUnit.HOURS)
+
+        // Verify that the total number of keys generated matches the expected count
+        assertEquals(totalKeys, generatedKeys.size, "Duplicate keys detected!")
+    }
+}</code></pre>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Potential Improvements</h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap"><strong>Millisecond Precision:</strong> Using milliseconds instead of seconds would allow for more identifiers per time unit.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Snowflake Variation:</strong> Twitter's Snowflake ID format could be adopted for improved bit utilization.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>UUID Alternative:</strong> For cases where guaranteed uniqueness is more important than sequentiality.</li>
+          <li class="whitespace-nowrap mobile-wrap"><strong>Persistence:</strong> For recovering sequence numbers after restarts to prevent possible collisions.</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Spring Boot Integration Example</h2>
+        <p>Here's an example of how to integrate the DistributedIdGenerator into a Spring Boot application:</p>
+
+        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-auto">
+<code>import kr.co.example.global.ActiveProfileManager
+import org.slf4j.LoggerFactory
+import org.springframework.boot.SpringApplication
+import org.springframework.context.ApplicationContext
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.context.annotation.Configuration
+import kotlin.math.absoluteValue
+
+@Configuration
+@ComponentScan(basePackages = ["kr.co.example.notification"])
+class BeanConfig(
+    private val detector: ActiveProfileManager,
+    private val applicationContext: ApplicationContext
+) {
+    private val logger = LoggerFactory.getLogger(javaClass)
+
+    @Bean
+    fun distributedIdGenerator(): DistributedIdGenerator {
+        val serverId: Int = if (detector.isLocal()) {
+            1
+        } else {
+            val podName = System.getenv("HOSTNAME")
+            if (podName.isNullOrEmpty()) {
+                logger.info("HOSTNAME is not set. Shutting down the application.")
+                SpringApplication.exit(applicationContext) // Gracefully shutdown Spring application
+            }
+            val uniquePart = podName.substringAfterLast("-")
+            uniquePart.hashCode().absoluteValue.rem(DistributedIdGenerator.MAX_SERVER_ID)
+        }
+        logger.info("server id is : {}", serverId)
+        return DistributedIdGenerator(serverId)
+    }
+  }</code></pre>
+
+        <p>This configuration class demonstrates intelligent server ID assignment:</p>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">In local development environments, it uses a hardcoded server ID (1).</li>
+          <li class="whitespace-nowrap mobile-wrap">In Kubernetes environments, it extracts the pod name from the HOSTNAME environment variable.</li>
+          <li class="whitespace-nowrap mobile-wrap">It generates a consistent server ID by hashing the unique part of the pod name and taking the modulo of MAX_SERVER_ID.</li>
+          <li class="whitespace-nowrap mobile-wrap">This ensures each pod gets a unique ID within the valid range, maintaining distributed ID generation across deployments.</li>
+        </ul>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Conclusion</h2>
+        <p>
+          Generating unique identifiers in distributed environments requires careful consideration of uniqueness, performance, and scalability. The approach presented here offers a simple yet effective solution that balances these requirements without needing external coordination between servers.
+        </p>
+
+        <p>
+          By combining a timestamp, server ID, and sequence number, this implementation can generate millions of unique identifiers per second across a distributed system, with each identifier being no longer than 20 characters.
+        </p>
+
+        <p>
+          When implementing your own distributed ID generation system, consider your specific requirements around sortability, predictability, and collision resistance to choose the most appropriate approach.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="max-xl:hidden">
+    <div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
+      <div class="flex flex-col gap-3">
+        <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit="DAN-2nMLIisQJKH9qMpe"
+             data-ad-width="160"
+             data-ad-height="600"></ins>
+      </div>
+    </div>
+  </div>
+</div>
