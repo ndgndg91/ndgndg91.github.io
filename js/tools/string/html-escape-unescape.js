@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const escapeButton = document.getElementById('escape-button');
   const unescapeButton = document.getElementById('unescape-button');
   const testButton = document.getElementById('test-button');
-  const copyButton = document.getElementById('copy-button');
 
   // HTML escape 함수
   function escapeHTML(str) {
@@ -38,15 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
   // Escape 버튼 이벤트 리스너
   escapeButton.addEventListener('click', function() {
     const inputText = inputTextarea.value;
-    const escapedText = escapeHTML(inputText);
-    resultTextarea.value = escapedText;
+    resultTextarea.value = escapeHTML(inputText);
   });
 
   // Unescape 버튼 이벤트 리스너
   unescapeButton.addEventListener('click', function() {
     const inputText = inputTextarea.value;
-    const unescapedText = unescapeHTML(inputText);
-    resultTextarea.value = unescapedText;
+    resultTextarea.value = unescapeHTML(inputText);
   });
 
   // 테스트 예제 버튼 이벤트 리스너
@@ -65,8 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     inputTextarea.value = testExample;
     // 자동으로 escape 실행
-    const escapedText = escapeHTML(testExample);
-    resultTextarea.value = escapedText;
+    resultTextarea.value = escapeHTML(testExample);
   });
 
 // Copy 버튼 동적 처리
