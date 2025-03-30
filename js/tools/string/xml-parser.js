@@ -30,9 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
         parseOutput.textContent = `파싱 오류: ${err.message}`;
       } else {
         parsedData = result;
-        renderTree(parsedData, parseOutput, 'root'); // 초기 뷰는 트리
-        treeViewButton.classList.add('bg-blue-500', 'text-white');
-        prettyPrintButton.classList.remove('bg-blue-500', 'text-white');
+        renderPrettyPrint(originalXml, parseOutput); // 초기 pretty print
+        // renderTree(parsedData, parseOutput, 'root');
+        treeViewButton.classList.remove('bg-blue-500', 'text-white');
+        prettyPrintButton.classList.add('bg-blue-500', 'text-white');
       }
     });
   }
