@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       parsedJson = JSON.parse(input);
-      renderTree(parsedJson, outputContent); // 초기 뷰는 트리
-      treeViewButton.classList.add('bg-blue-500', 'text-white');
-      prettyPrintButton.classList.remove('bg-blue-500', 'text-white');
+      renderPrettyPrint(parsedJson, outputContent);
+      prettyPrintButton.classList.add('bg-blue-500', 'text-white');
+      treeViewButton.classList.remove('bg-blue-500', 'text-white');
     } catch (error) {
       outputContent.innerHTML = `error: invalid JSON format.<br>${error.message}`;
       outputContent.style.color = 'red';
