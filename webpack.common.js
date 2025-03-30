@@ -17,6 +17,7 @@ module.exports = {
     random_hex: './js/tools/string/random-hex.js',
     string_diff_checker: './js/tools/string/string-diff-checker.js',
     byte_counter: './js/tools/string/byte-counter.js',
+    html_escape_unescape: './js/tools/string/html-escape-unescape.js',
     uuid: './js/tools/string/uuid.js',
     timestamp: './js/tools/time/timestamp.js',
     sha1: './js/tools/hash/sha1.js',
@@ -190,6 +191,14 @@ module.exports = {
       chunks: ['byte_counter'],
       templateParameters: {
         content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/byte-counter.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/string/html-escape-unescape.html',
+      chunks: ['html_escape_unescape'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/string/html-escape-unescape.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new HtmlWebpackPlugin({
