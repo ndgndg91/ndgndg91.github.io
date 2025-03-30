@@ -11,6 +11,25 @@ export function copyToClipboard(elementId) {
     });
 }
 
+export function copyTextAreaToClipboard(elementId) {
+  const element = document.getElementById(elementId);
+
+  // textarea, input 등의 form 요소는 .value를 사용
+  // 그 외의 요소는 textContent 사용
+  const text = element.tagName === 'TEXTAREA' || element.tagName === 'INPUT'
+    ? element.value
+    : element.textContent;
+
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      alert('copied: ' + text);
+    })
+    .catch(err => {
+      alert('Copying failed.');
+      console.error('coping error:', err);
+    });
+}
+
 document.querySelector('#addBookmark').addEventListener('click', function() {
   if (window.sidebar && window.sidebar.addPanel) { // Firefox <23
 

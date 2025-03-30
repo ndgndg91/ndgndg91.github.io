@@ -2,7 +2,7 @@ import '../../../css/tailwind.css'
 import '../../navigation';
 import '../../utils'
 import { generateRandomHex } from './string-tools-func.js';
-import { copyToClipboard } from "../../utils";
+import {copyTextAreaToClipboard} from "../../utils";
 
 document.addEventListener('DOMContentLoaded', () => {
   // Random Hex
@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Copy 버튼 동적 처리
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      const targetId = btn.previousElementSibling.id; // 결과 span의 id
-      copyToClipboard(targetId);
+      copyTextAreaToClipboard("random-hex-result");
     });
   });
 });
