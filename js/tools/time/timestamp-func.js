@@ -71,60 +71,38 @@ export function convertTimestampToDatetime() {
 
 export function convertDatetimeToTimestamp() {
   const datetimeInput = document.getElementById("datetime-input").value.trim();
-  const timezoneSelect = document.getElementById("datetime-timezone").value;
+  const timezone = document.getElementById("datetime-timezone").value;
   const resultElement = document.getElementById("datetime-to-timestamp-result");
 
-  // 입력 형식이 올바른지 확인 (YYYY MM DD HH MM SS)
+  // 입력 형식 검증 (YYYY MM DD HH MM SS)
   const parts = datetimeInput.split(" ");
   if (parts.length !== 6) {
-    resultElement.textContent = "format: YYYY MM DD HH MM SS";
+    resultElement.textContent = "형식: YYYY MM DD HH MM SS";
     return;
   }
 
-  const [year, month, day, hours, minutes, seconds] = parts;
-  const dateString = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+  try {
+    const [year, month, day, hour, minute, second] = parts.map(Number);
 
-  // 날짜 유효성 검사
-  const date = new Date(dateString);
-  if (isNaN(date.getTime())) {
-    resultElement.textContent = "enter valid date/time.";
-    return;
+    // 사용자가 입력한 시간을 해당 시간대의 시간으로 간주
+    const userDate = new Date(Date.UTC(year, month-1, day, hour, minute, second));
+
+    // 시간대 오프셋 적용 (해당 시간대와 UTC 사이의 차이)
+    const tzOffset = getTimezoneOffset(timezone, new Date());
+    const timestamp = Math.floor(userDate.getTime() / 1000) - tzOffset;
+
+    resultElement.textContent = timestamp;
+  } catch (error) {
+    resultElement.textContent = "잘못된 날짜 또는 시간대";
+    console.error(error);
   }
+}
 
-  // 선택한 시간대에서 날짜/시간의 각 부분을 추출
-  const options = {
-    timeZone: timezoneSelect,
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-    hour12: false
-  };
-  const formatter = new Intl.DateTimeFormat('en-US', options);
-  const partsInTimeZone = formatter.formatToParts(date);
-
-  // 각 부분을 추출
-  const yearPart = partsInTimeZone.find(part => part.type === 'year').value;
-  const monthPart = partsInTimeZone.find(part => part.type === 'month').value;
-  const dayPart = partsInTimeZone.find(part => part.type === 'day').value;
-  const hourPart = partsInTimeZone.find(part => part.type === 'hour').value;
-  const minutePart = partsInTimeZone.find(part => part.type === 'minute').value;
-  const secondPart = partsInTimeZone.find(part => part.type === 'second').value;
-
-  // UTC 기준 Date 객체 생성
-  const utcDate = new Date(Date.UTC(
-    parseInt(yearPart, 10),
-    parseInt(monthPart, 10) - 1, // 월은 0부터 시작
-    parseInt(dayPart, 10),
-    parseInt(hourPart, 10),
-    parseInt(minutePart, 10),
-    parseInt(secondPart, 10)
-  ));
-
-  // 타임스탬프 계산 (초 단위)
-  resultElement.textContent = Math.floor(utcDate.getTime() / 1000);
+// 시간대 오프셋을 초 단위로 계산하는 함수
+function getTimezoneOffset(timezone, date) {
+  const tzDate = new Date(date.toLocaleString('en-US', { timeZone: timezone }));
+  const utcDate = new Date(date.toLocaleString('en-US', { timeZone: 'UTC' }));
+  return (tzDate - utcDate) / 1000;
 }
 
 const timezoneSelect = document.getElementById("timezone-select");
