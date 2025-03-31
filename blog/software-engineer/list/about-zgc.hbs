@@ -1,18 +1,22 @@
 <div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
   <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
-    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true">
-      JVM Performance
-    </p>
-    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
-      About ZGC
-    </h1>
+    <header class="mb-8">
+      <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+        data-section="true">
+        JVM Performance
+      </p>
+      <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+        About ZGC
+      </h1>
+      <div class="text-sm text-gray-500 mt-2">Updated: March 31, 2025</div>
+    </header>
 
-    <h2 id="latest-updates" class="text-2xl font-bold mt-8 mb-4">Latest Updates in JDK 24</h2>
+    <h2 id="latest-updates" class="text-2xl font-bold mb-4 text-indigo-700">Latest Updates in JDK 24</h2>
     <div class="mb-4">
       JDK 24 was officially released in March 2024, bringing several improvements to ZGC. These enhancements continue to refine ZGC's performance characteristics and operational efficiency.
     </div>
 
-    <h3 class="text-xl font-bold mt-6 mb-3">Generational ZGC Improvements</h3>
+    <h3 class="font-bold text-lg mb-2">Generational ZGC Improvements</h3>
     <div class="mb-4">
       The generational implementation of ZGC, first introduced in JDK 21, has been significantly stabilized in JDK 24. Key improvements include:
     </div>
@@ -29,7 +33,7 @@
       </li>
     </ul>
 
-    <h3 class="text-xl font-bold mt-6 mb-3">Memory Management Enhancements</h3>
+    <h3 class="font-bold text-lg mb-2">Memory Management Enhancements</h3>
     <div class="mb-4">
       JDK 24 introduces several improvements to ZGC's memory management capabilities:
     </div>
@@ -46,7 +50,7 @@
       </li>
     </ul>
 
-    <h3 class="text-xl font-bold mt-6 mb-3">Diagnostic Improvements</h3>
+    <h3 class="font-bold text-lg mb-2">Diagnostic Improvements</h3>
     <div class="mb-4">
       JDK 24 enhances ZGC's observability and diagnostic capabilities:
     </div>
@@ -63,7 +67,7 @@
       </li>
     </ul>
 
-    <h3 class="text-xl font-bold mt-6 mb-3">Configuration and Tuning</h3>
+    <h3 class="font-bold text-lg mb-2">Configuration and Tuning</h3>
     <div class="mb-4">
       JDK 24 continues the trend of making ZGC more self-tuning:
     </div>
@@ -77,7 +81,7 @@
       </li>
     </ul>
 
-    <h3 class="text-xl font-bold mt-6 mb-3">Future Direction</h3>
+    <h3 class="font-bold text-lg mb-2">Future Direction</h3>
     <div class="mb-4">
       Looking ahead to JDK 25 and beyond, the ZGC development team is focusing on several areas:
     </div>
@@ -233,7 +237,7 @@
 
     <!-- Table of Contents for mobile view -->
     <div class="xl:hidden mt-4 mb-6 border rounded p-4 bg-gray-50 dark:bg-gray-800">
-      <h3 class="text-lg font-medium mb-2">Table of Contents</h3>
+      <h3 class="font-bold text-lg mb-2">Table of Contents</h3>
       <ul class="space-y-1 text-sm">
         <li><a href="#z-garbage-collector" class="text-blue-600 hover:underline dark:text-blue-400">Z Garbage Collector</a></li>
         <li><a href="#configuration" class="text-blue-600 hover:underline dark:text-blue-400">Configuration & Tuning</a></li>
@@ -382,8 +386,7 @@
           </marker>
         </defs>
       </svg>
-
-      <h2 id="configuration" class="text-2xl font-bold mt-8 mb-4">Configuration & Tuning</h2>
+      <h2 id="configuration" class="text-2xl font-bold mb-4 text-indigo-700">Configuration & Tuning</h2>
       <div class="mb-4">Like G1 GC, ZGC requires minimal configuration and adapts automatically during application execution. ZGC dynamically resizes generations, adjusts the number of GC threads, and modifies tenuring thresholds. The primary tuning point is increasing the maximum heap size (<code class="inline-code">-Xmx</code>).</div>
 
       <div class="mb-4">ZGC has two versions: generational and non-generational. The non-generational version is legacy and doesn't use the generation concept during execution. The generational version was released with JDK 21 and is recommended for use.</div>
@@ -392,9 +395,9 @@
 
       <div class="mb-4">The non-generational version uses only the -XX:+UseZGC option.</div>
 
-      <h2 id="heap-size" class="text-2xl font-bold mt-8 mb-4">Setting Heap Size</h2>
+      <h2 id="heap-size"class="text-2xl font-bold mb-4 text-indigo-700">Setting Heap Size</h2>
 
-      <h3 class="text-xl font-bold mt-6 mb-3">Headroom</h3>
+      <h3 class="font-bold text-lg mb-2">Headroom</h3>
       <div class="mb-4">JVM Heap Headroom refers to the free space between the memory allocated for storing actively used data and the maximum heap size (<code class="inline-code">-Xmx</code>). This buffer allows the system to create more objects or process more data while helping reduce GC latency.</div>
 
       <div class="mb-4">Without headroom, Out of Memory (OOM) errors can occur, but having too much free space wastes system resources. Monitoring and managing JVM Heap Headroom is essential for performance optimization and stability, preventing memory-related issues while ensuring efficient execution.</div>
@@ -403,7 +406,7 @@
 
       <p class="mb-4">Another heap size-related option in ZGC is <code class="inline-code">-XX:SoftMaxHeapSize</code>, which sets a soft limit on how large the heap can grow. ZGC tries not to exceed this limit but may grow up to the maximum heap size if necessary. This exceeds the soft limit only when needed to prevent the application from pausing while waiting for GC to reclaim memory. For example, with <code class="inline-code">-Xmx5g -XX:SoftMaxHeapSize=4g</code>, ZGC typically uses up to 4GB but can temporarily use up to 5GB.</p>
 
-      <h2 id="gc-threads" class="text-2xl font-bold mt-8 mb-4">Setting Concurrent GC Threads</h2>
+      <h2 id="gc-threads" class="text-2xl font-bold mb-4 text-indigo-700">Setting Concurrent GC Threads</h2>
       <div class="mb-4">When using the non-generational version, concurrent GC threads can be tuned with <code class="inline-code">-XX:ConcGCThreads=&lt;number&gt;</code>. ZGC has heuristics to automatically set the thread count, which generally works well but may need adjustment based on application characteristics. This option fundamentally determines how much CPU time to allocate to GC. Setting too many threads can cause GC to take excessive CPU time from the application, leading to performance degradation. Setting too few can cause the application to allocate garbage faster than GC can collect it.</div>
 
       <div class="mb-4">From JDK 17 onward, ZGC dynamically expands and shrinks the number of concurrent GC threads, eliminating the need to configure this option.</div>
@@ -412,7 +415,7 @@
 
       <div class="mb-4">If your application requires minimized GC delays and fast response times, ensure CPU utilization does not exceed 70%.</div>
 
-      <h2 id="returning-memory" class="text-2xl font-bold mt-8 mb-4">Returning Unused Memory to the Operating System</h2>
+      <h2 id="returning-memory" class="text-2xl font-bold mb-4 text-indigo-700">Returning Unused Memory to the Operating System</h2>
       <div class="mb-4">By default, ZGC uncommits unused memory and returns it to the OS. This can negatively impact application thread latency. You can disable this feature with the <code class="inline-code">-XX:-ZUncommit</code> option. Additionally, memory is not uncommitted below the minimum heap size (<code class="inline-code">-Xms</code>). Setting <code class="inline-code">-Xmx</code> and <code class="inline-code">-Xms</code> to the same value implicitly disables this default behavior.</div>
 
       <div class="mb-4">You can configure the uncommit delay with <code class="inline-code">-XX:ZUncommitDelay=&lt;seconds&gt;</code> (default 300 seconds). This specifies how long memory must remain unused before becoming eligible for uncommitting. By default, memory unused for 300 seconds (5 minutes) is uncommitted and returned to the OS.</div>
@@ -421,10 +424,10 @@
 
       <div class="mb-4">On Linux, uncommitting unused memory requires the fallocate(2) function that supports FALLOC_FL_PUNCH_HOLE, first introduced in kernel 3.5 (for tmpfs) and 4.3 (for hugetlbfs).</div>
 
-      <h2 id="large-pages" class="text-2xl font-bold mt-8 mb-4">Using Large Pages</h2>
+      <h2 id="large-pages" class="text-2xl font-bold mb-4 text-indigo-700">Using Large Pages</h2>
       <div class="mb-4">Enabling large pages typically provides better throughput, latency, and startup time. However, configuration is complex and requires root privileges, so it's disabled by default. Setup instructions are available at <a href="https://wiki.openjdk.org/display/zgc/Main#Main-JDK17" class="text-blue-600 hover:underline">https://wiki.openjdk.org/display/zgc/Main#Main-JDK17</a>.</div>
 
-      <h2 id="numa" class="text-2xl font-bold mt-8 mb-4">Enabling NUMA (Non-Uniform Memory Access) Support</h2>
+      <h2 id="numa" class="text-2xl font-bold mb-4 text-indigo-700">Enabling NUMA (Non-Uniform Memory Access) Support</h2>
       <div class="mb-4">By default, NUMA support is enabled, but it can be automatically disabled if the JVM detects that memory can only be used from a single NUMA node. This setting typically doesn't require attention. However, if you want to explicitly override the JVM's decision, you can manually enable or disable it using -XX:+UseNUMA or -XX:-UseNUMA. When running on NUMA machines (e.g., a multi-socket x86 machine), having this option enabled can provide noticeable performance improvements.</div>
 
       <h4 class="text-lg font-semibold mt-8 mb-2">References</h4>
@@ -434,7 +437,7 @@
       <div class="mb-1 ml-4">- <a href="https://www.baeldung.com/jvm-zgc-garbage-collector" class="text-blue-600 hover:underline">https://www.baeldung.com/jvm-zgc-garbage-collector</a></div>
       <div class="mb-1 ml-4">- <a href="https://en.wikipedia.org/wiki/Non-uniform_memory_access" class="text-blue-600 hover:underline">https://en.wikipedia.org/wiki/Non-uniform_memory_access</a></div>
 
-      <h2 class="text-2xl font-bold mt-8 mb-4">Conclusion</h2>
+      <h2 class="text-2xl font-bold mb-4 text-indigo-700">Conclusion</h2>
       <div class="mb-4">
         ZGC represents a significant advancement in Java garbage collection technology, focusing on low-latency while still maintaining good throughput. It's particularly well-suited for applications that:
       </div>
