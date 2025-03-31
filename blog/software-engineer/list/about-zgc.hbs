@@ -7,6 +7,100 @@
       About ZGC
     </h1>
 
+    <h2 id="latest-updates" class="text-2xl font-bold mt-8 mb-4">Latest Updates in JDK 24</h2>
+    <div class="mb-4">
+      JDK 24 was officially released in March 2024, bringing several improvements to ZGC. These enhancements continue to refine ZGC's performance characteristics and operational efficiency.
+    </div>
+
+    <h3 class="text-xl font-bold mt-6 mb-3">Generational ZGC Improvements</h3>
+    <div class="mb-4">
+      The generational implementation of ZGC, first introduced in JDK 21, has been significantly stabilized in JDK 24. Key improvements include:
+    </div>
+
+    <ul class="list-disc pl-6 mb-6">
+      <li class="mb-2">
+        <strong>Optimized Inter-Generational Reference Processing</strong> - The algorithms for handling references between generations have been refined, improving efficiency when objects in the old generation reference objects in the young generation.
+      </li>
+      <li class="mb-2">
+        <strong>Enhanced Remembered Set Management</strong> - Improved handling of the remembered set (the data structure tracking old-to-young references) reduces overhead and improves scalability in large applications.
+      </li>
+      <li class="mb-2">
+        <strong>More Adaptive Generation Sizing</strong> - The proportions of heap allocated to young and old generations are now more dynamically adjusted based on application behavior patterns.
+      </li>
+    </ul>
+
+    <h3 class="text-xl font-bold mt-6 mb-3">Memory Management Enhancements</h3>
+    <div class="mb-4">
+      JDK 24 introduces several improvements to ZGC's memory management capabilities:
+    </div>
+
+    <ul class="list-disc pl-6 mb-6">
+      <li class="mb-2">
+        <strong>Improved Memory Return Mechanism</strong> - The process of returning unused memory to the operating system has been optimized to be less intrusive to application performance, particularly valuable in container environments where resource efficiency is critical.
+      </li>
+      <li class="mb-2">
+        <strong>Large Heap Optimization</strong> - For very large heaps (8TB+), memory mapping efficiency has been improved, enabling better performance in memory-intensive enterprise applications.
+      </li>
+      <li class="mb-2">
+        <strong>Reduced Memory Fragmentation</strong> - Enhanced compaction algorithms minimize fragmentation more effectively, improving memory utilization in long-running applications.
+      </li>
+    </ul>
+
+    <h3 class="text-xl font-bold mt-6 mb-3">Diagnostic Improvements</h3>
+    <div class="mb-4">
+      JDK 24 enhances ZGC's observability and diagnostic capabilities:
+    </div>
+
+    <ul class="list-disc pl-6 mb-6">
+      <li class="mb-2">
+        <strong>Enhanced GC Logging</strong> - More detailed and structured logging helps identify potential issues and optimization opportunities. New log categories provide insight into specific ZGC operations.
+      </li>
+      <li class="mb-2">
+        <strong>Extended JFR Events</strong> - Java Flight Recorder now includes additional ZGC-specific events, allowing for more granular performance analysis of garbage collection activities.
+      </li>
+      <li class="mb-2">
+        <strong>Improved JMX Metrics</strong> - New management metrics have been added for monitoring ZGC's operation through JMX, aiding in real-time monitoring solutions.
+      </li>
+    </ul>
+
+    <h3 class="text-xl font-bold mt-6 mb-3">Configuration and Tuning</h3>
+    <div class="mb-4">
+      JDK 24 continues the trend of making ZGC more self-tuning:
+    </div>
+
+    <ul class="list-disc pl-6 mb-6">
+      <li class="mb-2">
+        <strong>Further Reduced Need for Manual Thread Sizing</strong> - The automatic thread management has been improved, making <code class="inline-code">-XX:ConcGCThreads</code> even less necessary in most deployments.
+      </li>
+      <li class="mb-2">
+        <strong>More Efficient Default Behavior</strong> - Out-of-the-box performance is improved, with better default settings for most common workloads.
+      </li>
+    </ul>
+
+    <h3 class="text-xl font-bold mt-6 mb-3">Future Direction</h3>
+    <div class="mb-4">
+      Looking ahead to JDK 25 and beyond, the ZGC development team is focusing on several areas:
+    </div>
+
+    <ul class="list-disc pl-6 mb-6">
+      <li class="mb-2">
+        <strong>Further Parallel Processing Optimization</strong> - Enhancing the scalability of ZGC on many-core systems, allowing efficient utilization of increasingly parallel hardware.
+      </li>
+      <li class="mb-2">
+        <strong>Refined Generational Strategies</strong> - More sophisticated object aging and promotion policies to better distinguish between short-lived and long-lived objects.
+      </li>
+      <li class="mb-2">
+        <strong>Tighter Container Integration</strong> - Improved awareness and adaptation to containerized environments, particularly in cloud-native deployments.
+      </li>
+    </ul>
+
+    <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+      <h3 class="font-medium text-blue-800 dark:text-blue-300 mb-2">JDK 24 Upgrade Recommendation</h3>
+      <p class="text-blue-700 dark:text-blue-400">
+        If you're using ZGC in production environments, upgrading to JDK 24 is recommended, especially for applications that benefit from generational garbage collection. The stability and performance improvements provide meaningful benefits with minimal migration effort.
+      </p>
+    </div>
+
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
       <!-- Background -->
       <rect width="900" height="700" fill="#f8f9fa" rx="10" ry="10"/>
