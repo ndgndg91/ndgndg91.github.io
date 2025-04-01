@@ -1,0 +1,465 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <header class="mb-8">
+      <div class="flex items-center gap-2 font-mono text-xs tracking-widest text-gray-600 uppercase">
+        Security
+      </div>
+      <h1 class="mt-2 text-3xl font-medium tracking-tight text-gray-950">
+        How to Prevent Replay Attacks
+      </h1>
+      <div class="text-sm text-gray-500 mt-2">Updated: April 1, 2025</div>
+    </header>
+
+    <article class="prose max-w-none">
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-indigo-700">What is a Replay Attack?</h2>
+        <p class="mb-4">
+          A replay attack is a type of network attack where an attacker intercepts valid network data packets and later reuses them. By retransmitting the data, the system processes it as legitimate data. Replay attacks are difficult to detect because they appear as normal requests. Additionally, they can be successful even if the original transmission was encrypted. Replay attacks can overload systems through repetitive requests, potentially disrupting normal system operations.
+        </p>
+
+        <div class="flex justify-center mb-6 mt-4" id="replay-attack-general-diagram">
+          <!-- SVG Replay Attack Diagram -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" class="rounded-lg shadow-md w-full max-w-2xl">
+            <!-- Background -->
+            <rect width="800" height="500" fill="#f8fafc" rx="10" ry="10"/>
+
+            <!-- Title -->
+            <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">Replay Attack Mechanism</text>
+
+            <!-- Entities -->
+            <g id="legitimate-sender">
+              <rect x="100" y="100" width="120" height="60" rx="5" ry="5" fill="#60a5fa" stroke="#2563eb" stroke-width="2"/>
+              <text x="160" y="135" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Sender</text>
+            </g>
+
+            <g id="legitimate-receiver">
+              <rect x="580" y="100" width="120" height="60" rx="5" ry="5" fill="#60a5fa" stroke="#2563eb" stroke-width="2"/>
+              <text x="640" y="135" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Receiver</text>
+            </g>
+
+            <g id="attacker">
+              <rect x="340" y="300" width="120" height="60" rx="5" ry="5" fill="#f87171" stroke="#dc2626" stroke-width="2"/>
+              <text x="400" y="335" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Attacker</text>
+            </g>
+
+            <!-- Communication channels -->
+            <line x1="220" y1="130" x2="580" y2="130" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5"/>
+            <text x="400" y="115" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#475569">Secure Channel</text>
+
+            <!-- Attack flow -->
+            <!-- 1. Original data transmission -->
+            <path d="M 220,130 L 400,130 L 400,300" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+            <text x="270" y="155" font-family="Arial, sans-serif" font-size="12" fill="#2563eb">1. Data capture</text>
+
+            <!-- 2. Data modification -->
+            <ellipse cx="400" cy="240" rx="30" ry="20" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+            <text x="400" y="245" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#92400e">Modify</text>
+
+            <!-- 3. Replay attack -->
+            <path d="M 460,300 C 520,300 520,130 580,130" stroke="#dc2626" stroke-width="2" fill="none" stroke-dasharray="4,2" marker-end="url(#arrowRed)"/>
+            <text x="520" y="200" font-family="Arial, sans-serif" font-size="12" fill="#dc2626" text-anchor="middle">2. Replay attack</text>
+
+            <!-- Legend -->
+            <rect x="600" y="400" width="150" height="80" rx="5" ry="5" fill="white" stroke="#94a3b8" stroke-width="1"/>
+            <text x="675" y="420" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">Legend</text>
+
+            <rect x="620" y="435" width="16" height="16" fill="#60a5fa" stroke="#2563eb" stroke-width="1"/>
+            <text x="645" y="448" font-family="Arial, sans-serif" font-size="12" fill="#1e293b" text-anchor="start">Legitimate entities</text>
+
+            <rect x="620" y="460" width="16" height="16" fill="#f87171" stroke="#dc2626" stroke-width="1"/>
+            <text x="645" y="473" font-family="Arial, sans-serif" font-size="12" fill="#1e293b" text-anchor="start">Attacker</text>
+
+            <!-- Explanatory notes -->
+            <text x="100" y="420" font-family="Arial, sans-serif" font-size="12" fill="#64748b">1. Attacker intercepts legitimate data packets</text>
+            <text x="100" y="440" font-family="Arial, sans-serif" font-size="12" fill="#64748b">2. Attacker may modify data or use it as-is</text>
+            <text x="100" y="460" font-family="Arial, sans-serif" font-size="12" fill="#64748b">3. Receiver processes replayed data as legitimate</text>
+
+            <!-- Arrow markers -->
+            <defs>
+              <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+              </marker>
+              <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <p class="mb-4">
+          As shown in the diagram, the attacker waits until data transmission begins. They then sniff the communication channel to extract the data. The attacker can acquire the data and potentially modify it before reusing it. Although the recipient receives modified data, they treat it as legitimate.
+        </p>
+
+        <p class="mb-4">
+          There are four main types of replay attacks: network, wireless, session, and HTTP.
+        </p>
+
+        <p class="mb-4">
+          Network replay attacks occur when attackers intercept network traffic and retransmit it later, using tools like Wireshark or tcpdump. Similarly, wireless replay attacks involve intercepting wireless communications and then retransmitting them.
+        </p>
+
+        <p class="mb-4">
+          Session replay attacks intercept sessions between two parties. HTTP replay attacks involve capturing HTTP requests and responses to execute the attack.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-indigo-700">Real-World Example</h2>
+
+        <div class="flex justify-center mb-6 mt-4" id="banking-replay-attack-diagram">
+          <!-- SVG Banking Replay Attack Example -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550">
+            <!-- Background -->
+            <rect width="900" height="550" fill="#f8fafc" rx="10" ry="10"/>
+
+            <!-- Title -->
+            <text x="450" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">Banking Replay Attack Example</text>
+
+            <!-- Entities -->
+            <!-- Alice -->
+            <g id="alice">
+              <rect x="100" y="100" width="120" height="60" rx="5" ry="5" fill="#60a5fa" stroke="#2563eb" stroke-width="2"/>
+              <text x="160" y="135" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Alice</text>
+              <image x="120" y="110" width="20" height="20" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci11c2VyIj48cGF0aCBkPSJNMjAgMjF2LTJhNCA0IDAgMCAwLTQtNEg4YTQgNCAwIDAgMC00IDR2MiI+PC9wYXRoPjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCI+PC9jaXJjbGU+PC9zdmc+"/>
+            </g>
+
+            <!-- Computer -->
+            <g id="computer">
+              <rect x="100" y="220" width="120" height="80" rx="5" ry="5" fill="#d1d5db" stroke="#9ca3af" stroke-width="2"/>
+              <rect x="115" y="230" width="90" height="50" rx="2" ry="2" fill="#f3f4f6"/>
+              <rect x="145" y="290" width="30" height="10" fill="#9ca3af"/>
+              <text x="160" y="260" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#1e293b">Login</text>
+            </g>
+
+            <!-- Bank Server -->
+            <g id="bank-server">
+              <rect x="700" y="150" width="120" height="180" rx="5" ry="5" fill="#a7f3d0" stroke="#10b981" stroke-width="2"/>
+              <text x="760" y="190" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">Bank Server</text>
+              <rect x="720" y="210" width="80" height="10" rx="2" ry="2" fill="#6ee7b7"/>
+              <rect x="720" y="230" width="80" height="10" rx="2" ry="2" fill="#6ee7b7"/>
+              <rect x="720" y="250" width="80" height="10" rx="2" ry="2" fill="#6ee7b7"/>
+              <rect x="720" y="270" width="80" height="10" rx="2" ry="2" fill="#6ee7b7"/>
+            </g>
+
+            <!-- Attacker Bob -->
+            <g id="bob">
+              <rect x="400" y="360" width="120" height="60" rx="5" ry="5" fill="#f87171" stroke="#dc2626" stroke-width="2"/>
+              <text x="460" y="410" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ffffff">Bob (Attacker)</text>
+              <image x="420" y="370" width="20" height="20" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgY2xhc3M9ImZlYXRoZXIgZmVhdGhlci11c2VyIj48cGF0aCBkPSJNMjAgMjF2LTJhNCA0IDAgMCAwLTQtNEg4YTQgNCAwIDAgMC00IDR2MiI+PC9wYXRoPjxjaXJjbGUgY3g9IjEyIiBjeT0iNyIgcj0iNCI+PC9jaXJjbGU+PC9zdmc+"/>
+            </g>
+
+            <!-- Internet Cloud -->
+            <ellipse cx="450" cy="240" rx="150" ry="60" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+            <text x="450" y="245" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#64748b">Internet</text>
+
+            <!-- Flow of events -->
+            <!-- Step 1: Alice logs in -->
+            <path d="M 220,240 Q 320,220 400,220" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+            <circle cx="310" cy="220" r="16" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="310" y="225" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e40af">1</text>
+            <text x="280" y="200" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" text-anchor="middle">Login request</text>
+
+            <!-- Step 2: Attack capture -->
+            <path d="M 380,250 L 410,360" stroke="#dc2626" stroke-width="2" fill="none" stroke-dasharray="4,2" marker-end="url(#arrowRed)"/>
+            <circle cx="395" cy="315" r="16" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="395" y="320" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#b91c1c">2</text>
+            <text x="350" y="320" font-family="Arial, sans-serif" font-size="12" fill="#dc2626" text-anchor="middle">Capture</text>
+
+            <!-- Step 3: Normal response -->
+            <path d="M 500,220 Q 580,220 700,220" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+            <circle cx="600" cy="220" r="16" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="600" y="225" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e40af">3</text>
+            <text x="600" y="200" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" text-anchor="middle">Server processes request</text>
+
+            <!-- Step 4: Alice logs out -->
+            <path d="M 700,260 Q 600,280 220,280" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+            <circle cx="450" cy="280" r="16" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
+            <text x="450" y="285" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e40af">4</text>
+            <text x="450" y="310" font-family="Arial, sans-serif" font-size="12" fill="#2563eb" text-anchor="middle">Alice logs out</text>
+
+            <!-- Step 5: Bob replays captured request -->
+            <path d="M 500,360 C 600,250 650,260 700,260" stroke="#dc2626" stroke-width="2" fill="none" stroke-dasharray="4,2" marker-end="url(#arrowRed)"/>
+            <circle cx="550" cy="310" r="16" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="550" y="315" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#b91c1c">5</text>
+            <text x="635" y="300" font-family="Arial, sans-serif" font-size="12" fill="#dc2626" text-anchor="middle">Replay login request</text>
+
+            <!-- Step 6: Server grants access -->
+            <path d="M 700,300 C 600,330 550,370 520,370" stroke="#dc2626" stroke-width="2" fill="none" marker-end="url(#arrowRed)"/>
+            <circle cx="600" cy="350" r="16" fill="#fecaca" stroke="#dc2626" stroke-width="1.5"/>
+            <text x="600" y="355" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#b91c1c">6</text>
+            <text x="650" y="370" font-family="Arial, sans-serif" font-size="12" fill="#dc2626" text-anchor="middle">Access granted</text>
+
+            <!-- Bob's access -->
+            <g id="bobs-computer" transform="translate(350, 440)">
+              <rect x="0" y="0" width="200" height="80" rx="5" ry="5" fill="#d1d5db" stroke="#dc2626" stroke-width="2"/>
+              <rect x="15" y="10" width="170" height="50" rx="2" ry="2" fill="#f3f4f6"/>
+              <text x="100" y="40" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#dc2626">Access to Alice's account</text>
+            </g>
+
+            <!-- Legend -->
+            <rect x="700" y="420" width="150" height="120" rx="5" ry="5" fill="white" stroke="#94a3b8" stroke-width="1"/>
+            <text x="775" y="440" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">Legend</text>
+
+            <rect x="720" y="455" width="16" height="16" fill="#60a5fa" stroke="#2563eb" stroke-width="1"/>
+            <text x="745" y="468" font-family="Arial, sans-serif" font-size="12" fill="#1e293b" text-anchor="start">Legitimate user</text>
+
+            <rect x="720" y="480" width="16" height="16" fill="#f87171" stroke="#dc2626" stroke-width="1"/>
+            <text x="745" y="493" font-family="Arial, sans-serif" font-size="12" fill="#1e293b" text-anchor="start">Attacker</text>
+
+            <rect x="720" y="505" width="16" height="16" fill="#a7f3d0" stroke="#10b981" stroke-width="1"/>
+            <text x="745" y="518" font-family="Arial, sans-serif" font-size="12" fill="#1e293b" text-anchor="start">Bank server</text>
+
+            <!-- Arrow markers -->
+            <defs>
+              <marker id="arrowBlue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+              </marker>
+              <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+              </marker>
+            </defs>
+          </svg>
+        </div>
+
+        <p class="mb-4">
+              Let's assume Alice wants to log into her online banking account using a web browser. When Alice enters her login credentials and clicks the submit button, the login request is transmitted to the bank server over the internet.
+              </p>
+
+              <p class="mb-4">
+                Bob, the attacker, monitors the network and captures the login request as it's being transmitted. He then waits until Alice logs out of her account before resending the captured login request to the bank server. Since the login request is valid, the server accepts it and grants Bob access to Alice's account.
+              </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-indigo-700">How to Prevent Replay Attacks</h2>
+
+        <h3 class="text-xl font-bold mb-3 mt-6">Message Authentication Codes with Timestamps or Nonces</h3>
+        <p class="mb-4">
+          One approach is to use Message Authentication Codes (MACs). A MAC is a cryptographic checksum included in transmitted data that ensures authenticity and integrity. The MAC can incorporate a timestamp or other changing value for each transmission, making it difficult for attackers to reuse captured transmissions.
+        </p>
+
+        <p class="mb-4">
+          Including timestamps in transmitted data helps prevent replay attacks by ensuring the data is only considered valid within a specific timeframe. Nonces (Number used Only Once) can also be used during data transmission across networks.
+        </p>
+
+        <p class="mb-4">
+          A nonce is a randomly generated value included in transmitted data that can prevent replay attacks. Because nonces are generated randomly, attackers cannot accurately guess or reproduce them.
+        </p>
+
+        <h3 class="text-xl font-bold mb-3 mt-6">JWT ID (JTI)</h3>
+        <p class="mb-4">
+          When using JWTs (JSON Web Tokens) created by clients, you can include a JTI in the payload. JTI stands for JWT ID and can uniquely identify a JWT. This allows clients to use JWTs as MACs before discarding them. The server can store the JWT's JTI in a cache or database and reject requests with the same JTI, considering them replay attacks.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-indigo-700">Example Implementation</h2>
+        <p class="mb-4">
+          Here's an implementation example using Spring Cloud Gateway with Kotlin. This example demonstrates how to prevent replay attacks using authentication tokens, signatures, and nonces stored in Redis with a TTL (Time To Live).
+        </p>
+
+        <p class="mb-4">
+          The implementation consists of the following components:
+        </p>
+
+        <ul class="list-disc pl-5 mb-4 space-y-1">
+          <li>A gateway filter that validates requests</li>
+          <li>A nonce repository that stores and checks for duplicate nonces</li>
+          <li>An account repository to retrieve user information and secret keys</li>
+          <li>A signature helper to validate request signatures</li>
+        </ul>
+
+        <p class="mb-4">
+          Let's look at each component:
+        </p>
+
+        <h3 class="text-xl font-bold mb-3 mt-6">1. Account Model</h3>
+        <div class="mb-6 mt-4">
+          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
+      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.domain.account</span>
+
+<span class="text-purple-400">import</span> <span class="text-green-400">com.fasterxml.jackson.annotation.JsonIgnoreProperties</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">java.math.BigInteger</span>
+
+<span class="text-blue-400">@JsonIgnoreProperties</span>(<span class="text-yellow-400">ignoreUnknown</span> = <span class="text-cyan-400">true</span>)
+<span class="text-purple-400">data class</span> <span class="text-yellow-400">Account</span>(
+    <span class="text-purple-400">val</span> <span class="text-blue-300">id</span>: <span class="text-yellow-400">BigInteger</span>,
+    <span class="text-purple-400">val</span> <span class="text-blue-300">email</span>: <span class="text-yellow-400">String</span>,
+    <span class="text-purple-400">val</span> <span class="text-blue-300">secretKey</span>: <span class="text-yellow-400">String</span>
+)</code></pre>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-3 mt-6">2. Nonce Repository</h3>
+        <p class="mb-4">
+          The NonceRepository uses Redis to store nonces with a TTL and check for duplicates:
+        </p>
+        <div class="mb-6 mt-4">
+          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
+      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.repository</span>
+
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.data.redis.core.ReactiveStringRedisTemplate</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.stereotype.Repository</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">reactor.core.publisher.Mono</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">java.time.Duration</span>
+
+<span class="text-blue-400">@Repository</span>
+<span class="text-purple-400">class</span> <span class="text-yellow-400">NonceRepository</span>(<span class="text-purple-400">private val</span> <span class="text-blue-300">template</span>: <span class="text-yellow-400">ReactiveStringRedisTemplate</span>) {
+
+    <span class="text-purple-400">companion object</span> {
+        <span class="text-purple-400">private const val</span> <span class="text-blue-300">PREFIX</span> = <span class="text-orange-400">"NONCE"</span>
+    }
+
+    <span class="text-purple-400">fun</span> <span class="text-blue-400">isExists</span>(<span class="text-blue-300">accessToken</span>: <span class="text-yellow-400">String</span>, <span class="text-blue-300">nonce</span>: <span class="text-yellow-400">String</span>): <span class="text-yellow-400">Mono</span>&lt;<span class="text-yellow-400">Boolean</span>> {
+        <span class="text-purple-400">return</span> template.hasKey(<span class="text-orange-400">"$PREFIX:$accessToken:$nonce"</span>)
+    }
+
+    <span class="text-purple-400">fun</span> <span class="text-blue-400">setNonce</span>(<span class="text-blue-300">accessToken</span>: <span class="text-yellow-400">String</span>, <span class="text-blue-300">nonce</span>: <span class="text-yellow-400">String</span>): <span class="text-yellow-400">Mono</span>&lt;<span class="text-yellow-400">Boolean</span>> {
+        <span class="text-purple-400">return</span> template.opsForValue().set(<span class="text-orange-400">"$PREFIX:$accessToken:$nonce"</span>, <span class="text-orange-400">"1"</span>, <span class="text-yellow-400">Duration</span>.ofSeconds(<span class="text-cyan-400">10</span>))
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-3 mt-6">3. Account Repository</h3>
+        <p class="mb-4">
+          The AccountRepository retrieves user account information and implements caching:
+        </p>
+        <div class="mb-6 mt-4">
+          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
+      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.repository</span>
+
+<span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.domain.account.Account</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.global.exception.account.AccountServerException</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">com.github.benmanes.caffeine.cache.Cache</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">com.github.benmanes.caffeine.cache.Caffeine</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.core.ParameterizedTypeReference</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.stereotype.Repository</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.web.reactive.function.client.WebClient</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">reactor.core.publisher.Mono</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">java.time.Duration</span>
+
+<span class="text-blue-400">@Repository</span>
+<span class="text-purple-400">class</span> <span class="text-yellow-400">AccountRepository</span>(
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">webClient</span>: <span class="text-yellow-400">WebClient</span>
+) {
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">cache</span>: <span class="text-yellow-400">Cache</span>&lt;<span class="text-yellow-400">String</span>, <span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">Account</span>>> = <span class="text-yellow-400">Caffeine</span>.newBuilder()
+        .expireAfterWrite(<span class="text-yellow-400">Duration</span>.ofSeconds(<span class="text-cyan-400">10</span>))
+        .maximumSize(<span class="text-cyan-400">5000</span>)
+        .build()
+    <span class="text-purple-400">fun</span> <span class="text-blue-400">findAccountByAccessToken</span>(<span class="text-blue-300">accessToken</span>: <span class="text-yellow-400">String</span>): <span class="text-yellow-400">Mono</span>&lt;<span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">Account</span>>> {
+        <span class="text-purple-400">return</span> cache.getIfPresent(accessToken)?.let { <span class="text-yellow-400">Mono</span>.just(it) }?: webClient.get()
+            .uri(<span class="text-orange-400">"http://localhost:1010/apis/root-accounts?accessToken=$accessToken"</span>)
+            .retrieve()
+            .onStatus({it.is4xxClientError || it.is5xxServerError}, { <span class="text-yellow-400">Mono</span>.error(<span class="text-yellow-400">AccountServerException</span>())})
+            .bodyToMono(<span class="text-purple-400">object</span> : <span class="text-yellow-400">ParameterizedTypeReference</span>&lt;<span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">Account</span>>>() {})
+            .doOnNext { cache.put(accessToken, it) }
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-3 mt-6">4. Authentication Filter</h3>
+        <p class="mb-4">
+          The AuthenticationFilter is the main component that ties everything together:
+        </p>
+        <div class="mb-6 mt-4">
+          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
+      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.filter</span>
+
+<span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.global.exception.*</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.global.helper.SignatureHelper</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.repository.AccountRepository</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.repository.NonceRepository</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.slf4j.LoggerFactory</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.cloud.gateway.filter.GatewayFilter</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.cloud.gateway.filter.factory.GatewayFilterFactory</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.http.HttpHeaders</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.stereotype.Component</span>
+<span class="text-purple-400">import</span> <span class="text-green-400">reactor.core.publisher.Mono</span>
+
+<span class="text-blue-400">@Component</span>
+<span class="text-purple-400">class</span> <span class="text-yellow-400">AuthenticationFilter</span>(
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">accountRepository</span>: <span class="text-yellow-400">AccountRepository</span>,
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">nonceRepository</span>: <span class="text-yellow-400">NonceRepository</span>
+): <span class="text-yellow-400">GatewayFilterFactory</span>&lt;<span class="text-yellow-400">AuthenticationFilter</span>.<span class="text-yellow-400">Config</span>> {
+
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">log</span> = <span class="text-yellow-400">LoggerFactory</span>.getLogger(<span class="text-yellow-400">AuthenticationFilter</span>::<span class="text-purple-400">class</span>.java)
+
+    <span class="text-purple-400">data class</span> <span class="text-yellow-400">Config</span>(<span class="text-purple-400">val</span> <span class="text-blue-300">name</span>: <span class="text-yellow-400">String</span>?)
+
+    <span class="text-purple-400">override fun</span> <span class="text-blue-400">getConfigClass</span>(): <span class="text-yellow-400">Class</span>&lt;<span class="text-yellow-400">Config</span>> {
+        <span class="text-purple-400">return</span> <span class="text-yellow-400">Config</span>::<span class="text-purple-400">class</span>.java
+    }
+
+    <span class="text-purple-400">override fun</span> <span class="text-blue-400">newConfig</span>(): <span class="text-yellow-400">Config</span> {
+        <span class="text-purple-400">return</span> <span class="text-yellow-400">Config</span>(<span class="text-orange-400">"AuthenticationFilter"</span>)
+    }
+
+    <span class="text-purple-400">override fun</span> <span class="text-blue-400">apply</span>(<span class="text-blue-300">config</span>: <span class="text-yellow-400">Config</span>?): <span class="text-yellow-400">GatewayFilter</span> {
+        <span class="text-purple-400">return</span> <span class="text-yellow-400">GatewayFilter</span> { <span class="text-blue-300">exchange</span>, <span class="text-blue-300">chain</span> ->
+            <span class="text-purple-400">val</span> <span class="text-blue-300">signature</span> = exchange.request.headers[<span class="text-orange-400">"signature"</span>]?.firstOrNull() ?: <span class="text-purple-400">throw</span> <span class="text-yellow-400">SignatureNotFoundException</span>()
+            <span class="text-purple-400">val</span> <span class="text-blue-300">nonce</span> = exchange.request.headers[<span class="text-orange-400">"nonce"</span>]?.firstOrNull() ?: <span class="text-purple-400">throw</span> <span class="text-yellow-400">NonceNotFoundException</span>()
+            <span class="text-purple-400">val</span> <span class="text-blue-300">auth</span> = exchange.request.headers[<span class="text-yellow-400">HttpHeaders</span>.AUTHORIZATION]?.firstOrNull() ?: <span class="text-purple-400">throw</span> <span class="text-yellow-400">UnauthorizedException</span>()
+            <span class="text-purple-400">val</span> <span class="text-blue-300">accessToken</span> = <span class="text-purple-400">try</span> {
+                auth.split(<span class="text-orange-400">" "</span>)[<span class="text-cyan-400">1</span>]
+            } <span class="text-purple-400">catch</span> (<span class="text-blue-300">e</span>: <span class="text-yellow-400">IndexOutOfBoundsException</span>) {
+                <span class="text-purple-400">throw</span> <span class="text-yellow-400">UnauthorizedException</span>()
+            }
+            accountRepository.findAccountByAccessToken(accessToken).flatMap {
+                <span class="text-purple-400">val</span> <span class="text-blue-300">account</span> = it.firstOrNull()?: <span class="text-purple-400">return</span>@flatMap <span class="text-yellow-400">Mono</span>.error(<span class="text-yellow-400">UnauthorizedException</span>())
+                log.info(<span class="text-orange-400">"{}"</span>, account)
+                <span class="text-purple-400">if</span> (<span class="text-yellow-400">SignatureHelper</span>.isInvalidSignature(signature, <span class="text-orange-400">"${exchange.request.method}:${exchange.request.path}:$nonce"</span>, account.secretKey)) {
+                    <span class="text-purple-400">return</span>@flatMap <span class="text-yellow-400">Mono</span>.error(<span class="text-yellow-400">SignatureInvalidException</span>())
+                }
+                nonceRepository.isExists(accessToken, nonce).flatMap { <span class="text-blue-300">exists</span> ->
+                    <span class="text-purple-400">if</span> (exists) {
+                        <span class="text-yellow-400">Mono</span>.error(<span class="text-yellow-400">DuplicatedNonceException</span>())
+                    } <span class="text-purple-400">else</span> {
+                        nonceRepository.setNonce(accessToken, nonce)
+                    }
+                }
+            }.then(chain.filter(exchange))
+        }
+    }
+}</code></pre>
+          </div>
+        </div>
+
+        <h3 class="text-xl font-bold mb-3 mt-6">How This Prevents Replay Attacks</h3>
+        <p class="mb-4">
+          This implementation prevents replay attacks through several mechanisms:
+        </p>
+
+        <ol class="list-decimal pl-5 mb-4 space-y-2">
+          <li><strong>Signature Verification</strong>: Each request must include a valid signature created using the HTTP method, request path, nonce, and a secret key known only to the client and server.</li>
+          <li><strong>Nonce Validation</strong>: Each request must include a unique nonce that hasn't been used before within the TTL period.</li>
+          <li><strong>TTL-based Storage</strong>: Nonces are stored in Redis with a time-to-live (TTL) of 10 seconds, after which they expire automatically.</li>
+          <li><strong>Access Token Binding</strong>: Nonces are tied to specific access tokens, ensuring that even if a nonce is reused by a different user, it will be rejected.</li>
+        </ol>
+
+        <p class="mb-4">
+          When a request is received, the filter validates the signature and checks if the nonce has been used before. If the nonce is new, it's stored in Redis with a TTL. If a replay attack attempts to reuse the same nonce within the TTL period, the filter will detect the duplicate nonce and reject the request.
+        </p>
+
+        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
+          <h4 class="font-bold text-lg mb-2">Implementation Notes</h4>
+          <ul class="list-disc pl-5 space-y-1">
+            <li>The TTL period (10 seconds in this example) should be adjusted based on your system's needs. Longer TTLs increase security against replay attacks but require more storage.</li>
+            <li>Using Redis for nonce storage enables horizontal scaling of your API gateway.</li>
+            <li>The signature should include the HTTP method, path, and nonce to ensure that the signature is unique for each request, even if the same endpoint is called.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-indigo-700">References</h2>
+        <ul class="list-disc pl-5 mb-6 space-y-2">
+          <li><a href="https://en.wikipedia.org/wiki/Replay_attack" class="text-blue-600 hover:underline">https://en.wikipedia.org/wiki/Replay_attack</a></li>
+          <li><a href="https://www.baeldung.com/cs/replay-attacks" class="text-blue-600 hover:underline">https://www.baeldung.com/cs/replay-attacks</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Cryptographic_nonce" class="text-blue-600 hover:underline">https://en.wikipedia.org/wiki/Cryptographic_nonce</a></li>
+        </ul>
+      </section>
+    </article>
+  </div>
+</div>
