@@ -36,7 +36,9 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
+    "base64-arraybuffer": "^1.0.2",
     "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.1",
     "crypto-js": "^4.2.0",
     "js-sha3": "^0.9.3",
     "jsencrypt": "^3.3.2",
@@ -44,6 +46,7 @@
     "stream-browserify": "^3.0.0",
     "timers-browserify": "^2.0.12",
     "uuid": "^11.1.0",
+    "vm-browserify": "^1.1.2",
     "xml2js": "^0.6.2"
   }
 }

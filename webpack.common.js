@@ -23,6 +23,7 @@ module.exports = {
     sha1: './js/tools/hash/sha1.js',
     sha2: './js/tools/hash/sha2.js',
     sha3: './js/tools/hash/sha3.js',
+    jwt: './js/tools/token/jwt.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -58,6 +59,7 @@ module.exports = {
       "stream": require.resolve("stream-browserify"),
       "buffer": require.resolve("buffer/"),
       "timers": require.resolve("timers-browserify"),
+      "vm": require.resolve("vm-browserify"),
     },
   },
   plugins: [
@@ -279,6 +281,14 @@ module.exports = {
       chunks: ['timestamp'],
       templateParameters: {
         content: require('fs').readFileSync(path.resolve(__dirname, 'tools/time/timestamp.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/token/jwt.html',
+      chunks: ['jwt'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/token/jwt.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new MiniCssExtractPlugin({
