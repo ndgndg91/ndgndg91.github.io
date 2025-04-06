@@ -30,30 +30,45 @@ export function copyTextAreaToClipboard(elementId) {
     });
 }
 
-document.querySelector('#addBookmark').addEventListener('click', function() {
-  if (window.sidebar && window.sidebar.addPanel) { // Firefox <23
-
-    window.sidebar.addPanel(document.title,window.location.href,'');
-
-  } else if(window.external && ('AddFavorite' in window.external)) { // Internet Explorer
-
-    window.external.AddFavorite(location.href,document.title);
-
-  } else if(window.opera && window.print || window.sidebar && ! (window.sidebar instanceof Node)) { // Opera <15 and Firefox >23
-    /**
-     * For Firefox <23 and Opera <15, no need for JS to add to bookmarks
-     * The only thing needed is a `title` and a `rel="sidebar"`
-     * To ensure that the bookmarked URL doesn't have a complementary `#` from our trigger's href
-     * we force the current URL
-     */
-    triggerBookmark.attr('rel', 'sidebar').attr('title', document.title).attr('href', window.location.href);
-    return true;
-
-  } else { // For the other browsers (mainly WebKit) we use a simple alert to inform users that they can add to bookmarks with ctrl+D/cmd+D
-
-    alert('You can add this page to your bookmarks by pressing ' + (navigator.userAgent.toLowerCase().indexOf('mac') != - 1 ? 'Command/Cmd' : 'CTRL') + ' + D on your keyboard.');
-
-  }
-  // If you have something in the `href` of your trigger
-  return false;
+// 데스크톱 북마크 버튼
+document.querySelector('#addBookmark').addEventListener('click', function(e) {
+  e.preventDefault();
+  handleBookmark();
 });
+
+// 모바일 북마크 버튼
+document.querySelector('#mobileAddBookmark').addEventListener('click', function(e) {
+  e.preventDefault();
+  handleBookmark();
+});
+
+function handleBookmark() {
+  // 모바일 브라우저 체크
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // 모바일 브라우저에서는 공유 기능을 사용
+    if (navigator.share) {
+      navigator.share({
+        title: document.title,
+        url: window.location.href
+      })
+      .then(() => console.log('Shared successfully'))
+      .catch((error) => console.log('Error sharing:', error));
+    } else {
+      // 공유 API를 지원하지 않는 경우
+      alert('이 페이지를 북마크에 추가하려면 브라우저의 공유 기능을 사용하세요.');
+    }
+  } else {
+    if (window.sidebar && window.sidebar.addPanel) { // Firefox <23
+      window.sidebar.addPanel(document.title, window.location.href, '');
+    } else if(window.external && ('AddFavorite' in window.external)) { // Internet Explorer
+      window.external.AddFavorite(location.href, document.title);
+    } else if(window.opera && window.print || window.sidebar && !(window.sidebar instanceof Node)) { // Opera <15 and Firefox >23
+      alert('이 페이지를 북마크에 추가하려면 ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D를 누르세요.');
+    } else { // For other browsers
+      alert('이 페이지를 북마크에 추가하려면 ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D를 누르세요.');
+    }
+  }
+  return false;
+}
