@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Developer Playground - Giri's Place</title>
+    <link>https://developer-playground.com</link>
+    <description>Developer tools and technical blog for software engineers with articles on Kafka, JVM, MongoDB and more.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Apr 2025 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://developer-playground.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://developer-playground.com/img/developer-playground-logo.png</url>
+      <title>Developer Playground</title>
+      <link>https://developer-playground.com</link>
+    </image>
+    <category>Software Development</category>
+    <category>Programming</category>
+    <category>Web Development</category>
+    <item>
+      <title>Kafka Basics: Topics, Partitions, and Core Concepts</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-basic.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-basic.html</guid>
+      <pubDate>Sun, 15 Oct 2024 00:00:00 GMT</pubDate>
+      <description>Learn about Apache Kafka fundamentals including topics, partitions, offsets, producers, consumers, delivery semantics, brokers, Zookeeper, and KRaft concepts.</description>
+      <category>Kafka</category>
+      <category>Distributed Systems</category>
+    </item>
+    <item>
+      <title>MongoDB Sharding Cluster with Docker Compose</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/mongo-sharding.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/mongo-sharding.html</guid>
+      <pubDate>Fri, 22 Sep 2024 00:00:00 GMT</pubDate>
+      <description>A practical guide to setting up a MongoDB sharding cluster using Docker Compose. Learn about sharding architecture, configuration, and best practices.</description>
+      <category>MongoDB</category>
+      <category>Database</category>
+      <category>Docker</category>
+    </item>
+    <item>
+      <title>Controlling Processing Rate in Kafka Consumers</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate.html</guid>
+      <pubDate>Wed, 18 Oct 2024 00:00:00 GMT</pubDate>
+      <description>Strategies and implementation techniques for managing message processing rates in Kafka consumers to optimize throughput and prevent system overload.</description>
+      <category>Kafka</category>
+      <category>Performance</category>
+    </item>
+    <item>
+      <title>MCP Filesystem Configuration and Usage</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem.html</guid>
+      <pubDate>Tue, 26 Sep 2024 00:00:00 GMT</pubDate>
+      <description>Explore how to configure the Model Connector Provider (MCP) filesystem interface and examine real-world use cases in development environments.</description>
+      <category>MCP</category>
+      <category>Filesystem</category>
+    </item>
+    <item>
+      <title>Effective Identifier Generation in Distributed Systems</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation.html</guid>
+      <pubDate>Mon, 09 Oct 2024 00:00:00 GMT</pubDate>
+      <description>Compare and implement effective strategies for generating unique identifiers in distributed environments, avoiding duplication, and ensuring scalability.</description>
+      <category>Distributed Systems</category>
+      <category>Performance</category>
+    </item>
+    <item>
+      <title>JVM Warmup: Optimizing Java Application Startup</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/jvm-warmup.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/jvm-warmup.html</guid>
+      <pubDate>Fri, 13 Oct 2024 00:00:00 GMT</pubDate>
+      <description>Learn about JVM warmup process, how the class loader works through its three stages, and techniques to improve Java application startup performance.</description>
+      <category>Java</category>
+      <category>JVM</category>
+      <category>Performance</category>
+    </item>
+    <item>
+      <title>ZGC: Java's Low-Latency Garbage Collector</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/about-zgc.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/about-zgc.html</guid>
+      <pubDate>Mon, 02 Oct 2024 00:00:00 GMT</pubDate>
+      <description>Explore ZGC (Z Garbage Collector), Java's high-performance garbage collector designed for low pause times under 10ms, regardless of heap size from megabytes to terabytes.</description>
+      <category>Java</category>
+      <category>JVM</category>
+      <category>Garbage Collection</category>
+    </item>
+    <item>
+      <title>Understanding Java's G1 Garbage Collector</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/about-g1gc.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/about-g1gc.html</guid>
+      <pubDate>Wed, 27 Sep 2024 00:00:00 GMT</pubDate>
+      <description>Deep dive into Java's Garbage-First (G1) garbage collector, how it works, and why it became the default GC in Java 9 for multi-processor machines with large memory.</description>
+      <category>Java</category>
+      <category>JVM</category>
+      <category>Garbage Collection</category>
+    </item>
+    <item>
+      <title>How to Prevent Replay Attacks in Web Security</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/replay-attack.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/replay-attack.html</guid>
+      <pubDate>Thu, 05 Oct 2024 00:00:00 GMT</pubDate>
+      <description>Understand replay attacks in network security, how they intercept and reuse data packets, and effective prevention methods to protect your applications.</description>
+      <category>Security</category>
+      <category>Web Development</category>
+    </item>
+  </channel>
+</rss>

@@ -75,6 +75,7 @@ module.exports = {
         { from: '404.html', to: '404.html' },
         { from: 'site.webmanifest', to: 'site.webmanifest' },
         { from: 'sitemap.xml', to: 'sitemap.xml' },
+        { from: 'rss.xml', to: 'rss.xml' },
       ],
     }),
     new HtmlWebpackPlugin({

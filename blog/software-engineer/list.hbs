@@ -14,9 +14,17 @@
     </p>
     <!-- 검색 창 추가 -->
     <div class="mt-6">
-      <label for="blog-search-input"></label>
-      <input type="text" id="blog-search-input" placeholder="Search posts by title or description..."
-             class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400">
+      <label for="blog-search-input" class="sr-only">Search blog posts</label>
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+          </svg>
+        </div>
+        <input type="text" id="blog-search-input" placeholder="Search posts by title or description..."
+               class="w-full p-3 pl-10 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400"
+               aria-label="Search blog posts">
+      </div>
     </div>
 
     <!-- 정적 카드 리스트 컨테이너 -->
@@ -67,7 +75,7 @@
 
       <!-- JVM warmup -->
       <a href="/blog/software-engineer/list/jvm-warmup.html" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/jvm-warmup.png" alt="Kafka Basics">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/jvm-warmup.png" alt="JVM Warmup and Class Loading Process">
         <div class="flex flex-col justify-between p-4 leading-normal">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">JVM Warmup</h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">When a JVM process starts, all required classes are loaded into memory by the class loader through three stages. This process is based on lazy loading.</p>
@@ -76,7 +84,7 @@
 
       <!-- about ZGC -->
       <a href="/blog/software-engineer/list/about-zgc.html" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/zgc.png" alt="Kafka Basics">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/zgc.png" alt="Z Garbage Collector (ZGC) Architecture">
         <div class="flex flex-col justify-between p-4 leading-normal">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About ZGC</h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">ZGC performs high-cost operations concurrently without stopping application threads for more than 10ms. The pause time is independent of heap size, working effectively with heaps ranging from a few hundred megabytes to 16 terabytes.</p>
@@ -85,7 +93,7 @@
 
       <!-- about G1GC -->
       <a href="/blog/software-engineer/list/about-g1gc.html" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/g1gc.png" alt="Kafka Basics">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/g1gc.png" alt="G1 Garbage Collector Architecture">
         <div class="flex flex-col justify-between p-4 leading-normal">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">About G1GC</h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">G1 GC has been available since Java 7 and was designated as the default garbage collector in Java 9. It is suitable for multi-processor machines with large memory.</p>
@@ -94,7 +102,7 @@
 
       <!-- replay attack -->
       <a href="/blog/software-engineer/list/replay-attack.html" class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/replay-attack.png" alt="Kafka Basics">
+        <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg" src="/img/replay-attack.png" alt="Network Replay Attack Prevention Diagram">
         <div class="flex flex-col justify-between p-4 leading-normal">
           <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">How to Prevent Replay Attacks</h5>
           <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">A replay attack is a type of network attack where an attacker intercepts valid network data packets and later reuses them. By retransmitting the data, the system processes it as legitimate data. Replay attacks are difficult to detect because they appear as normal requests. Additionally, they can be successful even if the original transmission was encrypted. Replay attacks can overload systems through repetitive requests, potentially disrupting normal system operations.</p>
