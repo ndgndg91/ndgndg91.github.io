@@ -87,7 +87,7 @@ module.exports = {
         pageTitle: "Giri's Place for Developers",
         pageDescription: "A comprehensive toolset for developers with Base64, UUID, Hash generators, JWT tools, and technical blog posts on Kafka, MongoDB, JVM and more.",
         pageUrl: "https://developer-playground.com/",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "Developer Playground - Giri's Place logo",
         structuredData: JSON.stringify([
           {
@@ -221,7 +221,7 @@ module.exports = {
             "name": "Developer Playground",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://developer-playground.com/img/developer-playground-logo.png"
+              "url": "https://developer-playground.com/img/developer-playground-logo.webp"
             }
           },
           "datePublished": "2024-10-15",
@@ -281,7 +281,7 @@ module.exports = {
         pageTitle: "Software Engineering Blog Posts",
         pageDescription: "Explore technical articles on Kafka, MongoDB, JVM optimization, distributed ID generation, and more topics for software engineers and developers.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "Developer Playground Blog",
         structuredData: JSON.stringify({
           "@context": "https://schema.org",
@@ -336,7 +336,7 @@ module.exports = {
         pageTitle: "Base64 Encode and Decode Tool",
         pageDescription: "Free online tool to encode text to Base64 and decode Base64 to text. Fast, reliable, and secure Base64 conversion for developers.",
         pageUrl: "https://developer-playground.com/tools/encode-decode/base64.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "Base64 Encode and Decode Tool",
         structuredData: JSON.stringify({
           "@context": "https://schema.org",
@@ -370,7 +370,7 @@ module.exports = {
         pageTitle: "URL Encode and Decode Tool",
         pageDescription: "Online tool to encode and decode URLs, query parameters, and path segments. Convert special characters to their percent-encoded format and back.",
         pageUrl: "https://developer-playground.com/tools/encode-decode/url.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "URL Encoder and Decoder Tool"
       },
     }),
@@ -383,7 +383,7 @@ module.exports = {
         pageTitle: "AES Encryption and Decryption Tool",
         pageDescription: "Secure online AES encryption and decryption tool. Encrypt sensitive data with different key sizes and modes including CBC, ECB, and CTR.",
         pageUrl: "https://developer-playground.com/tools/encrypt-decrypt/aes.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "AES Encryption Tool"
       },
     }),
@@ -396,7 +396,7 @@ module.exports = {
         pageTitle: "RSA Encryption and Decryption Tool",
         pageDescription: "Online RSA public key encryption and private key decryption tool. Generate key pairs, encrypt, and decrypt data securely with this open-source tool.",
         pageUrl: "https://developer-playground.com/tools/encrypt-decrypt/rsa.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "RSA Encryption and Decryption Tool"
       },
     }),
@@ -409,7 +409,7 @@ module.exports = {
         pageTitle: "JSON Parser and Formatter",
         pageDescription: "Free online tool to parse, validate, and format JSON data. Convert minified JSON to a readable format with proper indentation and syntax highlighting.",
         pageUrl: "https://developer-playground.com/tools/string/json-parser.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "JSON Parser and Formatter Tool"
       },
     }),
@@ -422,7 +422,7 @@ module.exports = {
         pageTitle: "XML Parser and Formatter",
         pageDescription: "Parse, validate, and format XML documents online. Convert compact XML to a readable format with proper indentation and element structure highlighting.",
         pageUrl: "https://developer-playground.com/tools/string/xml-parser.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "XML Parser and Formatter Tool"
       },
     }),
@@ -435,7 +435,7 @@ module.exports = {
         pageTitle: "Random Hexadecimal Generator",
         pageDescription: "Generate secure random hexadecimal values for cryptographic purposes, testing, or unique identifiers. Customize length and generate multiple values at once.",
         pageUrl: "https://developer-playground.com/tools/string/random-hex.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "Random Hex Generator Tool"
       },
     }),
@@ -448,7 +448,7 @@ module.exports = {
         pageTitle: "String Difference Checker",
         pageDescription: "Compare two text strings and highlight the differences. Ideal for code review, document comparison, and finding changes between text versions.",
         pageUrl: "https://developer-playground.com/tools/string/string-diff-checker.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "String Difference Checker Tool"
       },
     }),
@@ -461,7 +461,7 @@ module.exports = {
         pageTitle: "Byte Counter Tool",
         pageDescription: "Count the number of bytes in a string with support for different character encodings. Useful for database storage planning and payload size estimation.",
         pageUrl: "https://developer-playground.com/tools/string/byte-counter.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "Byte Counter Tool"
       },
     }),
@@ -474,7 +474,7 @@ module.exports = {
         pageTitle: "HTML Escape and Unescape Tool",
         pageDescription: "Convert HTML special characters to their entity references and vice versa. Essential for web developers to safely display HTML code or handle user input.",
         pageUrl: "https://developer-playground.com/tools/string/html-escape-unescape.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "HTML Escape and Unescape Tool"
       },
     }),
@@ -487,7 +487,7 @@ module.exports = {
         pageTitle: "UUID Generator Tool",
         pageDescription: "Generate secure RFC 4122 compliant UUIDs (Universally Unique Identifiers). Create multiple UUIDs at once for database keys, application identifiers, and more.",
         pageUrl: "https://developer-playground.com/tools/string/uuid.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "UUID Generator Tool"
       },
     }),
@@ -500,7 +500,7 @@ module.exports = {
         pageTitle: "SHA-1 Hash Generator",
         pageDescription: "Generate SHA-1 hash values from text or files. Although no longer recommended for security purposes, SHA-1 is useful for checksums and compatibility with legacy systems.",
         pageUrl: "https://developer-playground.com/tools/hash/sha-1.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "SHA-1 Hash Generator Tool"
       },
     }),
@@ -513,7 +513,7 @@ module.exports = {
         pageTitle: "SHA-2 Hash Generator (SHA-256, SHA-384, SHA-512)",
         pageDescription: "Generate secure SHA-2 family hashes (SHA-256, SHA-384, SHA-512) for cryptographic security. Widely used for digital signatures, checksums, and password storage.",
         pageUrl: "https://developer-playground.com/tools/hash/sha-2.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "SHA-2 Hash Generator Tool"
       },
     }),
@@ -526,7 +526,7 @@ module.exports = {
         pageTitle: "SHA-3 Hash Generator (Keccak)",
         pageDescription: "Generate SHA-3 hash values using the latest NIST-approved hashing algorithm. Provides superior security for cryptographic applications with multiple output sizes.",
         pageUrl: "https://developer-playground.com/tools/hash/sha-3.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "SHA-3 Hash Generator Tool"
       },
     }),
@@ -539,7 +539,7 @@ module.exports = {
         pageTitle: "Unix Timestamp Converter",
         pageDescription: "Convert between Unix timestamps and human-readable dates and times. Calculate time differences, view current Unix time, and work with different time zones.",
         pageUrl: "https://developer-playground.com/tools/time/timestamp.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "Unix Timestamp Converter Tool"
       },
     }),
@@ -552,7 +552,7 @@ module.exports = {
         pageTitle: "JWT (JSON Web Token) Tool",
         pageDescription: "Create, decode, and verify JSON Web Tokens (JWT). Analyze token claims, test signature validation, and generate new tokens with custom payloads.",
         pageUrl: "https://developer-playground.com/tools/token/jwt.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "JWT Token Generator and Decoder"
       },
     }),
@@ -565,7 +565,7 @@ module.exports = {
         pageTitle: "Image Format Converter",
         pageDescription: "Convert images between different formats (PNG, JPEG, GIF, WebP) right in your browser. No upload required - secure, fast, and privacy-friendly image conversion.",
         pageUrl: "https://developer-playground.com/tools/image/format-converter.html",
-        pageImage: "developer-playground-logo.png",
+        pageImage: "developer-playground-logo.webp",
         pageImageAlt: "Image Format Converter Tool"
       },
     }),
