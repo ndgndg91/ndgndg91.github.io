@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Develop Playground</title>
+  <title>{{#if pageTitle}}{{pageTitle}} | Developer Playground{{else}}Developer Playground - Giri's Place for Dev Tools and Blog{{/if}}</title>
   <meta name="description"
-        content="Developer Playground is Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String Diff, Encode/Decode, Encrypt/Decrypt, JSON, XML, Hash, HTML Escape/Unescape, JWT etc.">
-  <meta property="og:title" content="Developer Playground Giri's Place - dev tools and dev blog">
+        content="{{#if pageDescription}}{{pageDescription}}{{else}}Developer Playground is Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String Diff, Encode/Decode, Encrypt/Decrypt, JSON, XML, Hash, HTML Escape/Unescape, JWT etc.{{/if}}">
+  <meta property="og:title" content="{{#if pageTitle}}{{pageTitle}} | Developer Playground{{else}}Developer Playground Giri's Place - dev tools and dev blog{{/if}}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://developer-playground.com/">
-  <meta property="og:image" content="">
-  <meta property="og:image:alt" content="">
+  <meta property="og:url" content="{{#if pageUrl}}{{pageUrl}}{{else}}https://developer-playground.com/{{/if}}">
+  <meta property="og:image" content="{{#if pageImage}}/img/{{pageImage}}{{else}}/img/developer-playground-logo.png{{/if}}">
+  <meta property="og:image:alt" content="{{#if pageImageAlt}}{{pageImageAlt}}{{else}}Developer Playground logo{{/if}}">
+  <meta property="og:description" content="{{#if pageDescription}}{{pageDescription}}{{else}}Developer Playground is Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String Diff, Encode/Decode, Encrypt/Decrypt, JSON, XML, Hash, HTML Escape/Unescape, JWT etc.{{/if}}">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#fafafa">
   <meta name="google-adsense-account" content="ca-pub-6419722318302962">
+  <link rel="canonical" href="{{#if pageUrl}}{{pageUrl}}{{else}}https://developer-playground.com/{{/if}}">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6419722318302962"
           crossorigin="anonymous"></script>
   <!-- Google tag (gtag.js) -->
@@ -37,6 +39,28 @@
   <script data-collect-dnt="true" async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
   <noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif?collect-dnt=true" alt="" referrerpolicy="no-referrer-when-downgrade"/></noscript>
 <!--  <script type="text/javascript" data-cmp-ab="1" src="https://cdn.consentmanager.net/delivery/autoblocking/67648be3d2a76.js" data-cmp-host="c.delivery.consentmanager.net" data-cmp-cdn="cdn.consentmanager.net" data-cmp-codesrc="16"></script>-->
+
+  <!-- Structured Data for SEO -->
+  {{#if structuredData}}
+  <script type="application/ld+json">
+    {{{structuredData}}}
+  </script>
+  {{else}}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Developer Playground",
+      "url": "https://developer-playground.com/",
+      "description": "Developer Playground is Giri's personal site providing useful tools and a development blog for UUID, Random Hex, String Diff, Encode/Decode, Encrypt/Decrypt, JSON, XML, Hash, HTML Escape/Unescape, JWT etc.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://developer-playground.com/blog/software-engineer/list.html?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  {{/if}}
 </head>
 
 <body>

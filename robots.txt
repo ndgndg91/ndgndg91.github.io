@@ -3,3 +3,10 @@
 # Allow crawling of all content
 User-agent: *
 Disallow:
+
+# Sitemap location
+Sitemap: https://developer-playground.com/sitemap.xml
+
+# Crawl delay directive for heavy resources
+User-agent: *
+Crawl-delay: 1
