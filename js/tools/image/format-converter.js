@@ -175,8 +175,19 @@ document.addEventListener('DOMContentLoaded', function() {
       // 이미지 로드
       currentImage = await loadImage(file);
 
+      // 업로드 직후 미리보기 표시
+      const uploadPreview = document.getElementById('upload-preview');
+      const uploadPreviewSection = document.getElementById('upload-preview-section');
+      uploadPreview.src = currentImage.src;
+      uploadPreviewSection.classList.remove('hidden');
+
+      // 변환 결과 섹션의 원본 이미지도 업데이트
+      const originalPreview = document.getElementById('original-preview');
+      if (originalPreview) {
+        originalPreview.src = currentImage.src;
+      }
+
       // 원본 이미지 정보 표시
-      originalPreview.src = currentImage.src;
       originalFilename.textContent = file.name;
       originalFormat.textContent = detectFormat(file);
       originalSize.textContent = formatFileSize(file.size);
@@ -221,7 +232,17 @@ document.addEventListener('DOMContentLoaded', function() {
       const result = await convertImage(currentImage, targetFormat, quality);
 
       // 결과 표시
-      convertedPreview.src = result.dataURL;
+      const convertedPreview = document.getElementById('converted-preview');
+      if (convertedPreview) {
+        convertedPreview.src = result.dataURL;
+      }
+
+      // 원본 이미지도 다시 표시 (이미 업로드 시점에 설정됨)
+      const originalPreview = document.getElementById('original-preview');
+      if (originalPreview) {
+        originalPreview.src = currentImage.src;
+      }
+
       convertedFormat.textContent = targetFormat.toUpperCase();
       convertedSize.textContent = formatFileSize(result.blob.size);
       convertedWidth.textContent = result.width;
