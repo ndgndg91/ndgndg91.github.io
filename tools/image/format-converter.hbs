@@ -1,0 +1,179 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+      data-section="true">
+      Image Tools
+    </p>
+    <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+      Image Format Converter
+    </h1>
+    <p data-description="true" class="mt-6 text-base/7 text-gray-700 dark:text-gray-400">
+      A tool to convert between JPEG, PNG, and WebP image formats. All conversions are processed in the browser, and image files are never uploaded to any server.
+    </p>
+    
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-6">
+      <!-- File upload area -->
+      <div class="flex flex-col items-center justify-center w-full">
+        <label for="file-input" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500">
+          <div class="flex flex-col items-center justify-center pt-5 pb-6" id="drop-text">
+            <svg class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to select a file</span> or drag and drop here</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">Supported formats: PNG, JPEG, WebP</p>
+          </div>
+          <input id="file-input" type="file" class="hidden" accept="image/png,image/jpeg,image/webp" />
+        </label>
+      </div>
+    </div>
+    
+    <!-- Image information and settings -->
+    <div id="image-settings" class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-6 hidden">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Image Conversion Settings</h2>
+      
+      <!-- Original image info -->
+      <div class="p-4 mb-4 bg-gray-100 rounded-lg dark:bg-gray-700">
+        <h3 class="text-md font-medium text-gray-900 dark:text-white mb-2">Original Image Information</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Filename: <span id="original-filename" class="font-medium"></span></p>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Format: <span id="original-format" class="font-medium"></span></p>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Size: <span id="original-size" class="font-medium"></span></p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Width: <span id="original-width" class="font-medium"></span>px</p>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Height: <span id="original-height" class="font-medium"></span>px</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Conversion settings -->
+      <div class="mb-4">
+        <h3 class="text-md font-medium text-gray-900 dark:text-white mb-2">Output Format</h3>
+        <div class="flex flex-wrap gap-2">
+          <button id="format-jpeg" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 dark:focus:ring-gray-500 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+            JPEG
+          </button>
+          <button id="format-png" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 dark:focus:ring-gray-500 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+            PNG
+          </button>
+          <button id="format-webp" class="px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-200 rounded-lg focus:outline-none hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 dark:focus:ring-gray-500 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+            WebP
+          </button>
+        </div>
+      </div>
+      
+      <!-- Quality setting (for JPEG, WebP) -->
+      <div id="quality-control" class="mb-4">
+        <label for="quality" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Image Quality: <span id="quality-value">90</span>%</label>
+        <input id="quality" type="range" min="1" max="100" value="90" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Lower quality = smaller file size, higher quality = larger file size</p>
+      </div>
+      
+      <!-- Convert button -->
+      <button id="convert-btn" class="w-full px-4 py-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Convert Image
+      </button>
+    </div>
+    
+    <!-- Results section -->
+    <div id="conversion-result" class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-6 hidden">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Conversion Results</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Original image preview -->
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+          <h3 class="text-md font-medium text-gray-900 dark:text-white mb-2">Original Image</h3>
+          <div class="flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg p-2 h-48 overflow-hidden">
+            <img id="original-preview" class="max-h-full max-w-full object-contain" src="#" alt="Original image preview">
+          </div>
+        </div>
+        
+        <!-- Converted image preview -->
+        <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+          <h3 class="text-md font-medium text-gray-900 dark:text-white mb-2">Converted Image</h3>
+          <div class="flex items-center justify-center bg-gray-100 dark:bg-gray-700 rounded-lg p-2 h-48 overflow-hidden">
+            <img id="converted-preview" class="max-h-full max-w-full object-contain" src="#" alt="Converted image preview">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Converted image information -->
+      <div class="mt-4 p-4 bg-gray-100 rounded-lg dark:bg-gray-700">
+        <h3 class="text-md font-medium text-gray-900 dark:text-white mb-2">Conversion Details</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Format: <span id="converted-format" class="font-medium"></span></p>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Size: <span id="converted-size" class="font-medium"></span></p>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Compression: <span id="compression-ratio" class="font-medium"></span></p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Width: <span id="converted-width" class="font-medium"></span>px</p>
+            <p class="text-sm text-gray-700 dark:text-gray-300">Height: <span id="converted-height" class="font-medium"></span>px</p>
+          </div>
+        </div>
+        
+        <!-- Download button -->
+        <div class="mt-4">
+          <a id="download-btn" href="#" download class="inline-flex items-center justify-center w-full px-4 py-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+            </svg>
+            Download Converted Image
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-6">
+      <ins class="kakao_ad_area" style="display:none;"
+           data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
+           data-ad-width="728"
+           data-ad-height="90"></ins>
+    </div>
+    
+    <!-- Information section -->
+    <div class="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mt-6">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">How to Use the Image Format Converter</h2>
+      <ol class="space-y-2 text-gray-700 dark:text-gray-300 list-decimal list-inside mb-6">
+        <li>Select an image file or drag and drop it into the upload area.</li>
+        <li>Choose your desired output format (JPEG, PNG, or WebP).</li>
+        <li>For JPEG or WebP formats, adjust the quality level as needed.</li>
+        <li>Click the "Convert Image" button to process your image.</li>
+        <li>Download the converted image.</li>
+      </ol>
+      
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4">Image Format Guide</h2>
+      
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">JPEG</h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        Best for photographs and images with complex gradients. Uses lossy compression for smaller file sizes but does not support transparency.
+      </p>
+      
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">PNG</h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        Ideal for images with sharp lines and transparency (logos, icons, screenshots). Uses lossless compression which preserves quality but results in larger file sizes.
+      </p>
+      
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">WebP</h3>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        A modern format developed by Google that offers better compression efficiency than JPEG and transparency support like PNG. Supported by most modern browsers.
+      </p>
+      
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-4 mt-6">Privacy Notice</h2>
+      <p class="text-gray-700 dark:text-gray-300">
+        This tool processes all images entirely within your browser. Images are never uploaded to any server, ensuring your data remains private and secure.
+      </p>
+    </div>
+  </div>
+  <div class="max-xl:hidden">
+    <div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
+      <div class="flex flex-col gap-3">
+        <ins class="kakao_ad_area" style="display:none;"
+             data-ad-unit="DAN-2nMLIisQJKH9qMpe"
+             data-ad-width="160"
+             data-ad-height="600"></ins>
+      </div>
+    </div>
+  </div>
+</div>

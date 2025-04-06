@@ -24,6 +24,7 @@ module.exports = {
     sha2: './js/tools/hash/sha2.js',
     sha3: './js/tools/hash/sha3.js',
     jwt: './js/tools/token/jwt.js',
+    image_format_converter: './js/tools/image/format-converter.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -289,6 +290,14 @@ module.exports = {
       chunks: ['jwt'],
       templateParameters: {
         content: require('fs').readFileSync(path.resolve(__dirname, 'tools/token/jwt.hbs'), 'utf8'), // 콘텐츠 직접 삽입
+      },
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: 'tools/image/format-converter.html',
+      chunks: ['image_format_converter'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'tools/image/format-converter.hbs'), 'utf8'), // 콘텐츠 직접 삽입
       },
     }),
     new MiniCssExtractPlugin({
