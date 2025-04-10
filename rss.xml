@@ -16,6 +16,15 @@
     <category>Programming</category>
     <category>Web Development</category>
     <item>
+      <title>Optimizing Kafka Consumer Performance</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance.html</guid>
+      <pubDate>Thu, 10 April 2025 00:00:00 GMT</pubDate>
+      <description>Explore effective strategies to optimize Kafka consumer performance including partition-pod 1:1 mapping, concurrent listeners, Confluent Parallel Consumer, and asynchronous processing patterns. Learn implementation techniques, advantages, and trade-offs for each approach to maximize throughput and resource efficiency in your Kafka-based systems.</description>
+      <category>Kafka</category>
+      <category>Distributed Systems</category>
+    </item>
+    <item>
       <title>Kafka Basics: Topics, Partitions, and Core Concepts</title>
       <link>https://developer-playground.com/blog/software-engineer/list/kafka-basic.html</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/kafka-basic.html</guid>

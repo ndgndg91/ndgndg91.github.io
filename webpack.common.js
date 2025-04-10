@@ -138,7 +138,20 @@ module.exports = {
         pageTitle: "MCP Filesystem Configuration and Usage",
         pageDescription: "Learn how to configure the Model Connector Provider (MCP) filesystem interface and explore real-world use cases in development environments.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/mcp-filesystem.html",
-        pageImage: "mcp.png",
+        pageImage: "mcp.webp",
+        pageImageAlt: "MCP Filesystem Configuration Diagram"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/kafka-consumer-performance.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/kafka-consumer-performance.hbs'), 'utf8'),
+        pageTitle: "Optimizing Kafka Consumer Performance",
+        pageDescription: "Explore effective strategies to optimize Kafka consumer performance including partition-pod 1:1 mapping, concurrent listeners, Confluent Parallel Consumer, and asynchronous processing patterns. Learn implementation techniques, advantages, and trade-offs for each approach to maximize throughput and resource efficiency in your Kafka-based systems.",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance.html",
+        pageImage: "kafka-consumer-performance.webp",
         pageImageAlt: "MCP Filesystem Configuration Diagram"
       }
     }),
@@ -151,7 +164,7 @@ module.exports = {
         pageTitle: "How to Prevent Replay Attacks in Web Security",
         pageDescription: "Understand replay attacks in network security, how they intercept and reuse data packets, and effective prevention methods to protect your applications.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/replay-attack.html",
-        pageImage: "replay-attack.png",
+        pageImage: "replay-attack.webp",
         pageImageAlt: "Replay Attack Security Diagram"
       }
     }),
@@ -164,7 +177,7 @@ module.exports = {
         pageTitle: "Understanding Java's G1 Garbage Collector",
         pageDescription: "Deep dive into Java's Garbage-First (G1) garbage collector, how it works, and why it became the default GC in Java 9 for multi-processor machines with large memory.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/about-g1gc.html",
-        pageImage: "g1gc.png",
+        pageImage: "g1gc.webp",
         pageImageAlt: "G1 Garbage Collector Diagram"
       }
     }),
@@ -177,7 +190,7 @@ module.exports = {
         pageTitle: "ZGC: Java's Low-Latency Garbage Collector",
         pageDescription: "Explore ZGC (Z Garbage Collector), Java's high-performance garbage collector designed for low pause times under 10ms, regardless of heap size from megabytes to terabytes.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/about-zgc.html",
-        pageImage: "zgc.png",
+        pageImage: "zgc.webp",
         pageImageAlt: "ZGC Garbage Collector Architecture"
       }
     }),
@@ -190,7 +203,7 @@ module.exports = {
         pageTitle: "JVM Warmup: Optimizing Java Application Startup",
         pageDescription: "Learn about JVM warmup process, how the class loader works through its three stages, and techniques to improve Java application startup performance.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/jvm-warmup.html",
-        pageImage: "jvm-warmup.png",
+        pageImage: "jvm-warmup.webp",
         pageImageAlt: "JVM Warmup Process Visualization"
       }
     }),
@@ -203,7 +216,7 @@ module.exports = {
         pageTitle: "Kafka Basics: Topics, Partitions, and Core Concepts",
         pageDescription: "Learn about Apache Kafka fundamentals including topics, partitions, offsets, producers, consumers, delivery semantics, brokers, Zookeeper, and KRaft concepts.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/kafka-basic.html",
-        pageImage: "kafka.png",
+        pageImage: "kafka.webp",
         pageImageAlt: "Apache Kafka Architectural Diagram",
         structuredData: JSON.stringify({
           "@context": "https://schema.org",
@@ -242,7 +255,7 @@ module.exports = {
         pageTitle: "MongoDB Sharding Cluster with Docker Compose",
         pageDescription: "A practical guide to setting up a MongoDB sharding cluster using Docker Compose. Learn about sharding architecture, configuration, and best practices.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/mongo-sharding.html",
-        pageImage: "mongodb-sharding.png",
+        pageImage: "mongodb-sharding.webp",
         pageImageAlt: "MongoDB Sharding Cluster Architecture"
       }
     }),
@@ -255,7 +268,7 @@ module.exports = {
         pageTitle: "Controlling Processing Rate in Kafka Consumers",
         pageDescription: "Strategies and implementation techniques for managing message processing rates in Kafka consumers to optimize throughput and prevent system overload.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate.html",
-        pageImage: "kafka-consumer-rate.png",
+        pageImage: "kafka-consumer-rate.webp",
         pageImageAlt: "Kafka Consumer Rate Control Diagram"
       }
     }),

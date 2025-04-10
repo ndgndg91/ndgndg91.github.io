@@ -1,0 +1,446 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <nav class="mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="/" class="hover:text-gray-700">Home</a></li>
+        <li class="flex items-center">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <a href="/blog/software-engineer/list.html" class="ml-2 hover:text-gray-700">Software Engineer</a>
+        </li>
+        <li class="flex items-center">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <span class="ml-2 text-gray-400">Optimizing Kafka Consumer Performance</span>
+        </li>
+      </ol>
+    </nav>
+    <header class="mb-8">
+      <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true">
+        Developer Playground
+      </p>
+      <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+        Optimizing Kafka Consumer Performance
+      </h1>
+      <div class="text-sm text-gray-500 mt-2">Updated: April 10, 2025</div>
+    </header>
+    <div class="mt-6 prose dark:prose-invert">
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">
+          Partitions and Pods: 1:1 Mapping
+        </h2>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Simplest configuration approach</li>
+          <li class="whitespace-nowrap mobile-wrap">Ensures uniform load distribution across consumers</li>
+          <li class="whitespace-nowrap mobile-wrap">Each pod handles exactly one partition</li>
+          <li class="whitespace-nowrap mobile-wrap">Scales linearly with partition count</li>
+        </ul>
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">
+          Disadvantages:
+        </h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Increased overhead for partition leader election and metadata management</li>
+          <li class="whitespace-nowrap mobile-wrap">Higher resource consumption across cluster</li>
+          <li class="whitespace-nowrap mobile-wrap">More complex rebalancing when pods join/leave the cluster</li>
+          <li class="whitespace-nowrap mobile-wrap">Limited by maximum partition count of a topic</li>
+        </ul>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460">
+        <rect width="900" height="460" fill="#f8f9fa" rx="10" ry="10"/>
+
+        <text x="450" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">
+          Partition-Pod 1:1 Mapping
+        </text>
+
+        <!-- Kafka Topic -->
+        <rect x="50" y="80" width="180" height="260" fill="#e6f7ff" stroke="#1890ff" stroke-width="3" rx="10" ry="10"/>
+        <text x="140" y="110" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Kafka Topic</text>
+
+        <!-- Partitions -->
+        <rect x="70" y="130" width="140" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="140" y="155" font-family="Arial" font-size="16" text-anchor="middle">Partition 0</text>
+
+        <rect x="70" y="180" width="140" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="140" y="205" font-family="Arial" font-size="16" text-anchor="middle">Partition 1</text>
+
+        <rect x="70" y="230" width="140" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="140" y="255" font-family="Arial" font-size="16" text-anchor="middle">Partition 2</text>
+
+        <rect x="70" y="280" width="140" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="140" y="305" font-family="Arial" font-size="16" text-anchor="middle">Partition 3</text>
+
+        <!-- Consumer Pods -->
+        <rect x="520" y="80" width="250" height="260" fill="#fff2e8" stroke="#fa8c16" stroke-width="2" rx="8" ry="8"/>
+        <text x="645" y="110" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Consumer Pods</text>
+
+        <!-- Pods -->
+        <rect x="540" y="130" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="645" y="155" font-family="Arial" font-size="16" text-anchor="middle">Pod 1 (Partition 0)</text>
+
+        <rect x="540" y="180" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="645" y="205" font-family="Arial" font-size="16" text-anchor="middle">Pod 2 (Partition 1)</text>
+
+        <rect x="540" y="230" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="645" y="255" font-family="Arial" font-size="16" text-anchor="middle">Pod 3 (Partition 2)</text>
+
+        <rect x="540" y="280" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="645" y="305" font-family="Arial" font-size="16" text-anchor="middle">Pod 4 (Partition 3)</text>
+
+        <!-- Arrows -->
+        <path d="M210,150 L540,150" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M210,200 L540,200" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M210,250 L540,250" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M210,300 L540,300" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- Advantages and Disadvantages -->
+        <text x="165" y="360" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Advantages:</text>
+        <text x="165" y="380" font-family="Arial" font-size="12" text-anchor="middle">Simple, even load: 1 pod = 1 partition</text>
+
+        <text x="650" y="360" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Disadvantages:</text>
+        <text x="650" y="380" font-family="Arial" font-size="12" text-anchor="middle">Scales only with partitions, high coordination cost</text>
+
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#fa8c16"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <div class="mt-6">
+        <h2 class="mb-2 text-3xl sm:text-2xl tracking-tight text-gray-900 dark:text-white break-words">ConcurrentKafkaListenerContainerFactory</h2>
+        <p class="text-gray-800 dark:text-gray-400">
+          Spring Kafka provides the <code class="inline-code">ConcurrentKafkaListenerContainerFactory</code> to control concurrency within a consumer pod.
+          It determines how many threads will process Kafka messages in parallel.
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Key considerations:</h3>
+        <ul class="max-w-md space-y-1 text-gray-800 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Maximum concurrency is limited by the number of topic partitions</li>
+          <li class="whitespace-nowrap mobile-wrap">Threads exceeding the number of partitions will stay idle</li>
+          <li class="whitespace-nowrap mobile-wrap">High concurrency may cause increased CPU and memory pressure</li>
+          <li class="whitespace-nowrap mobile-wrap">The default concurrency value is 1 (single-threaded message consumption)</li>
+          <li class="whitespace-nowrap mobile-wrap">Concurrency should generally not exceed the number of partitions assigned to the consumer instance</li>
+        </ul>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Implementation example (Kotlin):</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">@Bean</span>
+<span class="text-blue-400">fun</span> <span class="text-yellow-400">kafkaListenerContainerFactory</span>(
+    <span class="text-blue-300">consumerFactory</span>: <span class="text-yellow-400">ConsumerFactory</span>&lt;<span class="text-yellow-400">String</span>, <span class="text-yellow-400">CloudEvent</span>&gt;
+): <span class="text-yellow-400">ConcurrentKafkaListenerContainerFactory</span>&lt;<span class="text-yellow-400">String</span>, <span class="text-yellow-400">CloudEvent</span>&gt; {
+    <span class="text-blue-400">val</span> <span class="text-blue-300">factory</span> = <span class="text-yellow-400">ConcurrentKafkaListenerContainerFactory</span>&lt;<span class="text-yellow-400">String</span>, <span class="text-yellow-400">CloudEvent</span>&gt;()
+    <span class="text-blue-300">factory</span>.consumerFactory = <span class="text-blue-300">consumerFactory</span>
+    <span class="text-blue-300">factory</span>.setConcurrency(<span class="text-pink-400">3</span>) <span class="text-gray-400">// Adjust based on the number of partitions</span>
+    <span class="text-blue-400">return</span> <span class="text-blue-300">factory</span>
+}</code></pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Source code reference (Java):</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">public</span> <span class="text-purple-400">class</span> <span class="text-yellow-400">ConcurrentMessageListenerContainer</span>&lt;<span class="text-yellow-400">K</span>, <span class="text-yellow-400">V</span>&gt; <span class="text-purple-400">extends</span> <span class="text-yellow-400">AbstractMessageListenerContainer</span>&lt;<span class="text-yellow-400">K</span>, <span class="text-yellow-400">V</span>&gt; {
+    <span class="text-gray-400">// Other code omitted</span>
+    <span class="text-purple-400">private</span> <span class="text-yellow-400">int</span> <span class="text-blue-300">concurrency</span> = <span class="text-pink-400">1</span>;
+    <span class="text-gray-400">// Other code omitted</span>
+}</code></pre>
+        </div>
+
+        <p class="text-gray-800 dark:text-gray-400 mt-2">
+          The <code class="inline-code">ConsumerFactory</code> must be configured for the listener container to function correctly.
+          For example, a <code class="inline-code">DefaultKafkaConsumerFactory</code> can be used with specific deserializers and properties.
+        </p>
+      </div>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Confluent Parallel Consumer Overview</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          Confluent's Parallel Consumer offers an alternative approach to enhance consumer throughput without needing additional partitions.
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Key Features:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Allows multiple threads to process messages from a single partition</li>
+          <li class="whitespace-nowrap mobile-wrap">Bypasses scaling limits imposed by partition count</li>
+          <li class="whitespace-nowrap mobile-wrap">Overcomes batch listener limitations, offering better error handling and retry capabilities</li>
+          <li class="whitespace-nowrap mobile-wrap">Supports fine-grained per-message acknowledgments</li>
+        </ul>
+
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Limitations:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Limited community references and documentation</li>
+          <li class="whitespace-nowrap mobile-wrap">No direct integration with Spring Kafka (as of April 2025)</li>
+          <li class="whitespace-nowrap mobile-wrap">Independent from the Spring ecosystem</li>
+        </ul>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Resources:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap"><a href="https://github.com/confluentinc/parallel-consumer" class="text-blue-600 hover:underline">GitHub - confluentinc/parallel-consumer</a></li>
+          <li class="whitespace-nowrap mobile-wrap"><a href="https://www.confluent.io/blog/introducing-confluent-parallel-consumer/" class="text-blue-600 hover:underline">Introducing Confluent's Parallel Consumer Message Processing Client</a></li>
+        </ul>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+        <!-- Background -->
+        <rect width="800" height="450" fill="#f8f9fa" rx="10" ry="10"/>
+
+        <!-- Title -->
+        <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Confluent Parallel Consumer</text>
+
+        <!-- Kafka Topic -->
+        <rect x="50" y="80" width="180" height="140" fill="#e6f7ff" stroke="#1890ff" stroke-width="3" rx="10" ry="10"/>
+        <text x="140" y="110" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Kafka Topic</text>
+
+        <!-- Partitions -->
+        <rect x="70" y="130" width="140" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="140" y="155" font-family="Arial" font-size="16" text-anchor="middle">Partition 0</text>
+
+        <rect x="70" y="180" width="140" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="140" y="205" font-family="Arial" font-size="16" text-anchor="middle">Partition 1</text>
+
+        <!-- Parallel Consumer -->
+        <rect x="320" y="80" width="200" height="200" fill="#f6ffed" stroke="#52c41a" stroke-width="2" rx="8" ry="8"/>
+        <text x="420" y="110" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Parallel Consumer</text>
+
+        <!-- Internal Queue -->
+        <rect x="340" y="140" width="160" height="100" fill="#d9f7be" stroke="#52c41a" stroke-width="1" rx="5" ry="5"/>
+        <text x="420" y="160" font-family="Arial" font-size="14" text-anchor="middle">Parallel Consumer Buffer</text>
+
+        <!-- Queue Items -->
+        <rect x="350" y="170" width="140" height="20" fill="#b7eb8f" stroke="#52c41a" stroke-width="1"/>
+        <rect x="350" y="190" width="140" height="20" fill="#b7eb8f" stroke="#52c41a" stroke-width="1"/>
+        <rect x="350" y="210" width="140" height="20" fill="#b7eb8f" stroke="#52c41a" stroke-width="1"/>
+
+        <!-- Worker Pool -->
+        <rect x="600" y="80" width="150" height="200" fill="#fff2e8" stroke="#fa8c16" stroke-width="2" rx="8" ry="8"/>
+        <text x="675" y="110" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Worker Pool</text>
+
+        <!-- Worker Threads -->
+        <rect x="620" y="130" width="110" height="30" fill="#ffd591" stroke="#fa8c16" stroke-width="1" rx="5" ry="5"/>
+        <text x="675" y="150" font-family="Arial" font-size="14" text-anchor="middle">Worker 1</text>
+
+        <rect x="620" y="170" width="110" height="30" fill="#ffd591" stroke="#fa8c16" stroke-width="1" rx="5" ry="5"/>
+        <text x="675" y="190" font-family="Arial" font-size="14" text-anchor="middle">Worker 2</text>
+
+        <rect x="620" y="210" width="110" height="30" fill="#ffd591" stroke="#fa8c16" stroke-width="1" rx="5" ry="5"/>
+        <text x="675" y="230" font-family="Arial" font-size="14" text-anchor="middle">Worker 3</text>
+
+        <rect x="620" y="250" width="110" height="30" fill="#ffd591" stroke="#fa8c16" stroke-width="1" rx="5" ry="5"/>
+        <text x="675" y="270" font-family="Arial" font-size="14" text-anchor="middle">Worker 4</text>
+
+        <!-- Arrows: Partitions to Internal Queue -->
+        <path d="M210,150 L320,150" stroke="#1890ff" stroke-width="2" fill="none" marker-end="url(#arrow1)"/>
+        <path d="M210,200 L320,200" stroke="#1890ff" stroke-width="2" fill="none" marker-end="url(#arrow1)"/>
+
+        <!-- Arrows: Internal Queue to Workers -->
+        <path d="M500,150 L620,145" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+        <path d="M500,175 L620,185" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+        <path d="M500,200 L620,225" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+        <path d="M500,225 L620,265" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+
+        <!-- Explanation Box -->
+        <text x="400" y="320" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Benefits of Parallel Consumer:</text>
+        <text x="400" y="350" font-family="Arial" font-size="14" text-anchor="middle">• Enables multi-threaded processing per partition</text>
+        <text x="400" y="375" font-family="Arial" font-size="14" text-anchor="middle">• Scales consumption without increasing partitions</text>
+        <text x="400" y="400" font-family="Arial" font-size="14" text-anchor="middle">• Supports individual message-level acknowledgement</text>
+        <text x="400" y="425" font-family="Arial" font-size="14" text-anchor="middle">• Improves reliability over batch-based listeners</text>
+
+        <!-- Arrow Definitions -->
+        <defs>
+          <marker id="arrow1" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#1890ff"/>
+          </marker>
+          <marker id="arrow2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#fa8c16"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Async Processing After Consume</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          Another approach to improve throughput is to offload the actual message processing to a separate thread pool after
+          quickly acknowledging receipt of the message from Kafka.
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Implementation</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+  <pre class="whitespace-pre-wrap"><code>
+<span class="text-green-400">@Component</span>
+<span class="text-purple-400">class</span> <span class="text-yellow-400">KafkaMessageHandler</span> {
+
+    <span class="text-purple-400">private val</span> taskQueue = <span class="text-blue-400">LinkedBlockingQueue</span>&lt;<span class="text-blue-400">Runnable</span>&gt;(<span class="text-pink-400">1000</span>)
+
+    <span class="text-purple-400">private val</span> asyncExecutor = <span class="text-blue-400">ThreadPoolExecutor</span>(
+        <span class="text-pink-400">10</span>, <span class="text-pink-400">10</span>,
+        <span class="text-pink-400">60L</span>, <span class="text-blue-400">TimeUnit</span>.SECONDS,
+        taskQueue,
+        <span class="text-blue-400">Executors</span>.defaultThreadFactory(),
+        <span class="text-blue-400">RejectedExecutionHandler</span> { runnable, _ ->
+            <span class="text-gray-400">// handle backpressure or overflow</span>
+            println(<span class="text-green-400">"Queue is full. Dropping message or handling backpressure."</span>)
+        }
+    )
+
+    <span class="text-green-400">@KafkaListener</span>(
+        <span class="text-purple-400">topics</span> = [<span class="text-green-400">"your-topic"</span>],
+        <span class="text-purple-400">containerFactory</span> = <span class="text-green-400">"kafkaListenerContainerFactory"</span>
+    )
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">consume</span>(
+        <span class="text-blue-300">message</span>: <span class="text-yellow-400">CloudEvent</span>,
+        <span class="text-blue-300">ack</span>: <span class="text-yellow-400">Acknowledgment</span>
+    ) {
+        <span class="text-purple-400">try</span> {
+            asyncExecutor.submit {
+                <span class="text-purple-400">try</span> {
+                    <span class="text-yellow-400">processMessage</span>(message)
+                    ack.<span class="text-yellow-400">acknowledge</span>()
+                } <span class="text-purple-400">catch</span> (e: <span class="text-yellow-400">Exception</span>) {
+                    <span class="text-yellow-400">handleProcessingError</span>(message, e)
+                }
+            }
+        } <span class="text-purple-400">catch</span> (e: <span class="text-yellow-400">RejectedExecutionException</span>) {
+            println(<span class="text-green-400">"Task rejected. Queue capacity exceeded."</span>)
+            <span class="text-yellow-400">handleQueueOverflow</span>(message)
+        }
+    }
+
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">processMessage</span>(<span class="text-blue-300">message</span>: <span class="text-yellow-400">CloudEvent</span>) {
+        <span class="text-gray-400">// business logic</span>
+    }
+
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">handleProcessingError</span>(<span class="text-blue-300">message</span>: <span class="text-yellow-400">CloudEvent</span>, <span class="text-blue-300">ex</span>: <span class="text-yellow-400">Exception</span>) {
+        <span class="text-gray-400">// error handling logic</span>
+    }
+
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">handleQueueOverflow</span>(<span class="text-blue-300">message</span>: <span class="text-yellow-400">CloudEvent</span>) {
+        <span class="text-gray-400">// handle queue overflow (e.g. send to DLT)</span>
+    }
+}
+</code></pre>
+        </div>
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">AsyncExecutor</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+          <pre class="whitespace-pre-wrap"><code><span class="text-blue-400">@Bean(<span class="text-purple-400">destroyMethod</span> = <span class="text-green-400">"shutdown"</span>)</span>
+<span class="text-purple-400">fun</span> <span class="text-yellow-400">asyncExecutor</span>(): <span class="text-yellow-400">ExecutorService</span> {
+  <span class="text-purple-400">return</span> <span class="text-yellow-400">Executors</span>.<span class="text-yellow-400">newFixedThreadPool</span>(<span class="text-cyan-400">10</span>)
+}
+</code></pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Benefits:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Improved throughput for I/O-bound operations</li>
+          <li class="whitespace-nowrap mobile-wrap">Consumer thread quickly acknowledges messages and continues</li>
+          <li class="whitespace-nowrap mobile-wrap">Good for operations where reliability isn't critical</li>
+        </ul>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Drawbacks:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Overhead in managing failed processing and retries</li>
+          <li class="whitespace-nowrap mobile-wrap">Need for backpressure mechanism if processing is slower than consumption</li>
+          <li class="whitespace-nowrap mobile-wrap">Potential for message loss if service crashes after acknowledging</li>
+        </ul>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+        <rect width="900" height="520" fill="#f8f9fa" rx="10" ry="10"/>
+
+        <text x="450" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Reliable Async Processing</text>
+
+        <!-- Kafka -->
+        <rect x="40" y="100" width="160" height="200" fill="#e6f7ff" stroke="#1890ff" stroke-width="3" rx="10" ry="10"/>
+        <text x="120" y="130" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Kafka</text>
+
+        <!-- Consumer -->
+        <rect x="240" y="100" width="220" height="200" fill="#fff2e8" stroke="#fa8c16" stroke-width="2" rx="8" ry="8"/>
+        <text x="350" y="130" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Kafka Consumer</text>
+        <text x="350" y="160" font-family="Arial" font-size="14" text-anchor="middle">submit to ExecutorService</text>
+
+        <!-- Async Executor -->
+        <rect x="520" y="100" width="320" height="270" fill="#f0f5ff" stroke="#2f54eb" stroke-width="2" rx="8" ry="8"/>
+        <text x="680" y="130" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">ExecutorService</text>
+
+        <!-- Workers -->
+        <rect x="540" y="170" width="280" height="30" fill="#adc6ff" stroke="#2f54eb" stroke-width="1" rx="5" ry="5"/>
+        <text x="680" y="190" font-family="Arial" font-size="14" text-anchor="middle">processMessage()</text>
+
+        <!-- Success path -->
+        <rect x="540" y="220" width="280" height="30" fill="#d9f7be" stroke="#52c41a" stroke-width="1" rx="5" ry="5"/>
+        <text x="680" y="240" font-family="Arial" font-size="14" text-anchor="middle">ack.acknowledge() if success ✅</text>
+
+        <!-- Failure path -->
+        <rect x="540" y="270" width="280" height="30" fill="#ffc9c9" stroke="#cf1322" stroke-width="1" rx="5" ry="5"/>
+        <text x="680" y="290" font-family="Arial" font-size="14" text-anchor="middle">handleProcessingError() if fail ❌</text>
+
+        <!-- Retry/DLT -->
+        <rect x="700" y="330" width="100" height="30" fill="#fff1b8" stroke="#d48806" stroke-width="1" rx="5" ry="5"/>
+        <text x="750" y="350" font-family="Arial" font-size="13" text-anchor="middle">Retry / DLT</text>
+
+        <!-- Arrows -->
+        <path d="M200,150 L240,150" stroke="#1890ff" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M460,170 L520,185" stroke="#fa8c16" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M820,285 L820,345 L800,345" stroke="#cf1322" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+        <path d="M820,285 L820,345 L800,345" fill="none"/>
+
+        <!-- Retry path arrow -->
+        <path d="M820,285 Q850,310 800,330" stroke="#d48806" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+        <!-- Steps -->
+        <text x="130" y="430" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">1. Consume message</text>
+        <text x="350" y="430" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">2. Submit to thread pool</text>
+        <text x="680" y="430" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">3. Process → Ack / Error</text>
+
+        <!-- Backpressure Note -->
+        <text x="680" y="470" font-family="Arial" font-size="13" text-anchor="middle" fill="#595959">⚠ Backpressure mechanism may be needed if thread pool is overloaded</text>
+
+        <!-- Arrow Marker -->
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M0,0 L0,6 L9,3 z" fill="#595959"/>
+          </marker>
+        </defs>
+      </svg>
+
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Batch Listener</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          Using the <code>@KafkaListener</code> annotation in Spring Kafka, you can configure your consumer to operate in batch mode to enhance processing efficiency.
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Implementation</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+  <pre class="whitespace-pre-wrap"><code><span class="text-blue-400">@Bean</span>
+<span class="text-purple-400">public</span> <span class="text-yellow-400">KafkaListenerContainerFactory</span>&lt;<span class="text-gray-400">?</span>&gt; <span class="text-yellow-400">batchFactory</span>() {
+    <span class="text-yellow-400">ConcurrentKafkaListenerContainerFactory</span>&lt;<span class="text-yellow-400">Integer</span>, <span class="text-yellow-400">String</span>&gt; <span class="text-blue-300">factory</span> = <span class="text-purple-400">new</span> <span class="text-yellow-400">ConcurrentKafkaListenerContainerFactory</span>&lt;&gt;();
+    factory.setConsumerFactory(<span class="text-blue-300">consumerFactory</span>());
+    factory.setBatchListener(<span class="text-cyan-400">true</span>);  <span class="text-gray-400">// &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span>
+    <span class="text-purple-400">return</span> <span class="text-blue-300">factory</span>;
+}
+
+<span class="text-blue-400">@KafkaListener</span>(<span class="text-blue-300">id</span> = <span class="text-yellow-300">"list"</span>, <span class="text-blue-300">topics</span> = <span class="text-yellow-300">"myTopic"</span>, <span class="text-blue-300">containerFactory</span> = <span class="text-yellow-300">"batchFactory"</span>)
+<span class="text-purple-400">public void</span> <span class="text-yellow-400">listen</span>(
+    <span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">String</span>&gt; <span class="text-blue-300">list</span>,
+    <span class="text-blue-400">@Header</span>(<span class="text-yellow-400">KafkaHeaders.RECEIVED_KEY</span>) <span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">Integer</span>&gt; <span class="text-blue-300">keys</span>,
+    <span class="text-blue-400">@Header</span>(<span class="text-yellow-400">KafkaHeaders.RECEIVED_PARTITION</span>) <span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">Integer</span>&gt; <span class="text-blue-300">partitions</span>,
+    <span class="text-blue-400">@Header</span>(<span class="text-yellow-400">KafkaHeaders.RECEIVED_TOPIC</span>) <span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">String</span>&gt; <span class="text-blue-300">topics</span>,
+    <span class="text-blue-400">@Header</span>(<span class="text-yellow-400">KafkaHeaders.OFFSET</span>) <span class="text-yellow-400">List</span>&lt;<span class="text-yellow-400">Long</span>&gt; <span class="text-blue-300">offsets</span>) {
+    <span class="text-gray-400">...</span>
+}
+</code></pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Drawbacks:</h3>
+        <ul class="list-disc pl-5 mb-4 space-y-1">
+          <li>Increased memory usage: All messages in a batch are stored in memory before processing, leading to higher memory consumption especially with large batches.</li>
+          <li>Higher latency: Batch listener waits for either the batch size to be reached or a timeout to occur, which can delay message processing compared to single-message processing.</li>
+          <li>Difficult to tune batch size: Setting the optimal batch size is non-trivial. A large size increases memory usage; a small size reduces efficiency.</li>
+          <li>Complex error handling: If a single message in a batch fails, it may affect the entire batch. This requires more sophisticated error-handling logic.</li>
+          <li>Complex retry logic: When some messages in a batch fail, you'll need custom logic to isolate and retry only those messages, which adds processing complexity.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
