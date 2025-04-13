@@ -144,6 +144,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/documentdb-cons.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/documentdb-cons.hbs'), 'utf8'),
+        pageTitle: "AWS DocumentDB Comparison Analysis",
+        pageDescription: "Current Issues with AWS DocumentDB (Instance-Based Cluster) - Does not support zero-downtime deployments during bug fixes, increasing code-level management points",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/documentdb-cons.html",
+        pageImage: "documentdb-cons.webp",
+        pageImageAlt: "AWS DocumentDB Cons"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: "blog/software-engineer/list/kafka-consumer-performance.html",
       chunks: ['index'],
       templateParameters: {
