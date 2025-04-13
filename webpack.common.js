@@ -144,6 +144,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/r2dbc-conn-pool.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/r2dbc-conn-pool.hbs'), 'utf8'),
+        pageTitle: "Understanding R2DBC Connection Pool",
+        pageDescription: "R2DBC connection pooling implements a fundamentally different approach compared to traditional JDBC connection pools like HikariCP, especially in how it handles idle connections and pool initialization.",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/r2dbc-conn-pool.html",
+        pageImage: "r2dbc-conn-pool.webp",
+        pageImageAlt: "r2dbc-conn-pool.webp",
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: "blog/software-engineer/list/documentdb-cons.html",
       chunks: ['index'],
       templateParameters: {
