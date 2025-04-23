@@ -1,0 +1,444 @@
+<div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
+  <div class="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+    <nav class="mb-4" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+        <li><a href="/" class="hover:text-gray-700">Home</a></li>
+        <li class="flex items-center">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <a href="/blog/software-engineer/list.html" class="ml-2 hover:text-gray-700">Software Engineer</a>
+        </li>
+        <li class="flex items-center">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <span class="ml-2 text-gray-400">Solving Floating-Point Precision Issues</span>
+        </li>
+      </ol>
+    </nav>
+    <header class="mb-8">
+      <p class="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400" data-section="true">
+        Developer Playground
+      </p>
+      <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+        Solving Floating-Point Precision Issues with Kotlin
+      </h1>
+      <div class="text-sm text-gray-500 mt-2">Updated: April 23, 2025</div>
+    </header>
+    <div class="mt-6 prose dark:prose-invert">
+      <div class="mt-6">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">
+          Understanding Floating-Point Precision Problems
+        </h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          When developing financial applications or systems requiring precise calculations, floating-point precision issues can lead to critical bugs.
+          These problems occur in JVM-based languages like Kotlin, and deciding how to store and process values, especially when interacting with databases, is a crucial design decision.
+        </p>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Precision loss due to binary floating-point representation limitations</li>
+          <li class="whitespace-nowrap mobile-wrap">Accumulation of rounding errors</li>
+          <li class="whitespace-nowrap mobile-wrap">Type conversion issues when storing and retrieving from databases</li>
+          <li class="whitespace-nowrap mobile-wrap">Accuracy requirements in currency and financial calculations</li>
+        </ul>
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">
+          Floating-point problem example:
+        </h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">fun</span> <span class="text-yellow-400">main</span>() {
+    <span class="text-purple-400">val</span> <span class="text-blue-300">a</span> = <span class="text-pink-400">0.1</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">b</span> = <span class="text-pink-400">0.2</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">sum</span> = <span class="text-blue-300">a</span> + <span class="text-blue-300">b</span>
+
+    println(<span class="text-green-400">"0.1 + 0.2 = $sum"</span>)
+    println(<span class="text-green-400">"Is sum equal to 0.3? ${sum == 0.3}"</span>)
+}</code></pre>
+        </div>
+        <p class="text-gray-700 dark:text-gray-400 mt-4">
+          The result of the above code is:
+        </p>
+        <div class="bg-gray-100 rounded-md p-4 dark:bg-gray-800">
+          <code class="text-gray-800 dark:text-gray-300">
+            0.1 + 0.2 = 0.30000000000000004<br>
+            Is sum equal to 0.3? false
+          </code>
+        </div>
+        <p class="text-gray-700 dark:text-gray-400 mt-4">
+          The fact that 0.1 plus 0.2 doesn't equal exactly 0.3 is due to the limitations of binary floating-point representation. These issues can cause serious errors in financial applications.
+        </p>
+      </div>
+
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460">
+        <rect width="900" height="460" fill="#f8f9fa" rx="10" ry="10"/>
+
+        <text x="450" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">
+          Solutions to Floating-Point Precision Problems
+        </text>
+
+        <!-- Integer Conversion Box -->
+        <rect x="50" y="80" width="250" height="280" fill="#e6f7ff" stroke="#1890ff" stroke-width="3" rx="10" ry="10"/>
+        <text x="175" y="110" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Integer Conversion</text>
+
+        <!-- Decimal Type Box -->
+        <rect x="325" y="80" width="250" height="280" fill="#fff2e8" stroke="#fa8c16" stroke-width="2" rx="8" ry="8"/>
+        <text x="450" y="110" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Decimal Type Usage</text>
+
+        <!-- String Storage Box -->
+        <rect x="600" y="80" width="250" height="280" fill="#f6ffed" stroke="#52c41a" stroke-width="2" rx="8" ry="8"/>
+        <text x="725" y="110" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">String Storage</text>
+
+        <!-- Method 1 Features -->
+        <rect x="70" y="130" width="210" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="175" y="155" font-family="Arial" font-size="16" text-anchor="middle">Multiply by 10^n for integer</text>
+
+        <rect x="70" y="180" width="210" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="175" y="205" font-family="Arial" font-size="16" text-anchor="middle">Simple and fast operations</text>
+
+        <rect x="70" y="230" width="210" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="175" y="255" font-family="Arial" font-size="16" text-anchor="middle">Reduced readability</text>
+
+        <rect x="70" y="280" width="210" height="40" fill="#91d5ff" stroke="#1890ff" stroke-width="2" rx="5" ry="5"/>
+        <text x="175" y="305" font-family="Arial" font-size="16" text-anchor="middle">Potential for overflow</text>
+
+        <!-- Method 2 Features -->
+        <rect x="345" y="130" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="450" y="155" font-family="Arial" font-size="16" text-anchor="middle">Using BigDecimal</text>
+
+        <rect x="345" y="180" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="450" y="205" font-family="Arial" font-size="16" text-anchor="middle">Guaranteed precision</text>
+
+        <rect x="345" y="230" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="450" y="255" font-family="Arial" font-size="16" text-anchor="middle">Potential performance hit</text>
+
+        <rect x="345" y="280" width="210" height="40" fill="#ffd591" stroke="#fa8c16" stroke-width="2" rx="5" ry="5"/>
+        <text x="450" y="305" font-family="Arial" font-size="16" text-anchor="middle">Compatible with DB DECIMAL</text>
+
+        <!-- Method 3 Features -->
+        <rect x="620" y="130" width="210" height="40" fill="#b7eb8f" stroke="#52c41a" stroke-width="2" rx="5" ry="5"/>
+        <text x="725" y="155" font-family="Arial" font-size="16" text-anchor="middle">Store values as strings</text>
+
+        <rect x="620" y="180" width="210" height="40" fill="#b7eb8f" stroke="#52c41a" stroke-width="2" rx="5" ry="5"/>
+        <text x="725" y="205" font-family="Arial" font-size="16" text-anchor="middle">Perfect precision preservation</text>
+
+        <rect x="620" y="230" width="210" height="40" fill="#b7eb8f" stroke="#52c41a" stroke-width="2" rx="5" ry="5"/>
+        <text x="725" y="255" font-family="Arial" font-size="16" text-anchor="middle">Conversion needed for operations</text>
+
+        <rect x="620" y="280" width="210" height="40" fill="#b7eb8f" stroke="#52c41a" stroke-width="2" rx="5" ry="5"/>
+        <text x="725" y="305" font-family="Arial" font-size="16" text-anchor="middle">Indexing/sorting constraints</text>
+
+        <!-- Comparison table -->
+        <text x="450" y="380" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Solution Comparison</text>
+        <text x="175" y="410" font-family="Arial" font-size="14" text-anchor="middle">Performance ⭐⭐⭐⭐</text>
+        <text x="450" y="410" font-family="Arial" font-size="14" text-anchor="middle">Precision ⭐⭐⭐⭐⭐</text>
+        <text x="725" y="410" font-family="Arial" font-size="14" text-anchor="middle">Storage efficiency ⭐⭐⭐</text>
+
+        <text x="175" y="440" font-family="Arial" font-size="14" text-anchor="middle">Implementation: Easy</text>
+        <text x="450" y="440" font-family="Arial" font-size="14" text-anchor="middle">Implementation: Medium</text>
+        <text x="725" y="440" font-family="Arial" font-size="14" text-anchor="middle">Implementation: Easy</text>
+      </svg>
+
+      <div class="mt-8">
+        <h2 class="mb-2 text-3xl sm:text-2xl tracking-tight text-gray-900 dark:text-white break-words">Solving Precision Issues with Integer Conversion</h2>
+        <p class="text-gray-800 dark:text-gray-400">
+          The first approach is to multiply floating-point values by a specific factor (typically a power of 10) to convert them to integers before storing in the database.
+          This method is particularly effective when dealing with values that have a fixed number of decimal places, such as currency.
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Implementation:</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> javax.persistence.Column
+<span class="text-purple-400">import</span> javax.persistence.Entity
+<span class="text-purple-400">import</span> javax.persistence.Id
+
+<span class="text-gray-400">// Entity to store money information</span>
+<span class="text-purple-400">@Entity</span>
+<span class="text-purple-400">class</span> <span class="text-blue-300">Money</span>(
+    <span class="text-purple-400">@Id</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">id</span>: <span class="text-purple-400">Long</span>,
+
+    <span class="text-gray-400">// Store amount as integer (100x the original value)</span>
+    <span class="text-purple-400">@Column</span>(name = <span class="text-green-400">"amount_in_cents"</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">amountInCents</span>: <span class="text-purple-400">Long</span>
+) {
+    <span class="text-gray-400">// Calculate actual amount (integer → decimal)</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">amount</span>: <span class="text-purple-400">Double</span>
+        <span class="text-purple-400">get</span>() = <span class="text-blue-300">amountInCents</span> / <span class="text-pink-400">100.0</span>
+
+    <span class="text-purple-400">companion</span> <span class="text-purple-400">object</span> {
+        <span class="text-gray-400">// Convert decimal value to storage integer</span>
+        <span class="text-purple-400">fun</span> <span class="text-yellow-400">fromAmount</span>(id: <span class="text-purple-400">Long</span>, amount: <span class="text-purple-400">Double</span>): <span class="text-blue-300">Money</span> {
+            <span class="text-purple-400">val</span> <span class="text-blue-300">amountInCents</span> = (amount * <span class="text-pink-400">100</span>).toLong()
+            <span class="text-purple-400">return</span> <span class="text-blue-300">Money</span>(id, <span class="text-blue-300">amountInCents</span>)
+        }
+    }
+}</code></pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Usage Example:</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">fun</span> <span class="text-yellow-400">main</span>() {
+    <span class="text-purple-400">val</span> <span class="text-blue-300">moneyRepository</span> = <span class="text-gray-400">// repository implementation</span>
+
+    <span class="text-gray-400">// Store $10.99 (converted to 1099 cents)</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">money</span> = <span class="text-blue-300">Money</span>.fromAmount(<span class="text-pink-400">1L</span>, <span class="text-pink-400">10.99</span>)
+    <span class="text-blue-300">moneyRepository</span>.save(<span class="text-blue-300">money</span>)
+
+    <span class="text-gray-400">// Retrieve stored amount</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">retrieved</span> = <span class="text-blue-300">moneyRepository</span>.findById(<span class="text-pink-400">1L</span>).get()
+    println(<span class="text-green-400">"Stored amount: $${retrieved.amount}"</span>)
+
+    <span class="text-gray-400">// Perform accurate calculations</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">money1</span> = <span class="text-blue-300">Money</span>.fromAmount(<span class="text-pink-400">2L</span>, <span class="text-pink-400">0.1</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">money2</span> = <span class="text-blue-300">Money</span>.fromAmount(<span class="text-pink-400">3L</span>, <span class="text-pink-400">0.2</span>)
+
+    <span class="text-gray-400">// Calculate in cents then convert</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">sumInCents</span> = <span class="text-blue-300">money1</span>.amountInCents + <span class="text-blue-300">money2</span>.amountInCents
+    <span class="text-purple-400">val</span> <span class="text-blue-300">sum</span> = <span class="text-blue-300">sumInCents</span> / <span class="text-pink-400">100.0</span>
+
+    println(<span class="text-green-400">"0.1 + 0.2 = $sum"</span>)  <span class="text-gray-400">// Prints exactly 0.3</span>
+}</code></pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Advantages:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Simple and intuitive implementation</li>
+          <li class="whitespace-nowrap mobile-wrap">Integer operations are fast and efficient</li>
+          <li class="whitespace-nowrap mobile-wrap">Efficiently processed in most databases</li>
+        </ul>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Disadvantages:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Only supports fixed decimal places (e.g., cents or 2 decimal places)</li>
+          <li class="whitespace-nowrap mobile-wrap">May exceed Long range for very large values</li>
+          <li class="whitespace-nowrap mobile-wrap">Conversion logic must always be kept in mind in code</li>
+        </ul>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Solving Precision Issues with BigDecimal</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          The second approach leverages the BigDecimal class provided by Java/Kotlin to solve precision issues.
+          BigDecimal offers exact decimal representation and naturally maps to the DECIMAL type in databases.
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Implementation:</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> java.math.BigDecimal
+<span class="text-purple-400">import</span> java.math.RoundingMode
+<span class="text-purple-400">import</span> javax.persistence.Column
+<span class="text-purple-400">import</span> javax.persistence.Entity
+<span class="text-purple-400">import</span> javax.persistence.Id
+
+<span class="text-purple-400">@Entity</span>
+<span class="text-purple-400">class</span> <span class="text-blue-300">Product</span>(
+    <span class="text-purple-400">@Id</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">id</span>: <span class="text-purple-400">Long</span>,
+
+    <span class="text-purple-400">val</span> <span class="text-blue-300">name</span>: <span class="text-purple-400">String</span>,
+
+    <span class="text-gray-400">// Maps to DECIMAL type</span>
+    <span class="text-purple-400">@Column</span>(precision = <span class="text-pink-400">19</span>, scale = <span class="text-pink-400">4</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">price</span>: <span class="text-purple-400">BigDecimal</span>
+)
+
+<span class="text-gray-400">// Extension function for price calculations</span>
+<span class="text-purple-400">fun</span> <span class="text-purple-400">BigDecimal</span>.<span class="text-yellow-400">applyTax</span>(taxRate: <span class="text-purple-400">BigDecimal</span>): <span class="text-purple-400">BigDecimal</span> {
+    <span class="text-purple-400">return</span> <span class="text-purple-400">this</span>.multiply(taxRate.add(<span class="text-purple-400">BigDecimal</span>.ONE))
+        .setScale(<span class="text-pink-400">2</span>, <span class="text-purple-400">RoundingMode</span>.HALF_UP)
+}</code></pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Usage Example:</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> java.math.BigDecimal
+<span class="text-purple-400">import</span> java.math.RoundingMode
+
+<span class="text-purple-400">fun</span> <span class="text-yellow-400">main</span>() {
+    <span class="text-purple-400">val</span> <span class="text-blue-300">productRepository</span> = <span class="text-gray-400">// repository implementation</span>
+
+    <span class="text-gray-400">// Exact decimal representation</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">price</span> = <span class="text-purple-400">BigDecimal</span>(<span class="text-green-400">"10.99"</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">product</span> = <span class="text-blue-300">Product</span>(<span class="text-pink-400">1L</span>, <span class="text-green-400">"Refrigerator"</span>, <span class="text-blue-300">price</span>)
+    <span class="text-blue-300">productRepository</span>.save(<span class="text-blue-300">product</span>)
+
+    <span class="text-gray-400">// Precise decimal operations</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">num1</span> = <span class="text-purple-400">BigDecimal</span>(<span class="text-green-400">"0.1"</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">num2</span> = <span class="text-purple-400">BigDecimal</span>(<span class="text-green-400">"0.2"</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">sum</span> = <span class="text-blue-300">num1</span>.add(<span class="text-blue-300">num2</span>)
+
+    println(<span class="text-green-400">"0.1 + 0.2 = $sum"</span>)
+    println(<span class="text-green-400">"Is sum equal to 0.3? ${sum.compareTo(BigDecimal(\"0.3\")) == 0}"</span>)
+
+    <span class="text-gray-400">// Calculate 10% tax</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">taxRate</span> = <span class="text-purple-400">BigDecimal</span>(<span class="text-green-400">"0.1"</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">priceWithTax</span> = <span class="text-blue-300">price</span>.applyTax(<span class="text-blue-300">taxRate</span>)
+
+    println(<span class="text-green-400">"Price with tax: $priceWithTax"</span>)
+}</code></pre>
+        </div>
+
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mt-4">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-yellow-700">
+                <strong>Important Note:</strong> Always create BigDecimal from String rather than double literals to avoid precision issues before they even start. Using <code>BigDecimal(0.1)</code> would inherit the double's imprecision, while <code>BigDecimal("0.1")</code> maintains exact precision.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Advantages:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Provides arbitrary precision for decimal calculations</li>
+          <li class="whitespace-nowrap mobile-wrap">Directly maps to database DECIMAL types</li>
+          <li class="whitespace-nowrap mobile-wrap">Includes built-in rounding control</li>
+          <li class="whitespace-nowrap mobile-wrap">Best option for financial calculations</li>
+        </ul>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Disadvantages:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Operations are slower than primitive number types</li>
+          <li class="whitespace-nowrap mobile-wrap">Immutable objects create more garbage collection pressure</li>
+          <li class="whitespace-nowrap mobile-wrap">More verbose API compared to primitive operations</li>
+        </ul>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">String Storage Approach</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          The third approach is storing numeric values as strings in the database. This method ensures perfect preservation of the original value, but requires conversion for mathematical operations.
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Implementation:</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> java.math.BigDecimal
+<span class="text-purple-400">import</span> javax.persistence.Column
+<span class="text-purple-400">import</span> javax.persistence.Entity
+<span class="text-purple-400">import</span> javax.persistence.Id
+
+<span class="text-purple-400">@Entity</span>
+<span class="text-purple-400">class</span> <span class="text-blue-300">StringAmount</span>(
+    <span class="text-purple-400">@Id</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">id</span>: <span class="text-purple-400">Long</span>,
+
+    <span class="text-purple-400">val</span> <span class="text-blue-300">description</span>: <span class="text-purple-400">String</span>,
+
+    <span class="text-gray-400">// Store the exact value as a string</span>
+    <span class="text-purple-400">@Column</span>(name = <span class="text-green-400">"amount_value"</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">amountValue</span>: <span class="text-purple-400">String</span>
+) {
+    <span class="text-gray-400">// Convert to BigDecimal when needed for calculations</span>
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">toBigDecimal</span>(): <span class="text-purple-400">BigDecimal</span> = <span class="text-purple-400">BigDecimal</span>(<span class="text-blue-300">amountValue</span>)
+
+    <span class="text-gray-400">// Helper for addition with another StringAmount</span>
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">add</span>(other: <span class="text-blue-300">StringAmount</span>): <span class="text-purple-400">String</span> {
+        <span class="text-purple-400">val</span> <span class="text-blue-300">result</span> = <span class="text-purple-400">this</span>.toBigDecimal().add(other.toBigDecimal())
+        <span class="text-purple-400">return</span> <span class="text-blue-300">result</span>.toString()
+    }
+    
+    <span class="text-gray-400">// Helper for multiplication</span>
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">multiply</span>(factor: <span class="text-purple-400">String</span>): <span class="text-purple-400">String</span> {
+        <span class="text-purple-400">val</span> <span class="text-blue-300">result</span> = <span class="text-purple-400">this</span>.toBigDecimal().multiply(<span class="text-purple-400">BigDecimal</span>(factor))
+        <span class="text-purple-400">return</span> <span class="text-blue-300">result</span>.toString()
+    }
+}
+</code>
+    </pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Usage Example:</h3>
+        <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+    <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">fun</span> <span class="text-yellow-400">main</span>() {
+    <span class="text-purple-400">val</span> <span class="text-blue-300">amountRepository</span> = <span class="text-gray-400">// repository implementation</span>
+
+    <span class="text-gray-400">// Store exact decimal values as strings</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">amount1</span> = <span class="text-blue-300">StringAmount</span>(<span class="text-pink-400">1L</span>, <span class="text-green-400">"Payment"</span>, <span class="text-green-400">"0.1"</span>)
+    <span class="text-purple-400">val</span> <span class="text-blue-300">amount2</span> = <span class="text-blue-300">StringAmount</span>(<span class="text-pink-400">2L</span>, <span class="text-green-400">"Refund"</span>, <span class="text-green-400">"0.2"</span>)
+
+    <span class="text-blue-300">amountRepository</span>.save(<span class="text-blue-300">amount1</span>)
+    <span class="text-blue-300">amountRepository</span>.save(<span class="text-blue-300">amount2</span>)
+
+    <span class="text-gray-400">// Calculate sum by converting to BigDecimal</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">sum</span> = <span class="text-blue-300">amount1</span>.add(<span class="text-blue-300">amount2</span>)
+    println(<span class="text-green-400">"0.1 + 0.2 = $sum"</span>)  <span class="text-gray-400">// Exactly "0.3"</span>
+
+    <span class="text-gray-400">// Even extremely precise values maintain their exact representation</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">preciseAmount</span> = <span class="text-blue-300">StringAmount</span>(
+        <span class="text-pink-400">3L</span>,
+        <span class="text-green-400">"Scientific measurement"</span>,
+        <span class="text-green-400">"0.1234567890123456789012345678901234567890"</span>
+    )
+    <span class="text-blue-300">amountRepository</span>.save(<span class="text-blue-300">preciseAmount</span>)
+
+    <span class="text-gray-400">// Retrieve with full precision intact</span>
+    <span class="text-purple-400">val</span> <span class="text-blue-300">retrieved</span> = <span class="text-blue-300">amountRepository</span>.findById(<span class="text-pink-400">3L</span>).get()
+    println(<span class="text-green-400">"Retrieved value: ${retrieved.amountValue}"</span>)
+}</code></pre>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Advantages:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Perfect preservation of original value with unlimited precision</li>
+          <li class="whitespace-nowrap mobile-wrap">No information loss during storage or retrieval</li>
+          <li class="whitespace-nowrap mobile-wrap">Simple implementation with string data types</li>
+          <li class="whitespace-nowrap mobile-wrap">Works well for values with extreme precision requirements</li>
+        </ul>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Disadvantages:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Requires conversion to numeric types for calculations</li>
+          <li class="whitespace-nowrap mobile-wrap">More storage space required for large numbers</li>
+          <li class="whitespace-nowrap mobile-wrap">Less efficient for numeric indexing and sorting in databases</li>
+          <li class="whitespace-nowrap mobile-wrap">Need for validation to ensure stored strings are valid numbers</li>
+        </ul>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Conclusion and Best Practices</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          When dealing with floating-point precision issues in Kotlin, choose the approach that best aligns with your specific requirements:
+        </p>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Decision Matrix:</h3>
+        <div class="bg-gray-100 rounded-md p-4 dark:bg-gray-800">
+          <ul class="max-w-md space-y-3 text-gray-700 list-none list-inside dark:text-gray-400">
+            <li><strong>Use the Integer Conversion Approach when:</strong> Working with fixed decimal places (like money) and performance is critical</li>
+            <li><strong>Use the BigDecimal Approach when:</strong> Working with financial calculations or when database precision types align with your needs</li>
+            <li><strong>Use the String Storage Approach when:</strong> Maximum precision is required and the values may have arbitrary decimal places</li>
+          </ul>
+        </div>
+
+        <h3 class="inline-block mb-2 text-xl tracking-tight text-gray-900 dark:text-white mt-4">Best Practices:</h3>
+        <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
+          <li class="whitespace-nowrap mobile-wrap">Always create BigDecimal from strings, not from floating-point literals</li>
+          <li class="whitespace-nowrap mobile-wrap">Document your precision strategy clearly in your codebase</li>
+          <li class="whitespace-nowrap mobile-wrap">Use appropriate scale and rounding modes for financial calculations</li>
+          <li class="whitespace-nowrap mobile-wrap">Write comprehensive tests specifically targeting precision issues</li>
+          <li class="whitespace-nowrap mobile-wrap">Consider creating domain-specific types for handling important numeric values</li>
+        </ul>
+
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mt-6">
+          <div class="flex">
+            <div class="flex-shrink-0">
+              <svg class="h-5 w-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm text-blue-700">
+                <strong>Remember:</strong> The choice of precision strategy isn't just a technical decision—it can have real financial and business implications. Take time to understand your requirements and choose the appropriate solution for your specific use case.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

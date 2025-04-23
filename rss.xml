@@ -126,5 +126,14 @@
       <description>R2DBC connection pooling implements a fundamentally different approach compared to traditional JDBC connection pools like HikariCP, especially in how it handles idle connections and pool initialization.</description>
       <category>Database</category>
     </item>
+    <item>
+      <title>Handle Floating Point</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/handle-floating-point.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/handle-floating-point.html</guid>
+      <pubDate>Wed, 23 Oct 2025 00:00:00 GMT</pubDate>
+      <description>When developing financial applications or systems requiring precise calculations, floating-point precision issues can lead to critical bugs. These problems occur in JVM-based languages like Kotlin, and deciding how to store and process values, especially when interacting with databases, is a crucial design decision.</description>
+      <category>JVM</category>
+      <category>Database</category>
+    </item>
   </channel>
 </rss>

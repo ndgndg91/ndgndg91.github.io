@@ -144,6 +144,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/handle-floating-point.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/handle-floating-point.hbs'), 'utf8'),
+        pageTitle: "Solving Floating-Point Precision Issues",
+        pageDescription: "When developing financial applications or systems requiring precise calculations, floating-point precision issues can lead to critical bugs. These problems occur in JVM-based languages like Kotlin, and deciding how to store and process values, especially when interacting with databases, is a crucial design decision.",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/handle-floating-point.html",
+        pageImage: "handle-floating-point.webp",
+        pageImageAlt: "Solving Floating-Point Precision Issues"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: "blog/software-engineer/list/r2dbc-conn-pool.html",
       chunks: ['index'],
       templateParameters: {
@@ -178,7 +191,7 @@ module.exports = {
         pageDescription: "Explore effective strategies to optimize Kafka consumer performance including partition-pod 1:1 mapping, concurrent listeners, Confluent Parallel Consumer, and asynchronous processing patterns. Learn implementation techniques, advantages, and trade-offs for each approach to maximize throughput and resource efficiency in your Kafka-based systems.",
         pageUrl: "https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance.html",
         pageImage: "kafka-consumer-performance.webp",
-        pageImageAlt: "MCP Filesystem Configuration Diagram"
+        pageImageAlt: "Kafka Consumer Performance Optimization"
       }
     }),
     new HtmlWebpackPlugin({
