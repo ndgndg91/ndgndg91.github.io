@@ -122,7 +122,7 @@
       <title>Understanding R2DBC Connection Pool</title>
       <link>https://developer-playground.com/blog/software-engineer/list/r2dbc-conn-pool.html</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/r2dbc-conn-pool.html</guid>
-      <pubDate>Sun, 13 Oct 2025 00:00:00 GMT</pubDate>
+      <pubDate>Mon, 21 Oct 2025 00:00:00 GMT</pubDate>
       <description>R2DBC connection pooling implements a fundamentally different approach compared to traditional JDBC connection pools like HikariCP, especially in how it handles idle connections and pool initialization.</description>
       <category>Database</category>
     </item>
