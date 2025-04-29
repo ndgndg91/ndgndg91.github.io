@@ -326,6 +326,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/cors-sop.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/cors-sop.hbs'), 'utf8'),
+        pageTitle: "CORS (Cross-Origin Resource Sharing) & SOP (Same-Origin Policy)",
+        pageDescription: "Explore the concepts of CORS and SOP in web development, including how they work together to prevent CSRF attacks and how to implement CORS.",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/cors-sop.html",
+        pageImage: "cors.webp",
+        pageImageAlt: "CORS and SOP Flow Diagram"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: 'blog/software-engineer/list.html',
       chunks: ['blog_software_engineer_list'],
       templateParameters: {
@@ -373,6 +386,12 @@ module.exports = {
                 "position": 5,
                 "url": "https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation.html",
                 "name": "Effective Identifier Generation in Distributed Systems"
+              },
+              {
+                "@type": "ListItem",
+                "position": 6,
+                "url": "https://developer-playground.com/blog/software-engineer/list/cors-sop.html",
+                "name": "CORS (Cross-Origin Resource Sharing) & SOP (Same-Origin Policy) with Spring Boot"
               }
             ]
           }
