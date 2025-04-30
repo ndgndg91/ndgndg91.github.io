@@ -24,7 +24,7 @@
       <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
         CORS (Cross-Origin Resource Sharing) & SOP (Same-Origin Policy)
       </h1>
-      <div class="text-sm text-gray-500 mt-2">Updated: April 29, 2025</div>
+      <div class="text-sm text-gray-500 mt-2">Updated: April 30, 2025</div>
     </header>
 
     <!-- Table of Contents for mobile view -->
@@ -294,6 +294,215 @@
         <p class="text-gray-700 dark:text-gray-400 mt-3">
           The server must respond with appropriate Access-Control-* headers to allow the actual request to proceed.
         </p>
+      </div>
+
+      <div class="mt-6" id="spring-boot">
+        <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">How to implement in spring boot?</h2>
+        <p class="text-gray-700 dark:text-gray-400">
+          Preflight requests are an important security mechanism in the CORS process:
+        </p>
+        <ul class="max-w-md space-y-2 text-gray-700 list-disc list-inside dark:text-gray-400 mt-3">
+          <li class="whitespace-nowrap mobile-wrap">A preflight request is made for all requests that are not Simple Requests</li>
+          <li class="whitespace-nowrap mobile-wrap">It's an OPTIONS HTTP request sent before the actual request</li>
+          <li class="whitespace-nowrap mobile-wrap">It verifies that the CORS protocol is understood and that the server permits the actual request</li>
+          <li class="whitespace-nowrap mobile-wrap">The preflight request includes headers like:</li>
+          <li class="whitespace-nowrap mobile-wrap">Access-Control-Request-Method: Specifies the HTTP method of the actual request</li>
+          <li class="whitespace-nowrap mobile-wrap">Access-Control-Request-Headers: Lists any custom headers that will be used</li>
+        </ul>
+        <p class="text-gray-700 dark:text-gray-400 mt-3">
+          The server must respond with appropriate Access-Control-* headers to allow the actual request to proceed.
+        </p>
+
+        <div class="mt-8">
+          <h3 class="text-2xl font-semibold text-gray-900 dark:text-white">Spring Boot 3 CORS Implementation Methods</h3>
+          <p class="text-gray-700 dark:text-gray-400 mt-3">
+            There are several ways to implement CORS in Spring Boot 3. The main methods are as follows:
+          </p>
+
+          <div class="mt-5">
+            <h4 class="text-xl font-medium text-gray-900 dark:text-white">1. Using @CrossOrigin Annotation</h4>
+            <p class="text-gray-700 dark:text-gray-400 mt-2">
+              This method configures CORS at the controller class or method level.
+            </p>
+            <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> org.springframework.web.bind.annotation.CrossOrigin;
+<span class="text-purple-400">import</span> org.springframework.web.bind.annotation.GetMapping;
+<span class="text-purple-400">import</span> org.springframework.web.bind.annotation.RestController;
+
+<span class="text-blue-300">@RestController</span>
+<span class="text-blue-300">@CrossOrigin</span>(origins = <span class="text-green-400">"http://example.com"</span>,
+             allowedHeaders = <span class="text-green-400">"*"</span>,
+             methods = {RequestMethod.<span class="text-yellow-400">GET</span>, RequestMethod.<span class="text-yellow-400">POST</span>, RequestMethod.<span class="text-yellow-400">PUT</span>},
+             maxAge = <span class="text-pink-400">3600</span>)
+<span class="text-purple-400">public class</span> <span class="text-yellow-400">MyController</span> {
+
+    <span class="text-blue-300">@GetMapping</span>(<span class="text-green-400">"/api/data"</span>)
+    <span class="text-purple-400">public</span> ResponseEntity&lt;?&gt; <span class="text-yellow-400">getData</span>() {
+        <span class="text-gray-400">// Method implementation</span>
+        <span class="text-purple-400">return</span> ResponseEntity.<span class="text-yellow-400">ok</span>().<span class="text-yellow-400">body</span>(data);
+    }
+
+    <span class="text-gray-400">// You can also apply different CORS settings to specific methods</span>
+    <span class="text-blue-300">@CrossOrigin</span>(origins = <span class="text-green-400">"http://another-domain.com"</span>)
+    <span class="text-blue-300">@PostMapping</span>(<span class="text-green-400">"/api/submit"</span>)
+    <span class="text-purple-400">public</span> ResponseEntity&lt;?&gt; <span class="text-yellow-400">submitData</span>(@RequestBody DataDTO data) {
+        <span class="text-gray-400">// Method implementation</span>
+        <span class="text-purple-400">return</span> ResponseEntity.<span class="text-yellow-400">ok</span>().<span class="text-yellow-400">build</span>();
+    }
+}</code></pre>
+
+            </div>
+          </div>
+
+          <div class="mt-7">
+            <h4 class="text-xl font-medium text-gray-900 dark:text-white">2. Global CORS Configuration with WebMvcConfigurer</h4>
+            <p class="text-gray-700 dark:text-gray-400 mt-2">
+              This method applies CORS settings to the entire application.
+            </p>
+            <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> org.springframework.context.annotation.Bean;
+<span class="text-purple-400">import</span> org.springframework.context.annotation.Configuration;
+<span class="text-purple-400">import</span> org.springframework.web.servlet.config.annotation.CorsRegistry;
+<span class="text-purple-400">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+<span class="text-blue-300">@Configuration</span>
+<span class="text-purple-400">public class</span> <span class="text-yellow-400">WebConfig</span> <span class="text-purple-400">implements</span> WebMvcConfigurer {
+
+    <span class="text-blue-300">@Override</span>
+    <span class="text-purple-400">public void</span> <span class="text-yellow-400">addCorsMappings</span>(CorsRegistry registry) {
+        registry.<span class="text-yellow-400">addMapping</span>(<span class="text-green-400">"/**"</span>)  <span class="text-gray-400">// Apply to all paths</span>
+                .<span class="text-yellow-400">allowedOrigins</span>(<span class="text-green-400">"http://example.com"</span>, <span class="text-green-400">"https://example.org"</span>)  <span class="text-gray-400">// Origins to allow</span>
+                .<span class="text-yellow-400">allowedMethods</span>(<span class="text-green-400">"GET"</span>, <span class="text-green-400">"POST"</span>, <span class="text-green-400">"PUT"</span>, <span class="text-green-400">"DELETE"</span>, <span class="text-green-400">"OPTIONS"</span>)  <span class="text-gray-400">// HTTP methods to allow</span>
+                .<span class="text-yellow-400">allowedHeaders</span>(<span class="text-green-400">"*"</span>)  <span class="text-gray-400">// Allow all headers</span>
+                .<span class="text-yellow-400">allowCredentials</span>(<span class="text-purple-400">true</span>)  <span class="text-gray-400">// Allow credentials</span>
+                .<span class="text-yellow-400">maxAge</span>(<span class="text-pink-400">3600</span>);  <span class="text-gray-400">// Preflight request cache time (seconds)</span>
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="mt-7">
+            <h4 class="text-xl font-medium text-gray-900 dark:text-white">3. Configuration Using CorsFilter</h4>
+            <p class="text-gray-700 dark:text-gray-400 mt-2">
+              This method configures CORS at the filter level. It's useful when using Spring Security.
+            </p>
+            <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> org.springframework.context.annotation.Bean;
+<span class="text-purple-400">import</span> org.springframework.context.annotation.Configuration;
+<span class="text-purple-400">import</span> org.springframework.web.cors.CorsConfiguration;
+<span class="text-purple-400">import</span> org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+<span class="text-purple-400">import</span> org.springframework.web.filter.CorsFilter;
+
+<span class="text-blue-300">@Configuration</span>
+<span class="text-purple-400">public class</span> <span class="text-yellow-400">CorsConfig</span> {
+
+    <span class="text-blue-300">@Bean</span>
+    <span class="text-purple-400">public</span> CorsFilter <span class="text-yellow-400">corsFilter</span>() {
+        UrlBasedCorsConfigurationSource source = <span class="text-purple-400">new</span> UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = <span class="text-purple-400">new</span> CorsConfiguration();
+
+        <span class="text-gray-400">// Configure allowed origins</span>
+        config.<span class="text-yellow-400">addAllowedOrigin</span>(<span class="text-green-400">"http://example.com"</span>);
+        config.<span class="text-yellow-400">addAllowedOrigin</span>(<span class="text-green-400">"https://example.org"</span>);
+
+        <span class="text-gray-400">// Set preflight request cache time</span>
+        config.<span class="text-yellow-400">setMaxAge</span>(<span class="text-pink-400">3600L</span>);
+
+        <span class="text-gray-400">// Allow credentials (cookies, authentication headers, etc.)</span>
+        config.<span class="text-yellow-400">setAllowCredentials</span>(<span class="text-purple-400">true</span>);
+
+        <span class="text-gray-400">// Configure allowed HTTP methods</span>
+        config.<span class="text-yellow-400">addAllowedMethod</span>(<span class="text-green-400">"GET"</span>);
+        config.<span class="text-yellow-400">addAllowedMethod</span>(<span class="text-green-400">"POST"</span>);
+        config.<span class="text-yellow-400">addAllowedMethod</span>(<span class="text-green-400">"PUT"</span>);
+        config.<span class="text-yellow-400">addAllowedMethod</span>(<span class="text-green-400">"DELETE"</span>);
+        config.<span class="text-yellow-400">addAllowedMethod</span>(<span class="text-green-400">"OPTIONS"</span>);
+
+        <span class="text-gray-400">// Allow all headers</span>
+        config.<span class="text-yellow-400">addAllowedHeader</span>(<span class="text-green-400">"*"</span>);
+
+        <span class="text-gray-400">// Configure exposed response headers</span>
+        config.<span class="text-yellow-400">addExposedHeader</span>(<span class="text-green-400">"Authorization"</span>);
+
+        <span class="text-gray-400">// Apply this configuration to all paths</span>
+        source.<span class="text-yellow-400">registerCorsConfiguration</span>(<span class="text-green-400">"/**"</span>, config);
+
+        <span class="text-purple-400">return new</span> CorsFilter(source);
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="mt-7">
+            <h4 class="text-xl font-medium text-gray-900 dark:text-white">4. CORS Configuration with Spring Security</h4>
+            <p class="text-gray-700 dark:text-gray-400 mt-2">
+              When using Spring Security, you need to add CORS configuration to the SecurityFilterChain.
+            </p>
+            <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">import</span> org.springframework.context.annotation.Bean;
+<span class="text-purple-400">import</span> org.springframework.context.annotation.Configuration;
+<span class="text-purple-400">import</span> org.springframework.security.config.annotation.web.builders.HttpSecurity;
+<span class="text-purple-400">import</span> org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+<span class="text-purple-400">import</span> org.springframework.security.web.SecurityFilterChain;
+
+<span class="text-blue-300">@Configuration</span>
+<span class="text-blue-300">@EnableWebSecurity</span>
+<span class="text-purple-400">public class</span> <span class="text-yellow-400">SecurityConfig</span> {
+
+    <span class="text-blue-300">@Bean</span>
+    <span class="text-purple-400">public</span> SecurityFilterChain <span class="text-yellow-400">filterChain</span>(HttpSecurity http) <span class="text-purple-400">throws</span> Exception {
+        http
+            <span class="text-gray-400">// Enable CORS configuration</span>
+            .<span class="text-yellow-400">cors</span>().<span class="text-yellow-400">and</span>()
+            .<span class="text-yellow-400">csrf</span>().<span class="text-yellow-400">disable</span>()  <span class="text-gray-400">// Disable CSRF (common for API servers)</span>
+            .<span class="text-yellow-400">authorizeHttpRequests</span>(authorize -> authorize
+                .<span class="text-yellow-400">requestMatchers</span>(<span class="text-green-400">"/public/**"</span>).<span class="text-yellow-400">permitAll</span>()
+                .<span class="text-yellow-400">anyRequest</span>().<span class="text-yellow-400">authenticated</span>()
+            );
+
+        <span class="text-purple-400">return</span> http.<span class="text-yellow-400">build</span>();
+    }
+
+    <span class="text-gray-400">// Define CorsConfigurationSource bean</span>
+    <span class="text-blue-300">@Bean</span>
+    <span class="text-purple-400">public</span> CorsConfigurationSource <span class="text-yellow-400">corsConfigurationSource</span>() {
+        CorsConfiguration configuration = <span class="text-purple-400">new</span> CorsConfiguration();
+        configuration.<span class="text-yellow-400">setAllowedOrigins</span>(Arrays.<span class="text-yellow-400">asList</span>(<span class="text-green-400">"http://example.com"</span>));
+        configuration.<span class="text-yellow-400">setAllowedMethods</span>(Arrays.<span class="text-yellow-400">asList</span>(<span class="text-green-400">"GET"</span>, <span class="text-green-400">"POST"</span>, <span class="text-green-400">"PUT"</span>, <span class="text-green-400">"DELETE"</span>, <span class="text-green-400">"OPTIONS"</span>));
+        configuration.<span class="text-yellow-400">setAllowedHeaders</span>(Arrays.<span class="text-yellow-400">asList</span>(<span class="text-green-400">"*"</span>));
+        configuration.<span class="text-yellow-400">setAllowCredentials</span>(<span class="text-purple-400">true</span>);
+        configuration.<span class="text-yellow-400">setMaxAge</span>(<span class="text-pink-400">3600L</span>);
+
+        UrlBasedCorsConfigurationSource source = <span class="text-purple-400">new</span> UrlBasedCorsConfigurationSource();
+        source.<span class="text-yellow-400">registerCorsConfiguration</span>(<span class="text-green-400">"/**"</span>, configuration);
+        <span class="text-purple-400">return</span> source;
+    }
+}</code></pre>
+            </div>
+          </div>
+
+          <div class="mt-7">
+            <h4 class="text-xl font-medium text-gray-900 dark:text-white">Handling Preflight Requests</h4>
+            <p class="text-gray-700 dark:text-gray-400 mt-2">
+              If you want to explicitly handle preflight requests (OPTIONS method), you can add the following to your controller:
+            </p>
+            <div class="bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <pre class="whitespace-pre-wrap"><code><span class="text-blue-300">@RestController</span>
+<span class="text-purple-400">public class</span> <span class="text-yellow-400">CorsController</span> {
+
+    <span class="text-blue-300">@RequestMapping</span>(value = <span class="text-green-400">"/**"</span>, method = RequestMethod.<span class="text-yellow-400">OPTIONS</span>)
+    <span class="text-purple-400">public</span> ResponseEntity&lt;?&gt; <span class="text-yellow-400">handleOptionsRequest</span>() {
+        <span class="text-purple-400">return</span> ResponseEntity
+            .<span class="text-yellow-400">ok</span>()
+            .<span class="text-yellow-400">build</span>();
+    }
+}</code></pre>
+            </div>
+            <p class="text-gray-700 dark:text-gray-400 mt-3">
+              However, when using the CORS configuration methods described above, Spring will automatically handle preflight requests correctly.
+            </p>
+          </div>
+        </div>
       </div>
 
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" class="my-8">
