@@ -1,7 +1,6 @@
 // software-engineer/list.js
 import '../../css/tailwind.css'
 import '../navigation';
-import '../utils'
 
 document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('blog-search-input');
