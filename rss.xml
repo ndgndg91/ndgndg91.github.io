@@ -16,6 +16,16 @@
     <category>Programming</category>
     <category>Web Development</category>
     <item>
+      <title>Cache Control &amp; ETags with Spring Boot</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/etag.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/etag.html</guid>
+      <pubDate>Thu, 01 May 2025 05:33:00 GMT</pubDate>
+      <description>Cache Control &amp; ETags: Optimizing Web Performance with Spring Boot.</description>
+      <category>Web Development</category>
+      <category>Performance</category>
+      <category>Spring Boot</category>
+    </item>
+    <item>
       <title>CORS (Cross-Origin Resource Sharing) &amp; SOP (Same-Origin Policy)</title>
       <link>https://developer-playground.com/blog/software-engineer/list/cors-sop.html</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/cors-sop.html</guid>

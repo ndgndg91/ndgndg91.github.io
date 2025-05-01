@@ -326,6 +326,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/etag.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/etag.hbs'), 'utf8'),
+        pageTitle: "Cache Control & ETags: Optimizing Web Performance",
+        pageDescription: "Web caching is a technique that stores copies of resources to serve future requests more quickly:",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/etag.html",
+        pageImage: "etag.webp",
+        pageImageAlt: "etag cache conctrol Flow Diagram"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: "blog/software-engineer/list/cors-sop.html",
       chunks: ['index'],
       templateParameters: {
