@@ -16,6 +16,15 @@
     <category>Programming</category>
     <category>Web Development</category>
     <item>
+      <title>RequestContextHolder in Spring Boot: Access and Applications</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/request-context-holder.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/request-context-holder.html</guid>
+      <pubDate>Thu, 01 May 2025 05:33:00 GMT</pubDate>
+      <description>RequestContextHolder is a powerful utility class in Spring Framework that provides access to the current HTTP request and response objects through a thread-local storage mechanism.</description>
+      <category>Web Development</category>
+      <category>Spring Boot</category>
+    </item>
+    <item>
       <title>Cache Control &amp; ETags with Spring Boot</title>
       <link>https://developer-playground.com/blog/software-engineer/list/etag.html</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/etag.html</guid>

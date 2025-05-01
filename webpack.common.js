@@ -326,6 +326,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/request-context-holder.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/request-context-holder.hbs'), 'utf8'),
+        pageTitle: "RequestContextHolder in Spring Boot: Access and Applications",
+        pageDescription: "RequestContextHolder is a powerful utility class in Spring Framework that provides access to the current HTTP request and response objects through a thread-local storage mechanism.",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/request-context-holder.html",
+        pageImage: "request-context-holder.webp",
+        pageImageAlt: "spring boot request context holder"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: "blog/software-engineer/list/etag.html",
       chunks: ['index'],
       templateParameters: {
