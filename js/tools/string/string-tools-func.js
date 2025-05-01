@@ -67,8 +67,8 @@ export function generateRandomHex() {
   const length = parseInt(lengthInput);
   const resultElement = document.getElementById('random-hex-result');
 
-  if (isNaN(length) || length < 1 || length > 512) {
-    alert('Length must be a number between 1 and 128.');
+  if (isNaN(length) || length < 1 || length > 2048) {
+    alert('Length must be a number between 1 and 2048.');
     return;
   }
 
