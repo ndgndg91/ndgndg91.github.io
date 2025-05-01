@@ -50,14 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
   testButton.addEventListener('click', function() {
     // 테스트 HTML 예제
     const testExample = `<div class="container">
-  <h1>HTML 샘플</h1>
-  <p>이것은 <strong>HTML</strong> 태그가 포함된 <em>텍스트</em>입니다.</p>
+  <h1>HTML sample</h1>
+  <p>this <strong>HTML</strong> including tag <em>text</em>.</p>
   <ul>
-    <li>항목 1</li>
-    <li>항목 2 & 항목 3</li>
-    <li>항목 "4"</li>
+    <li>item 1</li>
+    <li>item 2 & item 3</li>
+    <li>item "4"</li>
   </ul>
-  <a href="https://example.com?param=value&another=test">링크</a>
+  <a href="https://example.com?param=value&another=test">link</a>
 </div>`;
 
     inputTextarea.value = testExample;
