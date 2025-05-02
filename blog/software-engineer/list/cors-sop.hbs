@@ -325,7 +325,7 @@
             <p class="text-gray-700 dark:text-gray-400 mt-2">
               This method configures CORS at the controller class or method level.
             </p>
-            <div class="relative bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <div class="relative bg-gray-900 p-4 overflow-x-auto">
             <pre class="whitespace-pre-wrap"><code id="using-cross-origin-annotation"><span class="text-purple-400">import</span> org.springframework.web.bind.annotation.CrossOrigin;
 <span class="text-purple-400">import</span> org.springframework.web.bind.annotation.GetMapping;
 <span class="text-purple-400">import</span> org.springframework.web.bind.annotation.RestController;
@@ -390,7 +390,7 @@
             <p class="text-gray-700 dark:text-gray-400 mt-2">
               This method applies CORS settings to the entire application.
             </p>
-            <div class="relative bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <div class="relative bg-gray-900 p-4 overflow-x-auto">
             <pre class="whitespace-pre-wrap"><code id="global-cors-configuration-web-mvc-configurer"><span class="text-purple-400">import</span> org.springframework.context.annotation.Bean;
 <span class="text-purple-400">import</span> org.springframework.context.annotation.Configuration;
 <span class="text-purple-400">import</span> org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -443,7 +443,7 @@
             <p class="text-gray-700 dark:text-gray-400 mt-2">
               This method configures CORS at the filter level. It's useful when using Spring Security.
             </p>
-            <div class="relative bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <div class="relative bg-gray-900 p-4 overflow-x-auto">
             <pre class="whitespace-pre-wrap"><code id="configuration-using-cors-filter"><span class="text-purple-400">import</span> org.springframework.context.annotation.Bean;
 <span class="text-purple-400">import</span> org.springframework.context.annotation.Configuration;
 <span class="text-purple-400">import</span> org.springframework.web.cors.CorsConfiguration;
@@ -521,7 +521,7 @@
             <p class="text-gray-700 dark:text-gray-400 mt-2">
               When using Spring Security, you need to add CORS configuration to the SecurityFilterChain.
             </p>
-            <div class="relative bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <div class="relative bg-gray-900 p-4 overflow-x-auto">
             <pre class="whitespace-pre-wrap"><code id="cors-configuration-with-spring-security"><span class="text-purple-400">import</span> org.springframework.context.annotation.Bean;
 <span class="text-purple-400">import</span> org.springframework.context.annotation.Configuration;
 <span class="text-purple-400">import</span> org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -595,7 +595,7 @@
             <p class="text-gray-700 dark:text-gray-400 mt-2">
               If you want to explicitly handle preflight requests (OPTIONS method), you can add the following to your controller:
             </p>
-            <div class="relative bg-gray-800 rounded-md p-4 overflow-x-auto text-white">
+            <div class="relative bg-gray-900 p-4 overflow-x-auto">
             <pre class="whitespace-pre-wrap"><code id="handling-preflight-requests"><span class="text-blue-300">@RestController</span>
 <span class="text-purple-400">public class</span> <span class="text-yellow-400">CorsController</span> {
 
