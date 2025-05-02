@@ -149,77 +149,110 @@
           Let's look at the key parts of the implementation:
         </p>
 
-        <pre class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-x-auto text-sm">
-<code>@Component
-class MobilePushRequestConsumer(
-    private val historyService: MobilePushHistoryWriteService,
-    private val producer: MobilePushProducer
+        <div class="relative bg-gray-900 p-4 rounded-lg">
+          <!-- 코드블록 컨테이너 -->
+          <div class="overflow-x-auto flex">
+            <!-- 코드 블록 -->
+        <pre class="whitespace-pre pr-28"><code id="concurrent-linked-queue-internal-buffer" class="language-kotlin text-white">
+<span class="text-green-400">@Component</span>
+<span class="text-purple-400">class</span> <span class="text-yellow-400">MobilePushRequestConsumer</span>(
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">historyService</span>: <span class="text-blue-400">MobilePushHistoryWriteService</span>,
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">producer</span>: <span class="text-blue-400">MobilePushProducer</span>
 ) {
-    private val logger = LoggerFactory.getLogger(javaClass)
-    private val queue: ConcurrentLinkedQueue&lt;MobilePushRequest&gt; = ConcurrentLinkedQueue()
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">logger</span> = <span class="text-blue-400">LoggerFactory</span>.<span class="text-yellow-400">getLogger</span>(javaClass)
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">queue</span>: <span class="text-blue-400">ConcurrentLinkedQueue</span>&lt;<span class="text-blue-400">MobilePushRequest</span>&gt; = <span class="text-blue-400">ConcurrentLinkedQueue</span>()
 
-    @Value("\${mobile-push.process-per-second}")
-    private lateinit var processPerSecond: String
+    <span class="text-green-400">@Value</span>(<span class="text-green-400">"\${mobile-push.process-per-second}"</span>)
+    <span class="text-purple-400">private lateinit var</span> <span class="text-blue-300">processPerSecond</span>: <span class="text-blue-400">String</span>
 
-    @PostConstruct
-    private fun setup() {
-        logger.info("plus reward push process per second : {}", processPerSecond)
+    <span class="text-green-400">@PostConstruct</span>
+    <span class="text-purple-400">private fun</span> <span class="text-yellow-400">setup</span>() {
+        <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"plus reward push process per second : {}"</span>, <span class="text-blue-300">processPerSecond</span>)
     }
 
-    @KafkaListener(
-        topics = [MOBILE_PUSH_FROM_OTHER_SERVICE],
-        containerFactory = DEFAULT_KAFKA_LISTENER_CONTAINER_FACTORY
+    <span class="text-green-400">@KafkaListener</span>(
+        <span class="text-purple-400">topics</span> = [<span class="text-green-400">MOBILE_PUSH_FROM_OTHER_SERVICE</span>],
+        <span class="text-purple-400">containerFactory</span> = <span class="text-green-400">DEFAULT_KAFKA_LISTENER_CONTAINER_FACTORY</span>
     )
-    fun consumeTargetMobilePushRequest(message: CloudEvent) {
-        try {
-            // Deserialize the message
-            val data = CloudEventUtils.mapData(
-                message,
-                PojoCloudEventDataMapper.from(jacksonObjectMapper(), MobilePushRequest::class.java)
-            )?.value!!
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">consumeTargetMobilePushRequest</span>(<span class="text-blue-300">message</span>: <span class="text-blue-400">CloudEvent</span>) {
+        <span class="text-purple-400">try</span> {
+            <span class="text-gray-400">// Deserialize the message</span>
+            <span class="text-purple-400">val</span> <span class="text-blue-300">data</span> = <span class="text-blue-400">CloudEventUtils</span>.<span class="text-yellow-400">mapData</span>(
+                <span class="text-blue-300">message</span>,
+                <span class="text-blue-400">PojoCloudEventDataMapper</span>.<span class="text-yellow-400">from</span>(<span class="text-yellow-400">jacksonObjectMapper</span>(), <span class="text-blue-400">MobilePushRequest</span>::<span class="text-blue-400">class</span>.java)
+            )?.<span class="text-blue-300">value</span>!!
 
-            val type = MobilePushType.fromParamKey(data.type)
+            <span class="text-purple-400">val</span> <span class="text-blue-300">type</span> = <span class="text-blue-400">MobilePushType</span>.<span class="text-yellow-400">fromParamKey</span>(<span class="text-blue-300">data</span>.type)
 
-            // For specific message type, add to queue instead of processing immediately
-            if (type == MobilePushType.HEAVY) {
-                queue.add(data)
-                logger.info("Added to queue: {}", data)
-            } else {
-                // Process other types immediately
-                // ...processing logic omitted...
+            <span class="text-gray-400">// For specific message type, add to queue instead of processing immediately</span>
+            <span class="text-purple-400">if</span> (<span class="text-blue-300">type</span> == <span class="text-blue-400">MobilePushType</span>.HEAVY) {
+                <span class="text-blue-300">queue</span>.<span class="text-yellow-400">add</span>(<span class="text-blue-300">data</span>)
+                <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"Added to queue: {}"</span>, <span class="text-blue-300">data</span>)
+            } <span class="text-purple-400">else</span> {
+                <span class="text-gray-400">// Process other types immediately</span>
+                <span class="text-gray-400">// ...processing logic omitted...</span>
             }
-        } catch (e: Exception) {
-            logger.error("An error occurred while consuming the request", e)
-            throw e
+        } <span class="text-purple-400">catch</span> (<span class="text-blue-300">e</span>: <span class="text-blue-400">Exception</span>) {
+            <span class="text-blue-300">logger</span>.<span class="text-yellow-400">error</span>(<span class="text-green-400">"An error occurred while consuming the request"</span>, <span class="text-blue-300">e</span>)
+            <span class="text-purple-400">throw</span> <span class="text-blue-300">e</span>
         }
     }
 
-    // Scheduled task that runs every second to process messages from the queue
-    @Scheduled(fixedRate = 1000)
-    fun processQueue() {
-        val batch = mutableListOf&lt;MobilePushRequest&gt;()
+    <span class="text-gray-400">// Scheduled task that runs every second to process messages from the queue</span>
+    <span class="text-green-400">@Scheduled</span>(fixedRate = <span class="text-pink-400">1000</span>)
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">processQueue</span>() {
+        <span class="text-purple-400">val</span> <span class="text-blue-300">batch</span> = <span class="text-yellow-400">mutableListOf</span>&lt;<span class="text-blue-400">MobilePushRequest</span>&gt;()
 
-        // Take only the configured number of messages from the queue
-        repeat(processPerSecond.toInt()) {
-            val request = queue.poll() ?: return@repeat
-            batch.add(request)
+        <span class="text-gray-400">// Take only the configured number of messages from the queue</span>
+        <span class="text-yellow-400">repeat</span>(<span class="text-blue-300">processPerSecond</span>.<span class="text-yellow-400">toInt</span>()) {
+            <span class="text-purple-400">val</span> <span class="text-blue-300">request</span> = <span class="text-blue-300">queue</span>.<span class="text-yellow-400">poll</span>() ?: <span class="text-purple-400">return</span>@repeat
+            <span class="text-blue-300">batch</span>.<span class="text-yellow-400">add</span>(<span class="text-blue-300">request</span>)
         }
 
-        if (batch.isNotEmpty()) {
-            logger.info("Processing batch of size: {}", batch.size)
-            try {
-                // Process each message in the batch
-                batch.forEach { request ->
-                    // Processing logic omitted...
+        <span class="text-purple-400">if</span> (<span class="text-blue-300">batch</span>.isNotEmpty()) {
+            <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"Processing batch of size: {}"</span>, <span class="text-blue-300">batch</span>.size)
+            <span class="text-purple-400">try</span> {
+                <span class="text-gray-400">// Process each message in the batch</span>
+                <span class="text-blue-300">batch</span>.<span class="text-yellow-400">forEach</span> { <span class="text-blue-300">request</span> ->
+                    <span class="text-gray-400">// Processing logic omitted...</span>
                 }
-                logger.info("Batch processing complete")
-            } catch (e: Exception) {
-                logger.error("Error during batch processing", e)
+                <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"Batch processing complete"</span>)
+            } <span class="text-purple-400">catch</span> (<span class="text-blue-300">e</span>: <span class="text-blue-400">Exception</span>) {
+                <span class="text-blue-300">logger</span>.<span class="text-yellow-400">error</span>(<span class="text-green-400">"Error during batch processing"</span>, <span class="text-blue-300">e</span>)
             }
         }
     }
-}</code>
-        </pre>
+}
+</code></pre>
+            <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+              <button data-copy-to-clipboard-target="concurrent-linked-queue-internal-buffer"
+                      data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                      class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="mt-6">
@@ -248,11 +281,42 @@ class MobilePushRequestConsumer(
         <p class="text-gray-700 dark:text-gray-400">
           The processing rate is controlled by a configuration property:
         </p>
-        <pre class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-x-auto text-sm">
-<code># application.properties or application.yml
-mobile-push:
-  process-per-second: 50  # Process 50 notifications per second</code>
-        </pre>
+        <div class="relative bg-gray-900 p-4 rounded-lg">
+          <!-- 코드블록 컨테이너 -->
+          <div class="overflow-x-auto flex">
+            <!-- 코드 블록 -->
+            <pre class="whitespace-pre pr-20 min-w-full"><code id="configuration-rate-yaml" class="language-yaml text-white"><span class="text-gray-400"># application.properties or application.yml</span>
+<span class="text-yellow-400">mobile-push</span><span class="text-white">:</span>
+  <span class="text-blue-300">process-per-second</span><span class="text-white">:</span> <span class="text-pink-400">50</span>  <span class="text-gray-400"># Process 50 notifications per second</span></code></pre>
+            <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+              <button data-copy-to-clipboard-target="configuration-rate-yaml"
+                      data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                      class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="mt-6">
@@ -272,48 +336,79 @@ mobile-push:
           Proper error handling is crucial in any message processing system. When processing fails, we can use a Dead Letter Topic (DLT) to store messages that couldn't be processed:
         </p>
 
-        <pre class="bg-gray-100 dark:bg-gray-800 rounded-md p-4 overflow-x-auto text-sm">
-<code>@Scheduled(fixedRate = 1000)
-fun processQueue() {
-    val batch = mutableListOf&lt;MobilePushRequest&gt;()
-    repeat(processPerSecond.toInt()) {
-        val request = queue.poll() ?: return@repeat
-        batch.add(request)
+        <div class="relative bg-gray-900 p-4 rounded-lg">
+          <!-- 코드블록 컨테이너 -->
+          <div class="overflow-x-auto flex">
+            <!-- 코드 블록 -->
+            <pre class="whitespace-pre pr-20 min-w-full"><code id="dead-letter-topics" class="language-kotlin text-white"><span class="text-green-400">@Scheduled</span>(fixedRate = <span class="text-pink-400">1000</span>)
+<span class="text-purple-400">fun</span> <span class="text-yellow-400">processQueue</span>() {
+    <span class="text-purple-400">val</span> <span class="text-blue-300">batch</span> = <span class="text-yellow-400">mutableListOf</span>&lt;<span class="text-blue-400">MobilePushRequest</span>&gt;()
+    <span class="text-yellow-400">repeat</span>(<span class="text-blue-300">processPerSecond</span>.<span class="text-yellow-400">toInt</span>()) {
+        <span class="text-purple-400">val</span> <span class="text-blue-300">request</span> = <span class="text-blue-300">queue</span>.<span class="text-yellow-400">poll</span>() ?: <span class="text-purple-400">return</span>@repeat
+        <span class="text-blue-300">batch</span>.<span class="text-yellow-400">add</span>(<span class="text-blue-300">request</span>)
     }
 
-    if (batch.isNotEmpty()) {
-        logger.info("Processing batch of size: {}", batch.size)
-        batch.forEach { request ->
-            try {
-                // ...processing logic omitted...
-            } catch (e: Exception) {
-                logger.error("Error processing message: {}", request, e)
-                // Send to Dead Letter Topic
-                sendToDLT(request, e)
+    <span class="text-purple-400">if</span> (<span class="text-blue-300">batch</span>.isNotEmpty()) {
+        <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"Processing batch of size: {}"</span>, <span class="text-blue-300">batch</span>.size)
+        <span class="text-blue-300">batch</span>.<span class="text-yellow-400">forEach</span> { <span class="text-blue-300">request</span> ->
+            <span class="text-purple-400">try</span> {
+                <span class="text-gray-400">// ...processing logic omitted...</span>
+            } <span class="text-purple-400">catch</span> (<span class="text-blue-300">e</span>: <span class="text-blue-400">Exception</span>) {
+                <span class="text-blue-300">logger</span>.<span class="text-yellow-400">error</span>(<span class="text-green-400">"Error processing message: {}"</span>, <span class="text-blue-300">request</span>, <span class="text-blue-300">e</span>)
+                <span class="text-gray-400">// Send to Dead Letter Topic</span>
+                <span class="text-yellow-400">sendToDLT</span>(<span class="text-blue-300">request</span>, <span class="text-blue-300">e</span>)
             }
         }
-        logger.info("Batch processing complete")
+        <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"Batch processing complete"</span>)
     }
 }
 
-private fun sendToDLT(request: MobilePushRequest, exception: Exception) {
-    try {
-        // Create a wrapped message with the original request and error details
-        val dltMessage = DeadLetterMessage(
-            originalMessage = request,
-            exceptionMessage = exception.message,
-            exceptionClass = exception.javaClass.name,
-            timestamp = System.currentTimeMillis()
+<span class="text-purple-400">private fun</span> <span class="text-yellow-400">sendToDLT</span>(<span class="text-blue-300">request</span>: <span class="text-blue-400">MobilePushRequest</span>, <span class="text-blue-300">exception</span>: <span class="text-blue-400">Exception</span>) {
+    <span class="text-purple-400">try</span> {
+        <span class="text-gray-400">// Create a wrapped message with the original request and error details</span>
+        <span class="text-purple-400">val</span> <span class="text-blue-300">dltMessage</span> = <span class="text-blue-400">DeadLetterMessage</span>(
+            <span class="text-blue-300">originalMessage</span> = <span class="text-blue-300">request</span>,
+            <span class="text-blue-300">exceptionMessage</span> = <span class="text-blue-300">exception</span>.message,
+            <span class="text-blue-300">exceptionClass</span> = <span class="text-blue-300">exception</span>.javaClass.name,
+            <span class="text-blue-300">timestamp</span> = <span class="text-blue-400">System</span>.<span class="text-yellow-400">currentTimeMillis</span>()
         )
 
-        // Send to a dedicated Dead Letter Topic
-        deadLetterProducer.send("mobile-push-dlt", dltMessage)
-        logger.info("Message sent to DLT: {}", request)
-    } catch (e: Exception) {
-        logger.error("Failed to send message to DLT: {}", request, e)
+        <span class="text-gray-400">// Send to a dedicated Dead Letter Topic</span>
+        <span class="text-blue-300">deadLetterProducer</span>.<span class="text-yellow-400">send</span>(<span class="text-green-400">"mobile-push-dlt"</span>, <span class="text-blue-300">dltMessage</span>)
+        <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"Message sent to DLT: {}"</span>, <span class="text-blue-300">request</span>)
+    } <span class="text-purple-400">catch</span> (<span class="text-blue-300">e</span>: <span class="text-blue-400">Exception</span>) {
+        <span class="text-blue-300">logger</span>.<span class="text-yellow-400">error</span>(<span class="text-green-400">"Failed to send message to DLT: {}"</span>, <span class="text-blue-300">request</span>, <span class="text-blue-300">e</span>)
     }
-}</code>
-        </pre>
+}</code></pre>
+            <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+              <button data-copy-to-clipboard-target="dead-letter-topics"
+                      data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                      class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+              </button>
+            </div>
+          </div>
+        </div>
 
         <p class="text-gray-700 dark:text-gray-400 mt-4">
           With this approach, messages that fail processing are:
