@@ -292,8 +292,11 @@
 
         <h3 class="text-xl font-bold mb-3 mt-6">1. Account Model</h3>
         <div class="mb-6 mt-4">
-          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
-      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.domain.account</span>
+          <div class="relative bg-gray-900 p-4 rounded-lg">
+            <!-- 코드블록 컨테이너 -->
+            <div class="overflow-x-auto flex">
+              <!-- 코드 블록 -->
+              <pre class="whitespace-pre pr-28 min-w-full"><code id="account-model" class="language-kotlin text-white"><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.domain.account</span>
 
 <span class="text-purple-400">import</span> <span class="text-green-400">com.fasterxml.jackson.annotation.JsonIgnoreProperties</span>
 <span class="text-purple-400">import</span> <span class="text-green-400">java.math.BigInteger</span>
@@ -304,6 +307,34 @@
     <span class="text-purple-400">val</span> <span class="text-blue-300">email</span>: <span class="text-yellow-400">String</span>,
     <span class="text-purple-400">val</span> <span class="text-blue-300">secretKey</span>: <span class="text-yellow-400">String</span>
 )</code></pre>
+              <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+                <button data-copy-to-clipboard-target="account-model"
+                        data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                        class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                  <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -312,8 +343,11 @@
           The NonceRepository uses Redis to store nonces with a TTL and check for duplicates:
         </p>
         <div class="mb-6 mt-4">
-          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
-      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.repository</span>
+          <div class="relative bg-gray-900 p-4 rounded-lg">
+            <!-- 코드블록 컨테이너 -->
+            <div class="overflow-x-auto flex">
+              <!-- 코드 블록 -->
+              <pre class="whitespace-pre pr-28 min-w-full"><code id="nonce-repository" class="language-kotlin text-white"><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.repository</span>
 
 <span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.data.redis.core.ReactiveStringRedisTemplate</span>
 <span class="text-purple-400">import</span> <span class="text-green-400">org.springframework.stereotype.Repository</span>
@@ -335,6 +369,34 @@
         <span class="text-purple-400">return</span> template.opsForValue().set(<span class="text-orange-400">"$PREFIX:$accessToken:$nonce"</span>, <span class="text-orange-400">"1"</span>, <span class="text-yellow-400">Duration</span>.ofSeconds(<span class="text-cyan-400">10</span>))
     }
 }</code></pre>
+              <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+                <button data-copy-to-clipboard-target="nonce-repository"
+                        data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                        class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                  <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -343,8 +405,11 @@
           The AccountRepository retrieves user account information and implements caching:
         </p>
         <div class="mb-6 mt-4">
-          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
-      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.repository</span>
+          <div class="relative bg-gray-900 p-4 rounded-lg">
+            <!-- 코드블록 컨테이너 -->
+            <div class="overflow-x-auto flex">
+              <!-- 코드 블록 -->
+              <pre class="whitespace-pre pr-28 min-w-full"><code id="account-repository" class="language-kotlin text-white"><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.repository</span>
 
 <span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.domain.account.Account</span>
 <span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.global.exception.account.AccountServerException</span>
@@ -373,6 +438,33 @@
             .doOnNext { cache.put(accessToken, it) }
     }
 }</code></pre>
+              <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+                <button data-copy-to-clipboard-target="account-repository"
+                        data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                        class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                  <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+                </button>
+              </div>
           </div>
         </div>
 
@@ -381,8 +473,11 @@
           The AuthenticationFilter is the main component that ties everything together:
         </p>
         <div class="mb-6 mt-4">
-          <div class="bg-gray-800 rounded-lg p-4 overflow-x-auto text-gray-100">
-      <pre class="whitespace-pre-wrap"><code><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.filter</span>
+          <div class="relative bg-gray-900 p-4 rounded-lg">
+            <!-- 코드블록 컨테이너 -->
+            <div class="overflow-x-auto flex">
+              <!-- 코드 블록 -->
+              <pre class="whitespace-pre pr-28 min-w-full"><code id="authentication-filter" class="language-kotlin text-white"><span class="text-purple-400">package</span> <span class="text-green-400">com.giri.springcloudgateway.filter</span>
 
 <span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.global.exception.*</span>
 <span class="text-purple-400">import</span> <span class="text-green-400">com.giri.springcloudgateway.global.helper.SignatureHelper</span>
@@ -440,6 +535,34 @@
         }
     }
 }</code></pre>
+              <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+                <button data-copy-to-clipboard-target="authentication-filter"
+                        data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                        class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                  <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
