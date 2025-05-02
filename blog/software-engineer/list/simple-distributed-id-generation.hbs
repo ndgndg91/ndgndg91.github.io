@@ -52,36 +52,68 @@
         <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Implementation Example: DistributedIdGenerator</h2>
         <p>Here's an example implementation of an identifier generator for distributed environments:</p>
 
-        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-auto">
-          <code>
-import kr.co.example.global.extension.now
-import java.time.ZoneOffset
-import java.util.concurrent.atomic.AtomicLong
+        <div class="relative bg-gray-900 p-4 rounded-lg">
+          <!-- 코드블록 컨테이너 -->
+          <div class="overflow-x-auto flex">
+            <!-- 코드 블록 -->
+            <pre class="whitespace-pre pr-28 min-w-full"><code id="distributed-id-generator" class="language-kotlin text-white">
+<span class="text-purple-400">import</span> kr.co.example.global.extension.now
+<span class="text-purple-400">import</span> java.time.ZoneOffset
+<span class="text-purple-400">import</span> java.util.concurrent.atomic.AtomicLong
 
-class DistributedIdGenerator(
-    private val serverId: Int
+<span class="text-purple-400">class</span> <span class="text-yellow-400">DistributedIdGenerator</span>(
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">serverId</span>: <span class="text-blue-400">Int</span>
 ) {
-    companion object {
-        const val MAX_SERVER_ID = 1000
+    <span class="text-purple-400">companion object</span> {
+        <span class="text-purple-400">const val</span> <span class="text-blue-300">MAX_SERVER_ID</span> = <span class="text-pink-400">1000</span>
     }
 
-    private val maxSequence = 999999
-    private val counter = AtomicLong()
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">maxSequence</span> = <span class="text-pink-400">999999</span>
+    <span class="text-purple-400">private val</span> <span class="text-blue-300">counter</span> = <span class="text-blue-400">AtomicLong</span>()
 
-    init {
-        require(serverId &lt; MAX_SERVER_ID) {
-            throw IllegalStateException("exceed max server id $serverId")
+    <span class="text-purple-400">init</span> {
+        <span class="text-yellow-400">require</span>(<span class="text-blue-300">serverId</span> &lt; <span class="text-blue-300">MAX_SERVER_ID</span>) {
+            <span class="text-purple-400">throw</span> <span class="text-blue-400">IllegalStateException</span>(<span class="text-green-400">"exceed max server id $serverId"</span>)
         }
     }
 
-    fun generate(): String {
-        val timestamp = now().toEpochSecond(ZoneOffset.UTC)
-        val uniqueId = counter.updateAndGet { current ->
-            if (current >= maxSequence) 0 else current + 1
+    <span class="text-purple-400">fun</span> <span class="text-yellow-400">generate</span>(): <span class="text-blue-400">String</span> {
+        <span class="text-purple-400">val</span> <span class="text-blue-300">timestamp</span> = <span class="text-yellow-400">now</span>().<span class="text-yellow-400">toEpochSecond</span>(<span class="text-blue-400">ZoneOffset</span>.UTC)
+        <span class="text-purple-400">val</span> <span class="text-blue-300">uniqueId</span> = <span class="text-blue-300">counter</span>.<span class="text-yellow-400">updateAndGet</span> { <span class="text-blue-300">current</span> ->
+            <span class="text-purple-400">if</span> (<span class="text-blue-300">current</span> >= <span class="text-blue-300">maxSequence</span>) <span class="text-pink-400">0</span> <span class="text-purple-400">else</span> <span class="text-blue-300">current</span> + <span class="text-pink-400">1</span>
         }
-        return String.format("%s%03d%06d", timestamp, serverId, uniqueId)
+        <span class="text-purple-400">return</span> <span class="text-blue-400">String</span>.<span class="text-yellow-400">format</span>(<span class="text-green-400">"%s%03d%06d"</span>, <span class="text-blue-300">timestamp</span>, <span class="text-blue-300">serverId</span>, <span class="text-blue-300">uniqueId</span>)
     }
 }</code></pre>
+            <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+              <button data-copy-to-clipboard-target="distributed-id-generator"
+                      data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                      class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="mt-6">
@@ -190,64 +222,97 @@ class DistributedIdGenerator(
         <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Verification with Tests</h2>
         <p>The following test code verifies that the identifier generator meets the requirements:</p>
 
-        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-auto">
-<code>import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertTrue
-import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.RepeatedTest
-import org.junit.jupiter.api.Test
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
+        <div class="relative bg-gray-900 p-4 rounded-lg">
+          <!-- 코드블록 컨테이너 -->
+          <div class="overflow-x-auto flex">
+            <!-- 코드 블록 -->
+            <pre class="whitespace-pre pr-28 min-w-full"><code id="verification-with-test" class="language-kotlin text-white">
+<span class="text-purple-400">import</span> org.assertj.core.api.Assertions.assertThat
+<span class="text-purple-400">import</span> org.junit.jupiter.api.Assertions.assertEquals
+<span class="text-purple-400">import</span> org.junit.jupiter.api.Assertions.assertTrue
+<span class="text-purple-400">import</span> org.junit.jupiter.api.DisplayName
+<span class="text-purple-400">import</span> org.junit.jupiter.api.RepeatedTest
+<span class="text-purple-400">import</span> org.junit.jupiter.api.Test
+<span class="text-purple-400">import</span> java.util.concurrent.ConcurrentHashMap
+<span class="text-purple-400">import</span> java.util.concurrent.Executors
+<span class="text-purple-400">import</span> java.util.concurrent.TimeUnit
 
-class DistributedIdGeneratorTest {
-    private val DistributedIdGenerator = DistributedIdGenerator(1)
+<span class="text-purple-400">class</span> <span class="text-yellow-400">DistributedIdGeneratorTest</span> {
+   <span class="text-purple-400">private val</span> <span class="text-blue-300">DistributedIdGenerator</span> = <span class="text-blue-400">DistributedIdGenerator</span>(<span class="text-pink-400">1</span>)
 
-    @Test
-    @DisplayName("serverId_validation")
-    fun test_constructor() {
-        // given
-        val invalidServerId = 1000
-        val maxServerId = 999
-        // when
-        val failedResult = runCatching { DistributedIdGenerator(invalidServerId) }
-            .onFailure { it.printStackTrace() }
-        val successResult = runCatching { DistributedIdGenerator(maxServerId) }
-            .onFailure { it.printStackTrace() }
-        // then
-        assertThat(failedResult.isFailure).isTrue
-        assertThat(failedResult.exceptionOrNull()).isInstanceOf(IllegalStateException::class.java)
-        assertThat(successResult.isSuccess).isTrue
-    }
+   <span class="text-green-400">@Test</span>
+   <span class="text-green-400">@DisplayName</span>(<span class="text-green-400">"serverId_validation"</span>)
+   <span class="text-purple-400">fun</span> <span class="text-yellow-400">test_constructor</span>() {
+       <span class="text-gray-400">// given</span>
+       <span class="text-purple-400">val</span> <span class="text-blue-300">invalidServerId</span> = <span class="text-pink-400">1000</span>
+       <span class="text-purple-400">val</span> <span class="text-blue-300">maxServerId</span> = <span class="text-pink-400">999</span>
+       <span class="text-gray-400">// when</span>
+       <span class="text-purple-400">val</span> <span class="text-blue-300">failedResult</span> = <span class="text-yellow-400">runCatching</span> { <span class="text-blue-400">DistributedIdGenerator</span>(<span class="text-blue-300">invalidServerId</span>) }
+           .<span class="text-yellow-400">onFailure</span> { <span class="text-blue-300">it</span>.<span class="text-yellow-400">printStackTrace</span>() }
+       <span class="text-purple-400">val</span> <span class="text-blue-300">successResult</span> = <span class="text-yellow-400">runCatching</span> { <span class="text-blue-400">DistributedIdGenerator</span>(<span class="text-blue-300">maxServerId</span>) }
+           .<span class="text-yellow-400">onFailure</span> { <span class="text-blue-300">it</span>.<span class="text-yellow-400">printStackTrace</span>() }
+       <span class="text-gray-400">// then</span>
+       <span class="text-blue-300">assertThat</span>(<span class="text-blue-300">failedResult</span>.isFailure).<span class="text-yellow-400">isTrue</span>
+       <span class="text-blue-300">assertThat</span>(<span class="text-blue-300">failedResult</span>.<span class="text-yellow-400">exceptionOrNull</span>()).<span class="text-yellow-400">isInstanceOf</span>(<span class="text-blue-400">IllegalStateException</span>::<span class="text-blue-400">class</span>.java)
+       <span class="text-blue-300">assertThat</span>(<span class="text-blue-300">successResult</span>.isSuccess).<span class="text-yellow-400">isTrue</span>
+   }
 
-    @RepeatedTest(10)
-    @DisplayName("should_generate_1M_ids_per_second_with_max_length_20")
-    fun test_generate_should_not_over_20_length_should_not_duplicated_value() {
-        val totalKeys = 1_000_000 // Total number of keys to generate
-        val threadCount = 10 // Number of threads to use
-        val keysPerThread = totalKeys / threadCount // Keys to generate per thread
-        val generatedKeys = ConcurrentHashMap.newKeySet&lt;String&gt;() // ConcurrentHashSet to check for duplicates
-        val executor = Executors.newFixedThreadPool(threadCount) // Thread pool creation
+   <span class="text-green-400">@RepeatedTest</span>(<span class="text-pink-400">10</span>)
+   <span class="text-green-400">@DisplayName</span>(<span class="text-green-400">"should_generate_1M_ids_per_second_with_max_length_20"</span>)
+   <span class="text-purple-400">fun</span> <span class="text-yellow-400">test_generate_should_not_over_20_length_should_not_duplicated_value</span>() {
+       <span class="text-purple-400">val</span> <span class="text-blue-300">totalKeys</span> = <span class="text-pink-400">1_000_000</span> <span class="text-gray-400">// Total number of keys to generate</span>
+       <span class="text-purple-400">val</span> <span class="text-blue-300">threadCount</span> = <span class="text-pink-400">10</span> <span class="text-gray-400">// Number of threads to use</span>
+       <span class="text-purple-400">val</span> <span class="text-blue-300">keysPerThread</span> = <span class="text-blue-300">totalKeys</span> / <span class="text-blue-300">threadCount</span> <span class="text-gray-400">// Keys to generate per thread</span>
+       <span class="text-purple-400">val</span> <span class="text-blue-300">generatedKeys</span> = <span class="text-blue-400">ConcurrentHashMap</span>.<span class="text-yellow-400">newKeySet</span>&lt;<span class="text-blue-400">String</span>&gt;() <span class="text-gray-400">// ConcurrentHashSet to check for duplicates</span>
+       <span class="text-purple-400">val</span> <span class="text-blue-300">executor</span> = <span class="text-blue-400">Executors</span>.<span class="text-yellow-400">newFixedThreadPool</span>(<span class="text-blue-300">threadCount</span>) <span class="text-gray-400">// Thread pool creation</span>
 
-        (1..threadCount).forEach { i ->
-            executor.submit {
-                (1..keysPerThread).forEach { j ->
-                    val key = DistributedIdGenerator.generate()
-                    assertTrue(key.length &lt;= 20, "Key length exceeded 20 characters: $key")
-                    generatedKeys.add(key) // Add the generated key to the Set
-                }
-            }
-        }
+       (<span class="text-pink-400">1</span>..<span class="text-blue-300">threadCount</span>).<span class="text-yellow-400">forEach</span> { <span class="text-blue-300">i</span> ->
+           <span class="text-blue-300">executor</span>.<span class="text-yellow-400">submit</span> {
+               (<span class="text-pink-400">1</span>..<span class="text-blue-300">keysPerThread</span>).<span class="text-yellow-400">forEach</span> { <span class="text-blue-300">j</span> ->
+                   <span class="text-purple-400">val</span> <span class="text-blue-300">key</span> = <span class="text-blue-300">DistributedIdGenerator</span>.<span class="text-yellow-400">generate</span>()
+                   <span class="text-blue-300">assertTrue</span>(<span class="text-blue-300">key</span>.length &lt;= <span class="text-pink-400">20</span>, <span class="text-green-400">"Key length exceeded 20 characters: $key"</span>)
+                   <span class="text-blue-300">generatedKeys</span>.<span class="text-yellow-400">add</span>(<span class="text-blue-300">key</span>) <span class="text-gray-400">// Add the generated key to the Set</span>
+               }
+           }
+       }
 
-        // Wait for all threads to complete their work
-        executor.shutdown()
-        executor.awaitTermination(1, TimeUnit.HOURS)
+       <span class="text-gray-400">// Wait for all threads to complete their work</span>
+       <span class="text-blue-300">executor</span>.<span class="text-yellow-400">shutdown</span>()
+       <span class="text-blue-300">executor</span>.<span class="text-yellow-400">awaitTermination</span>(<span class="text-pink-400">1</span>, <span class="text-blue-400">TimeUnit</span>.HOURS)
 
-        // Verify that the total number of keys generated matches the expected count
-        assertEquals(totalKeys, generatedKeys.size, "Duplicate keys detected!")
-    }
+       <span class="text-gray-400">// Verify that the total number of keys generated matches the expected count</span>
+       <span class="text-blue-300">assertEquals</span>(<span class="text-blue-300">totalKeys</span>, <span class="text-blue-300">generatedKeys</span>.size, <span class="text-green-400">"Duplicate keys detected!"</span>)
+   }
 }</code></pre>
+            <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+              <button data-copy-to-clipboard-target="verification-with-test"
+                      data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                      class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="mt-6">
@@ -264,41 +329,74 @@ class DistributedIdGeneratorTest {
         <h2 class="inline-block mb-2 text-3xl tracking-tight text-gray-900 dark:text-white">Spring Boot Integration Example</h2>
         <p>Here's an example of how to integrate the DistributedIdGenerator into a Spring Boot application:</p>
 
-        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-md overflow-auto">
-<code>import kr.co.example.global.ActiveProfileManager
-import org.slf4j.LoggerFactory
-import org.springframework.boot.SpringApplication
-import org.springframework.context.ApplicationContext
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.ComponentScan
-import org.springframework.context.annotation.Configuration
-import kotlin.math.absoluteValue
+        <div class="relative bg-gray-900 p-4 rounded-lg">
+          <!-- 코드블록 컨테이너 -->
+          <div class="overflow-x-auto flex">
+            <!-- 코드 블록 -->
+            <pre class="whitespace-pre pr-28 min-w-full"><code id="spring-boot-integration-test" class="language-kotlin text-white">
+<span class="text-purple-400">import</span> kr.co.example.global.ActiveProfileManager
+<span class="text-purple-400">import</span> org.slf4j.LoggerFactory
+<span class="text-purple-400">import</span> org.springframework.boot.SpringApplication
+<span class="text-purple-400">import</span> org.springframework.context.ApplicationContext
+<span class="text-purple-400">import</span> org.springframework.context.annotation.Bean
+<span class="text-purple-400">import</span> org.springframework.context.annotation.ComponentScan
+<span class="text-purple-400">import</span> org.springframework.context.annotation.Configuration
+<span class="text-purple-400">import</span> kotlin.math.absoluteValue
 
-@Configuration
-@ComponentScan(basePackages = ["kr.co.example.notification"])
-class BeanConfig(
-    private val detector: ActiveProfileManager,
-    private val applicationContext: ApplicationContext
+<span class="text-green-400">@Configuration</span>
+<span class="text-green-400">@ComponentScan</span>(basePackages = [<span class="text-green-400">"kr.co.example.notification"</span>])
+<span class="text-purple-400">class</span> <span class="text-yellow-400">BeanConfig</span>(
+   <span class="text-purple-400">private val</span> <span class="text-blue-300">detector</span>: <span class="text-blue-400">ActiveProfileManager</span>,
+   <span class="text-purple-400">private val</span> <span class="text-blue-300">applicationContext</span>: <span class="text-blue-400">ApplicationContext</span>
 ) {
-    private val logger = LoggerFactory.getLogger(javaClass)
+   <span class="text-purple-400">private val</span> <span class="text-blue-300">logger</span> = <span class="text-blue-400">LoggerFactory</span>.<span class="text-yellow-400">getLogger</span>(javaClass)
 
-    @Bean
-    fun distributedIdGenerator(): DistributedIdGenerator {
-        val serverId: Int = if (detector.isLocal()) {
-            1
-        } else {
-            val podName = System.getenv("HOSTNAME")
-            if (podName.isNullOrEmpty()) {
-                logger.info("HOSTNAME is not set. Shutting down the application.")
-                SpringApplication.exit(applicationContext) // Gracefully shutdown Spring application
-            }
-            val uniquePart = podName.substringAfterLast("-")
-            uniquePart.hashCode().absoluteValue.rem(DistributedIdGenerator.MAX_SERVER_ID)
-        }
-        logger.info("server id is : {}", serverId)
-        return DistributedIdGenerator(serverId)
-    }
-  }</code></pre>
+   <span class="text-green-400">@Bean</span>
+   <span class="text-purple-400">fun</span> <span class="text-yellow-400">distributedIdGenerator</span>(): <span class="text-blue-400">DistributedIdGenerator</span> {
+       <span class="text-purple-400">val</span> <span class="text-blue-300">serverId</span>: <span class="text-blue-400">Int</span> = <span class="text-purple-400">if</span> (<span class="text-blue-300">detector</span>.<span class="text-yellow-400">isLocal</span>()) {
+           <span class="text-pink-400">1</span>
+       } <span class="text-purple-400">else</span> {
+           <span class="text-purple-400">val</span> <span class="text-blue-300">podName</span> = <span class="text-blue-400">System</span>.<span class="text-yellow-400">getenv</span>(<span class="text-green-400">"HOSTNAME"</span>)
+           <span class="text-purple-400">if</span> (<span class="text-blue-300">podName</span>.isNullOrEmpty()) {
+               <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"HOSTNAME is not set. Shutting down the application."</span>)
+               <span class="text-blue-400">SpringApplication</span>.<span class="text-yellow-400">exit</span>(<span class="text-blue-300">applicationContext</span>) <span class="text-gray-400">// Gracefully shutdown Spring application</span>
+           }
+           <span class="text-purple-400">val</span> <span class="text-blue-300">uniquePart</span> = <span class="text-blue-300">podName</span>.<span class="text-yellow-400">substringAfterLast</span>(<span class="text-green-400">"-"</span>)
+           <span class="text-blue-300">uniquePart</span>.<span class="text-yellow-400">hashCode</span>().<span class="text-yellow-400">absoluteValue</span>.<span class="text-yellow-400">rem</span>(<span class="text-blue-400">DistributedIdGenerator</span>.MAX_SERVER_ID)
+       }
+       <span class="text-blue-300">logger</span>.<span class="text-yellow-400">info</span>(<span class="text-green-400">"server id is : {}"</span>, <span class="text-blue-300">serverId</span>)
+       <span class="text-purple-400">return</span> <span class="text-blue-400">DistributedIdGenerator</span>(<span class="text-blue-300">serverId</span>)
+   }
+}+</code></pre>
+            <div class="sticky right-2 top-2 bg-gray-50 rounded-lg shadow-md flex-shrink-0 flex items-start h-min">
+              <button data-copy-to-clipboard-target="spring-boot-integration-test"
+                      data-copy-to-clipboard-content-type="innerHTML" data-copy-to-clipboard-html-entities="true"
+                      class="text-gray-900 dark:text-gray-400 m-0.5 hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-600 dark:hover:bg-gray-700 rounded-lg py-2 px-2.5 inline-flex items-center justify-center bg-white border-gray-200 border h-8">
+
+        <span id="default-message">
+          <span class="inline-flex items-center">
+            <svg class="w-3 h-3 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                 fill="currentColor" viewBox="0 0 18 20">
+                        <path
+                          d="M16 1h-3.278A1.992 1.992 0 0 0 11 0H7a1.993 1.993 0 0 0-1.722 1H2a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2Zm-3 14H5a1 1 0 0 1 0-2h8a1 1 0 0 1 0 2Zm0-4H5a1 1 0 0 1 0-2h8a1 1 0 1 1 0 2Zm0-5H5a1 1 0 0 1 0-2h2V2h4v2h2a1 1 0 1 1 0 2Z"/>
+                    </svg>
+            <span class="text-xs font-semibold">Copy code</span>
+          </span>
+        </span>
+                <span id="success-message" class="hidden">
+          <span class="inline-flex items-center">
+            <svg class="w-3.5 h-3.5 text-blue-500 me-1.5" aria-hidden="true"
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 5.917 5.724 10.5 15 1.5"/>
+            </svg>
+            <span class="text-xs font-semibold text-blue-700 dark:text-blue-500">Copied</span>
+          </span>
+        </span>
+              </button>
+            </div>
+          </div>
+        </div>
 
         <p>This configuration class demonstrates intelligent server ID assignment:</p>
         <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
