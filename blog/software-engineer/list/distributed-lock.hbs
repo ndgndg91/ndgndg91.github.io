@@ -157,6 +157,16 @@
           The basic Redis distributed lock algorithm (Redlock) uses the following principles:
         </p>
 
+        <div class="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-4 mt-4">
+          <h3 class="font-bold text-lg text-yellow-800 dark:text-yellow-200">⚠️ Important Note on Redlock</h3>
+          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
+            While we mention the Redlock algorithm, it's crucial to understand that Redlock is specifically designed for multi-instance Redis environments. Using Redlock principles with a single Redis instance does not provide the reliability guarantees that the algorithm is designed for. In single-instance Redis environments, lock reliability cannot be guaranteed during Redis failures or network partitions.
+          </p>
+          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
+            For production systems requiring high reliability, consider using either a Redis Cluster with proper Redlock implementation, or alternative distributed coordination systems like Zookeeper or etcd.
+          </p>
+        </div>
+
         <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mt-4">
           <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200">Redis Distributed Lock Algorithm</h3>
           <ol class="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-400 mt-3">
@@ -170,16 +180,22 @@
 
         <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mt-4">
           <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200">Redis Lock Basic Implementation</h3>
-          <div class="relative bg-gray-900 p-4 overflow-x-auto rounded mt-2">
-            <pre><code id="redis-lock-implementation" class="language-lua text-white"><span class="text-green-300">-- Acquire a lock with a unique identifier and TTL (in milliseconds)</span>
-<span class="text-blue-400">SET</span> lock:myresource <span class="text-orange-300">unique_value</span> <span class="text-blue-400">NX PX</span> 30000
+          <div class="bg-red-50 dark:bg-red-900 rounded-lg p-4 mt-4">
+            <h3 class="font-bold text-lg text-red-800 dark:text-red-200">⚠️ Critical: Safe Lock Release</h3>
+            <p class="text-red-700 dark:text-red-300 mt-2">
+              Using a simple <code>DEL</code> command to release locks is dangerous and can lead to serious concurrency issues. Always use a Lua script that atomically verifies the lock owner before deletion to ensure that only the process that acquired the lock can release it.
+            </p>
+            <div class="relative bg-gray-900 p-4 overflow-x-auto rounded mt-2">
+    <pre><code class="language-lua text-white"><span class="text-green-300">-- NEVER use simple DEL for release:</span>
+<span class="text-blue-400">DEL</span> lock:myresource <span class="text-green-300">-- UNSAFE: Any client can delete the lock!</span>
 
-<span class="text-green-300">-- Release a lock (Lua script for atomic operation)</span>
+<span class="text-green-300">-- ALWAYS use atomic check-and-delete:</span>
 <span class="text-blue-400">if</span> redis.<span class="text-yellow-300">call</span>(<span class="text-orange-300">"GET"</span>, <span class="text-blue-400">KEYS</span>[1]) == <span class="text-blue-400">ARGV</span>[1] <span class="text-blue-400">then</span>
     <span class="text-blue-400">return</span> redis.<span class="text-yellow-300">call</span>(<span class="text-orange-300">"DEL"</span>, <span class="text-blue-400">KEYS</span>[1])
 <span class="text-blue-400">else</span>
     <span class="text-blue-400">return</span> 0
 <span class="text-blue-400">end</span></code></pre>
+            </div>
           </div>
           <p class="text-gray-700 dark:text-gray-400 mt-2">
             This Lua script ensures that only the lock owner (identified by the unique_value) can release the lock.
@@ -363,6 +379,16 @@
           ShedLock is a lightweight library specifically designed to prevent duplicate execution of scheduled tasks in distributed environments. It's particularly well-suited for scheduled tasks and offers a simple, annotation-based approach.
         </p>
 
+        <div class="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-4 mt-4">
+          <h3 class="font-bold text-lg text-yellow-800 dark:text-yellow-200">ShedLock Limitations</h3>
+          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
+            It's important to understand that ShedLock is specifically designed for coordinating scheduled tasks across multiple instances and is not intended as a general-purpose distributed lock mechanism. ShedLock focuses on preventing concurrent execution of scheduled methods rather than providing locks for arbitrary code blocks.
+          </p>
+          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
+            If you need distributed locks for general application logic, consider using Redisson or Spring Integration instead. Using ShedLock outside its intended use case may lead to unexpected behavior or decreased reliability.
+          </p>
+        </div>
+
         <div class="my-8">
           <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
             <!-- Background -->
@@ -527,6 +553,22 @@
         <p class="text-gray-700 dark:text-gray-400">
           Redisson is a powerful Redis client for Java that offers various distributed objects and services, including robust distributed lock implementations. It provides advanced features like automatic lock renewal, fair locks, read/write locks, and semaphores.
         </p>
+
+        <div class="bg-blue-50 dark:bg-blue-900 rounded-lg p-4 mt-4">
+          <h3 class="font-bold text-lg text-blue-800 dark:text-blue-200">Redisson's Pub/Sub Lock Mechanism</h3>
+          <p class="text-blue-700 dark:text-blue-300 mt-2">
+            One of Redisson's key advantages is its efficient implementation using Redis Pub/Sub messaging. Unlike naive polling approaches, when a lock is released, Redisson publishes a message to notify waiting clients immediately. This provides several benefits:
+          </p>
+          <ul class="space-y-1 text-blue-700 dark:text-blue-300 list-disc list-inside ml-4 mt-2">
+            <li>Reduced latency for lock acquisition by waiting clients</li>
+            <li>Lower CPU consumption compared to continuous polling</li>
+            <li>Decreased Redis server load with fewer GET operations</li>
+            <li>More efficient network utilization</li>
+          </ul>
+          <p class="text-blue-700 dark:text-blue-300 mt-2">
+            This efficient notification system makes Redisson particularly well-suited for scenarios where locks may be held for variable durations or where quick handover of locks between processes is important.
+          </p>
+        </div>
 
         <div class="my-8">
           <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
