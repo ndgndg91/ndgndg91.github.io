@@ -326,6 +326,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/distributed-lock.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/distributed-lock.hbs'), 'utf8'),
+        pageTitle: "Distributed Locks in Spring Boot: Implementation Options and Best Practices",
+        pageDescription: "Distributed locks are synchronization mechanisms used in distributed systems to prevent multiple processes, services, or servers from concurrently executing critical sections of code or accessing shared resources simultaneously.",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/distributed-lock.html",
+        pageImage: "distributed-lock-redis.webp",
+        pageImageAlt: "distributed lock redis"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: "blog/software-engineer/list/request-context-holder.html",
       chunks: ['index'],
       templateParameters: {
