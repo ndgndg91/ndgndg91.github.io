@@ -326,6 +326,19 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './layouts/main.hbs',
+      filename: "blog/software-engineer/list/k8s-probes-spring-boot.html",
+      chunks: ['index'],
+      templateParameters: {
+        content: require('fs').readFileSync(path.resolve(__dirname, 'blog/software-engineer/list/k8s-probes-spring-boot.hbs'), 'utf8'),
+        pageTitle: "Spring Boot on EKS: Optimizing Health Probes for Efficient Deployments",
+        pageDescription: "When deploying Spring Boot applications on Amazon Elastic Kubernetes Service (EKS), managing application health is crucial for reliable service operations. Kubernetes provides three types of health probes—startup, liveness, and readiness—that work together to ensure your applications start correctly, remain responsive, and handle traffic appropriately.",
+        pageUrl: "https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot.html",
+        pageImage: "k8s-probes-spring-boot.webp",
+        pageImageAlt: "k8s probes with spring boot"
+      }
+    }),
+    new HtmlWebpackPlugin({
+      template: './layouts/main.hbs',
       filename: "blog/software-engineer/list/distributed-lock.html",
       chunks: ['index'],
       templateParameters: {

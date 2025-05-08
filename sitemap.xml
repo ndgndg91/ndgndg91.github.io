@@ -114,6 +114,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot.html</loc>
+    <lastmod>2025-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <!-- 도구 페이지 -->
   <url>
