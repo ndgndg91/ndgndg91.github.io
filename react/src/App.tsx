@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator } from './components/tools';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -124,6 +124,15 @@ function App() {
                 path="/tools/string/xml-parser" 
                 element={
                   <Navigate to="/tools/string/xml-parser.html" replace />
+                } 
+              />
+              
+              {/* UUID Generator Tool Routes */}
+              <Route path="/tools/string/uuid-generator.html" element={<UuidGenerator />} />
+              <Route 
+                path="/tools/string/uuid-generator" 
+                element={
+                  <Navigate to="/tools/string/uuid-generator.html" replace />
                 } 
               />
             </Routes>

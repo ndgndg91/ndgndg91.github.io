@@ -8,3 +8,6 @@ export type { UseJsonParserReturn } from './useJsonParser';
 export { default as XmlParserTool } from './XmlParserTool';
 export { useXmlParser } from './useXmlParser';
 export type { UseXmlParserReturn } from './useXmlParser';
+
+// UUID Generator
+export { default as UuidGenerator } from './UuidGenerator';

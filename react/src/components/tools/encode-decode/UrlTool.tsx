@@ -80,14 +80,7 @@ const UrlTool: React.FC = () => {
           />
         </div>
       </div>
-      
-      <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-        <ins className="kakao_ad_area" style={{display: 'none'}}
-             data-ad-unit="DAN-nZOLt6AO6PDMGqAR"
-             data-ad-width="300"
-             data-ad-height="250">
-        </ins>
-      </div>
+
     </div>
   );
 };
