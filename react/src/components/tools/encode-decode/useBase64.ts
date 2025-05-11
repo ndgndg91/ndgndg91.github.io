@@ -9,6 +9,12 @@ export const useBase64 = () => {
   const encode = () => {
     try {
       setError('');
+      
+      if (!input.trim()) {
+        setError('Please enter some text to encode');
+        return;
+      }
+      
       const encoder = new TextEncoder();
       const data = encoder.encode(input);
       const binary = String.fromCharCode(...data);
@@ -22,6 +28,12 @@ export const useBase64 = () => {
   const decode = () => {
     try {
       setError('');
+      
+      if (!input.trim()) {
+        setError('Please enter a Base64 string to decode');
+        return;
+      }
+      
       const binary = atob(input);
       const bytes = new Uint8Array(binary.length);
       for (let i = 0; i < binary.length; i++) {

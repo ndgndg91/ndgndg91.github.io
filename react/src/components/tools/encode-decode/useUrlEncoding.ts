@@ -9,6 +9,12 @@ export const useUrlEncoding = () => {
   const encode = () => {
     try {
       setError('');
+      
+      if (!input.trim()) {
+        setError('Please enter a URL or text to encode');
+        return;
+      }
+      
       // Try to parse as a full URL first
       try {
         const url = new URL(input);
@@ -29,6 +35,12 @@ export const useUrlEncoding = () => {
   const decode = () => {
     try {
       setError('');
+      
+      if (!input.trim()) {
+        setError('Please enter a URL-encoded string to decode');
+        return;
+      }
+      
       setOutput(decodeURIComponent(input));
     } catch (e) {
       const errorMessage = e instanceof Error ? e.message : 'An unknown error occurred';
