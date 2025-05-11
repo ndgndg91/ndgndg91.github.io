@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useXmlParser } from './useXmlParser';
 import { Copy, Check } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
+import vs from 'react-syntax-highlighter/dist/esm/styles/prism/vs';
 
 const XmlParserTool: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
