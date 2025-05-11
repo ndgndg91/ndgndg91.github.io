@@ -101,16 +101,17 @@ const Sidebar: React.FC<SidebarProps> = ({
             <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">String</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
-                <a 
+                <Link 
+                  to="/tools/string/parser.html"
                   className={`inline-block border-l-2 text-base/8 sm:text-sm/6 pl-5 sm:pl-4 ${
-                    isActive('/tools/string/json-parser.html') 
+                    isActive('/tools/string/parser.html') || isActive('/tools/string/parser')
                       ? 'border-gray-950 dark:border-white font-semibold text-gray-950 dark:text-white' 
                       : 'border-gray-200 dark:border-gray-700 text-gray-600 hover:border-gray-400 hover:text-gray-950 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white'
-                  }`} 
-                  href="/tools/string/json-parser.html"
+                  }`}
+                  onClick={onCloseMobileMenu}
                 >
                   JSON Parser
-                </a>
+                </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
                 <a 

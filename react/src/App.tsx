@@ -4,8 +4,9 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool } from './components/tools/encode-decode';
+import { Base64Tool, UrlTool, JsonParserTool } from './components/tools';
 import Layout from './components/layout/Layout';
+import { Toaster } from 'react-hot-toast';
 
 
 function App() {
@@ -107,13 +108,32 @@ function App() {
                   <Navigate to="/tools/encode-decode/url.html" replace />
                 } 
               />
+              
+              {/* JSON Parser Tool Routes */}
+              <Route path="/tools/string/parser.html" element={<JsonParserTool />} />
+              <Route 
+                path="/tools/string/parser" 
+                element={
+                  <Navigate to="/tools/string/parser.html" replace />
+                } 
+              />
             </Routes>
           </main>
           <Footer />
         </div>
+        <Toaster 
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: darkMode ? '#1f2937' : '#ffffff',
+              color: darkMode ? '#ffffff' : '#111827',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+            },
+            duration: 2000,
+          }}
+        />
       </Layout>
     </div>
-
   );
 }
 

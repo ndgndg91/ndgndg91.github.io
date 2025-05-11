@@ -2,7 +2,7 @@ import React from 'react';
 import {useBase64} from './useBase64';
 
 const Base64Tool: React.FC = () => {
-    const {input, output, error, setInput, encode, decode, clearAll} = useBase64();
+    const {input, output, error, setInput, encode, decode, clearAll, copyToClipboard} = useBase64();
 
     return (
         <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
@@ -56,10 +56,20 @@ const Base64Tool: React.FC = () => {
                 </div>
 
                 <div className="mb-6">
-                    <label htmlFor="base64-output"
-                           className="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
-                        Output
-                    </label>
+                    <div className="flex justify-between items-center mb-2">
+                        <label htmlFor="base64-output"
+                               className="text-2xl font-medium text-gray-900 dark:text-white">
+                            Output
+                        </label>
+                        <button
+                            onClick={() => copyToClipboard(error || output)}
+                            disabled={!output && !error}
+                            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                            title="Copy to clipboard"
+                        >
+                            Copy
+                        </button>
+                    </div>
                     <textarea
                         id="base64-output"
                         rows={10}

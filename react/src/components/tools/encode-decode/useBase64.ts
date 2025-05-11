@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
+import toast from 'react-hot-toast';
 
 export const useBase64 = () => {
   const [input, setInput] = useState('');
@@ -40,6 +41,30 @@ export const useBase64 = () => {
     setError('');
   };
 
+  const copyToClipboard = useCallback(async (text: string) => {
+    if (!text) return;
+    
+    try {
+      await navigator.clipboard.writeText(text);
+      toast.success('Copied to clipboard!');
+    } catch (err) {
+      console.error('Copy failed: ', err);
+      // Fallback for older browsers
+      try {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        toast.success('Copied to clipboard!');
+      } catch (fallbackErr) {
+        console.error('Fallback copy failed: ', fallbackErr);
+        toast.error('Failed to copy to clipboard');
+      }
+    }
+  }, []);
+
   return {
     input,
     output,
@@ -48,6 +73,7 @@ export const useBase64 = () => {
     encode,
     decode,
     clearAll,
+    copyToClipboard,
   };
 };
 

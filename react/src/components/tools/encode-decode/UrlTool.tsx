@@ -2,7 +2,7 @@ import React from 'react';
 import { useUrlEncoding } from './useUrlEncoding';
 
 const UrlTool: React.FC = () => {
-  const { input, output, error, setInput, encode, decode, clearAll } = useUrlEncoding();
+  const { input, output, error, setInput, encode, decode, clearAll, copyToClipboard } = useUrlEncoding();
 
   return (
     <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
@@ -56,10 +56,20 @@ const UrlTool: React.FC = () => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="url-output"
-                 className="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">
-            Output
-          </label>
+          <div className="flex justify-between items-center mb-2">
+            <label htmlFor="url-output"
+                   className="text-2xl font-medium text-gray-900 dark:text-white">
+              Output
+            </label>
+            <button
+              onClick={() => copyToClipboard(error || output)}
+              disabled={!output && !error}
+              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-50 disabled:cursor-not-allowed"
+              title="Copy to clipboard"
+            >
+              Copy
+            </button>
+          </div>
           <textarea
             id="url-output"
             rows={10}
