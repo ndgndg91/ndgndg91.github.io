@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker } from './components/tools';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -142,6 +142,15 @@ function App() {
                 path="/tools/string/random-hex" 
                 element={
                   <Navigate to="/tools/string/random-hex.html" replace />
+                } 
+              />
+              
+              {/* String Diff Checker Tool Routes */}
+              <Route path="/tools/string/string-diff-checker.html" element={<StringDiffChecker />} />
+              <Route 
+                path="/tools/string/string-diff-checker" 
+                element={
+                  <Navigate to="/tools/string/string-diff-checker.html" replace />
                 } 
               />
             </Routes>

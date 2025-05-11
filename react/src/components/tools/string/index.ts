@@ -14,3 +14,6 @@ export { default as UuidGenerator } from './UuidGenerator';
 
 // Random Hex Generator
 export { default as RandomHexGenerator } from './RandomHexGenerator';
+
+// String Diff Checker
+export { default as StringDiffChecker } from './StringDiffChecker';
