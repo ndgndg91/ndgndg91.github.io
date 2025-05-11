@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape } from './components/tools';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -160,6 +160,15 @@ function App() {
                 path="/tools/string/byte-counter" 
                 element={
                   <Navigate to="/tools/string/byte-counter.html" replace />
+                } 
+              />
+              
+              {/* HTML Escape/Unescape Tool Routes */}
+              <Route path="/tools/string/html-escape-unescape.html" element={<HtmlEscapeUnescape />} />
+              <Route 
+                path="/tools/string/html-escape-unescape" 
+                element={
+                  <Navigate to="/tools/string/html-escape-unescape.html" replace />
                 } 
               />
             </Routes>

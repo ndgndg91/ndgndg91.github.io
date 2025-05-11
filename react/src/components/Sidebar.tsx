@@ -179,16 +179,17 @@ const Sidebar: React.FC<SidebarProps> = ({
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
-                <a 
+                <Link 
+                  to="/tools/string/html-escape-unescape.html"
                   className={`inline-block border-l-2 text-base/8 sm:text-sm/6 pl-5 sm:pl-4 ${
-                    isActive('/tools/string/html-escape-unescape.html') 
+                    isActive('/tools/string/html-escape-unescape.html') || isActive('/tools/string/html-escape-unescape')
                       ? 'border-gray-950 dark:border-white font-semibold text-gray-950 dark:text-white' 
                       : 'border-gray-200 dark:border-gray-700 text-gray-600 hover:border-gray-400 hover:text-gray-950 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white'
-                  }`} 
-                  href="/tools/string/html-escape-unescape.html"
+                  }`}
+                  onClick={onCloseMobileMenu}
                 >
                   HTML Escape/Unescape
-                </a>
+                </Link>
               </li>
             </ul>
             <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Time</h3>

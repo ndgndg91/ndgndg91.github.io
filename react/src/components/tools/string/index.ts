@@ -20,3 +20,6 @@ export { default as StringDiffChecker } from './StringDiffChecker';
 
 // Byte Counter
 export { default as ByteCounter } from './ByteCounter';
+
+// HTML Escape/Unescape
+export { default as HtmlEscapeUnescape } from './HtmlEscapeUnescape';
