@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool } from './components/tools/encode-decode';
+import { Base64Tool, UrlTool } from './components/tools/encode-decode';
 import Layout from './components/layout/Layout';
 
 
@@ -55,12 +55,11 @@ function App() {
   };
 
   // Determine if we should show desktop ad based on current route
-  // 메인 페이지와 base64 도구 페이지에서 광고 표시
+  // Show ads on main page and tool pages
   const shouldShowDesktopAd = 
     window.location.pathname === '/' ||
     window.location.pathname === '/index.html' ||
-    window.location.pathname === '/tools/encode-decode/base64' ||
-    window.location.pathname === '/tools/encode-decode/base64.html';
+    window.location.pathname.startsWith('/tools/encode-decode/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`}>
@@ -90,12 +89,22 @@ function App() {
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<MainContent />} />
+              
+              {/* Base64 Tool Routes */}
               <Route path="/tools/encode-decode/base64.html" element={<Base64Tool />} />
-              {/* Redirect old URL to new URL with .html for SEO */}
               <Route 
                 path="/tools/encode-decode/base64" 
                 element={
                   <Navigate to="/tools/encode-decode/base64.html" replace />
+                } 
+              />
+              
+              {/* URL Encode/Decode Tool Routes */}
+              <Route path="/tools/encode-decode/url.html" element={<UrlTool />} />
+              <Route 
+                path="/tools/encode-decode/url" 
+                element={
+                  <Navigate to="/tools/encode-decode/url.html" replace />
                 } 
               />
             </Routes>
