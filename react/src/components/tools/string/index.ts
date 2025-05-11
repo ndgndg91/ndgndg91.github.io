@@ -17,3 +17,6 @@ export { default as RandomHexGenerator } from './RandomHexGenerator';
 
 // String Diff Checker
 export { default as StringDiffChecker } from './StringDiffChecker';
+
+// Byte Counter
+export { default as ByteCounter } from './ByteCounter';

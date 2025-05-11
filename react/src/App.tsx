@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter } from './components/tools';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -151,6 +151,15 @@ function App() {
                 path="/tools/string/string-diff-checker" 
                 element={
                   <Navigate to="/tools/string/string-diff-checker.html" replace />
+                } 
+              />
+              
+              {/* Byte Counter Tool Routes */}
+              <Route path="/tools/string/byte-counter.html" element={<ByteCounter />} />
+              <Route 
+                path="/tools/string/byte-counter" 
+                element={
+                  <Navigate to="/tools/string/byte-counter.html" replace />
                 } 
               />
             </Routes>

@@ -62,10 +62,10 @@ const StringDiffChecker: React.FC = () => {
               key={idx}
               className={`${
                 word.status === 'removed'
-                  ? 'bg-red-100 dark:bg-red-900/50 line-through'
+                  ? 'bg-red-100 text-red-900 dark:bg-red-900/50 dark:text-red-100 line-through'
                   : word.status === 'added'
-                  ? 'bg-green-100 dark:bg-green-900/50'
-                  : ''
+                  ? 'bg-green-100 text-green-900 dark:bg-green-900/50 dark:text-green-100'
+                  : 'text-gray-900 dark:text-white'
               }`}
             >
               {word.word}{' '}
@@ -225,7 +225,7 @@ const StringDiffChecker: React.FC = () => {
           <h2 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Comparison Results
           </h2>
-          <div className="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg overflow-auto max-h-[500px]">
+          <div className="p-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-auto max-h-[500px]">
             {diffResult.map((line) => (
               <div key={line.lineNum} className="mb-1">
                 {renderDiffLine(line)}

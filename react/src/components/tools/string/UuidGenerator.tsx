@@ -62,8 +62,8 @@ const UuidGenerator: React.FC = () => {
           Generate UUID v4
         </button>
         <div className="flex items-center gap-2">
-          <span className="font-medium">Result:</span>
-          <code className="flex-1 p-2 bg-gray-100 dark:bg-gray-700 rounded break-all">
+          <span className="font-medium text-gray-900 dark:text-white">Result:</span>
+          <code className="flex-1 p-2 bg-gray-100 text-gray-900 font-mono dark:bg-gray-700 dark:text-gray-100 rounded break-all">
             {uuidV4 || 'Click the button to generate a UUID v4'}
           </code>
           <button 
@@ -92,8 +92,8 @@ const UuidGenerator: React.FC = () => {
           Generate UUID v7
         </button>
         <div className="flex items-center gap-2">
-          <span className="font-medium">Result:</span>
-          <code className="flex-1 p-2 bg-gray-100 dark:bg-gray-700 rounded break-all">
+          <span className="font-medium text-gray-900 dark:text-white">Result:</span>
+          <code className="flex-1 p-2 bg-gray-100 text-gray-900 font-mono dark:bg-gray-700 dark:text-gray-100 rounded break-all">
             {uuidV7 || 'Click the button to generate a UUID v7'}
           </code>
           <button 
@@ -121,8 +121,8 @@ const UuidGenerator: React.FC = () => {
           Generate UUID v1
         </button>
         <div className="flex items-center gap-2">
-          <span className="font-medium">Result:</span>
-          <code className="flex-1 p-2 bg-gray-100 dark:bg-gray-700 rounded break-all">
+          <span className="font-medium text-gray-900 dark:text-white">Result:</span>
+          <code className="flex-1 p-2 bg-gray-100 text-gray-900 font-mono dark:bg-gray-700 dark:text-gray-100 rounded break-all">
             {uuidV1 || 'Click the button to generate a UUID v1'}
           </code>
           <button 
@@ -154,7 +154,7 @@ const UuidGenerator: React.FC = () => {
             value={v5Namespace}
             onChange={(e) => setV5Namespace(e.target.value)}
             placeholder="e.g., 6ba7b810-9dad-11d1-80b4-00c04fd430c8"
-            className="w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-full p-2 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
         
@@ -168,7 +168,7 @@ const UuidGenerator: React.FC = () => {
             value={v5Name}
             onChange={(e) => setV5Name(e.target.value)}
             placeholder="e.g., my-unique-name"
-            className="w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-full p-2 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
         
@@ -180,8 +180,8 @@ const UuidGenerator: React.FC = () => {
         </button>
         
         <div className="flex items-center gap-2">
-          <span className="font-medium">Result:</span>
-          <code className="flex-1 p-2 bg-gray-100 dark:bg-gray-700 rounded break-all">
+          <span className="font-medium text-gray-900 dark:text-white">Result:</span>
+          <code className="flex-1 p-2 bg-gray-100 text-gray-900 font-mono dark:bg-gray-700 dark:text-gray-100 rounded break-all">
             {uuidV5 || 'Enter namespace and name, then click the button'}
           </code>
           <button 
@@ -213,7 +213,7 @@ const UuidGenerator: React.FC = () => {
             value={v3Namespace}
             onChange={(e) => setV3Namespace(e.target.value)}
             placeholder="e.g., 6ba7b810-9dad-11d1-80b4-00c04fd430c8"
-            className="w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-full p-2 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
         
@@ -227,7 +227,7 @@ const UuidGenerator: React.FC = () => {
             value={v3Name}
             onChange={(e) => setV3Name(e.target.value)}
             placeholder="e.g., my-unique-name"
-            className="w-full p-2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="w-full p-2 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           />
         </div>
         
@@ -239,8 +239,8 @@ const UuidGenerator: React.FC = () => {
         </button>
         
         <div className="flex items-center gap-2">
-          <span className="font-medium">Result:</span>
-          <code className="flex-1 p-2 bg-gray-100 dark:bg-gray-700 rounded break-all">
+          <span className="font-medium text-gray-900 dark:text-white">Result:</span>
+          <code className="flex-1 p-2 bg-gray-100 text-gray-900 font-mono dark:bg-gray-700 dark:text-gray-100 rounded break-all">
             {uuidV3 || 'Enter namespace and name, then click the button'}
           </code>
           <button 
