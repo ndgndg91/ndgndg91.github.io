@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp } from './components/tools';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -60,7 +60,8 @@ function App() {
     window.location.pathname === '/' ||
     window.location.pathname === '/index.html' ||
     window.location.pathname.startsWith('/tools/encode-decode/') ||
-    window.location.pathname.startsWith('/tools/string/');
+    window.location.pathname.startsWith('/tools/string/') ||
+    window.location.pathname.startsWith('/tools/time/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
@@ -169,6 +170,15 @@ function App() {
                 path="/tools/string/html-escape-unescape" 
                 element={
                   <Navigate to="/tools/string/html-escape-unescape.html" replace />
+                } 
+              />
+              
+              {/* Timestamp Tool Routes */}
+              <Route path="/tools/time/timestamp.html" element={<Timestamp />} />
+              <Route 
+                path="/tools/time/timestamp" 
+                element={
+                  <Navigate to="/tools/time/timestamp.html" replace />
                 } 
               />
             </Routes>
