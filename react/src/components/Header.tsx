@@ -13,13 +13,6 @@ const Header: React.FC<HeaderProps> = ({
   onToggleMobileMenu, 
   onToggleRightMobileMenu 
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-    onToggleMobileMenu();
-  };
-
   return (
     <div className="fixed inset-x-0 top-0 z-50 h-14">
       {/* 상단 로고 및 메뉴 영역 - 항상 최상위에 표시 */}
