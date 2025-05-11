@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool } from './components/tools';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -60,7 +60,8 @@ function App() {
   const shouldShowDesktopAd = 
     window.location.pathname === '/' ||
     window.location.pathname === '/index.html' ||
-    window.location.pathname.startsWith('/tools/encode-decode/');
+    window.location.pathname.startsWith('/tools/encode-decode/') ||
+    window.location.pathname.startsWith('/tools/string/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`}>
@@ -115,6 +116,15 @@ function App() {
                 path="/tools/string/parser" 
                 element={
                   <Navigate to="/tools/string/parser.html" replace />
+                } 
+              />
+              
+              {/* XML Parser Tool Routes */}
+              <Route path="/tools/string/xml-parser.html" element={<XmlParserTool />} />
+              <Route 
+                path="/tools/string/xml-parser" 
+                element={
+                  <Navigate to="/tools/string/xml-parser.html" replace />
                 } 
               />
             </Routes>
