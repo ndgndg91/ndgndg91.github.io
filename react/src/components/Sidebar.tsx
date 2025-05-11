@@ -262,18 +262,6 @@ const Sidebar: React.FC<SidebarProps> = ({
                   SHA-3
                 </a>
               </li>
-              <li className="-ml-px flex flex-col items-start gap-2">
-                <a 
-                  className={`inline-block border-l text-base/8 sm:text-sm/6 pl-5 sm:pl-4 ${
-                    isActive('/tools/hash/hmac.html') 
-                      ? 'border-gray-950 dark:border-white font-semibold text-gray-950 dark:text-white' 
-                      : 'border-transparent text-gray-600 hover:border-gray-950/25 hover:text-gray-950 dark:text-gray-300 dark:hover:border-white/25 dark:hover:text-white'
-                  }`} 
-                  href="/tools/hash/hmac.html"
-                >
-                  HMAC
-                </a>
-              </li>
             </ul>
             <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Encrypt/Decrypt</h3>
             <ul className="flex flex-col gap-2 border-l dark:border-[color-mix(in_oklab,_var(--color-gray-950),white_20%)] border-[color-mix(in_oklab,_var(--color-gray-950),white_90%)]">
