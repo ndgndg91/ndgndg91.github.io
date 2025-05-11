@@ -23,6 +23,7 @@ interface RightSidebarProps {
   isMobile?: boolean;
   rightMobileMenuOpen?: boolean;
   onCloseRightMobileMenu?: () => void;
+  showAd?: boolean;
 }
 
 /**
@@ -36,7 +37,8 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
   className = '', 
   isMobile = false,
   rightMobileMenuOpen = false,
-  onCloseRightMobileMenu = () => {}
+  onCloseRightMobileMenu = () => {},
+  showAd = true
 }) => {
   if (isMobile) {
     return (
@@ -48,7 +50,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({
   }
   
   return (
-    <RightSidebarDesktop className={className}>
+    <RightSidebarDesktop className={className} showAd={showAd}>
       {children}
     </RightSidebarDesktop>
   );

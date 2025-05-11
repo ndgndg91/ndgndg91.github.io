@@ -1,8 +1,8 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import { zIndex } from '../../theme';
-import DesktopAdSidebar from '../DesktopAdSidebar';
 import RightSidebarMobile from '../RightSidebarMobile';
+import RightSidebarDesktop from '../RightSidebarDesktop';
 
 interface LayoutProps {
   children: ReactNode;
@@ -66,12 +66,10 @@ const Layout: React.FC<LayoutProps> = ({
           {sidebar}
         </aside>
 
-        {/* Desktop Ad Sidebar */}
+        {/* Desktop Right Sidebar with Ad */}
         {showDesktopAd && (
           <div className="hidden xl:block fixed right-0 top-14 w-64 h-[calc(100vh-3.5rem)] overflow-y-auto border-l border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm">
-            <div className="p-4">
-              <DesktopAdSidebar />
-            </div>
+            <RightSidebarDesktop />
           </div>
         )}
 
