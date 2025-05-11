@@ -11,3 +11,6 @@ export type { UseXmlParserReturn } from './useXmlParser';
 
 // UUID Generator
 export { default as UuidGenerator } from './UuidGenerator';
+
+// Random Hex Generator
+export { default as RandomHexGenerator } from './RandomHexGenerator';

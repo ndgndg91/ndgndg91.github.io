@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator } from './components/tools';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -133,6 +133,15 @@ function App() {
                 path="/tools/string/uuid-generator" 
                 element={
                   <Navigate to="/tools/string/uuid-generator.html" replace />
+                } 
+              />
+              
+              {/* Random Hex Generator Tool Routes */}
+              <Route path="/tools/string/random-hex.html" element={<RandomHexGenerator />} />
+              <Route 
+                path="/tools/string/random-hex" 
+                element={
+                  <Navigate to="/tools/string/random-hex.html" replace />
                 } 
               />
             </Routes>

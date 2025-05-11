@@ -140,16 +140,17 @@ const Sidebar: React.FC<SidebarProps> = ({
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
-                <a 
+                <Link 
+                  to="/tools/string/random-hex.html"
                   className={`inline-block border-l-2 text-base/8 sm:text-sm/6 pl-5 sm:pl-4 ${
-                    isActive('/tools/string/random-hex.html') 
+                    isActive('/tools/string/random-hex.html') || isActive('/tools/string/random-hex')
                       ? 'border-gray-950 dark:border-white font-semibold text-gray-950 dark:text-white' 
                       : 'border-gray-200 dark:border-gray-700 text-gray-600 hover:border-gray-400 hover:text-gray-950 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white'
-                  }`} 
-                  href="/tools/string/random-hex.html"
+                  }`}
+                  onClick={onCloseMobileMenu}
                 >
                   Random Hex Generator
-                </a>
+                </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
                 <a 
