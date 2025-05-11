@@ -1,38 +1,39 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import { zIndex } from '../../theme';
-import { RightSidebarDesktop, RightSidebarMobile } from '../RightSidebar';
+import DesktopAdSidebar from '../DesktopAdSidebar';
+import RightSidebarMobile from '../RightSidebarMobile';
 
 interface LayoutProps {
   children: ReactNode;
   header: ReactNode;
   sidebar: ReactNode;
-  rightSidebar?: ReactNode;
   mobileMenuOpen: boolean;
   rightMobileMenuOpen: boolean;
   onCloseMobileMenu: () => void;
   onCloseRightMobileMenu: () => void;
+  showDesktopAd?: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({
   children,
   header,
   sidebar,
-  rightSidebar,
   mobileMenuOpen,
   rightMobileMenuOpen,
   onCloseMobileMenu,
   onCloseRightMobileMenu,
+  showDesktopAd = false,
 }) => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 overflow-x-hidden">
+    <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col">
       {/* Header - Always on top */}
-      <div className="fixed top-0 left-0 right-0 z-50" style={{ zIndex: zIndex.top }}>
+      <div className="sticky top-0 left-0 right-0 z-50" style={{ zIndex: zIndex.top }}>
         {header}
       </div>
       
       {/* Content Wrapper */}
-      <div className="flex w-screen" style={{ height: 'calc(100vh - 3.5rem)' }}>
+      <div className="flex flex-1 overflow-hidden max-w-[1920px] mx-auto w-full">
         {/* Mobile overlay */}
         {(mobileMenuOpen || rightMobileMenuOpen) && (
           <div 
@@ -65,27 +66,27 @@ const Layout: React.FC<LayoutProps> = ({
           {sidebar}
         </aside>
 
-        {/* Right Sidebar - Desktop */}
-        {rightSidebar && (
-          <div className="hidden xl:block fixed right-0 top-14 w-64" style={{ height: 'calc(100vh - 3.5rem)' }}>
-            <RightSidebarDesktop>
-              {rightSidebar}
-            </RightSidebarDesktop>
+        {/* Desktop Ad Sidebar */}
+        {showDesktopAd && (
+          <div className="hidden xl:block fixed right-0 top-14 w-64 h-[calc(100vh-3.5rem)] overflow-y-auto border-l border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm">
+            <div className="p-4">
+              <DesktopAdSidebar />
+            </div>
           </div>
         )}
 
-        {/* Right Sidebar - Mobile */}
+        {/* Mobile Menu Sidebar */}
         <div 
           className={`fixed right-0 w-48 bg-white dark:bg-gray-950 border-l border-gray-200 dark:border-gray-800 shadow-lg transform transition-transform duration-300 ease-in-out ${
             rightMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           } lg:hidden`}
           style={{ 
-            top: '7rem', /* Below both header levels on mobile */
+            top: '7rem',
             bottom: 0,
             zIndex: zIndex.modal,
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch',
-            height: 'calc(100vh - 7rem)' /* Full height minus both header levels */
+            height: 'calc(100vh - 7rem)'
           }}
         >
           <RightSidebarMobile 
@@ -96,25 +97,18 @@ const Layout: React.FC<LayoutProps> = ({
 
         {/* Main Content */}
         <main 
-          className={`flex-1 overflow-y-auto transition-all duration-300 w-full ${
-            rightSidebar ? 'xl:pr-64' : ''
-          } lg:ml-64`}
+          className={`flex-1 transition-all duration-300 w-full max-w-5xl mx-auto ${
+            showDesktopAd ? 'xl:pr-80 xl:max-w-[calc(1536px+16rem)]' : 'xl:pr-0 xl:max-w-[1536px]'
+          } lg:ml-64 lg:px-6`}
           style={{
-            padding: '1.5rem',
             marginTop: '3.5rem', /* Match header height */
-            height: 'calc(100vh - 3.5rem)', /* Full height minus header */
-            // Mobile styles will be handled by CSS media queries
           }}
-          data-mobile-styles={JSON.stringify({
-            marginTop: '6.5rem',
-            height: 'calc(100vh - 6.5rem)'
-          })}
+          onClick={() => {
+            if (mobileMenuOpen) onCloseMobileMenu();
+            if (rightMobileMenuOpen) onCloseRightMobileMenu();
+          }}
         >
-          <div className="h-full w-full">
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 w-full h-full">
-              {children}
-            </div>
-          </div>
+          {children}
         </main>
       </div>
     </div>

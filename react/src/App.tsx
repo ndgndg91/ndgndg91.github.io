@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import Layout from './components/layout/Layout';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import RightSidebar from './components/RightSidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
+import { Base64Tool } from './components/tools/encode-decode';
+import Layout from './components/layout/Layout';
 
 
 function App() {
@@ -53,25 +54,21 @@ function App() {
     setRightMobileMenuOpen(false);
   };
 
-  // Right sidebar content
-  const rightSidebarContent = (
-    <div className="flex flex-col gap-3">
-      <ins 
-        className="kakao_ad_area"
-        data-ad-unit="DAN-2nMLIisQJKH9qMpe"
-        data-ad-width="160"
-        data-ad-height="600"
-      />
-    </div>
-  );
+  // Determine if we should show desktop ad based on current route
+  // 메인 페이지와 base64 도구 페이지에서 광고 표시
+  const shouldShowDesktopAd = 
+    window.location.pathname === '/' ||
+    window.location.pathname === '/index.html' ||
+    window.location.pathname === '/tools/encode-decode/base64' ||
+    window.location.pathname === '/tools/encode-decode/base64.html';
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`}>
       <Layout
         header={
           <Header 
             darkMode={darkMode} 
-            onToggleDarkMode={() => setDarkMode(!darkMode)} 
+            onToggleDarkMode={() => setDarkMode(!darkMode)}
             onToggleMobileMenu={toggleMobileMenu}
             onToggleRightMobileMenu={toggleRightMobileMenu}
           />
@@ -79,30 +76,35 @@ function App() {
         sidebar={
           <Sidebar 
             mobileMenuOpen={mobileMenuOpen} 
-            onCloseMobileMenu={closeMobileMenu}
+            onCloseMobileMenu={closeMobileMenu} 
+            className={!mobileMenuOpen ? 'hidden lg:flex' : 'flex'}
           />
-        }
-        rightSidebar={
-          <RightSidebar 
-            rightMobileMenuOpen={rightMobileMenuOpen}
-            onCloseRightMobileMenu={closeRightMobileMenu}
-          >
-            {rightSidebarContent}
-          </RightSidebar>
         }
         mobileMenuOpen={mobileMenuOpen}
         rightMobileMenuOpen={rightMobileMenuOpen}
         onCloseMobileMenu={closeMobileMenu}
         onCloseRightMobileMenu={closeRightMobileMenu}
+        showDesktopAd={shouldShowDesktopAd}
       >
-        <div className="flex flex-col min-h-[calc(100vh-3.5rem)]">
+        <div className="flex flex-col min-h-[calc(100vh-6.5rem)]">
           <main className="flex-1">
-            <MainContent />
+            <Routes>
+              <Route path="/" element={<MainContent />} />
+              <Route path="/tools/encode-decode/base64.html" element={<Base64Tool />} />
+              {/* Redirect old URL to new URL with .html for SEO */}
+              <Route 
+                path="/tools/encode-decode/base64" 
+                element={
+                  <Navigate to="/tools/encode-decode/base64.html" replace />
+                } 
+              />
+            </Routes>
           </main>
           <Footer />
         </div>
       </Layout>
     </div>
+
   );
 }
 

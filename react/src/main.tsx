@@ -1,25 +1,20 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import './index.css'
-import App from './App.tsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import './index.css';
+import App from './App';
 
-const root = createRoot(document.getElementById('root')!)
-
-root.render(
+// Create a root component that wraps the App with BrowserRouter
+const Root = () => (
   <StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </StrictMode>
-)
+);
 
-export default function Main() {
-  return (
-    <StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StrictMode>
-  )
-}
+// Render the app
+const root = createRoot(document.getElementById('root')!);
+root.render(<Root />);
+
+export default Root;

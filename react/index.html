@@ -17,7 +17,59 @@
       gtag('config', 'G-NPF85QYLNH');
     </script>
     <!-- Kakao Ad -->
-    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+    <script>
+      // 카카오 광고 스크립트 로드
+      (function() {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.async = true;
+        script.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+        script.onload = function() {
+          // 스크립트 로드 완료 시 이벤트 발생
+          var event = new Event('kakao_adfit_loaded');
+          window.dispatchEvent(event);
+          
+          // kakao_adfit 객체가 로드되었는지 확인하는 함수
+          var checkKakaoAdfit = function() {
+            if (window.kakao_adfit) {
+              // kakao_adfit 객체가 로드되면 이벤트 발생
+              var event = new Event('kakao_adfit_ready');
+              window.dispatchEvent(event);
+            } else {
+              // 아직 로드되지 않았다면 재시도
+              setTimeout(checkKakaoAdfit, 100);
+            }
+          };
+          
+          // 초기 확인
+          checkKakaoAdfit();
+        };
+        script.onerror = function() {
+          console.error('Failed to load Kakao AdFit script');
+        };
+        document.head.appendChild(script);
+      })();
+      
+      // kakao_adfit 객체 래퍼
+      document.addEventListener('DOMContentLoaded', function() {
+        window.kakao_adfit = window.kakao_adfit || {
+          createAd: function(options) {
+            if (window.kakao_adfit && window.kakao_adfit.createAd) {
+              return window.kakao_adfit.createAd(options);
+            }
+            console.warn('kakao_adfit.createAd is not available yet');
+            return null;
+          },
+          destroyAd: function(element) {
+            if (window.kakao_adfit && window.kakao_adfit.destroyAd) {
+              return window.kakao_adfit.destroyAd(element);
+            }
+            console.warn('kakao_adfit.destroyAd is not available yet');
+            return null;
+          }
+        };
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
