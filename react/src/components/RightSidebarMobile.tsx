@@ -38,8 +38,6 @@ const RightSidebarMobile: React.FC<RightSidebarMobileProps> = ({
 }) => {
   const sidebarRef = useRef<HTMLDivElement>(null);
 
-  // Social links implementation can be added here when needed
-
   const handleAddBookmark = (e: React.MouseEvent) => {
     e.preventDefault();
     // Type assertion for window.sidebar

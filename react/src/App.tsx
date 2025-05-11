@@ -8,7 +8,6 @@ import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool } from './components
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
-
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -64,7 +63,7 @@ function App() {
     window.location.pathname.startsWith('/tools/string/');
 
   return (
-    <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
       <Layout
         header={
           <Header 
@@ -131,17 +130,7 @@ function App() {
           </main>
           <Footer />
         </div>
-        <Toaster 
-          position="bottom-center"
-          toastOptions={{
-            style: {
-              background: darkMode ? '#1f2937' : '#ffffff',
-              color: darkMode ? '#ffffff' : '#111827',
-              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-            },
-            duration: 2000,
-          }}
-        />
+        <Toaster position="bottom-right" />
       </Layout>
     </div>
   );
