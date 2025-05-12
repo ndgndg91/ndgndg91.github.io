@@ -6,6 +6,7 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp } from './components/tools';
 import ImageConverter from './components/tools/image/ImageConverter';
+import JWTPage from './components/tools/token/JWTPage';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -63,7 +64,8 @@ function App() {
     window.location.pathname.startsWith('/tools/encode-decode/') ||
     window.location.pathname.startsWith('/tools/string/') ||
     window.location.pathname.startsWith('/tools/time/') ||
-    window.location.pathname.startsWith('/tools/image/');
+    window.location.pathname.startsWith('/tools/image/') ||
+    window.location.pathname.startsWith('/tools/token/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
@@ -190,6 +192,15 @@ function App() {
                 path="/tools/image/format-converter" 
                 element={
                   <Navigate to="/tools/image/format-converter.html" replace />
+                } 
+              />
+
+              {/* JWT Tool Routes */}
+              <Route path="/tools/token/jwt.html" element={<JWTPage />} />
+              <Route 
+                path="/tools/token/jwt" 
+                element={
+                  <Navigate to="/tools/token/jwt.html" replace />
                 } 
               />
             </Routes>
