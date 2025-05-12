@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp } from './components/tools';
+import ImageConverter from './components/tools/image/ImageConverter';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -61,7 +62,8 @@ function App() {
     window.location.pathname === '/index.html' ||
     window.location.pathname.startsWith('/tools/encode-decode/') ||
     window.location.pathname.startsWith('/tools/string/') ||
-    window.location.pathname.startsWith('/tools/time/');
+    window.location.pathname.startsWith('/tools/time/') ||
+    window.location.pathname.startsWith('/tools/image/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
@@ -179,6 +181,15 @@ function App() {
                 path="/tools/time/timestamp" 
                 element={
                   <Navigate to="/tools/time/timestamp.html" replace />
+                } 
+              />
+              
+              {/* Image Format Converter Tool Routes */}
+              <Route path="/tools/image/format-converter.html" element={<ImageConverter />} />
+              <Route 
+                path="/tools/image/format-converter" 
+                element={
+                  <Navigate to="/tools/image/format-converter.html" replace />
                 } 
               />
             </Routes>
