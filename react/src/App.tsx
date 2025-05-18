@@ -7,6 +7,9 @@ import Footer from './components/Footer';
 import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp } from './components/tools';
 import ImageConverter from './components/tools/image/ImageConverter';
 import JWTPage from './components/tools/token/JWTPage';
+import SHA1Page from './components/tools/hash/SHA1Page';
+import SHA2Page from './components/tools/hash/SHA2Page';
+import SHA3Page from './components/tools/hash/SHA3Page';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -65,7 +68,8 @@ function App() {
     window.location.pathname.startsWith('/tools/string/') ||
     window.location.pathname.startsWith('/tools/time/') ||
     window.location.pathname.startsWith('/tools/image/') ||
-    window.location.pathname.startsWith('/tools/token/');
+    window.location.pathname.startsWith('/tools/token/') ||
+    window.location.pathname.startsWith('/tools/hash/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
@@ -201,6 +205,33 @@ function App() {
                 path="/tools/token/jwt" 
                 element={
                   <Navigate to="/tools/token/jwt.html" replace />
+                } 
+              />
+
+              {/* SHA-1 Tool Routes */}
+              <Route path="/tools/hash/sha1.html" element={<SHA1Page />} />
+              <Route 
+                path="/tools/hash/sha1" 
+                element={
+                  <Navigate to="/tools/hash/sha1.html" replace />
+                } 
+              />
+
+              {/* SHA-2 Tool Routes */}
+              <Route path="/tools/hash/sha2.html" element={<SHA2Page />} />
+              <Route 
+                path="/tools/hash/sha2" 
+                element={
+                  <Navigate to="/tools/hash/sha2.html" replace />
+                } 
+              />
+
+              {/* SHA-3 Tool Routes */}
+              <Route path="/tools/hash/sha3.html" element={<SHA3Page />} />
+              <Route 
+                path="/tools/hash/sha3" 
+                element={
+                  <Navigate to="/tools/hash/sha3.html" replace />
                 } 
               />
             </Routes>
