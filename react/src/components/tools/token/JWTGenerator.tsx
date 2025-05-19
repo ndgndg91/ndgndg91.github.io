@@ -162,7 +162,7 @@ const JWTGenerator: React.FC = () => {
 
       <button
         onClick={generateJWT}
-        className="btn-primary-violet"
+        className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 dark:shadow-purple-900/30 transform hover:-translate-y-0.5"
       >
         Generate JWT
       </button>
@@ -184,7 +184,7 @@ const JWTGenerator: React.FC = () => {
               className={`px-4 py-2 flex items-center gap-2 font-semibold rounded-lg transition-all duration-300 ${
                 copied
                   ? 'bg-green-600 text-white'
-                  : 'bg-sky-500 hover:bg-sky-600 text-white'
+                  : 'bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl hover:shadow-sky-500/20 dark:shadow-sky-900/30 transform hover:-translate-y-0.5'
               }`}
             >
               {copied ? (

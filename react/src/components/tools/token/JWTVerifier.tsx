@@ -208,7 +208,7 @@ const JWTVerifier: React.FC = () => {
 
       <button
         onClick={handleVerify}
-        className="btn-primary-violet"
+        className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 dark:shadow-purple-900/30 transform hover:-translate-y-0.5"
       >
         Verify Signature
       </button>
@@ -218,7 +218,7 @@ const JWTVerifier: React.FC = () => {
           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
             Verification Result:
           </label>
-          <div className="p-4 bg-gray-50 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+          <div className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
             {verificationResult.error ? (
               <p className="text-red-700 dark:text-red-300">{verificationResult.error}</p>
             ) : (
@@ -226,17 +226,27 @@ const JWTVerifier: React.FC = () => {
                 <p className={`font-bold ${verificationResult.isValid ? 'text-green-700 dark:text-green-300' : 'text-red-700 dark:text-red-300'}`}>
                   {verificationResult.isValid ? '✓ Signature Valid' : '✗ Signature Invalid'}
                 </p>
-                <p>Algorithm: {verificationResult.algorithm}</p>
+                <p className="text-gray-900 dark:text-white mb-4">Algorithm: {verificationResult.algorithm}</p>
                 {decodedJWT && (
-                  <div className="mt-4">
-                    <p className="font-medium">Decoded Header:</p>
-                    <pre className="bg-gray-100 p-2 rounded dark:bg-gray-600 mt-1 mb-3 text-xs">
-                      {JSON.stringify(decodedJWT.header, null, 2)}
-                    </pre>
-                    <p className="font-medium">Decoded Payload:</p>
-                    <pre className="bg-gray-100 p-2 rounded dark:bg-gray-600 mt-1 text-xs">
-                      {JSON.stringify(decodedJWT.payload, null, 2)}
-                    </pre>
+                  <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-medium text-gray-900 dark:text-white mb-2">Decoded Header:</p>
+                      <textarea
+                        readOnly
+                        value={JSON.stringify(decodedJWT.header, null, 2)}
+                        className="block w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-0 dark:text-white rounded p-2"
+                        rows={8}
+                      />
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900 dark:text-white mb-2">Decoded Payload:</p>
+                      <textarea
+                        readOnly
+                        value={JSON.stringify(decodedJWT.payload, null, 2)}
+                        className="block w-full text-sm text-gray-900 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 focus:ring-0 dark:text-white rounded p-2"
+                        rows={8}
+                      />
+                    </div>
                   </div>
                 )}
               </>

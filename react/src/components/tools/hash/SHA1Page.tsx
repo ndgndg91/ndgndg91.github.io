@@ -149,9 +149,9 @@ const SHA1Page: React.FC = () => {
 
           <button
             onClick={calculateSHA1}
-            className="btn-primary-violet"
+            className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 dark:shadow-purple-900/30 transform hover:-translate-y-0.5"
           >
-            Calculate
+            Generate Hash
           </button>
 
           {output && (

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface DecodedJWT {
   header: any;
@@ -10,6 +12,26 @@ const JWTDecoder: React.FC = () => {
   const [jwtInput, setJwtInput] = useState('');
   const [decodedJWT, setDecodedJWT] = useState<DecodedJWT | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Detect dark mode
+  useEffect(() => {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
+    
+    // Set initial value
+    setIsDarkMode(darkModeMediaQuery.matches);
+    
+    // Listen for changes
+    darkModeMediaQuery.addEventListener('change', handleChange);
+    
+    return () => darkModeMediaQuery.removeEventListener('change', handleChange);
+  }, []);
+
+  // Memoize the syntax highlighter style based on theme
+  const syntaxHighlighterStyle = useMemo(() => {
+    return isDarkMode ? vscDarkPlus : vs;
+  }, [isDarkMode]);
 
   const base64UrlDecode = (str: string): string => {
     let output = str
@@ -88,7 +110,7 @@ const JWTDecoder: React.FC = () => {
 
       <button
         onClick={handleDecode}
-        className="btn-primary-violet"
+        className="px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-purple-500/20 dark:shadow-purple-900/30 transform hover:-translate-y-0.5"
       >
         Decode
       </button>
@@ -105,20 +127,26 @@ const JWTDecoder: React.FC = () => {
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">
               Header:
             </label>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-300 overflow-x-auto dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-              <pre className="text-sm whitespace-pre-wrap">
-                {JSON.stringify(decodedJWT.header, null, 2)}
-              </pre>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-300 overflow-x-auto dark:bg-gray-700 dark:border-gray-600">
+              <textarea
+                readOnly
+                value={JSON.stringify(decodedJWT.header, null, 2)}
+                className="block w-full text-sm text-gray-900 bg-transparent border-0 focus:ring-0 dark:text-white"
+                rows={10}
+              />
             </div>
           </div>
           <div>
             <label className="block mb-2 text-lg font-medium text-gray-900 dark:text-white">
               Payload:
             </label>
-            <div className="p-4 bg-gray-50 rounded-lg border border-gray-300 overflow-x-auto dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-              <pre className="text-sm whitespace-pre-wrap">
-                {JSON.stringify(decodedJWT.payload, null, 2)}
-              </pre>
+            <div className="p-4 bg-gray-50 rounded-lg border border-gray-300 overflow-x-auto dark:bg-gray-700 dark:border-gray-600">
+              <textarea
+                readOnly
+                value={JSON.stringify(decodedJWT.payload, null, 2)}
+                className="block w-full text-sm text-gray-900 bg-transparent border-0 focus:ring-0 dark:text-white"
+                rows={10}
+              />
             </div>
           </div>
         </div>

@@ -10,6 +10,8 @@ import JWTPage from './components/tools/token/JWTPage';
 import SHA1Page from './components/tools/hash/SHA1Page';
 import SHA2Page from './components/tools/hash/SHA2Page';
 import SHA3Page from './components/tools/hash/SHA3Page';
+import AESPage from './components/tools/encrypt-decrypt/AESPage';
+import RSAPage from './components/tools/encrypt-decrypt/RSAPage';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 
@@ -69,7 +71,8 @@ function App() {
     window.location.pathname.startsWith('/tools/time/') ||
     window.location.pathname.startsWith('/tools/image/') ||
     window.location.pathname.startsWith('/tools/token/') ||
-    window.location.pathname.startsWith('/tools/hash/');
+    window.location.pathname.startsWith('/tools/hash/') ||
+    window.location.pathname.startsWith('/tools/encrypt-decrypt/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
@@ -232,6 +235,24 @@ function App() {
                 path="/tools/hash/sha3" 
                 element={
                   <Navigate to="/tools/hash/sha3.html" replace />
+                } 
+              />
+
+              {/* AES Tool Routes */}
+              <Route path="/tools/encrypt-decrypt/aes.html" element={<AESPage />} />
+              <Route 
+                path="/tools/encrypt-decrypt/aes" 
+                element={
+                  <Navigate to="/tools/encrypt-decrypt/aes.html" replace />
+                } 
+              />
+
+              {/* RSA Tool Routes */}
+              <Route path="/tools/encrypt-decrypt/rsa.html" element={<RSAPage />} />
+              <Route 
+                path="/tools/encrypt-decrypt/rsa" 
+                element={
+                  <Navigate to="/tools/encrypt-decrypt/rsa.html" replace />
                 } 
               />
             </Routes>
