@@ -14,6 +14,8 @@ import AESPage from './components/tools/encrypt-decrypt/AESPage';
 import RSAPage from './components/tools/encrypt-decrypt/RSAPage';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
+import BlogPage from './pages/BlogPage';
+import BlogListPage from './pages/BlogListPage';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -72,7 +74,8 @@ function App() {
     window.location.pathname.startsWith('/tools/image/') ||
     window.location.pathname.startsWith('/tools/token/') ||
     window.location.pathname.startsWith('/tools/hash/') ||
-    window.location.pathname.startsWith('/tools/encrypt-decrypt/');
+    window.location.pathname.startsWith('/tools/encrypt-decrypt/') ||
+    window.location.pathname.startsWith('/blog/');
 
   return (
     <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
@@ -255,6 +258,14 @@ function App() {
                   <Navigate to="/tools/encrypt-decrypt/rsa.html" replace />
                 } 
               />
+
+              {/* Blog Routes */}
+              <Route path="/blog/software-engineer/list/about-g1gc.html" element={<BlogPage />} />
+              <Route path="/blog/software-engineer/list/about-zgc.html" element={<BlogPage />} />
+              <Route path="/blog/software-engineer/list/about-kafka.html" element={<BlogPage />} />
+              <Route path="/blog/software-engineer/list/about-mongodb-sharding.html" element={<BlogPage />} />
+              <Route path="/blog/software-engineer/list.html" element={<BlogListPage />} />
+              <Route path="/blog/other/list.html" element={<BlogListPage />} />
             </Routes>
           </main>
           <Footer />
