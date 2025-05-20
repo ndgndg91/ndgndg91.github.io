@@ -418,32 +418,6 @@ export const aboutZgc: BlogPost = {
           <h2 id="numa" class="text-2xl font-bold mb-4 text-indigo-700">Enabling NUMA (Non-Uniform Memory Access) Support</h2>
           <div class="mb-4">By default, NUMA support is enabled, but it can be automatically disabled if the JVM detects that memory can only be used from a single NUMA node. This setting typically doesn't require attention. However, if you want to explicitly override the JVM's decision, you can manually enable or disable it using <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseNUMA</code> or <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:-UseNUMA</code>. When running on NUMA machines (e.g., a multi-socket x86 machine), having this option enabled can provide noticeable performance improvements.</div>
 
-          <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
-            <h4 class="text-lg font-semibold mb-2 text-blue-800 dark:text-blue-300">References</h4>
-            <div class="space-y-1">
-              <div class="flex items-start">
-                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
-                <a href="https://openjdk.org/projects/zgc/" class="text-blue-600 hover:underline dark:text-blue-400">https://openjdk.org/projects/zgc/</a>
-              </div>
-              <div class="flex items-start">
-                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
-                <a href="https://wiki.openjdk.org/display/zgc/Main" class="text-blue-600 hover:underline dark:text-blue-400">https://wiki.openjdk.org/display/zgc/Main</a>
-              </div>
-              <div class="flex items-start">
-                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
-                <a href="https://docs.oracle.com/en/java/javase/11/gctuning/z-garbage-collector1.html#GUID-A5A42691-095E-47BA-B6DC-FB4E5FAA43D0" class="text-blue-600 hover:underline dark:text-blue-400">https://docs.oracle.com/en/java/javase/11/gctuning/z-garbage-collector1.html#GUID-A5A42691-095E-47BA-B6DC-FB4E5FAA43D0</a>
-              </div>
-              <div class="flex items-start">
-                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
-                <a href="https://www.baeldung.com/jvm-zgc-garbage-collector" class="text-blue-600 hover:underline dark:text-blue-400">https://www.baeldung.com/jvm-zgc-garbage-collector</a>
-              </div>
-              <div class="flex items-start">
-                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
-                <a href="https://en.wikipedia.org/wiki/Non-uniform_memory_access" class="text-blue-600 hover:underline dark:text-blue-400">https://en.wikipedia.org/wiki/Non-uniform_memory_access</a>
-              </div>
-            </div>
-          </div>
-
           <h2 class="text-2xl font-bold mb-4 text-indigo-700">Conclusion</h2>
           <div class="mb-4">
             ZGC represents a significant advancement in Java garbage collection technology, focusing on low-latency while still maintaining good throughput. It's particularly well-suited for applications that:
@@ -469,19 +443,32 @@ export const aboutZgc: BlogPost = {
           </div>
         </div>
 
-        <!-- Table of Contents for mobile view -->
-        <div class="xl:hidden mt-4 mb-6 border rounded p-4 bg-gray-50 dark:bg-gray-800">
-          <h3 class="font-bold text-lg mb-2">Table of Contents</h3>
-          <ul class="space-y-1 text-sm">
-            <li><a href="#z-garbage-collector" class="text-blue-600 hover:underline dark:text-blue-400">Z Garbage Collector</a></li>
-            <li><a href="#configuration" class="text-blue-600 hover:underline dark:text-blue-400">Configuration & Tuning</a></li>
-            <li><a href="#heap-size" class="text-blue-600 hover:underline dark:text-blue-400">Setting Heap Size</a></li>
-            <li><a href="#gc-threads" class="text-blue-600 hover:underline dark:text-blue-400">Setting Concurrent GC Threads</a></li>
-            <li><a href="#returning-memory" class="text-blue-600 hover:underline dark:text-blue-400">Returning Unused Memory</a></li>
-            <li><a href="#large-pages" class="text-blue-600 hover:underline dark:text-blue-400">Using Large Pages</a></li>
-            <li><a href="#numa" class="text-blue-600 hover:underline dark:text-blue-400">Enabling NUMA Support</a></li>
-          </ul>
-        </div>
+        <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+            <h4 class="text-lg font-semibold mb-2 text-blue-800 dark:text-blue-300">References</h4>
+            <div class="space-y-1">
+              <div class="flex items-start">
+                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                <a href="https://openjdk.org/projects/zgc/" class="text-blue-600 hover:underline dark:text-blue-400">https://openjdk.org/projects/zgc/</a>
+              </div>
+              <div class="flex items-start">
+                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                <a href="https://wiki.openjdk.org/display/zgc/Main" class="text-blue-600 hover:underline dark:text-blue-400">https://wiki.openjdk.org/display/zgc/Main</a>
+              </div>
+              <div class="flex items-start">
+                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                <a href="https://docs.oracle.com/en/java/javase/11/gctuning/z-garbage-collector1.html#GUID-A5A42691-095E-47BA-B6DC-FB4E5FAA43D0" class="text-blue-600 hover:underline dark:text-blue-400">https://docs.oracle.com/en/java/javase/11/gctuning/z-garbage-collector1.html#GUID-A5A42691-095E-47BA-B6DC-FB4E5FAA43D0</a>
+              </div>
+              <div class="flex items-start">
+                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                <a href="https://www.baeldung.com/jvm-zgc-garbage-collector" class="text-blue-600 hover:underline dark:text-blue-400">https://www.baeldung.com/jvm-zgc-garbage-collector</a>
+              </div>
+              <div class="flex items-start">
+                <span class="text-blue-600 dark:text-blue-400 mr-2">•</span>
+                <a href="https://en.wikipedia.org/wiki/Non-uniform_memory_access" class="text-blue-600 hover:underline dark:text-blue-400">https://en.wikipedia.org/wiki/Non-uniform_memory_access</a>
+              </div>
+            </div>
+          </div>
+        
       </div>
     </div>
   `

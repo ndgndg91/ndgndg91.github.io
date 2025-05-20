@@ -264,6 +264,7 @@ function App() {
               <Route path="/blog/software-engineer/list/about-zgc.html" element={<BlogPage />} />
               <Route path="/blog/software-engineer/list/about-kafka.html" element={<BlogPage />} />
               <Route path="/blog/software-engineer/list/about-mongodb-sharding.html" element={<BlogPage />} />
+              <Route path="/blog/software-engineer/list/replay-attack.html" element={<BlogPage />} />
               <Route path="/blog/software-engineer/list.html" element={<BlogListPage />} />
               <Route path="/blog/other/list.html" element={<BlogListPage />} />
             </Routes>
