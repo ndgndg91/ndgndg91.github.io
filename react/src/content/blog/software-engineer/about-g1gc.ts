@@ -5,8 +5,8 @@ export const aboutG1gc: BlogPost = {
   title: 'About G1 GC',
   description: 'G1 GC has been available since Java 7 and was designated as the default garbage collector in Java 9. It is suitable for multi-processor machines with large memory.',
   category: 'software-engineer',
-  date: '2024-03-31',
-  updatedDate: '2024-03-31',
+  date: '2025-03-31',
+  updatedDate: '2025-03-31',
   tags: ['JVM', 'Garbage Collection', 'Performance'],
   image: 'g1gc.webp',
   content: `

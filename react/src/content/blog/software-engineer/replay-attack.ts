@@ -3,10 +3,10 @@ import type { BlogPost } from '../../../types/blog';
 export const replayAttack: BlogPost = {
   id: 'replay-attack',
   title: 'How to Prevent Replay Attacks',
-  description: 'Learn about replay attacks, their types, and how to prevent them using various security measures including Message Authentication Codes, timestamps, and nonces.',
+  description: 'A replay attack is a type of network attack where an attacker intercepts valid network data packets and later reuses them. By retransmitting the data, the system processes it as legitimate data. Replay attacks are difficult to detect because they appear as normal requests. Additionally, they can be successful even if the original transmission was encrypted. Replay attacks can overload systems through repetitive requests, potentially disrupting normal system operations.',
   category: 'software-engineer',
-  date: '2024-04-01',
-  updatedDate: '2024-04-01',
+  date: '2025-04-01',
+  updatedDate: '2025-04-01',
   tags: ['Security', 'Network Security', 'Authentication'],
   image: 'replay-attack.webp',
   content: `

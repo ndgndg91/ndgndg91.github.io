@@ -106,6 +106,22 @@ function App() {
             <Routes>
               <Route path="/" element={<MainContent />} />
               
+              {/* Blog Routes */}
+              <Route path="/blog/software-engineer/list.html" element={<BlogListPage />} />
+              <Route 
+                path="/blog/software-engineer/list" 
+                element={
+                  <Navigate to="/blog/software-engineer/list.html" replace />
+                } 
+              />
+              <Route path="/blog/software-engineer/list/:slug.html" element={<BlogPage />} />
+              <Route 
+                path="/blog/software-engineer/list/:slug" 
+                element={
+                  <Navigate to="/blog/software-engineer/list/:slug.html" replace />
+                } 
+              />
+              
               {/* Base64 Tool Routes */}
               <Route path="/tools/encode-decode/base64.html" element={<Base64Tool />} />
               <Route 
@@ -265,7 +281,6 @@ function App() {
               <Route path="/blog/software-engineer/list/about-kafka.html" element={<BlogPage />} />
               <Route path="/blog/software-engineer/list/about-mongodb-sharding.html" element={<BlogPage />} />
               <Route path="/blog/software-engineer/list/replay-attack.html" element={<BlogPage />} />
-              <Route path="/blog/software-engineer/list.html" element={<BlogListPage />} />
               <Route path="/blog/other/list.html" element={<BlogListPage />} />
             </Routes>
           </main>

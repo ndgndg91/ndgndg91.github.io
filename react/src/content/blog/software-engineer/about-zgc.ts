@@ -3,10 +3,10 @@ import type { BlogPost } from '../../../types/blog';
 export const aboutZgc: BlogPost = {
   id: 'about-zgc',
   title: 'About ZGC',
-  description: 'ZGC has been available since Java 11 and was designated as the default garbage collector in Java 15. It is suitable for multi-processor machines with large memory.',
+  description: 'ZGC performs high-cost operations concurrently without stopping application threads for more than 10ms. The pause time is independent of heap size, working effectively with heaps ranging from a few hundred megabytes to 16 terabytes.',
   category: 'software-engineer',
-  date: '2024-03-31',
-  updatedDate: '2024-03-31',
+  date: '2025-03-31',
+  updatedDate: '2025-03-31',
   tags: ['JVM', 'Garbage Collection', 'Performance'],
   image: 'zgc.webp',
   content: `
