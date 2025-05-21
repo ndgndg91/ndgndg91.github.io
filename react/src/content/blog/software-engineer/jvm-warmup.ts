@@ -2,9 +2,9 @@ import type { BlogPost } from '../../../types/blog';
 
 export const jvmWarmup: BlogPost = {
   id: 'jvm-warmup',
-  title: 'About JVM Warm-up',
-  description: 'When a JVM process starts, all required classes are loaded into memory by the class loader through three stages. This process is based on lazy loading.',
   category: 'software-engineer',
+  title: 'JVM Warming Up',
+  description: 'JVM Warming Up is a process that preloads classes into the JVM cache to improve the performance of the first request in a Java web application.',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
   tags: ['Java', 'JVM', 'Performance'],
