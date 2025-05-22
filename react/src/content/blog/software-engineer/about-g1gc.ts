@@ -7,7 +7,7 @@ export const aboutG1gc: BlogPost = {
   category: 'software-engineer',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
-  tags: ['JVM', 'Garbage Collection', 'Performance'],
+  tags: ['JVM', 'Garbage Collection', 'Performance', 'Java', 'Memory Management', 'JDK'],
   image: 'g1gc.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">

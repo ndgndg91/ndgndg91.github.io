@@ -1,13 +1,13 @@
 import type { BlogPost } from '../../../types/blog';
 
-export const kafkaConsumerRate: BlogPost = {
+export const kafkaBasic: BlogPost = {
   id: 'kafka-basics',
   category: 'software-engineer',
   title: 'Kafka Basics',
   description: 'Topic, Partition, Offsets, Producer, Consumer, Delivery semantics, Broker, Zookeeper, KRaft concepts.',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
-  tags: ['Kafka'],
+  tags: ['Kafka', 'Message Queue', 'Distributed Systems', 'Event Streaming', 'Data Pipeline', 'KRaft'],
   image: 'kafka.webp',
   content: `
 <div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">

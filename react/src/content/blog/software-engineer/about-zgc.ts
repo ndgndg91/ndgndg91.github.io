@@ -7,7 +7,7 @@ export const aboutZgc: BlogPost = {
   category: 'software-engineer',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
-  tags: ['JVM', 'Garbage Collection', 'Performance'],
+  tags: ['JVM', 'Garbage Collection', 'Performance', 'Java', 'Memory Management', 'JDK'],
   image: 'zgc.webp',
   content: `
     <div class="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
@@ -34,23 +34,23 @@ export const aboutZgc: BlogPost = {
             data-section="true">
             JVM Performance
           </p>
-          <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
+          <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-900 dark:text-white">
             About ZGC
           </h1>
           <div class="text-sm text-gray-500 mt-2">Updated: March 31, 2025</div>
         </header>
 
         <h2 id="latest-updates" class="text-2xl font-bold mb-4 text-indigo-700">Latest Updates in JDK 24</h2>
-        <div class="mb-4">
+        <div class="mb-4 text-gray-700 dark:text-gray-400">
           JDK 24 was officially released in March 2024, bringing several improvements to ZGC. These enhancements continue to refine ZGC's performance characteristics and operational efficiency.
         </div>
 
-        <h3 class="font-bold text-lg mb-2">Generational ZGC Improvements</h3>
-        <div class="mb-4">
+        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Generational ZGC Improvements</h3>
+        <div class="mb-4 text-gray-700 dark:text-gray-400">
           The generational implementation of ZGC, first introduced in JDK 21, has been significantly stabilized in JDK 24. Key improvements include:
         </div>
 
-        <ul class="list-disc pl-6 mb-6">
+        <ul class="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-400">
           <li class="mb-2">
             <strong>Optimized Inter-Generational Reference Processing</strong> - The algorithms for handling references between generations have been refined, improving efficiency when objects in the old generation reference objects in the young generation.
           </li>
@@ -62,12 +62,12 @@ export const aboutZgc: BlogPost = {
           </li>
         </ul>
 
-        <h3 class="font-bold text-lg mb-2">Memory Management Enhancements</h3>
-        <div class="mb-4">
+        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Memory Management Enhancements</h3>
+        <div class="mb-4 text-gray-700 dark:text-gray-400">
           JDK 24 introduces several improvements to ZGC's memory management capabilities:
         </div>
 
-        <ul class="list-disc pl-6 mb-6">
+        <ul class="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-400">
           <li class="mb-2">
             <strong>Improved Memory Return Mechanism</strong> - The process of returning unused memory to the operating system has been optimized to be less intrusive to application performance, particularly valuable in container environments where resource efficiency is critical.
           </li>
@@ -79,12 +79,12 @@ export const aboutZgc: BlogPost = {
           </li>
         </ul>
 
-        <h3 class="font-bold text-lg mb-2">Diagnostic Improvements</h3>
-        <div class="mb-4">
+        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Diagnostic Improvements</h3>
+        <div class="mb-4 text-gray-700 dark:text-gray-400">
           JDK 24 enhances ZGC's observability and diagnostic capabilities:
         </div>
 
-        <ul class="list-disc pl-6 mb-6">
+        <ul class="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-400">
           <li class="mb-2">
             <strong>Enhanced GC Logging</strong> - More detailed and structured logging helps identify potential issues and optimization opportunities. New log categories provide insight into specific ZGC operations.
           </li>
@@ -96,12 +96,12 @@ export const aboutZgc: BlogPost = {
           </li>
         </ul>
 
-        <h3 class="font-bold text-lg mb-2">Configuration and Tuning</h3>
-        <div class="mb-4">
+        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Configuration and Tuning</h3>
+        <div class="mb-4 text-gray-700 dark:text-gray-400">
           JDK 24 continues the trend of making ZGC more self-tuning:
         </div>
 
-        <ul class="list-disc pl-6 mb-6">
+        <ul class="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-400">
           <li class="mb-2">
             <strong>Further Reduced Need for Manual Thread Sizing</strong> - The automatic thread management has been improved, making <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:ConcGCThreads</code> even less necessary in most deployments.
           </li>
@@ -110,12 +110,12 @@ export const aboutZgc: BlogPost = {
           </li>
         </ul>
 
-        <h3 class="font-bold text-lg mb-2">Future Direction</h3>
-        <div class="mb-4">
+        <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Future Direction</h3>
+        <div class="mb-4 text-gray-700 dark:text-gray-400">
           Looking ahead to JDK 25 and beyond, the ZGC development team is focusing on several areas:
         </div>
 
-        <ul class="list-disc pl-6 mb-6">
+        <ul class="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-400">
           <li class="mb-2">
             <strong>Further Parallel Processing Optimization</strong> - Enhancing the scalability of ZGC on many-core systems, allowing efficient utilization of increasingly parallel hardware.
           </li>
@@ -237,15 +237,15 @@ export const aboutZgc: BlogPost = {
         </svg>
 
         <div class="mt-6 prose dark:prose-invert">
-          <h1 id="z-garbage-collector" class="text-3xl font-bold mb-4">Z Garbage Collector</h1>
-          <div class="mb-4">Z Garbage Collector was introduced as an experimental feature in JDK 11 and was officially released in JDK 15. It is also available in JDK 21.</div>
-          <div class="mb-4">ZGC performs high-cost operations concurrently without stopping application threads for more than 10ms. The pause time is independent of heap size, working effectively with heaps ranging from a few hundred megabytes to 16 terabytes.</div>
+          <h1 id="z-garbage-collector" class="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Z Garbage Collector</h1>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">Z Garbage Collector was introduced as an experimental feature in JDK 11 and was officially released in JDK 15. It is also available in JDK 21.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">ZGC performs high-cost operations concurrently without stopping application threads for more than 10ms. The pause time is independent of heap size, working effectively with heaps ranging from a few hundred megabytes to 16 terabytes.</div>
 
-          <div class="mb-4">For JDK 11 to JDK 15, ZGC is activated by using both the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UnlockExperimentalVMOptions</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> options. For JDK 15 and later, only the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> option is needed.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">For JDK 11 to JDK 15, ZGC is activated by using both the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UnlockExperimentalVMOptions</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> options. For JDK 15 and later, only the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> option is needed.</div>
 
-          <div class="mb-4">Like G1 GC, ZGC is a concurrent garbage collector that uses the following key features:</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">Like G1 GC, ZGC is a concurrent garbage collector that uses the following key features:</div>
 
-          <ul class="list-disc pl-6 mb-6">
+          <ul class="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-400">
             <li>Concurrent</li>
             <li>Region-based</li>
             <li>Compacting</li>
@@ -375,70 +375,70 @@ export const aboutZgc: BlogPost = {
           </svg>
 
           <h2 id="configuration" class="text-2xl font-bold mb-4 text-indigo-700">Configuration & Tuning</h2>
-          <div class="mb-4">Like G1 GC, ZGC requires minimal configuration and adapts automatically during application execution. ZGC dynamically resizes generations, adjusts the number of GC threads, and modifies tenuring thresholds. The primary tuning point is increasing the maximum heap size (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code>).</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">Like G1 GC, ZGC requires minimal configuration and adapts automatically during application execution. ZGC dynamically resizes generations, adjusts the number of GC threads, and modifies tenuring thresholds. The primary tuning point is increasing the maximum heap size (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code>).</div>
 
-          <div class="mb-4">ZGC has two versions: generational and non-generational. The non-generational version is legacy and doesn't use the generation concept during execution. The generational version was released with JDK 21 and is recommended for use.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">ZGC has two versions: generational and non-generational. The non-generational version is legacy and doesn't use the generation concept during execution. The generational version was released with JDK 21 and is recommended for use.</div>
 
-          <div class="mb-4">The generational version uses both <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+ZGenerational</code> options.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">The generational version uses both <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+ZGenerational</code> options.</div>
 
-          <div class="mb-4">The non-generational version uses only the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> option.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">The non-generational version uses only the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseZGC</code> option.</div>
 
           <h2 id="heap-size"class="text-2xl font-bold mb-4 text-indigo-700">Setting Heap Size</h2>
 
-          <h3 class="font-bold text-lg mb-2">Headroom</h3>
-          <div class="mb-4">JVM Heap Headroom refers to the free space between the memory allocated for storing actively used data and the maximum heap size (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code>). This buffer allows the system to create more objects or process more data while helping reduce GC latency.</div>
+          <h3 class="font-bold text-lg mb-2 text-gray-900 dark:text-white">Headroom</h3>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">JVM Heap Headroom refers to the free space between the memory allocated for storing actively used data and the maximum heap size (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code>). This buffer allows the system to create more objects or process more data while helping reduce GC latency.</div>
 
-          <div class="mb-4">Without headroom, Out of Memory (OOM) errors can occur, but having too much free space wastes system resources. Monitoring and managing JVM Heap Headroom is essential for performance optimization and stability, preventing memory-related issues while ensuring efficient execution.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">Without headroom, Out of Memory (OOM) errors can occur, but having too much free space wastes system resources. Monitoring and managing JVM Heap Headroom is essential for performance optimization and stability, preventing memory-related issues while ensuring efficient execution.</div>
 
-          <div class="mb-4">The most important tuning option for ZGC is setting <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">the maximum heap size with the -Xmx</code> option. Since ZGC is a concurrent collector, you must choose a heap size that provides sufficient headroom for memory allocation while the service operates during GC activity and can accommodate the application's live-set. The headroom size depends on the application's allocation rate and live-set size. Generally, providing more heap memory to ZGC is beneficial, but excessive heap sizes are not recommended, so finding the right balance is important.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">The most important tuning option for ZGC is setting <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">the maximum heap size with the -Xmx</code> option. Since ZGC is a concurrent collector, you must choose a heap size that provides sufficient headroom for memory allocation while the service operates during GC activity and can accommodate the application's live-set. The headroom size depends on the application's allocation rate and live-set size. Generally, providing more heap memory to ZGC is beneficial, but excessive heap sizes are not recommended, so finding the right balance is important.</div>
 
-          <p class="mb-4">Another heap size-related option in ZGC is <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:SoftMaxHeapSize</code>, which sets a soft limit on how large the heap can grow. ZGC tries not to exceed this limit but may grow up to the maximum heap size if necessary. This exceeds the soft limit only when needed to prevent the application from pausing while waiting for GC to reclaim memory. For example, with <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx5g -XX:SoftMaxHeapSize=4g</code>, ZGC typically uses up to 4GB but can temporarily use up to 5GB.</p>
+          <p class="mb-4 text-gray-700 dark:text-gray-400">Another heap size-related option in ZGC is <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:SoftMaxHeapSize</code>, which sets a soft limit on how large the heap can grow. ZGC tries not to exceed this limit but may grow up to the maximum heap size if necessary. This exceeds the soft limit only when needed to prevent the application from pausing while waiting for GC to reclaim memory. For example, with <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx5g -XX:SoftMaxHeapSize=4g</code>, ZGC typically uses up to 4GB but can temporarily use up to 5GB.</p>
 
           <h2 id="gc-threads" class="text-2xl font-bold mb-4 text-indigo-700">Setting Concurrent GC Threads</h2>
-          <div class="mb-4">When using the non-generational version, concurrent GC threads can be tuned with <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:ConcGCThreads=&lt;number&gt;</code>. ZGC has heuristics to automatically set the thread count, which generally works well but may need adjustment based on application characteristics. This option fundamentally determines how much CPU time to allocate to GC. Setting too many threads can cause GC to take excessive CPU time from the application, leading to performance degradation. Setting too few can cause the application to allocate garbage faster than GC can collect it.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">When using the non-generational version, concurrent GC threads can be tuned with <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:ConcGCThreads=&lt;number&gt;</code>. ZGC has heuristics to automatically set the thread count, which generally works well but may need adjustment based on application characteristics. This option fundamentally determines how much CPU time to allocate to GC. Setting too many threads can cause GC to take excessive CPU time from the application, leading to performance degradation. Setting too few can cause the application to allocate garbage faster than GC can collect it.</div>
 
-          <div class="mb-4">From JDK 17 onward, ZGC dynamically expands and shrinks the number of concurrent GC threads, eliminating the need to configure this option.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">From JDK 17 onward, ZGC dynamically expands and shrinks the number of concurrent GC threads, eliminating the need to configure this option.</div>
 
-          <div class="mb-4">With the release of the generational version in JDK 21, the need to set concurrent GC threads has been further reduced.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">With the release of the generational version in JDK 21, the need to set concurrent GC threads has been further reduced.</div>
 
-          <div class="mb-4">If your application requires minimized GC delays and fast response times, ensure CPU utilization does not exceed 70%.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">If your application requires minimized GC delays and fast response times, ensure CPU utilization does not exceed 70%.</div>
 
           <h2 id="returning-memory" class="text-2xl font-bold mb-4 text-indigo-700">Returning Unused Memory to the Operating System</h2>
-          <div class="mb-4">By default, ZGC uncommits unused memory and returns it to the OS. This can negatively impact application thread latency. You can disable this feature with the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:-ZUncommit</code> option. Additionally, memory is not uncommitted below the minimum heap size (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xms</code>). Setting <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xms</code> to the same value implicitly disables this default behavior.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">By default, ZGC uncommits unused memory and returns it to the OS. This can negatively impact application thread latency. You can disable this feature with the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:-ZUncommit</code> option. Additionally, memory is not uncommitted below the minimum heap size (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xms</code>). Setting <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xms</code> to the same value implicitly disables this default behavior.</div>
 
-          <div class="mb-4">You can configure the uncommit delay with <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:ZUncommitDelay=&lt;seconds&gt;</code> (default 300 seconds). This specifies how long memory must remain unused before becoming eligible for uncommitting. By default, memory unused for 300 seconds (5 minutes) is uncommitted and returned to the OS.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">You can configure the uncommit delay with <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:ZUncommitDelay=&lt;seconds&gt;</code> (default 300 seconds). This specifies how long memory must remain unused before becoming eligible for uncommitting. By default, memory unused for 300 seconds (5 minutes) is uncommitted and returned to the OS.</div>
 
-          <div class="mb-4">When an application is running, memory committing or uncommitting by GC can negatively impact application thread latency. For faster response times, set <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xms</code> to the same value. Also, use the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+AlwaysPreTouch</code> option (supported from JDK 14) to move memory to pages. However, this forces all allocated heap memory pages to be pre-mapped to physical memory when the JVM starts, which can cause problems in container-based cloud environments if it uses more memory than allocated to the container.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">When an application is running, memory committing or uncommitting by GC can negatively impact application thread latency. For faster response times, set <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xmx</code> and <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-Xms</code> to the same value. Also, use the <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+AlwaysPreTouch</code> option (supported from JDK 14) to move memory to pages. However, this forces all allocated heap memory pages to be pre-mapped to physical memory when the JVM starts, which can cause problems in container-based cloud environments if it uses more memory than allocated to the container.</div>
 
-          <div class="mb-4">On Linux, uncommitting unused memory requires the fallocate(2) function that supports FALLOC_FL_PUNCH_HOLE, first introduced in kernel 3.5 (for tmpfs) and 4.3 (for hugetlbfs).</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">On Linux, uncommitting unused memory requires the fallocate(2) function that supports FALLOC_FL_PUNCH_HOLE, first introduced in kernel 3.5 (for tmpfs) and 4.3 (for hugetlbfs).</div>
 
           <h2 id="large-pages" class="text-2xl font-bold mb-4 text-indigo-700">Using Large Pages</h2>
-          <div class="mb-4">Enabling large pages typically provides better throughput, latency, and startup time. However, configuration is complex and requires root privileges, so it's disabled by default. Setup instructions are available at <a href="https://wiki.openjdk.org/display/zgc/Main#Main-JDK17" class="text-blue-600 hover:underline">https://wiki.openjdk.org/display/zgc/Main#Main-JDK17</a>.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">Enabling large pages typically provides better throughput, latency, and startup time. However, configuration is complex and requires root privileges, so it's disabled by default. Setup instructions are available at <a href="https://wiki.openjdk.org/display/zgc/Main#Main-JDK17" class="text-blue-600 hover:underline">https://wiki.openjdk.org/display/zgc/Main#Main-JDK17</a>.</div>
 
           <h2 id="numa" class="text-2xl font-bold mb-4 text-indigo-700">Enabling NUMA (Non-Uniform Memory Access) Support</h2>
-          <div class="mb-4">By default, NUMA support is enabled, but it can be automatically disabled if the JVM detects that memory can only be used from a single NUMA node. This setting typically doesn't require attention. However, if you want to explicitly override the JVM's decision, you can manually enable or disable it using <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseNUMA</code> or <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:-UseNUMA</code>. When running on NUMA machines (e.g., a multi-socket x86 machine), having this option enabled can provide noticeable performance improvements.</div>
+          <div class="mb-4 text-gray-700 dark:text-gray-400">By default, NUMA support is enabled, but it can be automatically disabled if the JVM detects that memory can only be used from a single NUMA node. This setting typically doesn't require attention. However, if you want to explicitly override the JVM's decision, you can manually enable or disable it using <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:+UseNUMA</code> or <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-900 dark:text-gray-100">-XX:-UseNUMA</code>. When running on NUMA machines (e.g., a multi-socket x86 machine), having this option enabled can provide noticeable performance improvements.</div>
 
           <h2 class="text-2xl font-bold mb-4 text-indigo-700">Conclusion</h2>
-          <div class="mb-4">
+          <div class="mb-4 text-gray-700 dark:text-gray-400">
             ZGC represents a significant advancement in Java garbage collection technology, focusing on low-latency while still maintaining good throughput. It's particularly well-suited for applications that:
           </div>
 
-          <ul class="list-disc pl-6 mb-6">
+          <ul class="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-400">
             <li>Need consistent performance with minimal pauses</li>
             <li>Work with large heaps (multi-GB to TB scale)</li>
             <li>Have strict response time requirements</li>
             <li>Run on modern multi-core systems</li>
           </ul>
 
-          <div class="mb-4">
+          <div class="mb-4 text-gray-700 dark:text-gray-400">
             With the introduction of the generational version in JDK 21, ZGC continues to evolve, becoming more efficient and requiring less manual tuning. This follows the general trend in JVM development toward more adaptive, self-tuning components that minimize the need for developers to become garbage collection experts.
           </div>
 
-          <div class="mb-4">
+          <div class="mb-4 text-gray-700 dark:text-gray-400">
             When migrating to ZGC from other collectors like G1 or Parallel GC, start with the default settings and monitor your application's performance metrics. In most cases, minimal tuning will be required beyond setting appropriate heap size limits. For latency-sensitive applications, remember to consider both maximum heap size and the relationships between minimum and maximum values to control memory uncommitting behavior.
           </div>
 
-          <div class="mb-4">
+          <div class="mb-4 text-gray-700 dark:text-gray-400">
             If you're running Java applications with high-throughput requirements that also need predictable, low pause times, ZGC should be among your top considerations for garbage collection strategies in modern JVM deployments.
           </div>
         </div>

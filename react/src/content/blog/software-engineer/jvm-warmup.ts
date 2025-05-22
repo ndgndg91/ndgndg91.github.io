@@ -7,7 +7,7 @@ export const jvmWarmup: BlogPost = {
   description: 'JVM Warming Up is a process that preloads classes into the JVM cache to improve the performance of the first request in a Java web application.',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
-  tags: ['Java', 'JVM', 'Performance'],
+  tags: ['Java', 'JVM', 'Performance', 'JIT', 'Spring Boot', 'Code Cache'],
   image: 'jvm-warmup.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">

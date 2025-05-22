@@ -7,7 +7,7 @@ export const kafkaConsumerRate: BlogPost = {
   description: 'One of the most common challenges when working with message brokers like Kafka is controlling the rate at which messages are processed. Especially when a large volume of messages arrives in a short period, it can lead to system overload or impact downstream services.',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
-  tags: ['Kafka', 'Spring Kafka', 'Rate Limiting'],
+  tags: ['Kafka', 'Spring Kafka', 'Rate Limiting', 'Queue', 'Batch Processing', 'Error Handling'],
   image: 'kafka-consumer-rate.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">

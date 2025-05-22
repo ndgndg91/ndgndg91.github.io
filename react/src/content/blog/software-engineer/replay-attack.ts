@@ -7,7 +7,7 @@ export const replayAttack: BlogPost = {
   category: 'software-engineer',
   date: '2025-04-01',
   updatedDate: '2025-04-01',
-  tags: ['Security', 'Network Security', 'Authentication'],
+  tags: ['Security', 'Replay Attack', 'Authentication', 'Cryptography', 'Web Security', 'API Security'],
   image: 'replay-attack.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">

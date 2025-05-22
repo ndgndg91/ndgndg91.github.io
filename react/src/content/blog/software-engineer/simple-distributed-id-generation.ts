@@ -7,7 +7,7 @@ export const simpleDistributedIdGeneration: BlogPost = {
   description: 'Generating unique identifiers in distributed systems presents significant challenges. While single-server environments can easily rely on auto-increment values or sequences, distributed environments where multiple servers must simultaneously generate IDs require careful consideration to ensure efficiency and avoid duplication.',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
-  tags: ['Java', 'Distributed Systems', 'Performance'],
+  tags: ['Distributed Systems', 'Scalability', 'Performance', 'System Design', 'Database', 'Consistency'],
   image: 'simple-distributed-id-generation.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">

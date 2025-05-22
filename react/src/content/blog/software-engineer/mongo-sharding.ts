@@ -7,7 +7,7 @@ export const mongoSharding: BlogPost = {
   description: 'Learn how to set up a MongoDB sharding cluster using Docker Compose. This guide covers the components of a sharded cluster, configuration, and step-by-step setup instructions.',
   date: '2025-03-31',
   updatedDate: '2025-03-31',
-  tags: ['MongoDB', 'Sharding', 'Docker', 'Docker Compose'],
+  tags: ['MongoDB', 'Sharding', 'Docker', 'Docker Compose', 'Database', 'Scaling', 'High Availability'],
   image: '/mongodb-sharding.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">
