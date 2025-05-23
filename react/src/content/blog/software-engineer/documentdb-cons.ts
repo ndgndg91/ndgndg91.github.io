@@ -115,8 +115,8 @@ export const documentdbCons: BlogPost = {
         <text x="660" y="305" font-family="Arial" font-size="16" text-anchor="middle">✅ Cost Optimization Potential</text>
 
         <!-- Bottom text -->
-        <text x="240" y="370" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Limited Customization</text>
-        <text x="660" y="370" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Complete Control</text>
+        <text x="240" y="380" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Limited Customization</text>
+        <text x="660" y="380" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Complete Control</text>
 
         <!-- Sharding note -->
         <text x="450" y="420" font-family="Arial" font-size="16" text-anchor="middle" font-style="italic">Both solutions require shard key design consideration</text>
