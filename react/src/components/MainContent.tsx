@@ -3,16 +3,7 @@ import SEOHead from './SEOHead';
 import { seoData } from '../data/seoData';
 
 const MainContent: React.FC = () => {
-  useEffect(() => {
-    // 카카오 광고 초기화
-    if (window.kakaoAdQueue) {
-      window.kakaoAdQueue.push(() => {
-        if (window.kakao) {
-          window.kakao.displaySlot('DAN-nZOLt6AO6PDMGqAR');
-        }
-      });
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
