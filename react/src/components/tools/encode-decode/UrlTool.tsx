@@ -2,6 +2,7 @@ import React from 'react';
 import { useUrlEncoding } from './useUrlEncoding';
 import SEOHead from '../../SEOHead';
 import { seoData } from '../../../data/seoData';
+import AdSection from '../../ads/AdSection';
 
 const UrlTool: React.FC = () => {
   const { input, output, error, setInput, encode, decode, clearAll, copyToClipboard } = useUrlEncoding();
@@ -84,6 +85,14 @@ const UrlTool: React.FC = () => {
             />
           </div>
         </div>
+        
+        {/* Bottom Ad */}
+        <AdSection 
+          position="bottom" 
+          size="rectangle" 
+          showAd={true}
+          className="mt-8"
+        />
       </div>
     </>
   );

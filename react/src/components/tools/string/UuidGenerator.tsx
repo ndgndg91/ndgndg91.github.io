@@ -2,6 +2,7 @@ import React from 'react';
 import useUuid from '../../../hooks/useUuid';
 import SEOHead from '../../SEOHead';
 import { seoData } from '../../../data/seoData';
+import AdSection from '../../ads/AdSection';
 
 const UuidGenerator: React.FC = () => {
   const {
@@ -263,6 +264,14 @@ const UuidGenerator: React.FC = () => {
           {error}
         </div>
       )}
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
       </div>
     </>
   );

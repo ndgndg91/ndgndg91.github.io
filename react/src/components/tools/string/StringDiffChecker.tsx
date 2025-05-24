@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import useStringDiff, { type DiffLine } from '../../../hooks/useStringDiff';
 import { Copy, RefreshCw, Check } from 'lucide-react';
+import AdSection from '../../ads/AdSection';
 
 const StringDiffChecker: React.FC = () => {
   const {
@@ -234,6 +235,14 @@ const StringDiffChecker: React.FC = () => {
           </div>
         </div>
       )}
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

@@ -92,9 +92,9 @@ const BlogList: React.FC<BlogListProps> = ({ posts, currentCategory }) => {
                   <span className="px-2.5 py-0.5 text-xs font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-200 whitespace-nowrap">
                     {post.category === 'software-engineer' ? 'Software Engineering' : 'Other'}
                   </span>
-                  {post.tags?.map(tag => (
+                  {post.tags?.map((tag, index) => (
                     <span
-                      key={tag}
+                        key={`${tag}-${index}`}
                       className="px-2.5 py-0.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-white whitespace-nowrap"
                     >
                       {tag}

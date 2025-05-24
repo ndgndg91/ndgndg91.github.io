@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import CryptoJS from 'crypto-js';
+import AdSection from '../../ads/AdSection';
 
 const AESPage: React.FC = () => {
   const [mode, setMode] = useState<'CBC' | 'ECB'>('CBC');
@@ -291,6 +292,14 @@ const AESPage: React.FC = () => {
           </div>
         )}
       </div>
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

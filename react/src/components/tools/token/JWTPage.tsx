@@ -2,6 +2,7 @@ import React from 'react';
 import JWTDecoder from './JWTDecoder';
 import JWTGenerator from './JWTGenerator';
 import JWTVerifier from './JWTVerifier';
+import AdSection from '../../ads/AdSection';
 
 const JWTPage: React.FC = () => {
   return (
@@ -72,6 +73,14 @@ const JWTPage: React.FC = () => {
             </tbody>
           </table>
         </div>
+        
+        {/* Bottom Ad */}
+        <AdSection 
+          position="bottom" 
+          size="rectangle" 
+          showAd={true}
+          className="mt-8"
+        />
       </div>
     </div>
   );

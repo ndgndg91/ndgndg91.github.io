@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Upload, Download, Loader2 } from 'lucide-react';
 import { useImageConverter } from '../../../hooks/useImageConverter';
+import AdSection from '../../ads/AdSection';
 
 const ImageConverter: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -314,6 +315,14 @@ const ImageConverter: React.FC = () => {
           </div>
         </div>
       )}
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

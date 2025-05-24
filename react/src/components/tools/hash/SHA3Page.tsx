@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import CryptoJS from 'crypto-js';
+import AdSection from '../../ads/AdSection';
 
 const SHA3Page: React.FC = () => {
   const [mode, setMode] = useState<'hash' | 'hmac'>('hash');
@@ -177,6 +178,14 @@ const SHA3Page: React.FC = () => {
             </div>
           )}
         </div>
+        
+        {/* Bottom Ad */}
+        <AdSection 
+          position="bottom" 
+          size="rectangle" 
+          showAd={true}
+          className="mt-8"
+        />
       </div>
   );
 };

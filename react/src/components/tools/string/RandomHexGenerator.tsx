@@ -1,5 +1,6 @@
 import React from 'react';
 import useRandomHex from '../../../hooks/useRandomHex';
+import AdSection from '../../ads/AdSection';
 import { Copy, Check } from 'lucide-react';
 
 const RandomHexGenerator: React.FC = () => {
@@ -117,6 +118,14 @@ const RandomHexGenerator: React.FC = () => {
           />
         </div>
       </div>
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

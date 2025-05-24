@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
+import AdSection from '../../ads/AdSection';
 
 const SHA2Page: React.FC = () => {
   const [mode, setMode] = useState<'hash' | 'hmac'>('hash');
@@ -198,6 +199,14 @@ const SHA2Page: React.FC = () => {
             </div>
           )}
         </div>
+        
+        {/* Bottom Ad */}
+        <AdSection 
+          position="bottom" 
+          size="rectangle" 
+          showAd={true}
+          className="mt-8"
+        />
       </div>
   );
 };

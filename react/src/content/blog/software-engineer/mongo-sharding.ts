@@ -938,16 +938,6 @@ sh.addShard("shard2_rs/shardsvr2_1:27017,shardsvr2_2:27017,shardsvr2_3:27017")</
       </div>
     </div>
   </div>
-  <div class="max-xl:hidden">
-    <div class="sticky top-14 max-h-[calc(100svh-3.5rem)] overflow-x-hidden px-6 pt-10 pb-24">
-      <div class="flex flex-col gap-3">
-        <ins class="kakao_ad_area" style="display:none;"
-             data-ad-unit="DAN-2nMLIisQJKH9qMpe"
-             data-ad-width="160"
-             data-ad-height="600"></ins>
-      </div>
-    </div>
-  </div>
 </div>
 
   `

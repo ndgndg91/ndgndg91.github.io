@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import useTimestamp from '../../../hooks/useTimestamp';
 import { Copy, Check, X } from 'lucide-react';
+import AdSection from '../../ads/AdSection';
 
 const Timestamp: React.FC = () => {
   const {
@@ -298,6 +299,14 @@ const Timestamp: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import useHtmlEscape from '../../../hooks/useHtmlEscape';
+import AdSection from '../../ads/AdSection';
 
 const HtmlEscapeUnescape: React.FC = () => {
   const {
@@ -119,6 +120,14 @@ const HtmlEscapeUnescape: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

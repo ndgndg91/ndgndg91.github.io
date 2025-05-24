@@ -1,6 +1,7 @@
 import React from 'react';
 import useByteCounter from '../../../hooks/useByteCounter';
 import { RefreshCw } from 'lucide-react';
+import AdSection from '../../ads/AdSection';
 
 const ByteCounter: React.FC = () => {
   const { input, setInput, result, countBytes, clearAll } = useByteCounter();
@@ -93,6 +94,14 @@ const ByteCounter: React.FC = () => {
           </p>
         </div>
       </div>
+      
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

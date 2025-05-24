@@ -4,6 +4,7 @@ import { Copy, Check } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import vscDarkPlus from 'react-syntax-highlighter/dist/esm/styles/prism/vsc-dark-plus';
 import vs from 'react-syntax-highlighter/dist/esm/styles/prism/vs';
+import AdSection from '../../ads/AdSection';
 
 const XmlParserTool: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -145,7 +146,13 @@ const XmlParserTool: React.FC = () => {
         </div>
       </div>
 
-
+      {/* Bottom Ad */}
+      <AdSection 
+        position="bottom" 
+        size="rectangle" 
+        showAd={true}
+        className="mt-8"
+      />
     </div>
   );
 };

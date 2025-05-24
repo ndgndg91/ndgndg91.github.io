@@ -16,6 +16,7 @@ import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
 import BlogListPage from './pages/BlogListPage';
+import AdTestPage from './components/debug/AdTestPage';
 
 // 정적 파일 확장자 목록
 const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];
@@ -115,6 +116,9 @@ function App() {
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<MainContent />} />
+              
+              {/* Debug Route */}
+              <Route path="/debug/ads" element={<AdTestPage />} />
               
               {/* Blog Routes */}
               <Route path="/blog/software-engineer/list.html" element={<BlogListPage />} />
