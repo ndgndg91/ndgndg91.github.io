@@ -73,14 +73,8 @@ export default defineConfig({
         assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     },
-    // 압축 최적화
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true, // 프로덕션에서 console.log 제거
-        drop_debugger: true
-      }
-    },
+    // 압축 최적화 (esbuild 사용)
+    minify: true, // 기본값은 esbuild
     // 소스맵 비활성화 (배포 크기 줄이기)
     sourcemap: false,
     // 청크 크기 경고 조정
