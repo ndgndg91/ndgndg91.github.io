@@ -1,0 +1,14 @@
+{
+  "short_name": "Dev Playground",
+  "name": "Developer Playground - Giri's Place",
+  "icons": [{
+    "src": "/icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "#fafafa",
+  "theme_color": "#fafafa",
+  "display": "standalone",
+  "description": "Developer tools and blog for software engineers and developers."
+} 
