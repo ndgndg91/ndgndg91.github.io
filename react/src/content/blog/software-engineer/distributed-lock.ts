@@ -1,6 +1,6 @@
 import type { BlogPost } from '../../../types/blog';
 
-export const documentdbCons: BlogPost = {
+export const distributedLockRedis: BlogPost = {
   id: 'distributed-lock',
   category: 'software-engineer',
   title: 'Distributed Locks in Spring Boot: Implementation Options and Best Practices',
