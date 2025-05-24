@@ -25,14 +25,14 @@ const BlogList: React.FC<BlogListProps> = ({ posts, currentCategory }) => {
   });
 
   return (
-      <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0 bg-white dark:bg-gray-900">
+      <div className="px-4 sm:px-6 lg:px-8 pt-8 pb-16 bg-white dark:bg-gray-900">
         <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 dark:text-gray-300 uppercase">
           Developer Playground
         </p>
         <h1 className="mt-2 text-3xl font-medium tracking-tight text-gray-900 dark:text-white">
           Blog
         </h1>
-        <p className="mt-6 text-base/7 text-gray-700 dark:text-gray-300">
+        <p className="mt-4 text-base/7 text-gray-700 dark:text-gray-300">
           This area is intended for a software engineer audience.
         </p>
 
@@ -73,7 +73,7 @@ const BlogList: React.FC<BlogListProps> = ({ posts, currentCategory }) => {
         </div>
 
         {/* Blog Post Cards */}
-        <div className="mt-6 space-y-6">
+        <div className="mt-6 space-y-4">
           {filteredPosts.map(post => (
             <Link
               key={post.id}
@@ -82,32 +82,32 @@ const BlogList: React.FC<BlogListProps> = ({ posts, currentCategory }) => {
             >
               {post.image && (
                 <img
-                  className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-72 md:rounded-none md:rounded-s-lg"
+                  className="object-cover w-full rounded-t-lg h-48 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
                   src={`/images/${post.image}`}
                   alt={post.title}
                 />
               )}
-              <div className="flex flex-col justify-between p-4 leading-normal">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="px-2.5 py-0.5 text-xs font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-200">
+              <div className="flex flex-col justify-between p-4 leading-normal w-full">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="px-2.5 py-0.5 text-xs font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-200 whitespace-nowrap">
                     {post.category === 'software-engineer' ? 'Software Engineering' : 'Other'}
                   </span>
                   {post.tags?.map(tag => (
                     <span
                       key={tag}
-                      className="px-2.5 py-0.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-white"
+                      className="px-2.5 py-0.5 text-xs font-medium text-gray-600 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-white whitespace-nowrap"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 className="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">
                   {post.title}
                 </h5>
-                <p className="mb-3 font-normal text-gray-700 dark:text-gray-300">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-300 line-clamp-3 text-sm md:text-base">
                   {post.description}
                 </p>
-                <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex items-center text-xs md:text-sm text-gray-500 dark:text-gray-400">
                   <span>{post.date}</span>
                   {post.updatedDate && (
                     <>
@@ -123,7 +123,7 @@ const BlogList: React.FC<BlogListProps> = ({ posts, currentCategory }) => {
 
         {/* No Results */}
         {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
+          <div className="text-center py-8">
             <p className="text-gray-600 dark:text-gray-300">
               No posts found.
             </p>
