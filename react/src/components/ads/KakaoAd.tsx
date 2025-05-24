@@ -15,7 +15,7 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
   className = '',
   style = {}
 }) => {
-  const adRef = useRef<HTMLElement>(null);
+  const adRef = useRef<HTMLModElement | null>(null);
   const adInitializedRef = useRef(false);
 
   // useLayoutEffect를 사용하여 DOM이 완전히 구성된 후 즉시 실행
