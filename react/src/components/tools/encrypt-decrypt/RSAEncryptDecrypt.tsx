@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import JSEncrypt from 'jsencrypt';
-import CryptoJS from 'crypto-js';
 
 interface RSAEncryptDecryptProps {
   publicKey: string;

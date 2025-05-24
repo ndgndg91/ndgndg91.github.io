@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import React, { useState, useEffect } from 'react';
 
 interface DecodedJWT {
   header: any;
@@ -12,26 +10,11 @@ const JWTDecoder: React.FC = () => {
   const [jwtInput, setJwtInput] = useState('');
   const [decodedJWT, setDecodedJWT] = useState<DecodedJWT | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // Detect dark mode
   useEffect(() => {
-    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
-    
-    // Set initial value
-    setIsDarkMode(darkModeMediaQuery.matches);
-    
-    // Listen for changes
-    darkModeMediaQuery.addEventListener('change', handleChange);
-    
-    return () => darkModeMediaQuery.removeEventListener('change', handleChange);
-  }, []);
 
-  // Memoize the syntax highlighter style based on theme
-  const syntaxHighlighterStyle = useMemo(() => {
-    return isDarkMode ? vscDarkPlus : vs;
-  }, [isDarkMode]);
+  }, []);
 
   const base64UrlDecode = (str: string): string => {
     let output = str
