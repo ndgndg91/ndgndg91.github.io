@@ -1,5 +1,7 @@
 import React from 'react';
 import useUuid from '../../../hooks/useUuid';
+import SEOHead from '../../SEOHead';
+import { seoData } from '../../../data/seoData';
 
 const UuidGenerator: React.FC = () => {
   const {
@@ -33,11 +35,13 @@ const UuidGenerator: React.FC = () => {
   } = useUuid();
 
   return (
-    <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
-      <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
-         data-section="true">
-        Developer Playground
-      </p>
+    <>
+      <SEOHead {...seoData.uuid} />
+      <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+        <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+           data-section="true">
+          Developer Playground
+        </p>
       <h1 data-title="true" className="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
         UUID Generator
       </h1>
@@ -259,7 +263,8 @@ const UuidGenerator: React.FC = () => {
           {error}
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 

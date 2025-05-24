@@ -13,10 +13,3 @@ export interface BlogPost {
 }
 
 export interface BlogPostMetadata extends Omit<BlogPost, 'content'> {}
-
-export interface BlogListResponse {
-  posts: BlogPostMetadata[];
-  total: number;
-  page: number;
-  pageSize: number;
-} 

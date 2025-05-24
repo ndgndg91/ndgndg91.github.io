@@ -59,6 +59,33 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
       },
+      output: {
+        manualChunks: {
+          // 써드파티 라이브러리를 별도 청크로 분리
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          crypto: ['crypto-js', 'jsencrypt'],
+          ui: ['lucide-react', 'react-hot-toast']
+        },
+        // 파일명에 해시 추가로 캐싱 최적화
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
     },
+    // 압축 최적화
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true, // 프로덕션에서 console.log 제거
+        drop_debugger: true
+      }
+    },
+    // 소스맵 비활성화 (배포 크기 줄이기)
+    sourcemap: false,
+    // 청크 크기 경고 조정
+    chunkSizeWarningLimit: 1000
   },
+  // GitHub Pages에서 라우팅을 위한 파일 복사
+  publicDir: 'public',
 })

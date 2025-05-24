@@ -3,6 +3,8 @@ import { useJsonParser } from './useJsonParser';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { Copy, Check } from 'lucide-react';
+import SEOHead from '../../SEOHead';
+import { seoData } from '../../../data/seoData';
 
 export interface JsonParserToolProps {
   // Add any props here if needed in the future
@@ -52,11 +54,13 @@ const JsonParserTool: React.FC = () => {
   }, [isDarkMode]);
 
   return (
-    <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
-      <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
-         data-section="true">
-        Developer Playground
-      </p>
+    <>
+      <SEOHead {...seoData.jsonParser} />
+      <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
+        <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
+           data-section="true">
+          Developer Playground
+        </p>
       <h1 data-title="true" className="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
         JSON Parser
       </h1>
@@ -176,7 +180,8 @@ const JsonParserTool: React.FC = () => {
         </div>
       </div>
 
-    </div>
+        </div>
+        </>
   );
 };
 

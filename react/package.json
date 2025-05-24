@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:github": "npm run build && cp dist/index.html dist/404.html && npm run generate:sitemap",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist"
   },
   "dependencies": {
     "@types/crypto-js": "^4.2.2",
