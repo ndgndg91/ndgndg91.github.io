@@ -61,11 +61,9 @@ export default defineConfig({
       },
       output: {
         manualChunks: {
-          // 써드파티 라이브러리를 별도 청크로 분리
+          // 기본적인 청크 분리만 유지
           vendor: ['react', 'react-dom'],
-          router: ['react-router-dom'],
-          crypto: ['crypto-js', 'jsencrypt'],
-          ui: ['lucide-react', 'react-hot-toast']
+          router: ['react-router-dom']
         },
         // 파일명에 해시 추가로 캐싱 최적화
         chunkFileNames: 'assets/[name]-[hash].js',
