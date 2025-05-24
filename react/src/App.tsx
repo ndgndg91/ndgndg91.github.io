@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
@@ -17,10 +17,20 @@ import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
 import BlogListPage from './pages/BlogListPage';
 
+// 정적 파일 확장자 목록
+const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];
+
 function App() {
+  const location = useLocation();
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rightMobileMenuOpen, setRightMobileMenuOpen] = useState(false);
+
+  // 정적 파일 체크
+  const isStaticFile = STATIC_FILE_EXTENSIONS.some(ext => location.pathname.endsWith(ext));
+  if (isStaticFile) {
+    return null; // 정적 파일은 라우터를 통과하지 않음
+  }
 
   // Check for dark mode preference on initial load
   useEffect(() => {
