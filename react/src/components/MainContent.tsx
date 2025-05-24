@@ -30,106 +30,88 @@ const MainContent: React.FC = () => {
         <div className="prose mt-10" data-content="true">
           <div id="quick-reference" className="not-prose relative isolate scroll-mt-16">
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Blog</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Developer Blog</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Readings for developers.
+                Technical articles about software engineering, development practices, and programming insights.
               </p>
               <a href="/blog/software-engineer/list.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Read Blog
+                Read Technical Blog
               </a>
             </div>
             <br />
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Encode/Decode</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Encoding & Decoding Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Easily encode and decode Base64 and URL data.
+                Convert and transform data with <a href="/tools/encode-decode/base64.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">Base64 encoding</a> and <a href="/tools/encode-decode/url.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">URL encoding</a> tools.
               </p>
               <a href="/tools/encode-decode/base64.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Play With Encode/Decode
+                Explore Encoding Tools
               </a>
             </div>
             <br />
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">String Tools</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">String Processing Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Provides Json Parser, Xml Parser, UUID generation, random Hex values, string diff checker and count bytes tools.
+                Advanced string manipulation tools including <a href="/tools/string/parser.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">JSON parser</a>, <a href="/tools/string/xml-parser.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">XML parser</a>, <a href="/tools/string/uuid-generator.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">UUID generator</a>, and <a href="/tools/string/string-diff-checker.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">text comparison</a> utilities.
               </p>
-              <a href="/tools/string/uuid.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Play With String Tools
+              <a href="/tools/string/uuid-generator.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                Explore String Tools
               </a>
             </div>
             <br />
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Time</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Time & Date Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Convert Unix Timestamp and check current time.
+                Convert between Unix timestamps and human-readable dates. Perfect for debugging and <a href="/tools/time/timestamp.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">timestamp conversion</a> tasks.
               </p>
               <a href="/tools/time/timestamp.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Play With Timestamp
+                Convert Timestamps
               </a>
             </div>
             <br />
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Hash</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Cryptographic Hash Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Generate Hash with Secure Hash Algorithm 1, 2, 3. Also HMAC
+                Generate secure hashes with <a href="/tools/hash/sha1.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-1</a>, <a href="/tools/hash/sha2.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-2</a>, and <a href="/tools/hash/sha3.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-3</a> algorithms for data integrity verification.
               </p>
-              <a href="/tools/hash/sha-3.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Play With Hash
+              <a href="/tools/hash/sha2.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                Generate Hash
               </a>
             </div>
             <br />
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image Format Converter</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Convert Image format! JPEG to PNG, PNG to JPEG, JPEG to WebP, WebP to JPEG, PNG to WebP, WebP to PNG.
+                Convert images between formats like JPEG, PNG, WebP, and GIF. Optimize your images for web with our <a href="/tools/image/format-converter.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">format converter</a>.
               </p>
               <a href="/tools/image/format-converter.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Convert Image Format
+                Convert Images
               </a>
             </div>
             <br />
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Encrypt/Decrypt</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Encryption & Security Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Encrypt your data securely with AES and RSA.
+                Secure your data with <a href="/tools/encrypt-decrypt/aes.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">AES encryption</a> and <a href="/tools/encrypt-decrypt/rsa.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">RSA encryption</a>. Essential tools for data protection and security.
               </p>
               <a href="/tools/encrypt-decrypt/aes.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Play With Encrypt/Decrypt
+                Encrypt Data
               </a>
             </div>
             <br />
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Token</h5>
-              </a>
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">JWT Token Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Work with JSON Web Tokens (JWT) - decode, verify, and generate tokens.
+                Decode, verify, and analyze <a href="/tools/token/jwt.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">JSON Web Tokens (JWT)</a>. Perfect for debugging authentication systems.
               </p>
               <a href="/tools/token/jwt.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                Play With Tokens
+                Decode JWT
               </a>
             </div>
             <br />
             <div className="mb-6">
-              <p>Check out the left menu to explore more tools!</p>
-            </div>
-            <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-              <ins className="kakao_ad_area" style={{ display: 'none' }} data-ad-unit="DAN-nZOLt6AO6PDMGqAR" data-ad-width="300" data-ad-height="250"></ins>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Explore All Developer Tools</h3>
+              <p className="text-gray-700 dark:text-gray-400">Our comprehensive toolkit includes over 15 specialized utilities for developers. From <a href="/tools/encode-decode/base64.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">data encoding</a> to <a href="/tools/hash/sha2.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">hash generation</a>, we've got all your development needs covered. Check out the navigation menu to discover more tools, or visit our <a href="/blog/software-engineer/list.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">technical blog</a> for in-depth articles about software engineering.</p>
             </div>
           </div>
         </div>
