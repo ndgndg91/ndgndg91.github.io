@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({
       <nav className="flex flex-col gap-8">
         {children || (
           <div className="flex flex-col gap-3" data-autoscroll="true">
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Blog</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">📝 Blog</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <a 
@@ -58,11 +58,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`} 
                   href="/blog/software-engineer/list.html"
                 >
-                  Software Engineer
+                  🚀 Software Engineer
                 </a>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Fun</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">🎉 Fun</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <Link 
@@ -91,7 +91,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 </Link>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Encode Decode</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">🔐 Encode Decode</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <Link 
@@ -103,7 +103,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  Base64
+                  📝 Base64
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -115,11 +115,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`} 
                   href="/tools/encode-decode/url.html"
                 >
-                  URL
+                  🌍 URL
                 </a>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">String</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">📜 String</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <Link 
@@ -131,7 +131,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  JSON Parser
+                  📄 JSON Parser
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -144,7 +144,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  XML Parser
+                  🏷️ XML Parser
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -157,7 +157,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  UUID Generator
+                  🆔 UUID Generator
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -170,7 +170,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  Random Hex Generator
+                  🎲 Random Hex Generator
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -183,7 +183,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  String Diff Checker
+                  🔍 String Diff Checker
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -196,7 +196,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  Byte Counter
+                  📆 Byte Counter
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -209,11 +209,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  HTML Escape/Unescape
+                  🏷️ HTML Escape/Unescape
                 </Link>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Time</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">⏰ Time</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <Link 
@@ -225,11 +225,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  Timestamp
+                  🕐 Timestamp
                 </Link>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Image</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">🖼️ Image</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <a 
@@ -240,11 +240,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`} 
                   href="/tools/image/format-converter.html"
                 >
-                  Format Converter
+                  🔄 Format Converter
                 </a>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Token</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">🎫 Token</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <a 
@@ -255,11 +255,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`} 
                   href="/tools/token/jwt.html"
                 >
-                  JWT
+                  🔑 JWT
                 </a>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Hash</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">#️⃣ Hash</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <Link 
@@ -271,7 +271,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  SHA-1
+                  1️⃣ SHA-1
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -284,7 +284,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  SHA-2
+                  2️⃣ SHA-2
                 </Link>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -297,11 +297,11 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`}
                   onClick={onCloseMobileMenu}
                 >
-                  SHA-3
+                  3️⃣ SHA-3
                 </Link>
               </li>
             </ul>
-            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Encrypt/Decrypt</h3>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">🔒 Encrypt/Decrypt</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
               <li className="-ml-px flex flex-col items-start gap-2">
                 <a 
@@ -312,7 +312,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`} 
                   href="/tools/encrypt-decrypt/aes.html"
                 >
-                  AES
+                  🔐 AES
                 </a>
               </li>
               <li className="-ml-px flex flex-col items-start gap-2">
@@ -324,7 +324,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   }`} 
                   href="/tools/encrypt-decrypt/rsa.html"
                 >
-                  RSA
+                  🗝 RSA
                 </a>
               </li>
             </ul>
