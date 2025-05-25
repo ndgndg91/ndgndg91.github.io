@@ -65,8 +65,8 @@ const IpAddressPage: React.FC = () => {
           </h2>
           <div className="space-y-4">
             <div className="grid grid-cols-[120px_1fr_auto] items-center gap-4">
-              <p className="text-gray-800 dark:text-gray-300 font-semibold">IPv4:</p>
-              <code className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600">{ipData.ip}</code>
+              <p className="text-gray-600 dark:text-gray-300 font-semibold">IPv4:</p>
+              <code className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white">{ipData.ip}</code>
               <button 
                 onClick={() => copyToClipboard(ipData.ip)}
                 className="px-4 py-2 bg-sky-500 text-white font-semibold rounded-lg hover:bg-sky-600 transition-colors"
@@ -76,8 +76,8 @@ const IpAddressPage: React.FC = () => {
               </button>
             </div>
             <div className="grid grid-cols-[120px_1fr_auto] items-center gap-4">
-              <p className="text-gray-800 dark:text-gray-300 font-semibold">IPv6:</p>
-              <code className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600">{ipData.location?.ipv6 || 'Not detected'}</code>
+              <p className="text-gray-600 dark:text-gray-300 font-semibold">IPv6:</p>
+              <code className="font-mono bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white">{ipData.location?.ipv6 || 'Not detected'}</code>
               <button 
                 onClick={() => ipData.location?.ipv6 && copyToClipboard(ipData.location.ipv6)}
                 disabled={!ipData.location?.ipv6 || ipData.location.ipv6 === 'Not detected'}
@@ -89,8 +89,8 @@ const IpAddressPage: React.FC = () => {
             </div>
             {ipData.location?.isp && (
               <div className="grid grid-cols-[120px_1fr] items-center gap-4">
-                <p className="text-gray-800 dark:text-gray-300 font-semibold">ISP:</p>
-                <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600">{ipData.location.isp}</span>
+                <p className="text-gray-600 dark:text-gray-300 font-semibold">ISP:</p>
+                <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white">{ipData.location.isp}</span>
               </div>
             )}
           </div>
@@ -106,17 +106,17 @@ const IpAddressPage: React.FC = () => {
                 Location Information
               </h2>
               <div className="space-y-2 text-gray-700 dark:text-gray-300">
-                <p className="flex items-center">
+                <p className="flex items-center text-gray-900 dark:text-gray-300">
                   <span className="font-semibold w-24">City:</span>
-                  <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600">{ipData.location.city}</span>
+                  <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white">{ipData.location.city}</span>
                 </p>
-                <p className="flex items-center">
+                <p className="flex items-center text-gray-900 dark:text-gray-300">
                   <span className="font-semibold w-24">Region:</span>
-                  <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600">{ipData.location.region}</span>
+                  <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white">{ipData.location.region}</span>
                 </p>
-                <p className="flex items-center">
+                <p className="flex items-center text-gray-900 dark:text-gray-300">
                   <span className="font-semibold w-24">Country:</span>
-                  <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600">{ipData.location.country}</span>
+                  <span className="bg-gray-50 dark:bg-gray-700 px-2 py-1 rounded border border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white">{ipData.location.country}</span>
                 </p>
               </div>
             </div>
