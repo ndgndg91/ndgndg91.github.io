@@ -126,7 +126,6 @@ const MainContent: React.FC = () => {
               </a>
             </div>
             <br />
-            <br />
             <div className="max-w-screen p-6 bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg shadow-sm dark:from-green-900/20 dark:to-emerald-900/20 dark:bg-gray-800 dark:border-green-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
                 📱 QR Code Generator
