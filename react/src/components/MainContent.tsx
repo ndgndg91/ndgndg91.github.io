@@ -126,19 +126,6 @@ const MainContent: React.FC = () => {
               </a>
             </div>
             <br />
-            <div className="max-w-screen p-6 bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg shadow-sm dark:from-green-900/20 dark:to-emerald-900/20 dark:bg-gray-800 dark:border-green-700">
-              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
-                📱 QR Code Generator
-                <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full dark:bg-green-800 dark:text-green-200">NEW!</span>
-              </h2>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Transform text, URLs, or contact info into QR codes instantly! Our <a href="/tools/fun/qr-code.html" className="text-green-600 hover:underline dark:text-green-400 dark:hover:text-green-300">QR code generator</a> supports custom colors, sizes, and error correction levels. Perfect for sharing links, contact details, or any text.
-              </p>
-              <a href="/tools/fun/qr-code.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg hover:from-green-700 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 transition-all duration-200 transform hover:scale-105">
-                📲 Create QR Code!
-              </a>
-            </div>
-            <br />
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Explore All Developer Tools</h3>
               <p className="text-gray-700 dark:text-gray-400">Our comprehensive toolkit includes over 15 specialized utilities for developers. From <a href="/tools/encode-decode/base64.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">data encoding</a> to <a href="/tools/hash/sha2.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">hash generation</a>, we've got all your development needs covered. Check out the navigation menu to discover more tools, or visit our <a href="/blog/software-engineer/list.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">technical blog</a> for in-depth articles about software engineering.</p>
