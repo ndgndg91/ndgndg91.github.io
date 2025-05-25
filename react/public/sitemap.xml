@@ -224,4 +224,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+  <!-- Fun Tools -->
+  <url>
+    <loc>https://developer-playground.com/tools/fun/roulette.html</loc>
+    <lastmod>2025-05-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset> 

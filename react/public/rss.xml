@@ -15,6 +15,17 @@
     <category>Software Development</category>
     <category>Programming</category>
     <category>Web Development</category>
+    <category>Developer Tools</category>
+    <item>
+      <title>Random Roulette - Decision Making Tool</title>
+      <link>https://developer-playground.com/tools/fun/roulette.html</link>
+      <guid>https://developer-playground.com/tools/fun/roulette.html</guid>
+      <pubDate>Sun, 25 May 2025 14:00:00 GMT</pubDate>
+      <description>Having trouble making decisions? Try our interactive random roulette! Perfect for choosing lunch menus, activities, or any random selection. Features sound effects, customizable options, presets for different categories, and the ability to save/load your configurations.</description>
+      <category>Developer Tools</category>
+      <category>Fun Tools</category>
+      <category>Decision Making</category>
+    </item>
     <item>
       <title>Spring Boot on EKS: Optimizing Health Probes for Efficient Deployments</title>
       <link>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot.html</link>

@@ -12,6 +12,7 @@ import SHA2Page from './components/tools/hash/SHA2Page';
 import SHA3Page from './components/tools/hash/SHA3Page';
 import AESPage from './components/tools/encrypt-decrypt/AESPage';
 import RSAPage from './components/tools/encrypt-decrypt/RSAPage';
+import Roulette from './components/tools/fun/Roulette';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
@@ -86,6 +87,7 @@ function App() {
     window.location.pathname.startsWith('/tools/token/') ||
     window.location.pathname.startsWith('/tools/hash/') ||
     window.location.pathname.startsWith('/tools/encrypt-decrypt/') ||
+    window.location.pathname.startsWith('/tools/fun/') ||
     window.location.pathname.startsWith('/blog/');
 
   return (
@@ -286,6 +288,15 @@ function App() {
                 path="/tools/encrypt-decrypt/rsa" 
                 element={
                   <Navigate to="/tools/encrypt-decrypt/rsa.html" replace />
+                } 
+              />
+
+              {/* Roulette Tool Routes */}
+              <Route path="/tools/fun/roulette.html" element={<Roulette />} />
+              <Route 
+                path="/tools/fun/roulette" 
+                element={
+                  <Navigate to="/tools/fun/roulette.html" replace />
                 } 
               />
 

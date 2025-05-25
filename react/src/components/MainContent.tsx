@@ -100,6 +100,45 @@ const MainContent: React.FC = () => {
               </a>
             </div>
             <br />
+            <div className="max-w-screen p-6 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-lg shadow-sm dark:from-purple-900/20 dark:to-pink-900/20 dark:bg-gray-800 dark:border-purple-700">
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
+                🎯 Random Roulette
+                <span className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded-full dark:bg-purple-800 dark:text-purple-200">NEW!</span>
+              </h2>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                Having trouble making decisions? Try our interactive <a href="/tools/fun/roulette.html" className="text-purple-600 hover:underline dark:text-purple-400 dark:hover:text-purple-300">random roulette</a>! Perfect for choosing lunch menus, activities, or any random selection. Customize your options and let fate decide!
+              </p>
+              <a href="/tools/fun/roulette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:from-purple-700 hover:to-pink-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 transition-all duration-200 transform hover:scale-105">
+                🎲 Spin the Roulette!
+              </a>
+            </div>
+            <br />
+            <div className="max-w-screen p-6 bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 rounded-lg shadow-sm dark:from-blue-900/20 dark:to-cyan-900/20 dark:bg-gray-800 dark:border-blue-700">
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
+                🎨 Color Palette Generator
+                <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full dark:bg-blue-800 dark:text-blue-200">NEW!</span>
+              </h2>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                Create beautiful color combinations for your designs! Our <a href="/tools/fun/color-palette.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">color palette generator</a> offers various themes like pastel, vibrant, earthy tones and more. Export as CSS or JSON for easy integration.
+              </p>
+              <a href="/tools/fun/color-palette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-200 transform hover:scale-105">
+                🌈 Generate Colors!
+              </a>
+            </div>
+            <br />
+            <div className="max-w-screen p-6 bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg shadow-sm dark:from-green-900/20 dark:to-emerald-900/20 dark:bg-gray-800 dark:border-green-700">
+              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
+                📱 QR Code Generator
+                <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full dark:bg-green-800 dark:text-green-200">NEW!</span>
+              </h2>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                Transform text, URLs, or contact info into QR codes instantly! Our <a href="/tools/fun/qr-code.html" className="text-green-600 hover:underline dark:text-green-400 dark:hover:text-green-300">QR code generator</a> supports custom colors, sizes, and error correction levels. Perfect for sharing links, contact details, or any text.
+              </p>
+              <a href="/tools/fun/qr-code.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg hover:from-green-700 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 transition-all duration-200 transform hover:scale-105">
+                📲 Create QR Code!
+              </a>
+            </div>
+            <br />
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Explore All Developer Tools</h3>
               <p className="text-gray-700 dark:text-gray-400">Our comprehensive toolkit includes over 15 specialized utilities for developers. From <a href="/tools/encode-decode/base64.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">data encoding</a> to <a href="/tools/hash/sha2.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">hash generation</a>, we've got all your development needs covered. Check out the navigation menu to discover more tools, or visit our <a href="/blog/software-engineer/list.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">technical blog</a> for in-depth articles about software engineering.</p>

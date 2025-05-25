@@ -8,9 +8,8 @@ interface SidebarProps {
   onCloseMobileMenu?: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ 
-  className = '', 
-  children, 
+const Sidebar: React.FC<SidebarProps> = ({
+  children,
   mobileMenuOpen = false,
   onCloseMobileMenu = () => {}
 }) => {
@@ -44,14 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   }, [mobileMenuOpen, onCloseMobileMenu]);
 
   return (
-    <aside 
-      role="navigation"
-      className={`fixed left-0 top-0 z-10 h-screen w-64 overflow-y-auto border-r border-gray-200 bg-white/80 p-6 backdrop-blur-sm dark:border-gray-800 dark:bg-gray-900/80 dark:backdrop-blur-sm ${className} ${
-        mobileMenuOpen ? 'block' : 'hidden'
-      } lg:block`}
-      style={{ paddingBottom: '8rem' }}
-      onClick={(e) => e.stopPropagation()}
-    >
+    <div className="p-6 pb-24">
       <nav className="flex flex-col gap-8">
         {children || (
           <div className="flex flex-col gap-3" data-autoscroll="true">
@@ -68,6 +60,22 @@ const Sidebar: React.FC<SidebarProps> = ({
                 >
                   Software Engineer
                 </a>
+              </li>
+            </ul>
+            <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Fun</h3>
+            <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">
+              <li className="-ml-px flex flex-col items-start gap-2">
+                <Link
+                    to="/tools/fun/roulette.html"
+                    className={`inline-block border-l-2 text-base/8 sm:text-sm/6 pl-5 sm:pl-4 ${
+                        isActive('/tools/fun/roulette.html') || isActive('/tools/fun/roulette')
+                            ? 'border-gray-950 dark:border-white font-semibold text-gray-950 dark:text-white'
+                            : 'border-gray-200 dark:border-gray-700 text-gray-600 hover:border-gray-400 hover:text-gray-950 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white'
+                    }`}
+                    onClick={onCloseMobileMenu}
+                >
+                  🎯 Roulette
+                </Link>
               </li>
             </ul>
             <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">Encode Decode</h3>
@@ -310,7 +318,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           </div>
         )}
       </nav>
-    </aside>
+    </div>
   );
 };
 
