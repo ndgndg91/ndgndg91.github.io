@@ -19,6 +19,19 @@ const MainContent: React.FC = () => {
           A personal site with a variety of tools and blogs for developers. Explore useful features like data conversion, encryption, time management, and more.
         </p>
         <div className="prose mt-10" data-content="true">
+          <div className="max-w-screen p-6 bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-lg shadow-sm dark:from-green-900/20 dark:to-emerald-900/20 dark:bg-gray-800 dark:border-green-700">
+            <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
+              📱 QR Code Generator
+              <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full dark:bg-green-800 dark:text-green-200">NEW!</span>
+            </h2>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Generate QR codes instantly from any text, URL, contact info, or WiFi credentials! Our <a href="/tools/fun/qr-generator.html" className="text-green-600 hover:underline dark:text-green-400 dark:hover:text-green-300">QR code generator</a> features real-time creation, download functionality, and smartphone scanning instructions.
+            </p>
+            <a href="/tools/fun/qr-generator.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg hover:from-green-700 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 transition-all duration-200 transform hover:scale-105">
+              📋 Create QR Code!
+            </a>
+          </div>
+          <br />
           <div className="max-w-screen p-6 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-lg shadow-sm dark:from-purple-900/20 dark:to-pink-900/20 dark:bg-gray-800 dark:border-purple-700">
             <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
               🎯 Random Roulette

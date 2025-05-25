@@ -90,6 +90,19 @@ const Sidebar: React.FC<SidebarProps> = ({
                   🎨 Color Palette
                 </Link>
               </li>
+              <li className="-ml-px flex flex-col items-start gap-2">
+                <Link 
+                  to="/tools/fun/qr-generator.html"
+                  className={`inline-block border-l-2 text-base/8 sm:text-sm/6 pl-5 sm:pl-4 ${
+                    isActive('/tools/fun/qr-generator.html') || isActive('/tools/fun/qr-generator')
+                      ? 'border-gray-950 dark:border-white font-semibold text-gray-950 dark:text-white' 
+                      : 'border-gray-200 dark:border-gray-700 text-gray-600 hover:border-gray-400 hover:text-gray-950 dark:text-gray-300 dark:hover:border-gray-500 dark:hover:text-white'
+                  }`}
+                  onClick={onCloseMobileMenu}
+                >
+                  📱 QR Generator
+                </Link>
+              </li>
             </ul>
             <h3 className="font-mono text-sm/6 font-medium tracking-widest text-gray-500 uppercase sm:text-xs/6 dark:text-gray-400">🔐 Encode Decode</h3>
             <ul className="flex flex-col gap-2 border-l border-gray-100 dark:border-gray-700">

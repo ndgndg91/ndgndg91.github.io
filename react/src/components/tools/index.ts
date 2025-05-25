@@ -9,3 +9,6 @@ export * from './time';
 
 // Token Tools
 export { default as JWTPage } from './token/JWTPage';
+
+// Fun Tools
+export { default as QRCodeGenerator } from './fun/QRCodeGenerator';

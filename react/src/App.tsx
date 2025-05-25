@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp, QRCodeGenerator } from './components/tools';
 import ImageConverter from './components/tools/image/ImageConverter';
 import JWTPage from './components/tools/token/JWTPage';
 import SHA1Page from './components/tools/hash/SHA1Page';
@@ -307,6 +307,15 @@ function App() {
                 path="/tools/fun/color-palette" 
                 element={
                   <Navigate to="/tools/fun/color-palette.html" replace />
+                } 
+              />
+
+              {/* QR Code Generator Tool Routes */}
+              <Route path="/tools/fun/qr-generator.html" element={<QRCodeGenerator />} />
+              <Route 
+                path="/tools/fun/qr-generator" 
+                element={
+                  <Navigate to="/tools/fun/qr-generator.html" replace />
                 } 
               />
 

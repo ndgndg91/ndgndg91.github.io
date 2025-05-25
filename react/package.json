@@ -15,6 +15,7 @@
   "dependencies": {
     "@types/crypto-js": "^4.2.2",
     "@types/jsonwebtoken": "^9.0.9",
+    "@types/qrcode": "^1.5.5",
     "@types/uuid": "^10.0.0",
     "@types/xml2js": "^0.4.14",
     "crypto-js": "^4.2.0",
@@ -22,6 +23,7 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "lucide-react": "^0.509.0",
+    "qrcode": "^1.5.4",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hot-toast": "^2.5.2",
