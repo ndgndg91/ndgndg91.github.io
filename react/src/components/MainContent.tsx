@@ -58,6 +58,19 @@ const MainContent: React.FC = () => {
             </a>
           </div>
           <br />
+          <div className="max-w-screen p-6 bg-gradient-to-br from-orange-50 to-amber-50 border border-orange-200 rounded-lg shadow-sm dark:from-orange-900/20 dark:to-amber-900/20 dark:bg-gray-800 dark:border-orange-700">
+            <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
+              🌐 IP Address Lookup
+              <span className="text-xs px-2 py-1 bg-orange-100 text-orange-800 rounded-full dark:bg-orange-800 dark:text-orange-200">NEW!</span>
+            </h2>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Check your IP address information including IPv4, IPv6, and ISP details. Our <a href="/tools/network/ip-address.html" className="text-orange-600 hover:underline dark:text-orange-400 dark:hover:text-orange-300">IP lookup tool</a> provides real-time information about your network connection.
+            </p>
+            <a href="/tools/network/ip-address.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-orange-600 to-amber-600 rounded-lg hover:from-orange-700 hover:to-amber-700 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 transition-all duration-200 transform hover:scale-105">
+              🔍 Check IP Address
+            </a>
+          </div>
+          <br />
           <div id="quick-reference" className="not-prose relative isolate scroll-mt-16">
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Developer Blog</h2>

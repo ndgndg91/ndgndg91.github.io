@@ -19,6 +19,7 @@ import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
 import BlogListPage from './pages/BlogListPage';
 import AdTestPage from './components/debug/AdTestPage';
+import IpAddressPage from './pages/IpAddressPage';
 
 // 정적 파일 확장자 목록
 const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];
@@ -89,6 +90,7 @@ function App() {
     window.location.pathname.startsWith('/tools/hash/') ||
     window.location.pathname.startsWith('/tools/encrypt-decrypt/') ||
     window.location.pathname.startsWith('/tools/fun/') ||
+    window.location.pathname.startsWith('/tools/network/') ||
     window.location.pathname.startsWith('/blog/');
 
   return (
@@ -119,6 +121,15 @@ function App() {
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<MainContent />} />
+              
+              {/* IP Address Tool Routes */}
+              <Route path="/tools/network/ip-address.html" element={<IpAddressPage />} />
+              <Route 
+                path="/tools/network/ip-address" 
+                element={
+                  <Navigate to="/tools/network/ip-address.html" replace />
+                } 
+              />
               
               {/* Debug Route */}
               <Route path="/debug/ads" element={<AdTestPage />} />
