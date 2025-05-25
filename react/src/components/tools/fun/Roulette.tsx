@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Plus, Trash2, Settings, RotateCcw, Save, Upload, Volume2, VolumeX, Trophy, Star } from 'lucide-react';
+import { Play, Plus, Trash2, Settings, RotateCcw, Save, Upload, Volume2, VolumeX, Trophy } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 interface RouletteItem {
@@ -57,7 +57,6 @@ export default function Roulette() {
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [spinHistory, setSpinHistory] = useState<SpinHistory[]>([]);
   const [showHistory, setShowHistory] = useState(false);
-  const [selectedPreset, setSelectedPreset] = useState<string>('');
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -303,7 +302,6 @@ export default function Roulette() {
       color: DEFAULT_COLORS[index % DEFAULT_COLORS.length]
     }));
     setItems(newItems);
-    setSelectedPreset('');
     toast.success(`${preset.name} preset applied!`);
   };
 
