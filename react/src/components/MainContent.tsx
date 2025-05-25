@@ -19,6 +19,32 @@ const MainContent: React.FC = () => {
           A personal site with a variety of tools and blogs for developers. Explore useful features like data conversion, encryption, time management, and more.
         </p>
         <div className="prose mt-10" data-content="true">
+          <div className="max-w-screen p-6 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-lg shadow-sm dark:from-purple-900/20 dark:to-pink-900/20 dark:bg-gray-800 dark:border-purple-700">
+            <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
+              🎯 Random Roulette
+              <span className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded-full dark:bg-purple-800 dark:text-purple-200">NEW!</span>
+            </h2>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Having trouble making decisions? Try our interactive <a href="/tools/fun/roulette.html" className="text-purple-600 hover:underline dark:text-purple-400 dark:hover:text-purple-300">random roulette</a>! Perfect for choosing lunch menus, activities, or any random selection. Customize your options and let fate decide!
+            </p>
+            <a href="/tools/fun/roulette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:from-purple-700 hover:to-pink-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 transition-all duration-200 transform hover:scale-105">
+              🎲 Spin the Roulette!
+            </a>
+          </div>
+          <br />
+          <div className="max-w-screen p-6 bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 rounded-lg shadow-sm dark:from-blue-900/20 dark:to-cyan-900/20 dark:bg-gray-800 dark:border-blue-700">
+            <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
+              🎨 Color Palette Generator
+              <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full dark:bg-blue-800 dark:text-blue-200">NEW!</span>
+            </h2>
+            <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Create beautiful color combinations for your designs! Our <a href="/tools/fun/color-palette.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">color palette generator</a> offers various themes like pastel, vibrant, earthy tones and more. Export as CSS or JSON for easy integration.
+            </p>
+            <a href="/tools/fun/color-palette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-200 transform hover:scale-105">
+              🌈 Generate Colors!
+            </a>
+          </div>
+          <br />
           <div id="quick-reference" className="not-prose relative isolate scroll-mt-16">
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Developer Blog</h2>
@@ -97,32 +123,6 @@ const MainContent: React.FC = () => {
               </p>
               <a href="/tools/token/jwt.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Decode JWT
-              </a>
-            </div>
-            <br />
-            <div className="max-w-screen p-6 bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-lg shadow-sm dark:from-purple-900/20 dark:to-pink-900/20 dark:bg-gray-800 dark:border-purple-700">
-              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
-                🎯 Random Roulette
-                <span className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded-full dark:bg-purple-800 dark:text-purple-200">NEW!</span>
-              </h2>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Having trouble making decisions? Try our interactive <a href="/tools/fun/roulette.html" className="text-purple-600 hover:underline dark:text-purple-400 dark:hover:text-purple-300">random roulette</a>! Perfect for choosing lunch menus, activities, or any random selection. Customize your options and let fate decide!
-              </p>
-              <a href="/tools/fun/roulette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:from-purple-700 hover:to-pink-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 transition-all duration-200 transform hover:scale-105">
-                🎲 Spin the Roulette!
-              </a>
-            </div>
-            <br />
-            <div className="max-w-screen p-6 bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200 rounded-lg shadow-sm dark:from-blue-900/20 dark:to-cyan-900/20 dark:bg-gray-800 dark:border-blue-700">
-              <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white flex items-center gap-2">
-                🎨 Color Palette Generator
-                <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full dark:bg-blue-800 dark:text-blue-200">NEW!</span>
-              </h2>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Create beautiful color combinations for your designs! Our <a href="/tools/fun/color-palette.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">color palette generator</a> offers various themes like pastel, vibrant, earthy tones and more. Export as CSS or JSON for easy integration.
-              </p>
-              <a href="/tools/fun/color-palette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-200 transform hover:scale-105">
-                🌈 Generate Colors!
               </a>
             </div>
             <br />
