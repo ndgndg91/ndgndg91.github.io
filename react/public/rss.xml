@@ -27,6 +27,17 @@
       <category>Decision Making</category>
     </item>
     <item>
+      <title>Color Palette Generator - Design Tool</title>
+      <link>https://developer-playground.com/tools/fun/color-palette.html</link>
+      <guid>https://developer-playground.com/tools/fun/color-palette.html</guid>
+      <pubDate>Sun, 25 May 2025 14:30:00 GMT</pubDate>
+      <description>Create beautiful color combinations for your designs! Features various themes like pastel, vibrant, earthy tones and more. Generate harmonious color schemes, copy hex codes with one click, and export palettes as CSS or JSON for easy integration into your projects.</description>
+      <category>Developer Tools</category>
+      <category>Fun Tools</category>
+      <category>Design Tools</category>
+      <category>Color Theory</category>
+    </item>
+    <item>
       <title>Spring Boot on EKS: Optimizing Health Probes for Efficient Deployments</title>
       <link>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot.html</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot.html</guid>

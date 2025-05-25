@@ -13,6 +13,7 @@ import SHA3Page from './components/tools/hash/SHA3Page';
 import AESPage from './components/tools/encrypt-decrypt/AESPage';
 import RSAPage from './components/tools/encrypt-decrypt/RSAPage';
 import Roulette from './components/tools/fun/Roulette';
+import ColorPaletteGenerator from './components/tools/fun/ColorPaletteGenerator';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
@@ -297,6 +298,15 @@ function App() {
                 path="/tools/fun/roulette" 
                 element={
                   <Navigate to="/tools/fun/roulette.html" replace />
+                } 
+              />
+
+              {/* Color Palette Generator Tool Routes */}
+              <Route path="/tools/fun/color-palette.html" element={<ColorPaletteGenerator />} />
+              <Route 
+                path="/tools/fun/color-palette" 
+                element={
+                  <Navigate to="/tools/fun/color-palette.html" replace />
                 } 
               />
 
