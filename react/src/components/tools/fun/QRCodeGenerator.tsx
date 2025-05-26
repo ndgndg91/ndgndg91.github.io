@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import QRCode from 'qrcode';
 import { Download, QrCode, Copy, Smartphone } from 'lucide-react';
 import toast from 'react-hot-toast';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const QRCodeGenerator: React.FC = () => {
   const [text, setText] = useState('https://developer-playground.com');
@@ -82,6 +84,8 @@ const QRCodeGenerator: React.FC = () => {
   }, []);
 
   return (
+      <>
+      <SEOHead {...seoData.qrCodeGenerator} />
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
         {/* Header */}
@@ -209,6 +213,7 @@ const QRCodeGenerator: React.FC = () => {
         </div>
       </div>
     </div>
+        </>
   );
 };
 

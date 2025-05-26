@@ -2,6 +2,8 @@ import React from 'react';
 import useRandomHex from '../../../hooks/useRandomHex';
 import AdSection from '../../ads/AdSection';
 import { Copy, Check } from 'lucide-react';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const RandomHexGenerator: React.FC = () => {
   const {
@@ -16,6 +18,8 @@ const RandomHexGenerator: React.FC = () => {
   } = useRandomHex();
 
   return (
+      <>
+      <SEOHead {...seoData.randomHex} />
     <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
       <p 
         className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
@@ -127,6 +131,7 @@ const RandomHexGenerator: React.FC = () => {
         className="mt-8"
       />
     </div>
+      </>
   );
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import useHtmlEscape from '../../../hooks/useHtmlEscape';
 import AdSection from '../../ads/AdSection';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const HtmlEscapeUnescape: React.FC = () => {
   const {
@@ -15,6 +17,8 @@ const HtmlEscapeUnescape: React.FC = () => {
   } = useHtmlEscape();
 
   return (
+      <>
+  <SEOHead {...seoData.htmlEscape} />
     <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
       <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400">
         Developer Playground
@@ -129,6 +133,7 @@ const HtmlEscapeUnescape: React.FC = () => {
         className="mt-8"
       />
     </div>
+      </>
   );
 };
 

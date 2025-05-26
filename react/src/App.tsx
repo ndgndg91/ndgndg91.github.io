@@ -13,13 +13,14 @@ import SHA3Page from './components/tools/hash/SHA3Page';
 import AESPage from './components/tools/encrypt-decrypt/AESPage';
 import RSAPage from './components/tools/encrypt-decrypt/RSAPage';
 import Roulette from './components/tools/fun/Roulette';
+import IpAddressPage from './components/tools/network/IpAddressPage';
 import ColorPaletteGenerator from './components/tools/fun/ColorPaletteGenerator';
 import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
 import BlogListPage from './pages/BlogListPage';
 import AdTestPage from './components/debug/AdTestPage';
-import IpAddressPage from './pages/IpAddressPage';
+
 
 // 정적 파일 확장자 목록
 const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];

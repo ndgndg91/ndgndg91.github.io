@@ -2,6 +2,8 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Upload, Download, Loader2 } from 'lucide-react';
 import { useImageConverter } from '../../../hooks/useImageConverter';
 import AdSection from '../../ads/AdSection';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const ImageConverter: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -95,6 +97,8 @@ const ImageConverter: React.FC = () => {
   };
 
   return (
+      <>
+      <SEOHead {...seoData.imageConverter} />
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Image Format Converter</h2>
       <p className="text-gray-600 dark:text-gray-300">
@@ -324,6 +328,7 @@ const ImageConverter: React.FC = () => {
         className="mt-8"
       />
     </div>
+      </>
   );
 };
 

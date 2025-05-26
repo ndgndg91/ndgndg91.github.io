@@ -3,9 +3,13 @@ import JWTDecoder from './JWTDecoder';
 import JWTGenerator from './JWTGenerator';
 import JWTVerifier from './JWTVerifier';
 import AdSection from '../../ads/AdSection';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const JWTPage: React.FC = () => {
   return (
+      <>
+      <SEOHead {...seoData.jwt} />
     <div className="mx-auto grid w-full max-w-full grid-cols-1 gap-10 xl:grid-cols-[minmax(0,1fr)_var(--container-2xs)]">
       <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
         <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400">
@@ -83,6 +87,7 @@ const JWTPage: React.FC = () => {
         />
       </div>
     </div>
+      </>
   );
 };
 

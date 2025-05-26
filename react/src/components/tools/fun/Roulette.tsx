@@ -1,6 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Play, Plus, Trash2, Settings, RotateCcw, Save, Upload, Volume2, VolumeX, Trophy } from 'lucide-react';
 import toast from 'react-hot-toast';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 interface RouletteItem {
   id: string;
@@ -402,6 +404,8 @@ export default function Roulette() {
   }, [items, rotation]);
 
   return (
+      <>
+      <SEOHead {...seoData.roulette} />
     <div className="max-w-7xl mx-auto p-6">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
         <div className="text-center mb-6">
@@ -641,5 +645,6 @@ export default function Roulette() {
         />
       </div>
     </div>
+        </>
   );
 }

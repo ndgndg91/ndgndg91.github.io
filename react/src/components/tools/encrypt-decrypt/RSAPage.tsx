@@ -4,6 +4,8 @@ import JSEncrypt from 'jsencrypt';
 import RSAEncryptDecrypt from './RSAEncryptDecrypt';
 import RSASignVerify from './RSASignVerify';
 import AdSection from '../../ads/AdSection';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const RSAPage: React.FC = () => {
   const [publicKey, setPublicKey] = useState('');
@@ -21,6 +23,8 @@ const RSAPage: React.FC = () => {
   };
 
   return (
+      <>
+      <SEOHead {...seoData.rsa} />
     <div className="w-full max-w-5xl mx-auto px-2 pt-10 pb-24 sm:px-4 xl:px-4">
       <p className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400">
         Developer Playground
@@ -90,6 +94,7 @@ const RSAPage: React.FC = () => {
         className="mt-8"
       />
     </div>
+        </>
   );
 };
 

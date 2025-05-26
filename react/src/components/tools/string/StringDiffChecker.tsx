@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import useStringDiff, { type DiffLine } from '../../../hooks/useStringDiff';
 import { Copy, RefreshCw, Check } from 'lucide-react';
 import AdSection from '../../ads/AdSection';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const StringDiffChecker: React.FC = () => {
   const {
@@ -78,6 +80,8 @@ const StringDiffChecker: React.FC = () => {
   };
 
   return (
+      <>
+      <SEOHead {...seoData.stringDiff} />
     <div className="px-2 pt-10 pb-24 sm:px-4 xl:pr-0">
       <p 
         className="flex items-center gap-2 font-mono text-xs/6 font-medium tracking-widest text-gray-600 uppercase dark:text-gray-400"
@@ -244,6 +248,7 @@ const StringDiffChecker: React.FC = () => {
         className="mt-8"
       />
     </div>
+      </>
   );
 };
 

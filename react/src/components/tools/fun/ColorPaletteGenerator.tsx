@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Shuffle, Copy, Heart, Download, Palette, RefreshCw } from 'lucide-react';
 import toast from 'react-hot-toast';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 interface ColorPalette {
   id: string;
@@ -287,6 +289,8 @@ ${currentPalette.colors.map((color, index) =>
   }, []);
 
   return (
+      <>
+      <SEOHead {...seoData.colorPaletteGenerator} />
     <div className="max-w-6xl mx-auto p-6">
       <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
         <div className="text-center mb-8">
@@ -493,5 +497,6 @@ ${currentPalette.colors.map((color, index) =>
         </div>
       </div>
     </div>
+      </>
   );
 }

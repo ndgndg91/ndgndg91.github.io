@@ -1,7 +1,9 @@
 import React from 'react';
-import { useIpAddress } from '../hooks/useIpAddress';
-import LocationMap from '../components/LocationMap';
+import { useIpAddress } from '../../../hooks/useIpAddress';
+import LocationMap from '../../../components/LocationMap';
 import toast from 'react-hot-toast';
+import {seoData} from "../../../data/seoData.ts";
+import SEOHead from "../../SEOHead.tsx";
 
 const IpAddressPage: React.FC = () => {
   const { ipData, loading, error } = useIpAddress();
@@ -41,6 +43,8 @@ const IpAddressPage: React.FC = () => {
   }
 
   return (
+      <>
+      <SEOHead {...seoData.checkMyIP} />
     <div className="container mx-auto px-4 py-8">
       <div className="flex items-center gap-4 mb-6">
         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">IP Address</h1>
@@ -139,6 +143,7 @@ const IpAddressPage: React.FC = () => {
         )}
       </div>
     </div>
+        </>
   );
 };
 

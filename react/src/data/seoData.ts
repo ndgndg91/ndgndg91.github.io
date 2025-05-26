@@ -5,6 +5,26 @@ export const seoData = {
     description: 'A comprehensive collection of online tools for developers. Base64 encoding/decoding, URL encoding, JSON parser, XML parser, UUID generator, hash generators, encryption/decryption tools and more.',
     keywords: 'developer tools, Base64, URL encoding, JSON parser, XML parser, UUID generator, hash generator, encryption, decryption, development utilities'
   },
+  roulette: {
+    title: 'Roulette | Developer Playground',
+    description: 'Play a game of roulette online. Spin the wheel and bet on the result.',
+    keywords: 'roulette, spin the wheel, bet, betting, roulette wheel, roulette game'
+  },
+  qrCodeGenerator: {
+    title: 'QR Code Generator | Developer Playground',
+    description: 'Generate QR codes online. Use for sharing URLs, text, or other data.',
+    keywords: 'QR code, QR code generator, QR code generator, QR code generator, QR code generator'
+  },
+  colorPaletteGenerator: {
+    title: 'Color Palette Generator | Developer Playground',
+    description: 'Generate color palettes online. Generate a color palette based on a given color.',
+    keywords: 'color palette, color palette generator, color palette generator, color palette generator, color palette generator'
+  },
+  checkMyIP: {
+    title: 'Check My IP Address | Developer Playground',
+    description: 'Check your IP address online. Useful for debugging and troubleshooting.',
+    keywords: 'check my IP, IP address, IP address checker, IP address lookup, IP address lookup tool'
+  },
   base64: {
     title: 'Base64 Encoding/Decoding Tool | Developer Playground',
     description: 'Easily and quickly perform Base64 encoding and decoding online. Convert text to Base64 or decode Base64 back to original text.',
