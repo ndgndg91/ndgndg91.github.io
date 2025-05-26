@@ -227,5 +227,19 @@
       <category>Network Tools</category>
       <category>Utility Tools</category>
     </item>
+    <item>
+      <title>HTTP Cookie: The Core Mechanism of Web State Management</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/http-cookie.html</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/http-cookie.html</guid>
+      <pubDate>Mon, 26 May 2025 00:00:00 GMT</pubDate>
+      <description>Explore the fundamentals of HTTP Cookies, their security attributes, and how they are used in modern web development.</description>
+      <category>HTTP</category>
+      <category>Cookie</category>
+      <category>Web Security</category>
+      <category>Session Management</category>
+      <category>Web Development</category>
+      <category>Browser</category>
+      <category>Security</category>
+    </item>
   </channel>
 </rss>
