@@ -105,32 +105,56 @@ export const seoData = {
     description: '{description}',
     keywords: 'tech blog, software engineering, development experience, {keywords}'
   },
-  // Individual blog posts
-  aboutG1gc: {
-    title: 'About G1GC (Garbage First Garbage Collector) | Developer Playground',
-    description: 'Deep dive into G1GC, understanding its architecture, performance characteristics, and when to use it in Java applications.',
-    keywords: 'G1GC, Garbage Collector, Java, JVM, performance, memory management'
+  // Blog categories
+  blogCategories: {
+    'software-engineer': {
+      title: 'Software Engineering Blog | Developer Playground',
+      description: 'Articles about software engineering, development practices, and technical deep dives.',
+      keywords: 'software engineering, development, programming, technical blog'
+    },
+    'other': {
+      title: 'Other Topics Blog | Developer Playground',
+      description: 'Articles about various topics beyond software engineering.',
+      keywords: 'blog, personal blog, thoughts, experiences'
+    }
   },
-  aboutZgc: {
-    title: 'About ZGC (Z Garbage Collector) | Developer Playground',
-    description: 'Comprehensive guide to ZGC, the low-latency garbage collector in modern Java versions.',
-    keywords: 'ZGC, Z Garbage Collector, Java, JVM, low latency, garbage collection'
-  },
-  aboutKafka: {
-    title: 'About Apache Kafka | Developer Playground',
-    description: 'Understanding Apache Kafka architecture, use cases, and implementation patterns for distributed streaming.',
-    keywords: 'Apache Kafka, streaming, distributed systems, message queue, event streaming'
-  },
-  aboutMongodbSharding: {
-    title: 'About MongoDB Sharding | Developer Playground',
-    description: 'Guide to MongoDB sharding strategies, implementation, and best practices for horizontal scaling.',
-    keywords: 'MongoDB, sharding, database, scaling, distributed database, NoSQL'
-  },
-  replayAttack: {
-    title: 'Understanding Replay Attacks | Developer Playground',
-    description: 'Learn about replay attacks in cybersecurity, prevention methods, and implementation of secure systems.',
-    keywords: 'replay attack, cybersecurity, security, authentication, prevention, secure systems'
+
+  // Blog posts
+  blogPosts: {
+    // Software Engineering
+    'about-g1gc': {
+      title: 'About G1GC (Garbage First Garbage Collector) | Developer Playground',
+      description: 'Deep dive into G1GC, understanding its architecture, performance characteristics, and when to use it in Java applications.',
+      keywords: 'G1GC, Garbage Collector, Java, JVM, performance, memory management'
+    },
+    'about-zgc': {
+      title: 'About ZGC (Z Garbage Collector) | Developer Playground',
+      description: 'Comprehensive guide to ZGC, the low-latency garbage collector in modern Java versions.',
+      keywords: 'ZGC, Z Garbage Collector, Java, JVM, low latency, garbage collection'
+    },
+    'about-kafka': {
+      title: 'About Apache Kafka | Developer Playground',
+      description: 'Understanding Apache Kafka architecture, use cases, and implementation patterns for distributed streaming.',
+      keywords: 'Apache Kafka, streaming, distributed systems, message queue, event streaming'
+    },
+    'about-mongodb-sharding': {
+      title: 'About MongoDB Sharding | Developer Playground',
+      description: 'Guide to MongoDB sharding strategies, implementation, and best practices for horizontal scaling.',
+      keywords: 'MongoDB, sharding, database, scaling, distributed database, NoSQL'
+    },
+    'replay-attack': {
+      title: 'Understanding Replay Attacks | Developer Playground',
+      description: 'Learn about replay attacks in cybersecurity, prevention methods, and implementation of secure systems.',
+      keywords: 'replay attack, cybersecurity, security, authentication, prevention, secure systems'
+    },
+    'jvm-warmup': {
+      title: 'JVM Warmup | Developer Playground',
+      description: 'Understanding JVM warmup process and optimization techniques.',
+      keywords: 'JVM, warmup, Java, performance, optimization'
+    }
   }
 };
 
 export type SEOKey = keyof typeof seoData;
+export type BlogPostKey = keyof typeof seoData.blogPosts;
+export type BlogCategoryKey = keyof typeof seoData.blogCategories;

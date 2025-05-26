@@ -14,16 +14,37 @@ const BlogPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const { slug } = useParams<{ slug: string }>();
 
-  // Get SEO data based on blog post slug
+  // Get SEO data based on blog post slug and category
   const getSEOData = () => {
     const pathname = location.pathname;
-    if (pathname.includes('about-g1gc')) return seoData.aboutG1gc;
-    if (pathname.includes('about-zgc')) return seoData.aboutZgc;
-    if (pathname.includes('about-kafka')) return seoData.aboutKafka;
-    if (pathname.includes('about-mongodb-sharding')) return seoData.aboutMongodbSharding;
-    if (pathname.includes('replay-attack')) return seoData.replayAttack;
+    const match = pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)\.html/);
     
-    // Default blog post SEO
+    if (!match) {
+      return {
+        title: 'Blog Post | Developer Playground',
+        description: 'Read our latest blog post about software engineering and development.',
+        keywords: 'tech blog, software engineering, development experience'
+      };
+    }
+
+    const [, category, id] = match;
+    
+    // Check if we have specific SEO data for this post
+    const postSEO = seoData.blogPosts[id as keyof typeof seoData.blogPosts];
+    if (postSEO) {
+      return postSEO;
+    }
+
+    // If no specific post SEO data, use category SEO data
+    const categorySEO = seoData.blogCategories[category as keyof typeof seoData.blogCategories];
+    if (categorySEO) {
+      return {
+        ...categorySEO,
+        title: post ? `${post.title} | ${categorySEO.title}` : categorySEO.title
+      };
+    }
+
+    // Default SEO data
     return {
       title: post ? `${post.title} | Developer Playground Blog` : 'Blog Post | Developer Playground',
       description: post ? post.description : 'Read our latest blog post about software engineering and development.',
