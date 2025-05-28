@@ -13,6 +13,7 @@
     "analyze": "npm run build && npx vite-bundle-analyzer dist"
   },
   "dependencies": {
+    "@mui/material": "^7.1.0",
     "@types/crypto-js": "^4.2.2",
     "@types/jsonwebtoken": "^9.0.9",
     "@types/qrcode": "^1.5.5",
@@ -30,7 +31,7 @@
     "react-hot-toast": "^2.5.2",
     "react-leaflet": "^5.0.0",
     "react-router-dom": "^7.6.0",
-    "react-syntax-highlighter": "^15.5.0",
+    "react-syntax-highlighter": "^5.8.0",
     "react-toastify": "^11.0.5",
     "tailwindcss": "^3.3.3",
     "three": "^0.176.0",
