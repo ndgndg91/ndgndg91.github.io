@@ -23,3 +23,6 @@ export { default as ByteCounter } from './ByteCounter';
 
 // HTML Escape/Unescape
 export { default as HtmlEscapeUnescape } from './HtmlEscapeUnescape';
+
+// Regex Cheatsheet
+export { default as RegexCheatsheet } from './RegexCheatsheet';

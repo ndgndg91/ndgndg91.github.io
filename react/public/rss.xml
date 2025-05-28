@@ -5,7 +5,7 @@
     <link>https://developer-playground.com</link>
     <description>Developer tools and technical blog for software engineers with articles on Kafka, JVM, MongoDB and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 29 Apr 2025 13:20:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 28 May 2025 13:20:00 GMT</lastBuildDate>
     <atom:link href="https://developer-playground.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://developer-playground.com/img/developer-playground-logo.webp</url>
@@ -240,6 +240,17 @@
       <category>Web Development</category>
       <category>Browser</category>
       <category>Security</category>
+    </item>
+    <item>
+      <title>Regex Cheatsheet - Language-specific Patterns</title>
+      <link>https://developer-playground.com/tools/string/regex-cheatsheet.html</link>
+      <guid>https://developer-playground.com/tools/string/regex-cheatsheet.html</guid>
+      <pubDate>Tue, 28 May 2025 15:30:00 GMT</pubDate>
+      <description>Comprehensive regex patterns for common use cases across different programming languages. Includes email, URL, phone number, IPv4/IPv6, and date format patterns for JavaScript/TypeScript, Python, Java, Kotlin, Go, and Rust.</description>
+      <category>Developer Tools</category>
+      <category>String Tools</category>
+      <category>Regex</category>
+      <category>Programming</category>
     </item>
   </channel>
 </rss>

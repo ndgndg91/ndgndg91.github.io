@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MainContent from './components/MainContent';
 import Footer from './components/Footer';
-import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp, QRCodeGenerator } from './components/tools';
+import { Base64Tool, UrlTool, JsonParserTool, XmlParserTool, UuidGenerator, RandomHexGenerator, StringDiffChecker, ByteCounter, HtmlEscapeUnescape, Timestamp, QRCodeGenerator, RegexCheatsheet } from './components/tools';
 import ImageConverter from './components/tools/image/ImageConverter';
 import JWTPage from './components/tools/token/JWTPage';
 import SHA1Page from './components/tools/hash/SHA1Page';
@@ -229,6 +229,15 @@ function App() {
                 path="/tools/string/html-escape-unescape" 
                 element={
                   <Navigate to="/tools/string/html-escape-unescape.html" replace />
+                } 
+              />
+              
+              {/* Regex Cheatsheet Tool Routes */}
+              <Route path="/tools/string/regex-cheatsheet.html" element={<RegexCheatsheet />} />
+              <Route 
+                path="/tools/string/regex-cheatsheet" 
+                element={
+                  <Navigate to="/tools/string/regex-cheatsheet.html" replace />
                 } 
               />
               

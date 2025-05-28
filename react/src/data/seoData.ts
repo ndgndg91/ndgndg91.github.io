@@ -172,6 +172,11 @@ export const seoData = {
       description: 'Understanding JVM warmup process and optimization techniques.',
       keywords: 'JVM, warmup, Java, performance, optimization'
     }
+  },
+  regexCheatsheet: {
+    title: 'Regex Cheatsheet - Language-specific Patterns | Developer Playground',
+    description: 'Comprehensive regex patterns for common use cases across different programming languages. Includes email, URL, phone number, IPv4/IPv6, and date format patterns for JavaScript/TypeScript, Python, Java, Kotlin, Go, and Rust.',
+    keywords: 'regex, regular expressions, regex patterns, email regex, URL regex, phone regex, IPv4 regex, IPv6 regex, date regex, JavaScript regex, Python regex, Java regex, Kotlin regex, Go regex, Rust regex'
   }
 };
 
