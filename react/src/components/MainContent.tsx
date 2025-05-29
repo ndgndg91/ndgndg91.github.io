@@ -25,9 +25,9 @@ const MainContent: React.FC = () => {
               <span className="text-xs px-2 py-1 bg-green-100 text-green-800 rounded-full dark:bg-green-800 dark:text-green-200">NEW!</span>
             </h2>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Generate QR codes instantly from any text, URL, contact info, or WiFi credentials! Our <a href="/tools/fun/qr-generator.html" className="text-green-600 hover:underline dark:text-green-400 dark:hover:text-green-300">QR code generator</a> features real-time creation, download functionality, and smartphone scanning instructions.
+              Generate QR codes instantly from any text, URL, contact info, or WiFi credentials! Our <a href="/tools/fun/qr-generator" className="text-green-600 hover:underline dark:text-green-400 dark:hover:text-green-300">QR code generator</a> features real-time creation, download functionality, and smartphone scanning instructions.
             </p>
-            <a href="/tools/fun/qr-generator.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg hover:from-green-700 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 transition-all duration-200 transform hover:scale-105">
+            <a href="/tools/fun/qr-generator" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg hover:from-green-700 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 transition-all duration-200 transform hover:scale-105">
               📋 Create QR Code!
             </a>
           </div>
@@ -38,9 +38,9 @@ const MainContent: React.FC = () => {
               <span className="text-xs px-2 py-1 bg-purple-100 text-purple-800 rounded-full dark:bg-purple-800 dark:text-purple-200">NEW!</span>
             </h2>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Having trouble making decisions? Try our interactive <a href="/tools/fun/roulette.html" className="text-purple-600 hover:underline dark:text-purple-400 dark:hover:text-purple-300">random roulette</a>! Perfect for choosing lunch menus, activities, or any random selection. Customize your options and let fate decide!
+              Having trouble making decisions? Try our interactive <a href="/tools/fun/roulette" className="text-purple-600 hover:underline dark:text-purple-400 dark:hover:text-purple-300">random roulette</a>! Perfect for choosing lunch menus, activities, or any random selection. Customize your options and let fate decide!
             </p>
-            <a href="/tools/fun/roulette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:from-purple-700 hover:to-pink-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 transition-all duration-200 transform hover:scale-105">
+            <a href="/tools/fun/roulette" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg hover:from-purple-700 hover:to-pink-700 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 transition-all duration-200 transform hover:scale-105">
               🎲 Spin the Roulette!
             </a>
           </div>
@@ -51,9 +51,9 @@ const MainContent: React.FC = () => {
               <span className="text-xs px-2 py-1 bg-blue-100 text-blue-800 rounded-full dark:bg-blue-800 dark:text-blue-200">NEW!</span>
             </h2>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Create beautiful color combinations for your designs! Our <a href="/tools/fun/color-palette.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">color palette generator</a> offers various themes like pastel, vibrant, earthy tones and more. Export as CSS or JSON for easy integration.
+              Create beautiful color combinations for your designs! Our <a href="/tools/fun/color-palette" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">color palette generator</a> offers various themes like pastel, vibrant, earthy tones and more. Export as CSS or JSON for easy integration.
             </p>
-            <a href="/tools/fun/color-palette.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-200 transform hover:scale-105">
+            <a href="/tools/fun/color-palette" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-blue-600 to-cyan-600 rounded-lg hover:from-blue-700 hover:to-cyan-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-200 transform hover:scale-105">
               🌈 Generate Colors!
             </a>
           </div>
@@ -64,9 +64,9 @@ const MainContent: React.FC = () => {
               <span className="text-xs px-2 py-1 bg-orange-100 text-orange-800 rounded-full dark:bg-orange-800 dark:text-orange-200">NEW!</span>
             </h2>
             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Check your IP address information including IPv4, IPv6, and ISP details. Our <a href="/tools/network/ip-address.html" className="text-orange-600 hover:underline dark:text-orange-400 dark:hover:text-orange-300">IP lookup tool</a> provides real-time information about your network connection.
+              Check your IP address information including IPv4, IPv6, and ISP details. Our <a href="/tools/network/ip-address" className="text-orange-600 hover:underline dark:text-orange-400 dark:hover:text-orange-300">IP lookup tool</a> provides real-time information about your network connection.
             </p>
-            <a href="/tools/network/ip-address.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-orange-600 to-amber-600 rounded-lg hover:from-orange-700 hover:to-amber-700 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 transition-all duration-200 transform hover:scale-105">
+            <a href="/tools/network/ip-address" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-orange-600 to-amber-600 rounded-lg hover:from-orange-700 hover:to-amber-700 focus:ring-4 focus:outline-none focus:ring-orange-300 dark:focus:ring-orange-800 transition-all duration-200 transform hover:scale-105">
               🔍 Check IP Address
             </a>
           </div>
@@ -77,7 +77,7 @@ const MainContent: React.FC = () => {
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                 Technical articles about software engineering, development practices, and programming insights.
               </p>
-              <a href="/blog/software-engineer/list.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/blog/software-engineer/list" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Read Technical Blog
               </a>
             </div>
@@ -85,9 +85,9 @@ const MainContent: React.FC = () => {
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Encoding & Decoding Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Convert and transform data with <a href="/tools/encode-decode/base64.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">Base64 encoding</a> and <a href="/tools/encode-decode/url.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">URL encoding</a> tools.
+                Convert and transform data with <a href="/tools/encode-decode/base64" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">Base64 encoding</a> and <a href="/tools/encode-decode/url" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">URL encoding</a> tools.
               </p>
-              <a href="/tools/encode-decode/base64.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/tools/encode-decode/base64" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Explore Encoding Tools
               </a>
             </div>
@@ -95,9 +95,9 @@ const MainContent: React.FC = () => {
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">String Processing Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Advanced string manipulation tools including <a href="/tools/string/parser.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">JSON parser</a>, <a href="/tools/string/xml-parser.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">XML parser</a>, <a href="/tools/string/uuid-generator.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">UUID generator</a>, and <a href="/tools/string/string-diff-checker.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">text comparison</a> utilities.
+                Advanced string manipulation tools including <a href="/tools/string/parser" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">JSON parser</a>, <a href="/tools/string/xml-parser" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">XML parser</a>, <a href="/tools/string/uuid-generator" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">UUID generator</a>, and <a href="/tools/string/string-diff-checker" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">text comparison</a> utilities.
               </p>
-              <a href="/tools/string/uuid-generator.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/tools/string/uuid-generator" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Explore String Tools
               </a>
             </div>
@@ -105,9 +105,9 @@ const MainContent: React.FC = () => {
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Time & Date Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Convert between Unix timestamps and human-readable dates. Perfect for debugging and <a href="/tools/time/timestamp.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">timestamp conversion</a> tasks.
+                Convert between Unix timestamps and human-readable dates. Perfect for debugging and <a href="/tools/time/timestamp" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">timestamp conversion</a> tasks.
               </p>
-              <a href="/tools/time/timestamp.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/tools/time/timestamp" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Convert Timestamps
               </a>
             </div>
@@ -115,9 +115,9 @@ const MainContent: React.FC = () => {
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Cryptographic Hash Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Generate secure hashes with <a href="/tools/hash/sha1.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-1</a>, <a href="/tools/hash/sha2.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-2</a>, and <a href="/tools/hash/sha3.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-3</a> algorithms for data integrity verification.
+                Generate secure hashes with <a href="/tools/hash/sha1" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-1</a>, <a href="/tools/hash/sha2" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-2</a>, and <a href="/tools/hash/sha3" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">SHA-3</a> algorithms for data integrity verification.
               </p>
-              <a href="/tools/hash/sha2.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/tools/hash/sha2" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Generate Hash
               </a>
             </div>
@@ -125,9 +125,9 @@ const MainContent: React.FC = () => {
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Image Format Converter</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Convert images between formats like JPEG, PNG, WebP, and GIF. Optimize your images for web with our <a href="/tools/image/format-converter.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">format converter</a>.
+                Convert images between formats like JPEG, PNG, WebP, and GIF. Optimize your images for web with our <a href="/tools/image/format-converter" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">format converter</a>.
               </p>
-              <a href="/tools/image/format-converter.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/tools/image/format-converter" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Convert Images
               </a>
             </div>
@@ -135,9 +135,9 @@ const MainContent: React.FC = () => {
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Encryption & Security Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Secure your data with <a href="/tools/encrypt-decrypt/aes.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">AES encryption</a> and <a href="/tools/encrypt-decrypt/rsa.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">RSA encryption</a>. Essential tools for data protection and security.
+                Secure your data with <a href="/tools/encrypt-decrypt/aes" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">AES encryption</a> and <a href="/tools/encrypt-decrypt/rsa" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">RSA encryption</a>. Essential tools for data protection and security.
               </p>
-              <a href="/tools/encrypt-decrypt/aes.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/tools/encrypt-decrypt/aes" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Encrypt Data
               </a>
             </div>
@@ -145,16 +145,16 @@ const MainContent: React.FC = () => {
             <div className="max-w-screen p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
               <h2 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">JWT Token Tools</h2>
               <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Decode, verify, and analyze <a href="/tools/token/jwt.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">JSON Web Tokens (JWT)</a>. Perfect for debugging authentication systems.
+                Decode, verify, and analyze <a href="/tools/token/jwt" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">JSON Web Tokens (JWT)</a>. Perfect for debugging authentication systems.
               </p>
-              <a href="/tools/token/jwt.html" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+              <a href="/tools/token/jwt" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-700 rounded-lg hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                 Decode JWT
               </a>
             </div>
             <br />
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">Explore All Developer Tools</h3>
-              <p className="text-gray-700 dark:text-gray-400">Our comprehensive toolkit includes over 15 specialized utilities for developers. From <a href="/tools/encode-decode/base64.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">data encoding</a> to <a href="/tools/hash/sha2.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">hash generation</a>, we've got all your development needs covered. Check out the navigation menu to discover more tools, or visit our <a href="/blog/software-engineer/list.html" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">technical blog</a> for in-depth articles about software engineering.</p>
+              <p className="text-gray-700 dark:text-gray-400">Our comprehensive toolkit includes over 15 specialized utilities for developers. From <a href="/tools/encode-decode/base64" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">data encoding</a> to <a href="/tools/hash/sha2" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">hash generation</a>, we've got all your development needs covered. Check out the navigation menu to discover more tools, or visit our <a href="/blog/software-engineer/list" className="text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">technical blog</a> for in-depth articles about software engineering.</p>
             </div>
           </div>
         </div>
