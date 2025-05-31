@@ -131,10 +131,10 @@ function App() {
                 <Route path="/debug/ads" element={<AdTestPage />} />
 
                 {/* Blog Routes */}
-                <Route path="/blog/software-engineer/list.html" element={<Navigate to="/blog/software-engineer/list" replace />} />
-                <Route path="/blog/software-engineer/list"  element={<BlogListPage />}/>
-                <Route path="/blog/software-engineer/list/:slug.html" element={<Navigate to="/blog/software-engineer/list/:slug" replace />} />
-                <Route path="/blog/software-engineer/list/:slug" element={<BlogPage />}/>
+                <Route path="/blog/:category/list.html" element={<Navigate to="/blog/:category/list" replace />} />
+                <Route path="/blog/:category/list" element={<BlogListPage />} />
+                <Route path="/blog/:category/list/:slug.html" element={<Navigate to="/blog/:category/list/:slug" replace />} />
+                <Route path="/blog/:category/list/:slug" element={<BlogPage />} />
 
                 {/* Base64 Tool Routes */}
                 <Route path="/tools/encode-decode/base64.html" element={<Navigate to="/tools/encode-decode/base64" replace />} />
@@ -219,22 +219,6 @@ function App() {
                 {/* QR Code Generator Tool Routes */}
                 <Route path="/tools/fun/qr-generator.html" element={<Navigate to="/tools/fun/qr-generator" replace />} />
                 <Route path="/tools/fun/qr-generator" element={<QRCodeGenerator />} />
-
-                {/* Blog Routes */}
-                <Route path="/blog/software-engineer/list/about-g1gc.html" element={<Navigate to="/blog/software-engineer/list/about-g1gc" replace />} />
-                <Route path="/blog/software-engineer/list/about-g1gc" element={<BlogPage />} />
-
-                <Route path="/blog/software-engineer/list/about-zgc.html" element={<Navigate to="/blog/software-engineer/list/about-zgc" replace />} />
-                <Route path="/blog/software-engineer/list/about-zgc" element={<BlogPage />} />
-
-                <Route path="/blog/software-engineer/list/about-kafka.html" element={<Navigate to="/blog/software-engineer/list/about-kafka" replace />} />
-                <Route path="/blog/software-engineer/list/about-kafka" element={<BlogPage />} />
-
-                <Route path="/blog/software-engineer/list/about-mongodb-sharding.html" element={<Navigate to="/blog/software-engineer/list/about-mongodb-sharding" replace />} />
-                <Route path="/blog/software-engineer/list/about-mongodb-sharding" element={<BlogPage />} />
-
-                <Route path="/blog/software-engineer/list/replay-attack.html" element={<Navigate to="/blog/software-engineer/list/replay-attack" replace />} />
-                <Route path="/blog/software-engineer/list/replay-attack" element={<BlogPage />} />
 
                 <Route path="/blog/other/list.html" element={<Navigate to="/blog/other/list" replace />} />
                 <Route path="/blog/other/list" element={<BlogListPage />} />

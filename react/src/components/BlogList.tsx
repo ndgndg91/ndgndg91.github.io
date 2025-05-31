@@ -77,7 +77,7 @@ const BlogList: React.FC<BlogListProps> = ({ posts, currentCategory }) => {
           {filteredPosts.map(post => (
             <Link
               key={post.id}
-              to={`/blog/${post.category}/list/${post.id}.html`}
+              to={`/blog/${post.category}/list/${post.id}`}
               className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-50 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
             >
               {post.image && (

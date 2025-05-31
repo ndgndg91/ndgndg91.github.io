@@ -15,7 +15,7 @@ const BlogPage: React.FC = () => {
   // Get SEO data based on blog post slug and category
   const getSEOData = () => {
     const pathname = location.pathname;
-    const match = pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)\.html/);
+    const match = pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)/);
     
     if (!match) {
       return {
@@ -58,7 +58,7 @@ const BlogPage: React.FC = () => {
       try {
         const pathname = location.pathname;
         // Extract category and id from pathname
-        const match = pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)\.html/);
+        const match = pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)/);
         if (!match) {
           throw new Error('Invalid path format');
         }
