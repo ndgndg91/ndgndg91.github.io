@@ -145,8 +145,8 @@ function App() {
                 <Route path="/tools/encode-decode/url" element={<UrlTool />} />
 
                 {/* JSON Parser Tool Routes */}
-                <Route path="/tools/string/parser.html" element={<Navigate to="/tools/string/parser" replace />} />
-                <Route path="/tools/string/parser" element={<JsonParserTool />} />
+                <Route path="/tools/string/json-parser.html" element={<Navigate to="/tools/string/parser" replace />} />
+                <Route path="/tools/string/json-parser" element={<JsonParserTool />} />
 
                 {/* XML Parser Tool Routes */}
                 <Route path="/tools/string/xml-parser.html" element={<Navigate to="/tools/string/xml-parser" replace />} />
