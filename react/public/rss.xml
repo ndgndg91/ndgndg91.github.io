@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Developer Playground - Giri's Place</title>
-    <link>https://developer-playground.com</link>
+    <link>https://developer-playground.com/</link>
     <description>Developer tools and technical blog for software engineers with articles on Kafka, JVM, MongoDB and more.</description>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 May 2025 13:20:00 GMT</lastBuildDate>
@@ -10,7 +10,7 @@
     <image>
       <url>https://developer-playground.com/img/developer-playground-logo.webp</url>
       <title>Developer Playground</title>
-      <link>https://developer-playground.com</link>
+      <link>https://developer-playground.com/</link>
     </image>
     <category>Software Development</category>
     <category>Programming</category>
@@ -18,8 +18,8 @@
     <category>Developer Tools</category>
     <item>
       <title>QR Code Generator - Create QR Codes Instantly</title>
-      <link>https://developer-playground.com/tools/fun/qr-generator</link>
-      <guid>https://developer-playground.com/tools/fun/qr-generator</guid>
+      <link>https://developer-playground.com/tools/fun/qr-generator/</link>
+      <guid>https://developer-playground.com/tools/fun/qr-generator/</guid>
       <pubDate>Sun, 25 May 2025 15:00:00 GMT</pubDate>
       <description>Generate QR codes instantly from any text, URL, phone number, email, or WiFi credentials. Features real-time generation, download functionality, quick examples, and smartphone scanning instructions. Perfect for sharing links, contact information, or any text data in a scannable format.</description>
       <category>Developer Tools</category>
@@ -29,8 +29,8 @@
     </item>
     <item>
       <title>Random Roulette - Decision Making Tool</title>
-      <link>https://developer-playground.com/tools/fun/roulette</link>
-      <guid>https://developer-playground.com/tools/fun/roulette</guid>
+      <link>https://developer-playground.com/tools/fun/roulette/</link>
+      <guid>https://developer-playground.com/tools/fun/roulette/</guid>
       <pubDate>Sun, 25 May 2025 14:00:00 GMT</pubDate>
       <description>Having trouble making decisions? Try our interactive random roulette! Perfect for choosing lunch menus, activities, or any random selection. Features sound effects, customizable options, presets for different categories, and the ability to save/load your configurations.</description>
       <category>Developer Tools</category>
@@ -39,8 +39,8 @@
     </item>
     <item>
       <title>Color Palette Generator - Design Tool</title>
-      <link>https://developer-playground.com/tools/fun/color-palette</link>
-      <guid>https://developer-playground.com/tools/fun/color-palette</guid>
+      <link>https://developer-playground.com/tools/fun/color-palette/</link>
+      <guid>https://developer-playground.com/tools/fun/color-palette/</guid>
       <pubDate>Sun, 25 May 2025 14:30:00 GMT</pubDate>
       <description>Create beautiful color combinations for your designs! Features various themes like pastel, vibrant, earthy tones and more. Generate harmonious color schemes, copy hex codes with one click, and export palettes as CSS or JSON for easy integration into your projects.</description>
       <category>Developer Tools</category>
@@ -50,8 +50,8 @@
     </item>
     <item>
       <title>Spring Boot on EKS: Optimizing Health Probes for Efficient Deployments</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot/</guid>
       <pubDate>Thu, 08 May 2025 05:33:00 GMT</pubDate>
       <description>When deploying Spring Boot applications on Amazon Elastic Kubernetes Service (EKS), managing application health is crucial for reliable service operations. Kubernetes provides three types of health probes—startup, liveness, and readiness—that work together to ensure your applications start correctly, remain responsive, and handle traffic appropriately.</description>
       <category>Distributed System</category>
@@ -61,8 +61,8 @@
     </item>
     <item>
       <title>Distributed Locks in Spring Boot: Implementation Options and Best Practices</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/distributed-lock</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/distributed-lock</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/distributed-lock/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/distributed-lock/</guid>
       <pubDate>Tue, 06 May 2025 05:33:00 GMT</pubDate>
       <description>Distributed locks are synchronization mechanisms used in distributed systems to prevent multiple processes, services, or servers from concurrently executing critical sections of code or accessing shared resources simultaneously.</description>
       <category>Distributed System</category>
@@ -70,8 +70,8 @@
     </item>
     <item>
       <title>RequestContextHolder in Spring Boot: Access and Applications</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/request-context-holder</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/request-context-holder</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/request-context-holder/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/request-context-holder/</guid>
       <pubDate>Thu, 01 May 2025 05:33:00 GMT</pubDate>
       <description>RequestContextHolder is a powerful utility class in Spring Framework that provides access to the current HTTP request and response objects through a thread-local storage mechanism.</description>
       <category>Web Development</category>
@@ -79,8 +79,8 @@
     </item>
     <item>
       <title>Cache Control &amp; ETags with Spring Boot</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/etag</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/etag</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/etag/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/etag/</guid>
       <pubDate>Thu, 01 May 2025 05:33:00 GMT</pubDate>
       <description>Cache Control &amp; ETags: Optimizing Web Performance with Spring Boot.</description>
       <category>Web Development</category>
@@ -89,8 +89,8 @@
     </item>
     <item>
       <title>CORS (Cross-Origin Resource Sharing) &amp; SOP (Same-Origin Policy)</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/cors-sop</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/cors-sop</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/cors-sop/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/cors-sop/</guid>
       <pubDate>Wed, 30 Apr 2025 01:33:00 GMT</pubDate>
       <description>Explore the concepts of CORS and SOP in web development, including how they work together to prevent CSRF attacks and how to implement CORS.</description>
       <category>Web Development</category>
@@ -99,8 +99,8 @@
     </item>
     <item>
       <title>Optimizing Kafka Consumer Performance</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance/</guid>
       <pubDate>Thu, 10 April 2025 00:00:00 GMT</pubDate>
       <description>Explore effective strategies to optimize Kafka consumer performance including partition-pod 1:1 mapping, concurrent listeners, Confluent Parallel Consumer, and asynchronous processing patterns. Learn implementation techniques, advantages, and trade-offs for each approach to maximize throughput and resource efficiency in your Kafka-based systems.</description>
       <category>Kafka</category>
@@ -108,8 +108,8 @@
     </item>
     <item>
       <title>Kafka Basics: Topics, Partitions, and Core Concepts</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/kafka-basic</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-basic</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-basic/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-basic/</guid>
       <pubDate>Sun, 15 Oct 2024 00:00:00 GMT</pubDate>
       <description>Learn about Apache Kafka fundamentals including topics, partitions, offsets, producers, consumers, delivery semantics, brokers, Zookeeper, and KRaft concepts.</description>
       <category>Kafka</category>
@@ -117,8 +117,8 @@
     </item>
     <item>
       <title>MongoDB Sharding Cluster with Docker Compose</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/mongo-sharding</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/mongo-sharding</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/mongo-sharding/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/mongo-sharding/</guid>
       <pubDate>Fri, 22 Sep 2024 00:00:00 GMT</pubDate>
       <description>A practical guide to setting up a MongoDB sharding cluster using Docker Compose. Learn about sharding architecture, configuration, and best practices.</description>
       <category>MongoDB</category>
@@ -127,8 +127,8 @@
     </item>
     <item>
       <title>Controlling Processing Rate in Kafka Consumers</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate/</guid>
       <pubDate>Wed, 18 Oct 2024 00:00:00 GMT</pubDate>
       <description>Strategies and implementation techniques for managing message processing rates in Kafka consumers to optimize throughput and prevent system overload.</description>
       <category>Kafka</category>
@@ -136,8 +136,8 @@
     </item>
     <item>
       <title>MCP Filesystem Configuration and Usage</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem/</guid>
       <pubDate>Tue, 26 Sep 2024 00:00:00 GMT</pubDate>
       <description>Explore how to configure the Model Connector Provider (MCP) filesystem interface and examine real-world use cases in development environments.</description>
       <category>MCP</category>
@@ -145,8 +145,8 @@
     </item>
     <item>
       <title>Effective Identifier Generation in Distributed Systems</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation/</guid>
       <pubDate>Mon, 09 Oct 2024 00:00:00 GMT</pubDate>
       <description>Compare and implement effective strategies for generating unique identifiers in distributed environments, avoiding duplication, and ensuring scalability.</description>
       <category>Distributed Systems</category>
@@ -154,8 +154,8 @@
     </item>
     <item>
       <title>JVM Warmup: Optimizing Java Application Startup</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/jvm-warmup</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/jvm-warmup</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/jvm-warmup/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/jvm-warmup/</guid>
       <pubDate>Fri, 13 Oct 2024 00:00:00 GMT</pubDate>
       <description>Learn about JVM warmup process, how the class loader works through its three stages, and techniques to improve Java application startup performance.</description>
       <category>Java</category>
@@ -164,8 +164,8 @@
     </item>
     <item>
       <title>ZGC: Java's Low-Latency Garbage Collector</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/about-zgc</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/about-zgc</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/about-zgc/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/about-zgc/</guid>
       <pubDate>Mon, 02 Oct 2024 00:00:00 GMT</pubDate>
       <description>Explore ZGC (Z Garbage Collector), Java's high-performance garbage collector designed for low pause times under 10ms, regardless of heap size from megabytes to terabytes.</description>
       <category>Java</category>
@@ -174,8 +174,8 @@
     </item>
     <item>
       <title>Understanding Java's G1 Garbage Collector</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/about-g1gc</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/about-g1gc</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/about-g1gc/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/about-g1gc/</guid>
       <pubDate>Wed, 27 Sep 2024 00:00:00 GMT</pubDate>
       <description>Deep dive into Java's Garbage-First (G1) garbage collector, how it works, and why it became the default GC in Java 9 for multi-processor machines with large memory.</description>
       <category>Java</category>
@@ -184,8 +184,8 @@
     </item>
     <item>
       <title>How to Prevent Replay Attacks in Web Security</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/replay-attack</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/replay-attack</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/replay-attack/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/replay-attack/</guid>
       <pubDate>Thu, 05 Oct 2024 00:00:00 GMT</pubDate>
       <description>Understand replay attacks in network security, how they intercept and reuse data packets, and effective prevention methods to protect your applications.</description>
       <category>Security</category>
@@ -193,8 +193,8 @@
     </item>
     <item>
       <title>AWS DocumentDB Comparison Analysis</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/documentdb-cons</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/documentdb-cons</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/documentdb-cons/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/documentdb-cons/</guid>
       <pubDate>Sun, 13 Oct 2025 00:00:00 GMT</pubDate>
       <description>Current Issues with AWS DocumentDB (Instance-Based Cluster) - Does not support zero-downtime deployments during bug fixes, increasing code-level management points.</description>
       <category>MongoDB</category>
@@ -202,16 +202,16 @@
     </item>
     <item>
       <title>Understanding R2DBC Connection Pool</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/r2dbc-conn-pool</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/r2dbc-conn-pool</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/r2dbc-conn-pool/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/r2dbc-conn-pool/</guid>
       <pubDate>Mon, 21 Oct 2025 00:00:00 GMT</pubDate>
       <description>R2DBC connection pooling implements a fundamentally different approach compared to traditional JDBC connection pools like HikariCP, especially in how it handles idle connections and pool initialization.</description>
       <category>Database</category>
     </item>
     <item>
       <title>Handle Floating Point</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/handle-floating-point</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/handle-floating-point</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/handle-floating-point/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/handle-floating-point/</guid>
       <pubDate>Wed, 23 Oct 2025 00:00:00 GMT</pubDate>
       <description>When developing financial applications or systems requiring precise calculations, floating-point precision issues can lead to critical bugs. These problems occur in JVM-based languages like Kotlin, and deciding how to store and process values, especially when interacting with databases, is a crucial design decision.</description>
       <category>JVM</category>
@@ -219,8 +219,8 @@
     </item>
     <item>
       <title>IP Address Lookup - Check Your IP Information</title>
-      <link>https://developer-playground.com/tools/network/ip-address</link>
-      <guid>https://developer-playground.com/tools/network/ip-address</guid>
+      <link>https://developer-playground.com/tools/network/ip-address/</link>
+      <guid>https://developer-playground.com/tools/network/ip-address/</guid>
       <pubDate>Sun, 25 May 2025 15:30:00 GMT</pubDate>
       <description>Check your IP address information including IPv4, IPv6, and ISP details. Features real-time IP lookup, location information, and copy functionality for easy sharing.</description>
       <category>Developer Tools</category>
@@ -229,8 +229,8 @@
     </item>
     <item>
       <title>HTTP Cookie: The Core Mechanism of Web State Management</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/http-cookie</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/http-cookie</guid>
+      <link>https://developer-playground.com/blog/software-engineer/list/http-cookie/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/http-cookie/</guid>
       <pubDate>Mon, 26 May 2025 00:00:00 GMT</pubDate>
       <description>Explore the fundamentals of HTTP Cookies, their security attributes, and how they are used in modern web development.</description>
       <category>HTTP</category>
@@ -243,8 +243,8 @@
     </item>
     <item>
       <title>Regex Cheatsheet - Language-specific Patterns</title>
-      <link>https://developer-playground.com/tools/string/regex-cheatsheet</link>
-      <guid>https://developer-playground.com/tools/string/regex-cheatsheet</guid>
+      <link>https://developer-playground.com/tools/string/regex-cheatsheet/</link>
+      <guid>https://developer-playground.com/tools/string/regex-cheatsheet/</guid>
       <pubDate>Tue, 28 May 2025 15:30:00 GMT</pubDate>
       <description>Comprehensive regex patterns for common use cases across different programming languages. Includes email, URL, phone number, IPv4/IPv6, and date format patterns for JavaScript/TypeScript, Python, Java, Kotlin, Go, and Rust.</description>
       <category>Developer Tools</category>
