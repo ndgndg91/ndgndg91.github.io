@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
@@ -34,8 +34,15 @@ const Root = () => (
   </StrictMode>
 );
 
-// Render the app
-const root = createRoot(document.getElementById('root')!);
-root.render(<Root />);
+const container = document.getElementById('root')!;
+
+// react-snap을 위한 hydration vs render 분기
+if (container.hasChildNodes()) {
+  // 서버사이드에서 미리 렌더링된 HTML이 있는 경우 hydrate
+  hydrateRoot(container, <Root />);
+} else {
+  // 일반적인 클라이언트 렌더링
+  createRoot(container).render(<Root />);
+}
 
 export default Root;

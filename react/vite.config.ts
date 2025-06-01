@@ -52,6 +52,8 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    // react-snap 호환성을 위한 설정
+    target: 'es2015', // ES2015로 타겟 변경 (Puppeteer 호환)
     commonjsOptions: {
       transformMixedEsModules: true,
     },
@@ -60,19 +62,16 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
       },
       output: {
-        manualChunks: {
-          // 기본적인 청크 분리만 유지
-          vendor: ['react', 'react-dom'],
-          router: ['react-router-dom']
-        },
-        // 파일명에 해시 추가로 캐싱 최적화
-        chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]'
+        // react-snap을 위해 청크를 단순화
+        manualChunks: undefined,
+        // 파일명을 예측 가능하게 설정
+        chunkFileNames: 'assets/[name].js',
+        entryFileNames: 'assets/[name].js',
+        assetFileNames: 'assets/[name].[ext]'
       }
     },
     // 압축 최적화 (esbuild 사용)
-    minify: true, // 기본값은 esbuild
+    minify: 'esbuild', // 명시적으로 esbuild 사용
     // 소스맵 비활성화 (배포 크기 줄이기)
     sourcemap: false,
     // 청크 크기 경고 조정

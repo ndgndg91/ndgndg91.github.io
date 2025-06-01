@@ -61,6 +61,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-performance</loc>
+    <lastmod>2025-04-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://developer-playground.com/blog/software-engineer/list/simple-distributed-id-generation</loc>
     <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -141,7 +147,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://developer-playground.com/tools/string/json-parser</loc>
+    <loc>https://developer-playground.com/tools/string/parser</loc>
     <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -153,7 +159,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://developer-playground.com/tools/string/uuid</loc>
+    <loc>https://developer-playground.com/tools/string/uuid-generator</loc>
     <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -195,19 +201,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://developer-playground.com/tools/hash/sha-1</loc>
+    <loc>https://developer-playground.com/tools/hash/sha1</loc>
     <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://developer-playground.com/tools/hash/sha-2</loc>
+    <loc>https://developer-playground.com/tools/hash/sha2</loc>
     <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://developer-playground.com/tools/hash/sha-3</loc>
+    <loc>https://developer-playground.com/tools/hash/sha3</loc>
     <lastmod>2025-04-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
