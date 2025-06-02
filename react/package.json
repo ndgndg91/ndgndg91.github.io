@@ -78,7 +78,7 @@
       "/",
       "/tools/encode-decode/base64",
       "/tools/encode-decode/url",
-      "/tools/string/parser",
+      "/tools/string/json-parser",
       "/tools/string/xml-parser",
       "/tools/string/uuid-generator",
       "/tools/string/random-hex",
