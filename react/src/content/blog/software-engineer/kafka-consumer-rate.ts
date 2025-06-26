@@ -17,7 +17,7 @@ export const kafkaConsumerRate: BlogPost = {
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
-          <a href="/blog/software-engineer/list.html" class="ml-2 hover:text-gray-700 dark:hover:text-gray-300">Software Engineer</a>
+          <a href="/blog/software-engineer/list" class="ml-2 hover:text-gray-700 dark:hover:text-gray-300">Software Engineer</a>
         </li>
         <li class="flex items-center">
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
