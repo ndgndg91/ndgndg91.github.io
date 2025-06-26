@@ -49,6 +49,17 @@
       <category>Color Theory</category>
     </item>
     <item>
+      <title>Graceful Shutdown of Spring Boot Applications in Kubernetes: SIGTERM, preStopHook, and Actuator</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/graceful-shutdown-spring-boot-kubernetes/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/graceful-shutdown-spring-boot-kubernetes/</guid>
+      <pubDate>Thu, 26 June 2025 23:33:00 GMT</pubDate>
+      <description>In modern application development using microservices architecture and container environments, especially Kubernetes, "application termination" means more than just shutting down a process. Abrupt termination can lead to serious problems like data loss, service inconsistencies, and degraded user experience.</description>
+      <category>Distributed System</category>
+      <category>Spring Boot</category>
+      <category>DevOps</category>
+      <category>MSA</category>
+    </item>
+    <item>
       <title>Spring Boot on EKS: Optimizing Health Probes for Efficient Deployments</title>
       <link>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/k8s-probes-spring-boot/</guid>
