@@ -49,6 +49,18 @@
       <category>Color Theory</category>
     </item>
     <item>
+      <title>Effectively Handling RDBMS Transaction Deadlocks in Spring Boot</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/spring-boot-rdbms-deadlock-handling/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/spring-boot-rdbms-deadlock-handling/</guid>
+      <pubDate>Sun, 06 July 2025 23:33:00 GMT</pubDate>
+      <description>'Learn strategies and implementation methods to prevent, detect, and recover from RDBMS transaction deadlocks in Spring Boot applications.</description>
+      <category>Distributed System</category>
+      <category>Spring Boot</category>
+      <category>Transaction</category>
+      <category>Deadlock</category>
+      <category>Concurrency</category>
+    </item>
+    <item>
       <title>Graceful Shutdown of Spring Boot Applications in Kubernetes: SIGTERM, preStopHook, and Actuator</title>
       <link>https://developer-playground.com/blog/software-engineer/list/graceful-shutdown-spring-boot-kubernetes/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/graceful-shutdown-spring-boot-kubernetes/</guid>
