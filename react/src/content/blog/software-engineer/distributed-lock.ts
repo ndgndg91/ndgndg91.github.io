@@ -6,7 +6,7 @@ export const distributedLockRedis: BlogPost = {
   title: 'Distributed Locks in Spring Boot: Implementation Options and Best Practices',
   description: 'Distributed locks are synchronization mechanisms used in distributed systems to prevent multiple processes, services, or servers from concurrently executing critical sections of code or accessing shared resources simultaneously.',
   date: '2025-05-03',
-  updatedDate: '2025-05-03',
+  updatedDate: '2025-07-06', // Updated date to reflect feedback application
   tags: ['Distributed System','Spring Boot','Redis','Concurrency','ShedLock','Redisson','Distributed Lock','Synchronization','Spring Boot'],
   image: 'distributed-lock-redis.webp',
   content:`
@@ -34,10 +34,8 @@ export const distributedLockRedis: BlogPost = {
       <h1 data-title="true" class="mt-2 text-3xl font-medium tracking-tight text-gray-950 dark:text-white">
         Distributed Locks in Spring Boot: Implementation Options and Best Practices
       </h1>
-      <div class="text-sm text-gray-500 mt-2">Updated: May 5, 2025</div>
-    </header>
+      <div class="text-sm text-gray-500 mt-2">Updated: July 6, 2025</div> </header>
 
-    <!-- Table of Contents for mobile view -->
     <div class="xl:hidden mt-4 mb-6 border rounded p-4 bg-gray-50 dark:bg-gray-800">
       <h3 class="font-bold text-lg mb-2">Table of Contents</h3>
       <ul class="max-w-md space-y-1 text-gray-700 list-disc list-inside dark:text-gray-400">
@@ -69,16 +67,12 @@ export const distributedLockRedis: BlogPost = {
         </ul>
       </div>
 
-      <!-- Core Concept Diagram -->
       <div class="my-8">
         <svg viewBox="0 0 800 350" xmlns="http://www.w3.org/2000/svg">
-          <!-- Background -->
           <rect width="800" height="350" fill="#f8f9fa" rx="10" ry="10"/>
 
-          <!-- Title -->
           <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Distributed Lock Architecture</text>
 
-          <!-- Application Instances -->
           <rect x="100" y="80" width="120" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="8" ry="8"/>
           <text x="160" y="115" font-family="Arial" font-size="14" text-anchor="middle">App Instance 1</text>
 
@@ -88,36 +82,28 @@ export const distributedLockRedis: BlogPost = {
           <rect x="100" y="240" width="120" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="8" ry="8"/>
           <text x="160" y="275" font-family="Arial" font-size="14" text-anchor="middle">App Instance 3</text>
 
-          <!-- Lock Server -->
           <rect x="400" y="140" width="140" height="80" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="8" ry="8"/>
           <text x="470" y="170" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Redis</text>
           <text x="470" y="190" font-family="Arial" font-size="12" text-anchor="middle">Lock Storage</text>
 
-          <!-- Shared Resource -->
           <rect x="650" y="140" width="120" height="80" fill="#e8f5e9" stroke="#388e3c" stroke-width="2" rx="8" ry="8"/>
           <text x="710" y="170" font-family="Arial" font-size="14" text-anchor="middle">Shared</text>
           <text x="710" y="190" font-family="Arial" font-size="14" text-anchor="middle">Resource</text>
 
-          <!-- Connection Lines -->
-          <!-- Instance 1 -> Redis -->
           <path d="M220,110 L400,160" stroke="#1976d2" stroke-width="2" />
           <polygon points="395,151 400,160 393,164" fill="#1976d2"/>
           <text x="300" y="115" font-family="Arial" font-size="10" text-anchor="middle" fill="#1976d2">Acquire Lock</text>
 
-          <!-- Instance 2 -> Redis (failed) -->
           <path d="M220,180 L400,180" stroke="#ef5350" stroke-width="2" stroke-dasharray="5,5"/>
           <text x="300" y="170" font-family="Arial" font-size="10" text-anchor="middle" fill="#ef5350">Lock Attempt (Failed)</text>
 
-          <!-- Instance 3 -> Redis (waiting) -->
           <path d="M220,250 L400,200" stroke="#ff9800" stroke-width="2" stroke-dasharray="5,5"/>
           <text x="300" y="255" font-family="Arial" font-size="10" text-anchor="middle" fill="#ff9800">Waiting for Lock</text>
 
-          <!-- Redis -> Resource -->
           <path d="M540,180 L650,180" stroke="#388e3c" stroke-width="2" />
           <polygon points="642,177 650,180 643,184" fill="#388e3c"/>
           <text x="595" y="170" font-family="Arial" font-size="10" text-anchor="middle" fill="#388e3c">Protected Access</text>
 
-          <!-- Lock Status Indicators -->
           <circle cx="80" cy="110" r="8" fill="#4caf50"/>
           <text x="65" y="114" font-family="Arial" font-size="10" text-anchor="end">Has Lock</text>
 
@@ -127,7 +113,6 @@ export const distributedLockRedis: BlogPost = {
           <circle cx="80" cy="270" r="8" fill="#ff9800"/>
           <text x="65" y="274" font-family="Arial" font-size="10" text-anchor="end">Waiting</text>
 
-          <!-- Legend -->
           <rect x="150" y="310" width="500" height="25" fill="#f5f5f5" stroke="#9e9e9e" stroke-width="1" rx="5" ry="5"/>
           <text x="400" y="327" font-family="Arial" font-size="12" text-anchor="middle">Only one application instance can access the resource at a time</text>
         </svg>
@@ -163,31 +148,54 @@ export const distributedLockRedis: BlogPost = {
           <li class="whitespace-nowrap mobile-wrap">Scalable through Redis Cluster</li>
         </ul>
 
-        <p class="text-gray-700 dark:text-gray-400 mt-3">
-          The basic Redis distributed lock algorithm (Redlock) uses the following principles:
+        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200 mt-4">1. Simple Redis Distributed Lock</h3>
+        <p class="text-gray-700 dark:text-gray-400 mt-2">
+          The most straightforward way to implement a distributed lock with Redis is by using the <code>SET key value NX PX expiration_time</code> command for acquisition and a Lua script for safe release.
         </p>
-
-        <div class="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-4 mt-4">
-          <h3 class="font-bold text-lg text-yellow-800 dark:text-yellow-200">⚠️ Important Note on Redlock</h3>
-          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
-            While we mention the Redlock algorithm, it's crucial to understand that Redlock is specifically designed for multi-instance Redis environments. Using Redlock principles with a single Redis instance does not provide the reliability guarantees that the algorithm is designed for. In single-instance Redis environments, lock reliability cannot be guaranteed during Redis failures or network partitions.
-          </p>
-          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
-            For production systems requiring high reliability, consider using either a Redis Cluster with proper Redlock implementation, or alternative distributed coordination systems like Zookeeper or etcd.
-          </p>
-        </div>
-
         <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mt-4">
-          <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200">Redis Distributed Lock Algorithm</h3>
+          <h4 class="font-bold text-lg text-gray-800 dark:text-gray-200">Basic Lock Principles:</h4>
           <ol class="list-decimal list-inside space-y-2 text-gray-700 dark:text-gray-400 mt-3">
-            <li class="whitespace-nowrap mobile-wrap">Acquire lock using SET with NX (set-if-not-exists) and expiration time</li>
-            <li class="whitespace-nowrap mobile-wrap">Generate unique lock identifier to ensure only lock owner can release it</li>
-            <li class="whitespace-nowrap mobile-wrap">Execute the critical section if lock is acquired</li>
-            <li class="whitespace-nowrap mobile-wrap">Release the lock using a Lua script to ensure atomic check-and-delete</li>
-            <li class="whitespace-nowrap mobile-wrap">Include auto-expiry as a safety mechanism for failed processes</li>
+            <li class="whitespace-nowrap mobile-wrap">Acquire lock using <code>SET</code> with <code>NX</code> (set-if-not-exists) and an expiration time (<code>PX</code>).</li>
+            <li class="whitespace-nowrap mobile-wrap">Generate a unique lock identifier (e.g., UUID) as the lock value to ensure only the lock owner can release it.</li>
+            <li class="whitespace-nowrap mobile-wrap">Execute the critical section if the lock is successfully acquired.</li>
+            <li class="whitespace-nowrap mobile-wrap">Release the lock using a Lua script to ensure atomic check-and-delete (verifying the unique ID before deletion).</li>
+            <li class="whitespace-nowrap mobile-wrap">Include auto-expiry (via <code>PX</code>) as a safety mechanism for processes that crash before releasing the lock.</li>
           </ol>
         </div>
 
+        <div class="bg-red-50 dark:bg-red-900 rounded-lg p-4 mt-4">
+          <h3 class="font-bold text-lg text-red-800 dark:text-red-200">⚠️ Critical Limitations of Simple Redis Locks</h3>
+          <p class="text-red-700 dark:text-red-300 mt-2">
+            While simple and efficient, this approach has a critical single point of failure (SPOF) if relying on a single Redis master instance. If the Redis master goes down, all active locks are lost. More importantly, in a **master-replica setup**, if the master fails before the lock data is replicated to its replica, and the replica is promoted to master, a **race condition** can occur. The new master won't have the original lock, allowing another client to acquire it, leading to two clients concurrently holding the "same" lock. This can severely compromise data integrity in high-criticality applications.
+          </p>
+        </div>
+
+        <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200 mt-4">2. Redlock Algorithm (for Enhanced Safety)</h3>
+        <p class="text-gray-700 dark:text-gray-400 mt-2">
+          To address the limitations of simple Redis locks, especially the master-replica failover issue, the **Redlock algorithm** was proposed. Redlock provides a higher guarantee of safety by operating on **multiple, completely independent Redis master instances**.
+        </p>
+        <div class="bg-blue-50 dark:bg-blue-900 rounded-lg p-4 mt-4">
+            <h4 class="font-bold text-lg text-blue-800 dark:text-blue-200">How Redlock Works:</h4>
+            <ol class="list-decimal list-inside space-y-2 text-blue-700 dark:text-blue-300 mt-3">
+                <li class="whitespace-nowrap mobile-wrap">A client attempts to acquire the lock on <b>N (typically 5, an odd number) independent Redis master instances</b>.</li>
+                <li class="whitespace-nowrap mobile-wrap">For each instance, it sends the <code>SET key value NX PX expiration_time</code> command, with a short timeout.</li>
+                <li class="whitespace-nowrap mobile-wrap">The lock is considered acquired only if the client successfully obtains it from a <b>majority of the Redis instances (N/2 + 1)</b>.</li>
+                <li class="whitespace-nowrap mobile-wrap">The client calculates the time elapsed during acquisition. If this time is greater than the lock's validity time, the lock is considered invalid and all acquired locks are released.</li>
+                <li class="whitespace-nowrap mobile-wrap">To release the lock, the client sends a <code>DEL</code> command (using the safe Lua script) to all N instances, regardless of whether it initially acquired the lock on them.</li>
+            </ol>
+        </div>
+        <p class="text-gray-700 dark:text-gray-400 mt-2">
+          **Redlock's strength lies in its distributed consensus model.** By requiring a majority vote from independent instances, it drastically reduces the chance of two clients simultaneously acquiring the same lock, even during complex failure scenarios like network partitions or master failovers where replication might lag.
+        </p>
+        <div class="bg-yellow-50 dark:bg-yellow-900 rounded-lg p-4 mt-4">
+          <h3 class="font-bold text-lg text-yellow-800 dark:text-yellow-200">⚠️ Redlock vs. Redis Cluster</h3>
+          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
+            It's crucial to understand that Redlock uses multiple <b>independent Redis instances</b>. While a Redis Cluster also involves multiple masters, its primary purpose is data sharding and automatic failover within a single logical cluster. Redlock's safety guarantees come from the *independence* of the Redis instances involved in the quorum, not necessarily from them being part of a single Redis Cluster. You could set up 5 separate standalone Redis servers, or 5 separate Master-Replica groups, and apply Redlock across them.
+          </p>
+          <p class="text-yellow-700 dark:text-yellow-300 mt-2">
+            For production systems requiring the highest reliability for critical locks, Redlock (often implemented via a library like Redisson) or dedicated distributed coordination systems like Zookeeper or etcd are recommended.
+          </p>
+        </div>
         <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 mt-4">
           <h3 class="font-bold text-lg text-gray-800 dark:text-gray-200">Redis Lock Basic Implementation</h3>
           <div class="bg-red-50 dark:bg-red-900 rounded-lg p-4 mt-4">
@@ -242,33 +250,25 @@ export const distributedLockRedis: BlogPost = {
 
         <div class="my-8">
           <svg viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg">
-            <!-- Background -->
             <rect width="800" height="250" fill="#f8f9fa" rx="10" ry="10"/>
 
-            <!-- Title -->
             <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Spring Integration Lock Architecture</text>
 
-            <!-- Spring Context -->
             <rect x="50" y="60" width="700" height="160" fill="#f1f8e9" stroke="#7cb342" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
             <text x="120" y="80" font-family="Arial" font-size="14" font-weight="bold">Spring Application Context</text>
 
-            <!-- Scheduler -->
             <rect x="80" y="100" width="150" height="50" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5" ry="5"/>
             <text x="155" y="130" font-family="Arial" font-size="14" text-anchor="middle">Scheduler</text>
 
-            <!-- Redis Connection Factory -->
             <rect x="500" y="100" width="200" height="50" fill="#ffecb3" stroke="#ffa000" stroke-width="2" rx="5" ry="5"/>
             <text x="600" y="130" font-family="Arial" font-size="14" text-anchor="middle">RedisConnectionFactory</text>
 
-            <!-- Lock Registry -->
             <rect x="320" y="100" width="150" height="50" fill="#e8f5e9" stroke="#388e3c" stroke-width="2" rx="5" ry="5"/>
             <text x="395" y="130" font-family="Arial" font-size="14" text-anchor="middle">RedisLockRegistry</text>
 
-            <!-- Service -->
             <rect x="200" y="170" width="200" height="40" fill="#e1f5fe" stroke="#0288d1" stroke-width="2" rx="5" ry="5"/>
             <text x="300" y="195" font-family="Arial" font-size="14" text-anchor="middle">DistributedTaskService</text>
 
-            <!-- Arrows -->
             <path d="M155,150 L155,170 L200,170" stroke="#1976d2" stroke-width="2" fill="none" />
             <polygon points="193,167 200,170 193,174" fill="#1976d2" stroke="#1976d2" stroke-width="1"/>
 
@@ -421,36 +421,28 @@ export const distributedLockRedis: BlogPost = {
 
         <div class="my-8">
           <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
-            <!-- Background -->
             <rect width="800" height="280" fill="#f8f9fa" rx="10" ry="10"/>
 
-            <!-- Title -->
             <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">ShedLock Architecture</text>
 
-            <!-- Spring Context -->
             <rect x="50" y="60" width="700" height="190" fill="#f1f8e9" stroke="#7cb342" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
             <text x="120" y="80" font-family="Arial" font-size="14" font-weight="bold">Spring Application Context</text>
 
-            <!-- Redis Provider -->
             <rect x="550" y="100" width="150" height="60" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="5" ry="5"/>
             <text x="625" y="130" font-family="Arial" font-size="14" text-anchor="middle">Redis</text>
             <text x="625" y="150" font-family="Arial" font-size="12" text-anchor="middle">LockProvider</text>
 
-            <!-- ShedLock Core -->
             <rect x="350" y="100" width="150" height="60" fill="#e8f5e9" stroke="#388e3c" stroke-width="2" rx="5" ry="5"/>
             <text x="425" y="130" font-family="Arial" font-size="14" text-anchor="middle">ShedLock</text>
             <text x="425" y="150" font-family="Arial" font-size="12" text-anchor="middle">LockManager</text>
 
-            <!-- Scheduler -->
             <rect x="100" y="100" width="150" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5" ry="5"/>
             <text x="175" y="130" font-family="Arial" font-size="14" text-anchor="middle">Spring</text>
             <text x="175" y="150" font-family="Arial" font-size="12" text-anchor="middle">TaskScheduler</text>
 
-            <!-- Scheduled Task -->
             <rect x="200" y="200" width="250" height="40" fill="#e1f5fe" stroke="#0288d1" stroke-width="2" rx="5" ry="5"/>
             <text x="330" y="225" font-family="Arial" font-size="14" text-anchor="middle">@ScheduledLock Tasks</text>
 
-            <!-- Arrows -->
             <path d="M250,130 L350,130" stroke="#388e3c" stroke-width="2" />
             <polygon points="343,127 350,130 343,134" fill="#388e3c"/>
             <text x="300" y="120" font-family="Arial" font-size="10" text-anchor="middle">Intercepts</text>
@@ -617,32 +609,25 @@ export const distributedLockRedis: BlogPost = {
 
         <div class="my-8">
           <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
-            <!-- Background -->
             <rect width="800" height="280" fill="#f8f9fa" rx="10" ry="10"/>
 
-            <!-- Title -->
             <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Redisson Lock Architecture</text>
 
-            <!-- Lock Types -->
             <rect x="50" y="60" width="700" height="190" fill="#f1f8e9" stroke="#7cb342" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
             <text x="120" y="80" font-family="Arial" font-size="14" font-weight="bold">Redisson Distributed Locks</text>
 
-            <!-- Redis Server -->
             <rect x="520" y="110" width="180" height="120" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="8" ry="8"/>
             <text x="610" y="130" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Redis Server</text>
 
-            <!-- Lock Data Inside Redis -->
             <rect x="540" y="150" width="140" height="30" fill="#ffecb3" stroke="#ffa000" stroke-width="1" rx="4" ry="4"/>
             <text x="610" y="170" font-family="Arial" font-size="12" text-anchor="middle">Lock Data</text>
 
             <rect x="540" y="190" width="140" height="30" fill="#ffecb3" stroke="#ffa000" stroke-width="1" rx="4" ry="4"/>
             <text x="610" y="210" font-family="Arial" font-size="12" text-anchor="middle">Watchdog Thread</text>
 
-            <!-- Redisson Client -->
             <rect x="100" y="110" width="380" height="120" fill="#e8f5e9" stroke="#388e3c" stroke-width="2" rx="8" ry="8"/>
             <text x="290" y="130" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Redisson Client</text>
 
-            <!-- Lock Types -->
             <rect x="120" y="150" width="100" height="30" fill="#e1f5fe" stroke="#0288d1" stroke-width="1" rx="4" ry="4"/>
             <text x="170" y="170" font-family="Arial" font-size="12" text-anchor="middle">RLock</text>
 
@@ -661,7 +646,6 @@ export const distributedLockRedis: BlogPost = {
             <rect x="360" y="190" width="100" height="30" fill="#e1f5fe" stroke="#0288d1" stroke-width="1" rx="4" ry="4"/>
             <text x="410" y="210" font-family="Arial" font-size="7" text-anchor="middle">RPermitExpirableSemaphore</text>
 
-            <!-- Arrows -->
             <path d="M480,170 L520,170" stroke="#f57c00" stroke-width="2" />
             <polygon points="512,167 520,170 513,174" fill="#f57c00"/>
             <text x="500" y="160" font-family="Arial" font-size="7" text-anchor="middle">Lua Scripts</text>
@@ -702,22 +686,54 @@ export const distributedLockRedis: BlogPost = {
       <pre><code id="redisson-config" class="language-java text-white"><span class="text-yellow-500">@Configuration</span>
 <span class="text-blue-400">public class</span> <span class="text-yellow-300">RedissonConfig</span> {
 
-    <span class="text-yellow-500">@Bean</span>
-    <span class="text-blue-400">public</span> RedissonClient <span class="text-yellow-300">redissonClient</span>() {
-        Config config = <span class="text-blue-400">new</span> <span class="text-purple-300">Config</span>();
+    <span class="text-green-300">// START MODIFICATION 2.1: Redisson Config for Redlock</span>
+    <span class="text-green-300">// For a true Redlock setup, Redisson needs to connect to multiple independent Redis instances.</span>
+    <span class="text-green-300">// This is typically achieved by configuring multiple single servers or using replicated/master-slave configurations</span>
+    <span class="text-green-300">// where each "node" in the list is an independent Redis master (potentially with its own replicas).</span>
+    <span class="text-green-300">// Here, we provide an example of how you would configure Redisson to connect to multiple independent Redis servers</span>
+    <span class="text-green-300">// which are used as votes for the Redlock algorithm.</span>
 
-        <span class="text-green-300">// Single Redis server configuration</span>
-        config.<span class="text-yellow-300">useSingleServer</span>()
-              .<span class="text-yellow-300">setAddress</span>(<span class="text-orange-300">"redis://localhost:6379"</span>)
-              .<span class="text-yellow-300">setConnectionPoolSize</span>(64)
-              .<span class="text-yellow-300">setConnectionMinimumIdleSize</span>(10)
-              .<span class="text-yellow-300">setConnectTimeout</span>(10000);
-
-        <span class="text-green-300">// For Redis Cluster</span>
-        <span class="text-green-300">// config.useClusterServers().addNodeAddress("redis://host1:6379", "redis://host2:6379");</span>
-
-        <span class="text-blue-400">return</span> Redisson.<span class="text-yellow-300">create</span>(config);
+    <span class="text-green-300">// Example 1: Multiple independent single Redis server clients for explicit RedissonRedLock (most direct Redlock implementation)</span>
+    <span class="text-green-300">// You would define multiple @Bean methods for each RedissonClient.</span>
+    <span class="text-green-300">// For instance:</span>
+    <span class="text-yellow-500">@Bean</span>(destroyMethod = <span class="text-red-400">"shutdown"</span>)
+    <span class="text-blue-400">public</span> <span class="text-yellow-300">RedissonClient</span> <span class="text-yellow-300">redissonClient1</span>() {
+        <span class="text-yellow-300">Config</span> config = <span class="text-blue-400">new</span> <span class="text-yellow-300">Config</span>();
+        config.<span class="text-yellow-300">useSingleServer</span>().<span class="text-yellow-300">setAddress</span>(<span class="text-red-400">"redis://127.0.0.1:6379"</span>);
+        <span class="text-blue-400">return</span> <span class="text-yellow-300">Redisson</span>.<span class="text-yellow-300">create</span>(config);
     }
+    <span class="text-yellow-500">@Bean</span>(destroyMethod = <span class="text-red-400">"shutdown"</span>)
+    <span class="text-blue-400">public</span> <span class="text-yellow-300">RedissonClient</span> <span class="text-yellow-300">redissonClient2</span>() {
+        <span class="text-yellow-300">Config</span> config = <span class="text-blue-400">new</span> <span class="text-yellow-300">Config</span>();
+        config.<span class="text-yellow-300">useSingleServer</span>().<span class="text-yellow-300">setAddress</span>(<span class="text-red-400">"redis://127.0.0.1:6380"</span>);
+        <span class="text-blue-400">return</span> <span class="text-yellow-300">Redisson</span>.<span class="text-yellow-300">create</span>(config);
+    }
+    <span class="text-yellow-500">@Bean</span>(destroyMethod = <span class="text-red-400">"shutdown"</span>)
+    <span class="text-blue-400">public</span> <span class="text-yellow-300">RedissonClient</span> <span class="text-yellow-300">redissonClient3</span>() {
+        <span class="text-yellow-300">Config</span> config = <span class="text-blue-400">new</span> <span class="text-yellow-300">Config</span>();
+        config.<span class="text-yellow-300">useSingleServer</span>().<span class="text-yellow-300">setAddress</span>(<span class="text-red-400">"redis://127.0.0.1:6381"</span>);
+        <span class="text-blue-400">return</span> <span class="text-yellow-300">Redisson</span>.<span class="text-yellow-300">create</span>(config);
+    }
+
+    <span class="text-green-300">// Example 2: Configuring a RedissonClient to manage a replicated setup (multiple independent masters or master-replica sets)</span>
+    <span class="text-green-300">// This is often how Redisson helps with Redlock under the hood for its RLock.</span>
+    <span class="text-yellow-500">@Bean</span>(destroyMethod = <span class="text-red-400">"shutdown"</span>)
+    <span class="text-blue-400">public</span> <span class="text-yellow-300">RedissonClient</span> <span class="text-yellow-300">redissonClient</span>() {
+        <span class="text-yellow-300">Config</span> config = <span class="text-blue-400">new</span> <span class="text-yellow-300">Config</span>();
+        config.<span class="text-yellow-300">useReplicatedServers</span>() <span class="text-green-300">// Use this for multiple independent master nodes or master-replica groups</span>
+              .<span class="text-yellow-300">addNodeAddress</span>(<span class="text-red-400">"redis://localhost:6379"</span>, <span class="text-red-400">"redis://localhost:6380"</span>, <span class="text-red-400">"redis://localhost:6381"</span>) <span class="text-green-300">// Example: 3 independent Redis instances</span>
+              .<span class="text-yellow-300">setScanInterval</span>(<span class="text-purple-300">2000</span>) <span class="text-green-300">// Scan interval for detecting new masters/slaves (if applicable)</span>
+              .<span class="text-yellow-300">setConnectionPoolSize</span>(<span class="text-purple-300">64</span>)
+              .<span class="text-yellow-300">setConnectionMinimumIdleSize</span>(<span class="text-purple-300">10</span>)
+              .<span class="text-yellow-300">setConnectTimeout</span>(<span class="text-purple-300">10000</span>);
+        
+        <span class="text-green-300">// OR for Redis Cluster where locks might be sharded, use:</span>
+        <span class="text-green-300">// config.useClusterServers()</span>
+        <span class="text-green-300">//         .addNodeAddress("redis://host1:7000", "redis://host2:7001", "redis://host3:7002");</span>
+
+        <span class="text-blue-400">return</span> <span class="text-yellow-300">Redisson</span>.<span class="text-yellow-300">create</span>(config);
+    }
+    <span class="text-green-300">// END MODIFICATION 2.1</span>
 }</code></pre>
           </div>
         </div>
@@ -733,37 +749,92 @@ export const distributedLockRedis: BlogPost = {
       <pre><code id="redisson-basic-usage" class="language-java text-white"><span class="text-yellow-500">@Service</span>
 <span class="text-blue-400">public class</span> <span class="text-yellow-300">RedissonLockService</span> {
 
-    <span class="text-blue-400">private final</span> RedissonClient redissonClient;
-    <span class="text-blue-400">private static final</span> Logger log = LoggerFactory.<span class="text-yellow-300">getLogger</span>(RedissonLockService.<span class="text-blue-400">class</span>);
+    <span class="text-blue-400">private final</span> <span class="text-yellow-300">RedissonClient</span> redissonClient;
+    <span class="text-blue-400">private static final</span> <span class="text-yellow-300">Logger</span> log = <span class="text-yellow-300">LoggerFactory</span>.<span class="text-yellow-300">getLogger</span>(<span class="text-yellow-300">RedissonLockService</span>.<span class="text-blue-400">class</span>);
 
+    <span class="text-green-300">// START MODIFICATION 2.2: Adjust constructor if you define multiple RedissonClient beans for Redlock</span>
+    <span class="text-green-300">// If using explicit RedissonRedLock, you might inject multiple clients here:</span>
+    <span class="text-green-300">// private final RedissonClient redissonClient1;</span>
+    <span class="text-green-300">// private final RedissonClient redissonClient2;</span>
+    <span class="text-green-300">// private final RedissonClient redissonClient3;</span>
+    <span class="text-green-300">//</span>
+    <span class="text-green-300">// @Autowired</span>
+    <span class="text-green-300">// public RedissonLockService(RedissonClient redissonClient, RedissonClient redissonClient1, RedissonClient redissonClient2, RedissonClient redissonClient3) {</span>
+    <span class="text-green-300">//     this.redissonClient = redissonClient; // This is for general RLock usage if configured (e.g., useReplicatedServers)</span>
+    <span class="text-green-300">//     this.redissonClient1 = redissonClient1; // For explicit Redlock method</span>
+    <span class="text-green-300">//     this.redissonClient2 = redissonClient2;</span>
+    <span class="text-green-300">//     this.redissonClient3 = redissonClient3;</span>
+    <span class="text-green-300">// }</span>
+    <span class="text-green-300">// If only using the single 'redissonClient' from the RedissonConfig above (configured for multiple nodes),</span>
+    <span class="text-green-300">// then the current constructor is fine.</span>
+    
     <span class="text-yellow-500">@Autowired</span>
-    <span class="text-blue-400">public</span> <span class="text-yellow-300">RedissonLockService</span>(RedissonClient redissonClient) {
+    <span class="text-blue-400">public</span> <span class="text-yellow-300">RedissonLockService</span>(<span class="text-yellow-300">RedissonClient</span> redissonClient) {
         <span class="text-blue-400">this</span>.redissonClient = redissonClient;
     }
+    <span class="text-green-300">// END MODIFICATION 2.2</span>
 
-    <span class="text-blue-400">public void</span> <span class="text-yellow-300">executeWithLock</span>(String lockName, Runnable task) {
-        RLock lock = redissonClient.<span class="text-yellow-300">getLock</span>(lockName);
+    <span class="text-blue-400">public void</span> <span class="text-yellow-300">executeWithLock</span>(<span class="text-yellow-300">String</span> lockName, <span class="text-yellow-300">Runnable</span> task) {
+        <span class="text-yellow-300">RLock</span> lock = redissonClient.<span class="text-yellow-300">getLock</span>(lockName);
 
         <span class="text-blue-400">try</span> {
             <span class="text-green-300">// Try to acquire lock with 10s wait time and 30s lease time</span>
-            <span class="text-blue-400">boolean</span> isLocked = lock.<span class="text-yellow-300">tryLock</span>(10, 30, TimeUnit.<span class="text-purple-300">SECONDS</span>);
+            <span class="text-blue-400">boolean</span> isLocked = lock.<span class="text-yellow-300">tryLock</span>(<span class="text-purple-300">10</span>, <span class="text-purple-300">30</span>, <span class="text-yellow-300">TimeUnit</span>.<span class="text-purple-300">SECONDS</span>);
 
             <span class="text-blue-400">if</span> (isLocked) {
                 <span class="text-blue-400">try</span> {
-                    log.<span class="text-yellow-300">info</span>(<span class="text-orange-300">"Lock acquired, executing task {}"</span>, lockName);
+                    log.<span class="text-yellow-300">info</span>(<span class="text-red-400">"Lock acquired, executing task {}"</span>, lockName);
                     task.<span class="text-yellow-300">run</span>();
                 } <span class="text-blue-400">finally</span> {
                     lock.<span class="text-yellow-300">unlock</span>();
-                    log.<span class="text-yellow-300">info</span>(<span class="text-orange-300">"Lock released for {}"</span>, lockName);
+                    log.<span class="text-yellow-300">info</span>(<span class="text-red-400">"Lock released for {}"</span>, lockName);
                 }
             } <span class="text-blue-400">else</span> {
-                log.<span class="text-yellow-300">warn</span>(<span class="text-orange-300">"Failed to acquire lock for {}"</span>, lockName);
+                log.<span class="text-yellow-300">warn</span>(<span class="text-red-400">"Failed to acquire lock for {}"</span>, lockName);
             }
-        } <span class="text-blue-400">catch</span> (InterruptedException e) {
-            Thread.<span class="text-yellow-300">currentThread</span>().<span class="text-yellow-300">interrupt</span>();
-            log.<span class="text-yellow-300">error</span>(<span class="text-orange-300">"Lock acquisition interrupted for {}"</span>, lockName, e);
+        } <span class="text-blue-400">catch</span> (<span class="text-yellow-300">InterruptedException</span> e) {
+            <span class="text-yellow-300">Thread</span>.<span class="text-yellow-300">currentThread</span>().<span class="text-yellow-300">interrupt</span>();
+            log.<span class="text-yellow-300">error</span>(<span class="text-red-400">"Lock acquisition interrupted for {}"</span>, lockName, e);
         }
     }
+    
+    <span class="text-green-300">// START MODIFICATION 2.3: Add explicit Redlock usage example</span>
+    <span class="text-green-300">/**</span>
+     <span class="text-green-300">* **Explicit Redlock algorithm lock acquisition attempt (using RedissonRedLock)**</span>
+     <span class="text-green-300">* To use this method, multiple RedissonClient beans must be defined and injected in RedissonConfig.</span>
+     <span class="text-green-300">* @param lockKey Resource key to lock</span>
+     <span class="text-green-300">* @param waitTimeMs Maximum time to wait for lock (milliseconds)</span>
+     <span class="text-green-300">* @param leaseTimeMs Lock validity period (milliseconds)</span>
+     <span class="text-green-300">* @param redissonClients Independent RedissonClient instances participating in Redlock</span>
+     <span class="text-green-300">* @return Whether lock acquisition was successful</span>
+     <span class="text-green-300">*/</span>
+    <span class="text-blue-400">public boolean</span> <span class="text-yellow-300">tryRedLock</span>(<span class="text-yellow-300">String</span> lockKey, <span class="text-blue-400">long</span> waitTimeMs, <span class="text-blue-400">long</span> leaseTimeMs, <span class="text-yellow-300">RedissonClient</span>... redissonClients) {
+        <span class="text-yellow-300">RLock</span>[] locks = <span class="text-blue-400">new</span> <span class="text-yellow-300">RLock</span>[redissonClients.length];
+        <span class="text-blue-400">for</span> (<span class="text-blue-400">int</span> i = <span class="text-purple-300">0</span>; i < redissonClients.length; i++) {
+            locks[i] = redissonClients[i].<span class="text-yellow-300">getLock</span>(lockKey);
+        }
+
+        <span class="text-yellow-300">RedissonRedLock</span> redLock = <span class="text-blue-400">new</span> <span class="text-yellow-300">RedissonRedLock</span>(locks);
+        <span class="text-blue-400">try</span> {
+            <span class="text-blue-400">boolean</span> acquired = redLock.<span class="text-yellow-300">tryLock</span>(waitTimeMs, leaseTimeMs, <span class="text-yellow-300">TimeUnit</span>.<span class="text-purple-300">MILLISECONDS</span>);
+            <span class="text-blue-400">if</span> (acquired) {
+                <span class="text-yellow-300">System</span>.out.<span class="text-yellow-300">println</span>(<span class="text-yellow-300">Thread</span>.<span class="text-yellow-300">currentThread</span>().<span class="text-yellow-300">getName</span>() + <span class="text-red-400">" acquired RedLock: "</span> + lockKey);
+            } <span class="text-blue-400">else</span> {
+                <span class="text-yellow-300">System</span>.out.<span class="text-yellow-300">println</span>(<span class="text-yellow-300">Thread</span>.<span class="text-yellow-300">currentThread</span>().<span class="text-yellow-300">getName</span>() + <span class="text-red-400">" failed to acquire RedLock: "</span> + lockKey);
+            }
+            <span class="text-blue-400">return</span> acquired;
+        } <span class="text-blue-400">catch</span> (<span class="text-yellow-300">InterruptedException</span> e) {
+            <span class="text-yellow-300">Thread</span>.<span class="text-yellow-300">currentThread</span>().<span class="text-yellow-300">interrupt</span>();
+            <span class="text-yellow-300">System</span>.err.<span class="text-yellow-300">println</span>(<span class="text-red-400">"RedLock acquisition interrupted: "</span> + e.<span class="text-yellow-300">getMessage</span>());
+            <span class="text-blue-400">return false</span>;
+        } <span class="text-blue-400">finally</span> {
+            <span class="text-blue-400">if</span> (redLock.<span class="text-yellow-300">isLocked</span>() && redLock.<span class="text-yellow-300">isHeldByCurrentThread</span>()) { <span class="text-green-300">// Check if current thread holds the lock</span>
+                redLock.<span class="text-yellow-300">unlock</span>();
+                <span class="text-yellow-300">System</span>.out.<span class="text-yellow-300">println</span>(<span class="text-yellow-300">Thread</span>.<span class="text-yellow-300">currentThread</span>().<span class="text-yellow-300">getName</span>() + <span class="text-red-400">" released RedLock: "</span> + lockKey);
+            }
+        }
+    }
+    <span class="text-green-300">// END MODIFICATION 2.3</span>
 }</code></pre>
           </div>
         </div>
@@ -1022,22 +1093,17 @@ export const distributedLockRedis: BlogPost = {
 
         <div class="my-8">
           <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
-            <!-- Background -->
             <rect width="800" height="280" fill="#f8f9fa" rx="10" ry="10"/>
 
-            <!-- Title -->
             <text x="400" y="30" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">Custom Bean Post Processor Architecture</text>
 
-            <!-- Spring Context -->
             <rect x="50" y="60" width="700" height="190" fill="#f1f8e9" stroke="#7cb342" stroke-width="2" stroke-dasharray="5,5" rx="8" ry="8"/>
             <text x="120" y="80" font-family="Arial" font-size="14" font-weight="bold">Spring Application Context</text>
 
-            <!-- Redis -->
             <rect x="550" y="100" width="150" height="60" fill="#fff3e0" stroke="#f57c00" stroke-width="2" rx="5" ry="5"/>
             <text x="625" y="130" font-family="Arial" font-size="14" text-anchor="middle">Redis</text>
             <text x="625" y="150" font-family="Arial" font-size="12" text-anchor="middle">Lock Storage</text>
 
-            <!-- Components -->
             <rect x="70" y="100" width="150" height="60" fill="#e3f2fd" stroke="#1976d2" stroke-width="2" rx="5" ry="5"/>
             <text x="145" y="130" font-family="Arial" font-size="14" text-anchor="middle">@DistributedLock</text>
             <text x="145" y="150" font-family="Arial" font-size="12" text-anchor="middle">Custom Annotation</text>
@@ -1050,11 +1116,9 @@ export const distributedLockRedis: BlogPost = {
             <text x="475" y="130" font-family="Arial" font-size="14" text-anchor="middle">Proxy</text>
             <text x="475" y="150" font-family="Arial" font-size="12" text-anchor="middle">Generation</text>
 
-            <!-- Service -->
             <rect x="200" y="190" width="200" height="40" fill="#e1f5fe" stroke="#0288d1" stroke-width="2" rx="5" ry="5"/>
             <text x="300" y="215" font-family="Arial" font-size="14" text-anchor="middle">Service with Locked Methods</text>
 
-            <!-- Arrows -->
             <path d="M220,130 L250,130" stroke="#1976d2" stroke-width="2" />
             <polygon points="242,127 250,130 243,134" fill="#1976d2"/>
 
@@ -1340,10 +1404,10 @@ export const distributedLockRedis: BlogPost = {
                             <span class="text-blue-400">throw new</span> <span class="text-purple-300">DistributedLockAcquisitionException</span>(
                                 <span class="text-orange-300">"Failed to acquire distributed lock: "</span> + lockName);
                         <span class="text-blue-400">case</span> SKIP:
-                            log.<span class="text-yellow-300">info</span>(<span class="text-orange-300">"Skipping method execution due to lock acquisition failure: {}"</span>, lockName);
+                            log.<span class="text-yellow-300">info</span>(<span class="text-orange-300">"Skipping method execution due to lock acquisition failure: "</span>, lockName);
                             <span class="text-blue-400">return</span> <span class="text-blue-400">null</span>;
                         <span class="text-blue-400">case</span> EXECUTE_ANYWAY:
-                            log.<span class="text-yellow-300">warn</span>(<span class="text-orange-300">"Executing method despite lock acquisition failure: {}"</span>, lockName);
+                            log.<span class="text-yellow-300">warn</span>(<span class="text-orange-300">"Executing method despite lock acquisition failure: "</span>, lockName);
                             <span class="text-blue-400">return</span> invocation.<span class="text-yellow-300">proceed</span>();
                         <span class="text-blue-400">default</span>:
                             <span class="text-blue-400">throw new</span> <span class="text-purple-300">IllegalStateException</span>(<span class="text-orange-300">"Unknown failure action: "</span> + annotation.<span class="text-yellow-300">failureAction</span>());
@@ -1451,7 +1515,8 @@ export const distributedLockRedis: BlogPost = {
                 <li>Needs thorough testing for reliability</li>
                 <li>Lacks community support of established libraries</li>
                 <li>May require deeper understanding of Spring AOP</li>
-              </ul>
+                <li>**Inherits safety limitations of simple Redis locks** (e.g., during master failover with replication lag), as it uses <code>StringRedisTemplate</code> directly.</li>
+                </ul>
             </div>
           </div>
         </div>
@@ -1495,7 +1560,7 @@ export const distributedLockRedis: BlogPost = {
               <td class="py-2 px-4 text-sm text-gray-800 dark:text-gray-200 border-r dark:border-gray-600 font-medium">Annotation Support</td>
               <td class="py-2 px-4 text-sm text-gray-600 dark:text-gray-400 border-r dark:border-gray-600">No</td>
               <td class="py-2 px-4 text-sm text-gray-600 dark:text-gray-400 border-r dark:border-gray-600">Yes</td>
-              <td class="py-2 px-4 text-sm text-gray-600 dark:text-gray-400 border-r dark:border-gray-600">No (Manual)</td>
+              <td class="py-2 px-4 text-sm text-gray-600 dark:text-gray-400 border-r dark:border-gray-600">Via AOP (Custom)</td>
               <td class="py-2 px-4 text-sm text-gray-600 dark:text-gray-400">Yes</td>
             </tr>
             <tr>
@@ -1584,7 +1649,8 @@ export const distributedLockRedis: BlogPost = {
               <li>You need high reliability and performance</li>
               <li>You value a mature, actively maintained library</li>
               <li>You need multiple lock types (MultiLock, ReadWriteLock, etc.)</li>
-            </ul>
+              <li>**You require Redlock's strong safety guarantees for critical operations against Redis failures (e.g., master failover with replication lag), understanding the need for multiple independent Redis instances.**</li>
+              </ul>
           </div>
 
           <div class="mt-3">
@@ -1596,7 +1662,8 @@ export const distributedLockRedis: BlogPost = {
               <li>You need custom lock behavior (dynamic naming, failure handling, etc.)</li>
               <li>You're comfortable with Spring AOP and Bean Post Processors</li>
               <li>You're willing to maintain the implementation yourself</li>
-            </ul>
+              <li>**You understand this approach typically implements a simple Redis lock and inherits its safety limitations during Redis master failover unless specifically extended to Redlock principles.**</li>
+              </ul>
           </div>
         </div>
 

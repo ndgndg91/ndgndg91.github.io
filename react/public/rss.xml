@@ -86,7 +86,7 @@
       <title>Distributed Locks in Spring Boot: Implementation Options and Best Practices</title>
       <link>https://developer-playground.com/blog/software-engineer/list/distributed-lock/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/distributed-lock/</guid>
-      <pubDate>Tue, 06 May 2025 05:33:00 GMT</pubDate>
+      <pubDate>Sun, 06 July 2025 05:33:00 GMT</pubDate>
       <description>Distributed locks are synchronization mechanisms used in distributed systems to prevent multiple processes, services, or servers from concurrently executing critical sections of code or accessing shared resources simultaneously.</description>
       <category>Distributed System</category>
       <category>Spring Boot</category>
