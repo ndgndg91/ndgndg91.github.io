@@ -149,15 +149,6 @@
       <category>Docker</category>
     </item>
     <item>
-      <title>Controlling Processing Rate in Kafka Consumers</title>
-      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate/</link>
-      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-rate/</guid>
-      <pubDate>Wed, 18 Oct 2024 00:00:00 GMT</pubDate>
-      <description>Strategies and implementation techniques for managing message processing rates in Kafka consumers to optimize throughput and prevent system overload.</description>
-      <category>Kafka</category>
-      <category>Performance</category>
-    </item>
-    <item>
       <title>MCP Filesystem Configuration and Usage</title>
       <link>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/mcp-filesystem/</guid>
