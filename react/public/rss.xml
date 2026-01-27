@@ -17,6 +17,19 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>Claude Skills: Modular Prompt Engineering for Backend Engineers</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/claude-skills-guide/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/claude-skills-guide/</guid>
+      <pubDate>Mon, 27 Jan 2026 00:00:00 GMT</pubDate>
+      <description>Learn how Claude Skills work as reusable prompt modules, how they differ from MCP, and practical use cases for backend development workflows.</description>
+      <category>Claude</category>
+      <category>AI</category>
+      <category>Prompt Engineering</category>
+      <category>MCP</category>
+      <category>Developer Tools</category>
+      <category>Productivity</category>
+    </item>
+    <item>
       <title>Spring Actuator Port Separation: MVC and WebFlux Have Different Levels of "Isolation"</title>
       <link>https://developer-playground.com/blog/software-engineer/list/actuator-port-separation-mvc-webflux/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/actuator-port-separation-mvc-webflux/</guid>
