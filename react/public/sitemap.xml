@@ -278,4 +278,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Actuator Port Separation -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/actuator-port-separation-mvc-webflux/</loc>
+    <lastmod>2026-01-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset> 

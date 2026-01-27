@@ -14,6 +14,8 @@
     "analyze": "npm run build && npx vite-bundle-analyzer dist"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.1.0",
     "@types/crypto-js": "^4.2.2",
     "@types/jsonwebtoken": "^9.0.9",
@@ -117,7 +119,8 @@
       "/blog/software-engineer/list/r2dbc-conn-pool",
       "/blog/software-engineer/list/replay-attack",
       "/blog/software-engineer/list/request-context-holder",
-      "/blog/software-engineer/list/simple-distributed-id-generation"
+      "/blog/software-engineer/list/simple-distributed-id-generation",
+      "/blog/software-engineer/list/actuator-port-separation-mvc-webflux"
     ],
     "skipThirdPartyRequests": true,
     "cacheAjaxRequests": false,
