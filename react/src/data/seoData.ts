@@ -171,6 +171,11 @@ export const seoData = {
       title: 'JVM Warmup | Developer Playground',
       description: 'Understanding JVM warmup process and optimization techniques.',
       keywords: 'JVM, warmup, Java, performance, optimization'
+    },
+    'blockchain-end-of-idealism': {
+      title: 'Blockchain: The End of Idealism and Survival as a Tool | Developer Playground',
+      description: 'A critical look at how blockchain has shifted from a revolutionary decentralized network to a pragmatic enterprise tool — examining market signals, technical compromises in L2/L3, settlement cost realities, and the rise of RWA tokenization.',
+      keywords: 'tech blog, software engineering, blockchain, RWA, DeFi, Layer 2, enterprise blockchain, Quorum, fintech, settlement, tokenization'
     }
   },
   regexCheatsheet: {
