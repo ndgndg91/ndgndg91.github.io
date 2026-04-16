@@ -45,6 +45,17 @@
       <category>BlockHound</category>
     </item>
     <item>
+      <title>Troubleshooting Kafka Consumer: Solving Direct Memory OOM</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-direct-memory-oom/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-direct-memory-oom/</guid>
+      <pubDate>Thu, 16 Apr 2026 09:00:00 GMT</pubDate>
+      <description>A deep dive into diagnosing and resolving java.lang.OutOfMemoryError: Direct buffer memory issues in Kafka consumer applications by analyzing internal Kafka client code.</description>
+      <category>Kafka</category>
+      <category>JVM</category>
+      <category>Memory Management</category>
+      <category>Performance</category>
+    </item>
+    <item>
       <title>QR Code Generator - Create QR Codes Instantly</title>
       <link>https://developer-playground.com/tools/fun/qr-generator/</link>
       <guid>https://developer-playground.com/tools/fun/qr-generator/</guid>

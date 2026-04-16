@@ -294,9 +294,19 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Blockchain -->
   <url>
     <loc>https://developer-playground.com/blog/software-engineer/list/blockchain-end-of-idealism/</loc>
     <lastmod>2026-03-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Kafka Consumer OOM -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/kafka-consumer-direct-memory-oom/</loc>
+    <lastmod>2026-04-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

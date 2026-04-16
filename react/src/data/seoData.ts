@@ -176,6 +176,11 @@ export const seoData = {
       title: 'Blockchain: The End of Idealism and Survival as a Tool | Developer Playground',
       description: 'A critical look at how blockchain has shifted from a revolutionary decentralized network to a pragmatic enterprise tool — examining market signals, technical compromises in L2/L3, settlement cost realities, and the rise of RWA tokenization.',
       keywords: 'tech blog, software engineering, blockchain, RWA, DeFi, Layer 2, enterprise blockchain, Quorum, fintech, settlement, tokenization'
+    },
+    'kafka-consumer-direct-memory-oom': {
+      title: 'Troubleshooting Kafka Consumer Direct Memory OOM | Developer Playground',
+      description: 'A deep dive into diagnosing and resolving java.lang.OutOfMemoryError: Direct buffer memory issues in Kafka consumer applications.',
+      keywords: 'Kafka, Direct Memory, OOM, troubleshooting, JVM, memory management'
     }
   },
   regexCheatsheet: {
