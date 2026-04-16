@@ -124,6 +124,7 @@
       "/blog/software-engineer/list/actuator-port-separation-mvc-webflux",
       "/blog/software-engineer/list/claude-skills-guide",
       "/blog/software-engineer/list/blockchain-end-of-idealism",
+      "/blog/software-engineer/list/mysql-datetime-rounding",
       "/blog/software-engineer/list/kafka-consumer-direct-memory-oom"
     ],
     "skipThirdPartyRequests": true,

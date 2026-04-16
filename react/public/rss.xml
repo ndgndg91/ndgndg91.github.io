@@ -17,6 +17,17 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>The Backfire of MySQL DATETIME Rounding (feat. A Broken 365-Day Streak)</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/mysql-datetime-rounding/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/mysql-datetime-rounding/</guid>
+      <pubDate>Thu, 16 Apr 2026 09:30:00 GMT</pubDate>
+      <description>A deep dive into data integrity issues caused by nanosecond rounding in MySQL\'s DATETIME and TIMESTAMP columns, and how a microsecond can break a user\'s daily check-in streak.</description>
+      <category>MySQL</category>
+      <category>Troubleshooting</category>
+      <category>Database</category>
+      <category>DATETIME</category>
+    </item>
+    <item>
       <title>Claude Skills: Modular Prompt Engineering for Backend Engineers</title>
       <link>https://developer-playground.com/blog/software-engineer/list/claude-skills-guide/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/claude-skills-guide/</guid>

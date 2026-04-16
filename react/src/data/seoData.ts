@@ -191,6 +191,11 @@ export const seoData = {
       title: 'Troubleshooting Kafka Consumer Direct Memory OOM | Developer Playground',
       description: 'A deep dive into diagnosing and resolving java.lang.OutOfMemoryError: Direct buffer memory issues in Kafka consumer applications.',
       keywords: 'Kafka, Direct Memory, OOM, troubleshooting, JVM, memory management'
+    },
+    'mysql-datetime-rounding': {
+      title: 'The Backfire of MySQL DATETIME Rounding (feat. A Broken 365-Day Streak) | Developer Playground',
+      description: 'A deep dive into data integrity issues caused by nanosecond rounding in MySQL\'s DATETIME and TIMESTAMP columns, and how a microsecond can break a user\'s daily check-in streak.',
+      keywords: 'MySQL, Database, Troubleshooting, DATETIME, Timestamp, Rounding, Data Integrity, Daily Streak'
     }
   },
   regexCheatsheet: {
