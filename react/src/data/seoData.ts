@@ -172,6 +172,16 @@ export const seoData = {
       description: 'Understanding JVM warmup process and optimization techniques.',
       keywords: 'JVM, warmup, Java, performance, optimization'
     },
+    'graceful-shutdown-spring-boot-kubernetes': {
+      title: 'Graceful Shutdown of Spring Boot Applications in Kubernetes: SIGTERM, preStopHook, and Actuator | Developer Playground',
+      description: 'In modern application development using microservices architecture and container environments, especially Kubernetes, "application termination" means more than just shutting down a process. Abrupt termination can lead to serious problems like data loss, service inconsistencies, and degraded user experience.',
+      keywords: 'Spring Boot, Kubernetes, Graceful Shutdown, DevOps, MSA, Actuator, SIGTERM'
+    },
+    'spring-boot-rdbms-deadlock-handling': {
+      title: 'Effectively Handling RDBMS Transaction Deadlocks in Spring Boot | Developer Playground',
+      description: 'Learn strategies and implementation methods to prevent, detect, and recover from RDBMS transaction deadlocks in Spring Boot applications.',
+      keywords: 'Distributed System, Spring Boot, Transaction, Deadlock, Concurrency, RDBMS'
+    },
     'blockchain-end-of-idealism': {
       title: 'Blockchain: The End of Idealism and Survival as a Tool | Developer Playground',
       description: 'A critical look at how blockchain has shifted from a revolutionary decentralized network to a pragmatic enterprise tool — examining market signals, technical compromises in L2/L3, settlement cost realities, and the rise of RWA tokenization.',
