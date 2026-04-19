@@ -5,18 +5,26 @@ export const springBootWasUndertowEksOptimization: BlogPost = {
   title: 'Comparing Spring Boot WAS Thread Models & Undertow Optimization in EKS',
   description: 'A deep dive comparing Tomcat, Jetty, and Undertow thread models, their queueing behaviors, and how to implement dynamic thread allocation and fail-fast strategies to prevent OOMKilled cascading failures in EKS.',
   category: 'software-engineer',
-  date: '2026-04-19',
-  updatedDate: '2026-04-19',
+  date: '2026-04-18',
+  updatedDate: '2026-04-18',
   tags: ['Spring Boot', 'Undertow', 'Tomcat', 'Jetty', 'EKS', 'Kubernetes', 'Thread Model', 'OOMKilled', 'Performance'],
   image: 'spring-boot-was-optimization.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">
       <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-        <li><a href="/" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Home</a></li>
-        <li><span class="mx-2">/</span></li>
-        <li><a href="/blog" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">Blog</a></li>
-        <li><span class="mx-2">/</span></li>
-        <li class="text-gray-900 dark:text-gray-100 font-medium" aria-current="page">Spring Boot WAS Thread Models & Undertow</li>
+        <li><a href="/" class="hover:text-gray-700 dark:hover:text-gray-300">Home</a></li>
+        <li class="flex items-center">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <a href="/blog/software-engineer/list" class="ml-2 hover:text-gray-700 dark:hover:text-gray-300">Software Engineer</a>
+        </li>
+        <li class="flex items-center">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+          <span class="ml-2 text-gray-900 dark:text-gray-100 font-medium">Comparing Spring Boot WAS Thread Models & Undertow Optimization in EKS</span>
+        </li>
       </ol>
     </nav>
     <article class="prose prose-lg dark:prose-invert max-w-none">

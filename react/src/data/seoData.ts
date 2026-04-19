@@ -206,6 +206,11 @@ export const seoData = {
       title: 'Comparing Spring Boot WAS Thread Models & Undertow Optimization in EKS | Developer Playground',
       description: 'A deep dive comparing Tomcat, Jetty, and Undertow thread models, their queueing behaviors, and how to implement dynamic thread allocation and fail-fast strategies to prevent OOMKilled cascading failures in EKS.',
       keywords: 'Spring Boot, Undertow, Tomcat, Jetty, EKS, Kubernetes, Thread Model, OOMKilled, Fail-fast, Performance optimization'
+    },
+    'kafka-vs-pulsar-ordering': {
+      title: 'Beyond the Kafka Ordering Illusion: Is Switching MQs the Answer? | Developer Playground',
+      description: 'Exploring the dilemma between strict ordering and high throughput, the architectural advantages of Apache Pulsar, and why Kafka still dominates the industry landscape.',
+      keywords: 'Kafka, Apache Pulsar, Message Queue, Microservices, Distributed Systems, Architecture'
     }
   },
   regexCheatsheet: {

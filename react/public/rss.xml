@@ -17,6 +17,16 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>Beyond the Kafka Ordering Illusion: Is Switching MQs the Answer?</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-vs-pulsar-ordering/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-vs-pulsar-ordering/</guid>
+      <pubDate>Sun, 19 Apr 2026 14:15:00 GMT</pubDate>
+      <description>Exploring the dilemma between strict ordering and high throughput, the architectural advantages of Apache Pulsar, and why Kafka still dominates the industry landscape despite its limitations.</description>
+      <category>Kafka</category>
+      <category>Apache Pulsar</category>
+      <category>Architecture</category>
+    </item>
+    <item>
       <title>Comparing Spring Boot WAS Thread Models & Undertow Optimization in EKS</title>
       <link>https://developer-playground.com/blog/software-engineer/list/spring-boot-was-undertow-eks-optimization/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/spring-boot-was-undertow-eks-optimization/</guid>

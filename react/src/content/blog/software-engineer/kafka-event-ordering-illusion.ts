@@ -5,8 +5,8 @@ export const kafkaEventOrderingIllusion: BlogPost = {
   title: 'Why 100% Event Ordering in Kafka is an Illusion',
   description: 'A deep dive into why relying solely on Kafka for perfect event ordering in microservices is an illusion, the underlying causes, and practical design patterns to ensure data consistency.',
   category: 'software-engineer',
-  date: '2026-04-19',
-  updatedDate: '2026-04-19',
+  date: '2026-04-17',
+  updatedDate: '2026-04-17',
   tags: ['Kafka', 'Microservices', 'Event-Driven Architecture', 'EDA', 'Distributed Systems'],
   image: 'kafka-event-ordering-illusion.webp',
   content: `
