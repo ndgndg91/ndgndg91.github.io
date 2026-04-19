@@ -15,16 +15,18 @@ interface IpData {
   location: LocationData | null;
 }
 
+import { useIsMounted } from './useIsMounted';
+
 export const useIpAddress = () => {
   const [ipData, setIpData] = useState<IpData>({ ip: '', location: null });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const isMounted = useIsMounted();
 
   useEffect(() => {
-    const isReactSnap = typeof window !== 'undefined' && window.navigator && window.navigator.userAgent === 'ReactSnap';
+    if (!isMounted) return;
     
     const fetchData = async () => {
-      if (isReactSnap) return;
       
       try {
         // Get IP address and detailed information

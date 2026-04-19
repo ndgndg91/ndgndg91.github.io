@@ -25,12 +25,14 @@ import AdTestPage from './components/debug/AdTestPage';
 // 정적 파일 확장자 목록
 const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];
 
+import { useIsMounted } from './hooks/useIsMounted';
+
 function App() {
   const location = useLocation();
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rightMobileMenuOpen, setRightMobileMenuOpen] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
 
   // 정적 파일 체크 (이미지, 스타일시트 등 실제 파일들만)
   const isActualStaticFile = STATIC_FILE_EXTENSIONS.filter(ext => ext !== '.html').some(ext => location.pathname.endsWith(ext));
@@ -40,7 +42,6 @@ function App() {
 
   // Check for dark mode preference on initial load
   useEffect(() => {
-    setIsMounted(true);
     if (
         localStorage.theme === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)

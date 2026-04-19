@@ -49,7 +49,10 @@ const PRESET_CATEGORIES = {
   }
 };
 
+import { useIsMounted } from '../../../hooks/useIsMounted';
+
 export default function Roulette() {
+  const isMounted = useIsMounted();
   const [items, setItems] = useState<RouletteItem[]>(DEFAULT_ITEMS);
   const [newItemText, setNewItemText] = useState('');
   const [isSpinning, setIsSpinning] = useState(false);
@@ -65,7 +68,7 @@ export default function Roulette() {
 
   // Sound effects generation
   const playSound = (frequency: number, duration: number, type: 'spin' | 'win' = 'spin') => {
-    if (!soundEnabled) return;
+    if (!soundEnabled || !isMounted) return;
     
     try {
       if (!audioContextRef.current) {

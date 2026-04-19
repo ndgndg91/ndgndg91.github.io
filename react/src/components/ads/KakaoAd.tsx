@@ -17,16 +17,11 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const adInitializedRef = useRef(false);
-  const [isMounted, setIsMounted] = React.useState(false);
-  const isReactSnap = typeof window !== 'undefined' && window.navigator && window.navigator.userAgent === 'ReactSnap';
+  const isMounted = useIsMounted();
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    // 빌드(캡처) 시점이나 마운트 전에는 아무것도 하지 않음
-    if (isReactSnap || !isMounted) return;
+    // 마운트 전에는 아무것도 하지 않음 (빌드 시점 포함)
+    if (!isMounted) return;
     if (adInitializedRef.current) return;
 
     const initializeAd = () => {
@@ -34,8 +29,6 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
 
       console.log('Imperatively injecting Kakao Ad:', adUnit);
 
-      // 명령형으로 ins 태그를 직접 생성하여 주입
-      // 이 시점은 Hydration이 완벽히 끝난 후이므로 React 에러가 발생하지 않음
       const ins = document.createElement('ins');
       ins.className = 'kakao_ad_area';
       ins.style.display = 'none';
@@ -43,20 +36,28 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
       ins.setAttribute('data-ad-width', width.toString());
       ins.setAttribute('data-ad-height', height.toString());
 
-      containerRef.current.innerHTML = ''; // 기존 내용 청소
+      containerRef.current.innerHTML = '';
       containerRef.current.appendChild(ins);
       adInitializedRef.current = true;
 
-      // 카카오 광고 스크립트 실행 트리거
+      // 카카오 광고 실행 트리거 (안전하게 재시도)
+      let retryCount = 0;
+      const MAX_RETRIES = 5;
+
       const triggerAdfit = () => {
-        if ((window as any).adfit) {
+        const adfit = (window as any).adfit;
+        if (adfit && typeof adfit.display === 'function') {
           try {
-            (window as any).adfit.display();
+            adfit.display();
           } catch (e) {
             console.error('Adfit display error:', e);
           }
+        } else if (retryCount < MAX_RETRIES) {
+          retryCount++;
+          console.log(`Adfit not ready, retrying... (${retryCount}/${MAX_RETRIES})`);
+          setTimeout(triggerAdfit, 500);
         } else {
-          // 스크립트가 아직 없는 경우에만 로드
+          // 마지막 수단: 스크립트 강제 로드
           const existingScript = document.querySelector('script[src*="kas/static/ba.min.js"]');
           if (!existingScript) {
             const newScript = document.createElement('script');
@@ -68,13 +69,11 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
         }
       };
 
-      // 마운트 후 약간의 지연을 주어 DOM 안착 보장
-      const timer = setTimeout(triggerAdfit, 200);
-      return () => clearTimeout(timer);
+      setTimeout(triggerAdfit, 200);
     };
 
     initializeAd();
-  }, [adUnit, width, height, isReactSnap, isMounted]);
+  }, [adUnit, width, height, isMounted]);
 
   return (
     <div 

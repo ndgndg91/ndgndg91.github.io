@@ -28,7 +28,10 @@ const PALETTE_THEMES = {
   candy: 'Candy'
 };
 
+import { useIsMounted } from '../../../hooks/useIsMounted';
+
 export default function ColorPaletteGenerator() {
+  const isMounted = useIsMounted();
   const [currentPalette, setCurrentPalette] = useState<ColorPalette>({
     id: '1',
     name: 'Default Palette',
@@ -285,8 +288,10 @@ ${currentPalette.colors.map((color, index) =>
 
   // Generate initial palette
   useEffect(() => {
-    generateNewPalette();
-  }, []);
+    if (isMounted) {
+      generateNewPalette();
+    }
+  }, [isMounted]);
 
   return (
       <>
