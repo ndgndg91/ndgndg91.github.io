@@ -104,7 +104,7 @@ function App() {
 
   return (
       <div 
-        className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}
+        className={`min-h-screen flex flex-col ${isMounted && darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}
         suppressHydrationWarning={true}
       >
         <Layout
