@@ -3,7 +3,6 @@ import { toast } from 'react-hot-toast';
 import JSEncrypt from 'jsencrypt';
 import RSAEncryptDecrypt from './RSAEncryptDecrypt';
 import RSASignVerify from './RSASignVerify';
-import AdSection from '../../ads/AdSection';
 import {seoData} from "../../../data/seoData.ts";
 import SEOHead from "../../SEOHead.tsx";
 
@@ -87,13 +86,7 @@ const RSAPage: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-      <AdSection 
-        position="bottom" 
-        size="rectangle" 
-        showAd={true}
-        className="mt-8"
-      />
-    </div>
+          </div>
         </>
   );
 };

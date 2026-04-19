@@ -5,7 +5,10 @@ import toast from 'react-hot-toast';
 import {seoData} from "../../../data/seoData.ts";
 import SEOHead from "../../SEOHead.tsx";
 
+import { useIsMounted } from '../../../hooks/useIsMounted';
+
 const QRCodeGenerator: React.FC = () => {
+  const isMounted = useIsMounted();
   const [text, setText] = useState('https://developer-playground.com');
   const [qrCodeUrl, setQrCodeUrl] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -69,19 +72,21 @@ const QRCodeGenerator: React.FC = () => {
 
   // Auto-generate QR code when text changes
   useEffect(() => {
-    if (text.trim()) {
+    if (isMounted && text.trim()) {
       const timeoutId = setTimeout(() => {
         generateQRCode();
       }, 300); // 300ms 디바운스
 
       return () => clearTimeout(timeoutId);
     }
-  }, [text]);
+  }, [text, isMounted]);
 
   // Generate initial QR code on component mount
   useEffect(() => {
-    generateQRCode();
-  }, []);
+    if (isMounted) {
+      generateQRCode();
+    }
+  }, [isMounted]);
 
   return (
       <>

@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Upload, Download, Loader2 } from 'lucide-react';
 import { useImageConverter } from '../../../hooks/useImageConverter';
-import AdSection from '../../ads/AdSection';
 import {seoData} from "../../../data/seoData.ts";
 import SEOHead from "../../SEOHead.tsx";
 
@@ -321,13 +320,7 @@ const ImageConverter: React.FC = () => {
       )}
       
       {/* Bottom Ad */}
-      <AdSection 
-        position="bottom" 
-        size="rectangle" 
-        showAd={true}
-        className="mt-8"
-      />
-    </div>
+          </div>
       </>
   );
 };

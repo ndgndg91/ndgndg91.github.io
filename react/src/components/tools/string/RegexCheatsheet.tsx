@@ -1,7 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import SEOHead from '../../SEOHead';
 import { seoData } from '../../../data/seoData';
-import AdSection from '../../ads/AdSection';
 
 const RegexCheatsheet: React.FC = () => {
   // @ts-ignore
@@ -397,13 +396,7 @@ const RegexCheatsheet: React.FC = () => {
       </div>
 
       {/* Bottom Ad */}
-      <AdSection 
-        position="bottom" 
-        size="rectangle" 
-        showAd={true}
-        className="mt-8"
-      />
-    </Box>
+          </Box>
   );
 };
 

@@ -5,7 +5,6 @@ import { vscDarkPlus, vs } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import { Copy, Check } from 'lucide-react';
 import SEOHead from '../../SEOHead';
 import { seoData } from '../../../data/seoData';
-import AdSection from '../../ads/AdSection';
 
 export interface JsonParserToolProps {
   // Add any props here if needed in the future
@@ -182,13 +181,7 @@ const JsonParserTool: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-      <AdSection 
-        position="bottom" 
-        size="rectangle" 
-        showAd={true}
-        className="mt-8"
-      />
-
+      
         </div>
         </>
   );

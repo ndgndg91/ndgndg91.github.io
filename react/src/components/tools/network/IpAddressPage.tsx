@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIpAddress } from '../../../hooks/useIpAddress';
+import { useIsMounted } from '../../../hooks/useIsMounted';
 import LocationMap from '../../../components/LocationMap';
 import toast from 'react-hot-toast';
 import {seoData} from "../../../data/seoData.ts";
@@ -7,6 +8,7 @@ import SEOHead from "../../SEOHead.tsx";
 
 const IpAddressPage: React.FC = () => {
   const { ipData, loading, error } = useIpAddress();
+  const isMounted = useIsMounted();
 
   const copyToClipboard = async (text: string) => {
     if (!text) return;
@@ -20,7 +22,7 @@ const IpAddressPage: React.FC = () => {
     }
   };
 
-  if (loading) {
+  if (loading || !isMounted) {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>

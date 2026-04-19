@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useIsMounted } from './useIsMounted';
 
 
 const timezones = [
@@ -31,9 +32,12 @@ const useTimestamp = () => {
   const [copied, setCopied] = useState<boolean>(false);
   const [copiedDatetime, setCopiedDatetime] = useState<boolean>(false);
   const [copiedTimestamp, setCopiedTimestamp] = useState<boolean>(false);
+  const isMounted = useIsMounted();
 
   // Update current timestamp and datetime every second
   useEffect(() => {
+    if (!isMounted) return;
+
     const update = () => {
       const now = new Date();
       setCurrentTimestamp(Math.floor(now.getTime() / 1000));

@@ -19,22 +19,24 @@ import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
 import BlogListPage from './pages/BlogListPage';
-import AdTestPage from './components/debug/AdTestPage';
 
 
 // 정적 파일 확장자 목록
 const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];
+
+import { useIsMounted } from './hooks/useIsMounted';
 
 function App() {
   const location = useLocation();
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rightMobileMenuOpen, setRightMobileMenuOpen] = useState(false);
+  const isMounted = useIsMounted();
 
-  // 정적 파일 체크
-  const isStaticFile = STATIC_FILE_EXTENSIONS.some(ext => location.pathname.endsWith(ext));
-  if (isStaticFile) {
-    return null; // 정적 파일은 라우터를 통과하지 않음
+  // 정적 파일 체크 (이미지, 스타일시트 등 실제 파일들만)
+  const isActualStaticFile = STATIC_FILE_EXTENSIONS.filter(ext => ext !== '.html').some(ext => location.pathname.endsWith(ext));
+  if (isActualStaticFile) {
+    return null;
   }
 
   // Check for dark mode preference on initial load
@@ -78,25 +80,13 @@ function App() {
     setRightMobileMenuOpen(false);
   };
 
-  // Determine if we should show desktop ad based on current route
-  // Show ads on main page and tool pages
-  const shouldShowDesktopAd =
-      window.location.pathname === '/' ||
-      window.location.pathname === '/index.html' ||
-      window.location.pathname.startsWith('/tools/encode-decode/') ||
-      window.location.pathname.startsWith('/tools/string/') ||
-      window.location.pathname.startsWith('/tools/time/') ||
-      window.location.pathname.startsWith('/tools/image/') ||
-      window.location.pathname.startsWith('/tools/token/') ||
-      window.location.pathname.startsWith('/tools/hash/') ||
-      window.location.pathname.startsWith('/tools/encrypt-decrypt/') ||
-      window.location.pathname.startsWith('/tools/fun/') ||
-      window.location.pathname.startsWith('/tools/network/') ||
-      window.location.pathname.startsWith('/blog/');
+
 
   return (
-      <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
         <Layout
+            key={location.pathname}
+            darkMode={darkMode}
+            isMounted={isMounted}
             header={
               <Header
                   darkMode={darkMode}
@@ -116,10 +106,8 @@ function App() {
             rightMobileMenuOpen={rightMobileMenuOpen}
             onCloseMobileMenu={closeMobileMenu}
             onCloseRightMobileMenu={closeRightMobileMenu}
-            showDesktopAd={shouldShowDesktopAd}
         >
-          <div className="flex flex-col min-h-[calc(100vh-6.5rem)]">
-            <main className="flex-1">
+          <main className="flex-1 min-h-[calc(100vh-6.5rem)]" suppressHydrationWarning={true}>
               <Routes>
                 <Route path="/" element={<MainContent />} />
 
@@ -127,8 +115,7 @@ function App() {
                 <Route path="/tools/network/ip-address.html" element={<Navigate to="/tools/network/ip-address" replace />}/>
                 <Route path="/tools/network/ip-address" element={<IpAddressPage />} />
 
-                {/* Debug Route */}
-                <Route path="/debug/ads" element={<AdTestPage />} />
+
 
                 {/* Blog Routes */}
                 <Route path="/blog/:category/list.html" element={<Navigate to="/blog/:category/list" replace />} />
@@ -222,13 +209,14 @@ function App() {
 
                 <Route path="/blog/other/list.html" element={<Navigate to="/blog/other/list" replace />} />
                 <Route path="/blog/other/list" element={<BlogListPage />} />
+                
+                {/* Catch-all route to prevent 418 mismatches on undefined routes during crawl */}
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </main>
             <Footer />
-          </div>
-          <Toaster position="bottom-right" />
+            {isMounted && <Toaster position="bottom-right" />}
         </Layout>
-      </div>
   );
 }
 

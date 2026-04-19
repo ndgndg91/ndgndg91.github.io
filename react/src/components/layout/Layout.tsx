@@ -2,7 +2,6 @@ import React from 'react';
 import type { ReactNode } from 'react';
 import { zIndex } from '../../theme';
 import RightSidebarMobile from '../RightSidebarMobile';
-import RightSidebarDesktop from '../RightSidebarDesktop';
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,7 +11,8 @@ interface LayoutProps {
   rightMobileMenuOpen: boolean;
   onCloseMobileMenu: () => void;
   onCloseRightMobileMenu: () => void;
-  showDesktopAd?: boolean;
+  darkMode: boolean;
+  isMounted: boolean;
 }
 
 const Layout: React.FC<LayoutProps> = ({
@@ -23,19 +23,22 @@ const Layout: React.FC<LayoutProps> = ({
   rightMobileMenuOpen,
   onCloseMobileMenu,
   onCloseRightMobileMenu,
-  showDesktopAd = false,
+  darkMode,
+  isMounted
 }) => {
+  const rootClassName = `min-h-screen bg-white dark:bg-gray-950 flex flex-col ${isMounted && darkMode ? 'dark' : ''}`.replace(/\s+/g, ' ').trim();
+
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col">
+    <div className={rootClassName} suppressHydrationWarning={true}>
       {/* Header - Always on top */}
-      <div className="sticky top-0 left-0 right-0 z-50" style={{ zIndex: zIndex.top }}>
+      <div className="sticky top-0 left-0 right-0 z-50" style={{ zIndex: zIndex.top }} suppressHydrationWarning={true}>
         {header}
       </div>
       
       {/* Content Wrapper */}
-      <div className="flex flex-1 overflow-hidden max-w-[1920px] mx-auto w-full">
+      <div className="flex flex-1 overflow-hidden max-w-[1920px] mx-auto w-full" suppressHydrationWarning={true}>
         {/* Mobile overlay */}
-        {(mobileMenuOpen || rightMobileMenuOpen) && (
+        {isMounted && (mobileMenuOpen || rightMobileMenuOpen) && (
           <div 
             className="fixed inset-0 bg-black/50 backdrop-blur-sm lg:hidden"
             style={{ 
@@ -48,6 +51,7 @@ const Layout: React.FC<LayoutProps> = ({
               if (rightMobileMenuOpen) onCloseRightMobileMenu();
             }}
             aria-hidden="true"
+            suppressHydrationWarning={true}
           />
         )}
 
@@ -62,16 +66,12 @@ const Layout: React.FC<LayoutProps> = ({
             zIndex: zIndex.modal,
             height: 'calc(100vh - 3.5rem)' /* Full height minus header */
           }}
+          suppressHydrationWarning={true}
         >
           {sidebar}
         </aside>
 
-        {/* Desktop Right Sidebar with Ad */}
-        {showDesktopAd && (
-          <div className="hidden xl:block fixed right-0 top-14 w-64 h-[calc(100vh-3.5rem)] overflow-y-auto border-l border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm">
-            <RightSidebarDesktop />
-          </div>
-        )}
+
 
         {/* Mobile Menu Sidebar */}
         <div 
@@ -86,6 +86,7 @@ const Layout: React.FC<LayoutProps> = ({
             WebkitOverflowScrolling: 'touch',
             height: 'calc(100vh - 7rem)'
           }}
+          suppressHydrationWarning={true}
         >
           <RightSidebarMobile 
             isOpen={rightMobileMenuOpen}
@@ -95,9 +96,7 @@ const Layout: React.FC<LayoutProps> = ({
 
         {/* Main Content */}
         <main 
-          className={`flex-1 transition-all duration-300 w-full max-w-5xl mx-auto ${
-            showDesktopAd ? 'xl:pr-80 xl:max-w-[calc(1536px+16rem)]' : 'xl:pr-0 xl:max-w-[1536px]'
-          } lg:ml-64 lg:px-6`}
+          className="flex-1 transition-all duration-300 w-full max-w-5xl mx-auto xl:pr-0 xl:max-w-[1536px] lg:ml-64 lg:px-6"
           style={{
             marginTop: '3.5rem', /* Match header height */
           }}
@@ -105,6 +104,7 @@ const Layout: React.FC<LayoutProps> = ({
             if (mobileMenuOpen) onCloseMobileMenu();
             if (rightMobileMenuOpen) onCloseRightMobileMenu();
           }}
+          suppressHydrationWarning={true}
         >
           {children}
         </main>

@@ -2,7 +2,6 @@ import React from 'react';
 import {useBase64} from './useBase64';
 import SEOHead from '../../SEOHead';
 import { seoData } from '../../../data/seoData';
-import AdSection from '../../ads/AdSection';
 
 const Base64Tool: React.FC = () => {
     const {input, output, error, setInput, encode, decode, clearAll, copyToClipboard} = useBase64();
@@ -87,13 +86,7 @@ const Base64Tool: React.FC = () => {
                 </div>
                 
                 {/* Bottom Ad */}
-                <AdSection 
-                    position="bottom" 
-                    size="rectangle" 
-                    showAd={true}
-                    className="mt-8"
-                />
-            </div>
+                            </div>
         </>
     );
 };

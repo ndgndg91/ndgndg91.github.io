@@ -15,13 +15,19 @@ interface IpData {
   location: LocationData | null;
 }
 
+import { useIsMounted } from './useIsMounted';
+
 export const useIpAddress = () => {
   const [ipData, setIpData] = useState<IpData>({ ip: '', location: null });
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const isMounted = useIsMounted();
 
   useEffect(() => {
+    if (!isMounted) return;
+    
     const fetchData = async () => {
+      
       try {
         // Get IP address and detailed information
         const ipResponse = await fetch('https://api.ipify.org?format=json');

@@ -1,5 +1,8 @@
 name: Deploy React to GitHub Pages
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 # 워크플로우가 실행될 이벤트 설정
 on:
   push:

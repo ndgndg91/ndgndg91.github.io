@@ -1,6 +1,10 @@
 import React from 'react';
+import { useIsMounted } from '../hooks/useIsMounted';
 
 const Footer: React.FC = () => {
+  const isMounted = useIsMounted();
+  const currentYear = isMounted ? new Date().getFullYear() : 2026;
+
   return (
     <footer className="w-full bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 mt-auto py-8">
       <div className="mx-auto w-full max-w-2xl lg:max-w-5xl px-4 sm:px-6 lg:px-8 text-sm leading-6">
@@ -64,7 +68,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-200 dark:border-gray-800 mt-8 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-gray-500 dark:text-gray-400 text-sm">
-              © {new Date().getFullYear()} Giri Labs Inc. All rights reserved.
+              © {currentYear} Giri Labs Inc. All rights reserved.
             </p>
             {/* <div className="mt-4 sm:mt-0 flex space-x-6">
               <a href="#" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm">
