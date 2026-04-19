@@ -62,7 +62,7 @@ const AdSection: React.FC<AdSectionProps> = ({
   // 카카오 스크립트가 DOM을 조작하지 못하도록 빈 뼈대(Placeholder)만 똑같은 크기로 반환합니다.
   if (isReactSnap || !isMounted) {
     return (
-      <div className={`ad-section ad-${position} ${className}`}>
+      <div className={`ad-section ad-${position} ${className}`} suppressHydrationWarning={true}>
         <div className="flex justify-center py-4">
           <div className="text-center">
             <p className="text-xs text-gray-500 mb-2 dark:text-gray-400">Advertisement</p>
@@ -82,7 +82,7 @@ const AdSection: React.FC<AdSectionProps> = ({
 
   // Hydration이 완벽하게 끝난 이후(isMounted === true)에만 실제 광고 컴포넌트를 마운트합니다.
   return (
-    <div className={`ad-section ad-${position} ${className}`}>
+    <div className={`ad-section ad-${position} ${className}`} suppressHydrationWarning={true}>
       <div className="flex justify-center py-4">
         <div className="text-center">
           <p className="text-xs text-gray-500 mb-2 dark:text-gray-400">Advertisement</p>

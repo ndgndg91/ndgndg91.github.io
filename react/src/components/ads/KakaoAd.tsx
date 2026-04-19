@@ -88,6 +88,7 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
     return (
       <div 
         className={`kakao-ad-container ${className}`}
+        suppressHydrationWarning={true}
         style={{
           minWidth: `${width}px`,
           minHeight: `${height}px`,
@@ -106,6 +107,7 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
   return (
     <div 
       className={`kakao-ad-container ${className}`}
+      suppressHydrationWarning={true}
       style={{
         minWidth: `${width}px`,
         minHeight: `${height}px`,

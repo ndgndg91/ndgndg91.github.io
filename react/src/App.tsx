@@ -79,23 +79,31 @@ function App() {
   };
 
   // Determine if we should show desktop ad based on current route
-  // Show ads on main page and tool pages
-  const shouldShowDesktopAd =
-      window.location.pathname === '/' ||
-      window.location.pathname === '/index.html' ||
-      window.location.pathname.startsWith('/tools/encode-decode/') ||
-      window.location.pathname.startsWith('/tools/string/') ||
-      window.location.pathname.startsWith('/tools/time/') ||
-      window.location.pathname.startsWith('/tools/image/') ||
-      window.location.pathname.startsWith('/tools/token/') ||
-      window.location.pathname.startsWith('/tools/hash/') ||
-      window.location.pathname.startsWith('/tools/encrypt-decrypt/') ||
-      window.location.pathname.startsWith('/tools/fun/') ||
-      window.location.pathname.startsWith('/tools/network/') ||
-      window.location.pathname.startsWith('/blog/');
+  // Hydration 안전을 위해 초기 상태는 안정적으로 유지합니다.
+  const [shouldShowDesktopAd, setShouldShowDesktopAd] = useState(false);
+
+  useEffect(() => {
+    const showAd =
+        window.location.pathname === '/' ||
+        window.location.pathname === '/index.html' ||
+        window.location.pathname.startsWith('/tools/encode-decode/') ||
+        window.location.pathname.startsWith('/tools/string/') ||
+        window.location.pathname.startsWith('/tools/time/') ||
+        window.location.pathname.startsWith('/tools/image/') ||
+        window.location.pathname.startsWith('/tools/token/') ||
+        window.location.pathname.startsWith('/tools/hash/') ||
+        window.location.pathname.startsWith('/tools/encrypt-decrypt/') ||
+        window.location.pathname.startsWith('/tools/fun/') ||
+        window.location.pathname.startsWith('/tools/network/') ||
+        window.location.pathname.startsWith('/blog/');
+    setShouldShowDesktopAd(showAd);
+  }, [location.pathname]);
 
   return (
-      <div className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}>
+      <div 
+        className={`min-h-screen flex flex-col ${darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}
+        suppressHydrationWarning={true}
+      >
         <Layout
             header={
               <Header
