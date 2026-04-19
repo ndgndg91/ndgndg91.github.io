@@ -303,6 +303,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Kafka Event Ordering Illusion -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/kafka-event-ordering-illusion/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- MySQL DATETIME Rounding -->
   <url>
     <loc>https://developer-playground.com/blog/software-engineer/list/mysql-datetime-rounding/</loc>

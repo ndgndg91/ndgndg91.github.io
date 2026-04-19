@@ -196,6 +196,11 @@ export const seoData = {
       title: 'The Backfire of MySQL DATETIME Rounding (feat. A Broken 365-Day Streak) | Developer Playground',
       description: 'A deep dive into data integrity issues caused by nanosecond rounding in MySQL\'s DATETIME and TIMESTAMP columns, and how a microsecond can break a user\'s daily check-in streak.',
       keywords: 'MySQL, Database, Troubleshooting, DATETIME, Timestamp, Rounding, Data Integrity, Daily Streak'
+    },
+    'kafka-event-ordering-illusion': {
+      title: 'Why 100% Event Ordering in Kafka is an Illusion | Developer Playground',
+      description: 'A deep dive into why relying solely on Kafka for perfect event ordering in microservices is an illusion, the underlying causes, and practical design patterns to ensure data consistency.',
+      keywords: 'Kafka, Microservices, Event-Driven Architecture, EDA, Concurrency, Distributed Systems'
     }
   },
   regexCheatsheet: {

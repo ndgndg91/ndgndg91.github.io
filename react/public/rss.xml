@@ -17,6 +17,17 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>Why 100% Event Ordering in Kafka is an Illusion</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/kafka-event-ordering-illusion/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/kafka-event-ordering-illusion/</guid>
+      <pubDate>Sun, 19 Apr 2026 12:00:00 GMT</pubDate>
+      <description>A deep dive into why relying solely on Kafka for perfect event ordering in microservices is an illusion, the underlying causes, and practical design patterns to ensure data consistency.</description>
+      <category>Kafka</category>
+      <category>Microservices</category>
+      <category>Event-Driven Architecture</category>
+      <category>Distributed Systems</category>
+    </item>
+    <item>
       <title>The Backfire of MySQL DATETIME Rounding (feat. A Broken 365-Day Streak)</title>
       <link>https://developer-playground.com/blog/software-engineer/list/mysql-datetime-rounding/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/mysql-datetime-rounding/</guid>
