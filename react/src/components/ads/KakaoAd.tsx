@@ -17,11 +17,19 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
 }) => {
   const adRef = useRef<HTMLModElement | null>(null);
   const adInitializedRef = useRef(false);
+  
+  const [isMounted, setIsMounted] = React.useState(false);
+  const isReactSnap = typeof window !== 'undefined' && window.navigator && window.navigator.userAgent === 'ReactSnap';
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // useLayoutEffect를 사용하여 DOM이 완전히 구성된 후 즉시 실행
   useLayoutEffect(() => {
+    if (!isMounted) return; // Hydration이 끝난 후 실행
     if (adInitializedRef.current) return;
-    if (navigator.userAgent === 'ReactSnap') return; // 프리렌더링(빌드) 시 무시
+    if (isReactSnap) return; // 프리렌더링(빌드) 시 무시
 
     const initializeAd = () => {
       const insElement = adRef.current;
@@ -72,7 +80,28 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
     // DOM이 준비되면 즉시 실행
     initializeAd();
 
-  }, [adUnit, width, height]);
+  }, [adUnit, width, height, isMounted, isReactSnap]);
+
+  // 빌드 환경(react-snap)이거나 Hydration 이전일 경우 DOM 변조를 막기 위해
+  // <ins> 태그 대신 빈 <div>를 렌더링합니다.
+  if (isReactSnap || !isMounted) {
+    return (
+      <div 
+        className={`kakao-ad-container ${className}`}
+        style={{
+          minWidth: `${width}px`,
+          minHeight: `${height}px`,
+          display: 'block',
+          ...style
+        }}
+      >
+        <div 
+          className="w-full h-full bg-transparent"
+          style={{ width: `${width}px`, height: `${height}px` }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div 
