@@ -16,7 +16,7 @@ export const useIsMounted = () => {
   // 브라우저 환경이지만 ReactSnap 크롤러인 경우 false를 유지하여 
   // 빌드 결과물(HTML)에 동적 요소가 포함되지 않도록 원천 차단
   if (typeof window !== 'undefined' && 
-      navigator.userAgent === 'ReactSnap') {
+      /ReactSnap/i.test(navigator.userAgent)) {
     return false;
   }
 

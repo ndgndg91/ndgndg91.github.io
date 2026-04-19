@@ -101,6 +101,7 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
       <div 
         ref={containerRef} 
         style={{ width: '100%', height: '100%' }}
+        suppressHydrationWarning={true}
       />
     </div>
   );

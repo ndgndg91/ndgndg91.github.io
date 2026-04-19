@@ -8,15 +8,29 @@ import { seoData } from '../data/seoData';
 
 const BlogPage: React.FC = () => {
   const location = useLocation();
-  const [post, setPost] = useState<BlogPostType | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  // Extract category and id from pathname
+  const match = location.pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)/);
+  let post: BlogPostType | null = null;
+  let error: string | null = null;
+
+  if (match) {
+    const [, category, id] = match;
+    try {
+      const postData = getBlogPost(id, category as BlogCategory);
+      if (postData) {
+        post = postData;
+      } else {
+        error = 'Post not found';
+      }
+    } catch (err) {
+      error = 'Error loading post';
+    }
+  } else {
+    error = 'Invalid path format';
+  }
 
   // Get SEO data based on blog post slug and category
   const getSEOData = () => {
-    const pathname = location.pathname;
-    const match = pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)/);
-    
     if (!match) {
       return {
         title: 'Blog Post | Developer Playground',
@@ -53,44 +67,7 @@ const BlogPage: React.FC = () => {
   useEffect(() => {
     // 페이지 로드 시 스크롤을 최상단으로 이동
     window.scrollTo(0, 0);
-
-    const loadPost = async () => {
-      try {
-        const pathname = location.pathname;
-        // Extract category and id from pathname
-        const match = pathname.match(/\/blog\/([^/]+)\/list\/([^/]+)/);
-        if (!match) {
-          throw new Error('Invalid path format');
-        }
-        const [, category, id] = match;
-        const postData = getBlogPost(id, category as BlogCategory);
-        if (!postData) {
-          throw new Error('Post not found');
-        }
-        setPost(postData);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load post');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadPost();
   }, [location.pathname]);
-
-  if (loading) {
-    return (
-      <>
-        <SEOHead title="Loading... | Developer Playground" description="Loading blog post..." keywords="blog, loading" />
-        <div className="flex items-center justify-center min-h-screen">
-          <div className="text-center">
-            <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto"></div>
-            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading post...</p>
-          </div>
-        </div>
-      </>
-    );
-  }
 
   if (error || !post) {
     return (
