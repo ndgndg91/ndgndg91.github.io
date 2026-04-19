@@ -26,9 +26,9 @@ const Layout: React.FC<LayoutProps> = ({
   showDesktopAd = false,
 }) => {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col">
+    <div className="min-h-screen bg-white dark:bg-gray-950 flex flex-col" suppressHydrationWarning={true}>
       {/* Header - Always on top */}
-      <div className="sticky top-0 left-0 right-0 z-50" style={{ zIndex: zIndex.top }}>
+      <div className="sticky top-0 left-0 right-0 z-50" style={{ zIndex: zIndex.top }} suppressHydrationWarning={true}>
         {header}
       </div>
       

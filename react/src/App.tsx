@@ -106,6 +106,7 @@ function App() {
         suppressHydrationWarning={true}
       >
         <Layout
+            key={location.pathname}
             header={
               <Header
                   darkMode={darkMode}
