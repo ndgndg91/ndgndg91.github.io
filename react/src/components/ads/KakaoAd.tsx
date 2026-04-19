@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useIsMounted } from '../../hooks/useIsMounted';
 
 interface KakaoAdProps {
   adUnit: string;
