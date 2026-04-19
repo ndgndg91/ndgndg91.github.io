@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface KakaoAdProps {
   adUnit: string;
@@ -15,98 +15,54 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
   className = '',
   style = {}
 }) => {
-  const adRef = useRef<HTMLModElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const adInitializedRef = useRef(false);
-  
-  const [isMounted, setIsMounted] = React.useState(false);
   const isReactSnap = typeof window !== 'undefined' && window.navigator && window.navigator.userAgent === 'ReactSnap';
 
-  React.useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  // useLayoutEffect를 사용하여 DOM이 완전히 구성된 후 즉시 실행
-  useLayoutEffect(() => {
-    if (!isMounted) return; // Hydration이 끝난 후 실행
+  useEffect(() => {
+    // 빌드(캡처) 시점에는 아무것도 하지 않음
+    if (isReactSnap) return;
     if (adInitializedRef.current) return;
-    if (isReactSnap) return; // 프리렌더링(빌드) 시 무시
 
     const initializeAd = () => {
-      const insElement = adRef.current;
-      if (insElement && !adInitializedRef.current) {
-        console.log('Initializing Kakao Ad (static approach):', {
-          adUnit,
-          width,
-          height,
-          element: insElement
-        });
+      if (!containerRef.current) return;
 
-        // display를 빈 문자열로 설정하여 광고가 보이도록 함
-        insElement.style.display = '';
-        adInitializedRef.current = true;
+      console.log('Imperatively injecting Kakao Ad:', adUnit);
 
-        // 카카오 광고 스크립트 강제 재실행
-        const reloadKakaoScript = () => {
-          // 기존 스크립트 제거
-          const existingScripts = document.querySelectorAll('script[src*="kas/static/ba.min.js"]');
-          existingScripts.forEach(script => {
-            if (script.parentNode) {
-              script.parentNode.removeChild(script);
-            }
-          });
+      // 명령형으로 ins 태그를 직접 생성하여 주입
+      // 이 시점은 Hydration이 완벽히 끝난 후이므로 React 에러가 발생하지 않음
+      const ins = document.createElement('ins');
+      ins.className = 'kakao_ad_area';
+      ins.style.display = 'none';
+      ins.setAttribute('data-ad-unit', adUnit);
+      ins.setAttribute('data-ad-width', width.toString());
+      ins.setAttribute('data-ad-height', height.toString());
 
-          // 새로운 스크립트 추가
-          const newScript = document.createElement('script');
-          newScript.type = 'text/javascript';
-          newScript.src = 'https://t1.daumcdn.net/kas/static/ba.min.js';
-          newScript.async = true;
-          
-          newScript.onload = () => {
-            console.log('Kakao script reloaded successfully');
-          };
-          
-          newScript.onerror = (error) => {
-            console.error('Failed to reload Kakao script:', error);
-          };
+      containerRef.current.innerHTML = ''; // 기존 내용 청소
+      containerRef.current.appendChild(ins);
+      adInitializedRef.current = true;
 
-          document.head.appendChild(newScript);
-        };
+      // 카카오 광고 스크립트 재로드 및 실행 트리거
+      const reloadKakaoScript = () => {
+        const existingScripts = document.querySelectorAll('script[src*="kas/static/ba.min.js"]');
+        existingScripts.forEach(script => script.parentNode?.removeChild(script));
 
-        // 약간의 딜레이 후 스크립트 재로드
-        setTimeout(reloadKakaoScript, 100);
-      }
+        const newScript = document.createElement('script');
+        newScript.type = 'text/javascript';
+        newScript.src = 'https://t1.daumcdn.net/kas/static/ba.min.js';
+        newScript.async = true;
+        document.head.appendChild(newScript);
+      };
+
+      setTimeout(reloadKakaoScript, 100);
     };
 
-    // DOM이 준비되면 즉시 실행
     initializeAd();
-
-  }, [adUnit, width, height, isMounted, isReactSnap]);
-
-  // 빌드 환경(react-snap)이거나 Hydration 이전일 경우 DOM 변조를 막기 위해
-  // <ins> 태그 대신 빈 <div>를 렌더링합니다.
-  if (isReactSnap || !isMounted) {
-    return (
-      <div 
-        className={`kakao-ad-container ${className}`}
-        suppressHydrationWarning={true}
-        style={{
-          minWidth: `${width}px`,
-          minHeight: `${height}px`,
-          display: 'block',
-          ...style
-        }}
-      >
-        <div 
-          className="w-full h-full bg-transparent"
-          style={{ width: `${width}px`, height: `${height}px` }}
-        />
-      </div>
-    );
-  }
+  }, [adUnit, width, height, isReactSnap]);
 
   return (
     <div 
-      className={`kakao-ad-container ${className}`}
+      className={`kakao-ad-wrapper ${className}`}
       suppressHydrationWarning={true}
       style={{
         minWidth: `${width}px`,
@@ -115,14 +71,14 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
         ...style
       }}
     >
-      {/* 정적으로 ins 요소 렌더링 */}
-      <ins
-        ref={adRef}
-        className="kakao_ad_area"
-        style={{ display: 'none' }}
-        data-ad-unit={adUnit}
-        data-ad-width={width.toString()}
-        data-ad-height={height.toString()}
+      {/* 
+        React에 의해 관리되지 않는 영역임을 명시 (dangerouslySetInnerHTML)
+        서버와 클라이언트 모두 초기 렌더링 시에는 빈 div를 반환하므로 Mismatch가 발생하지 않음
+      */}
+      <div 
+        ref={containerRef} 
+        dangerouslySetInnerHTML={{ __html: '' }} 
+        style={{ width: '100%', height: '100%' }}
       />
     </div>
   );
