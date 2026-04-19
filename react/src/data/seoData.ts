@@ -211,6 +211,11 @@ export const seoData = {
       title: 'Beyond the Kafka Ordering Illusion: Is Switching MQs the Answer? | Developer Playground',
       description: 'Exploring the dilemma between strict ordering and high throughput, the architectural advantages of Apache Pulsar, and why Kafka still dominates the industry landscape.',
       keywords: 'Kafka, Apache Pulsar, Message Queue, Microservices, Distributed Systems, Architecture'
+    },
+    'spring-cacheable-sync-jdk25': {
+      title: 'Spring Redis @Cacheable(sync=true): The Distributed Lock Misconception and the Salvation of JDK 25 | Developer Playground',
+      description: 'Debunking the myth that sync=true enables distributed locks in Spring Redis, exploring its true local-lock nature in EKS, and unveiling how JDK 25 resolves the Virtual Thread Pinning nightmare.',
+      keywords: 'Spring Boot, Redis, Caching, Virtual Threads, Java 25, Kubernetes, EKS, Architecture, Cacheable, sync=true'
     }
   },
   regexCheatsheet: {

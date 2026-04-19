@@ -128,7 +128,8 @@
       "/blog/software-engineer/list/kafka-event-ordering-illusion",
       "/blog/software-engineer/list/spring-boot-was-undertow-eks-optimization",
       "/blog/software-engineer/list/kafka-consumer-direct-memory-oom",
-      "/blog/software-engineer/list/kafka-vs-pulsar-ordering"
+      "/blog/software-engineer/list/kafka-vs-pulsar-ordering",
+      "/blog/software-engineer/list/spring-cacheable-sync-jdk25"
     ],
     "skipThirdPartyRequests": true,
     "cacheAjaxRequests": false,

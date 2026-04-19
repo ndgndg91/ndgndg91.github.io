@@ -17,6 +17,17 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>Spring Redis @Cacheable(sync=true): The Distributed Lock Misconception and the Salvation of JDK 25</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/spring-cacheable-sync-jdk25/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/spring-cacheable-sync-jdk25/</guid>
+      <pubDate>Sun, 19 Apr 2026 15:00:00 GMT</pubDate>
+      <description>Debunking the myth that sync=true enables distributed locks in Spring Redis, exploring its true local-lock nature in EKS architectures, and unveiling how JDK 25 resolves the infamous Virtual Thread Pinning nightmare.</description>
+      <category>Spring Boot</category>
+      <category>Redis</category>
+      <category>Virtual Threads</category>
+      <category>Java 25</category>
+    </item>
+    <item>
       <title>Beyond the Kafka Ordering Illusion: Is Switching MQs the Answer?</title>
       <link>https://developer-playground.com/blog/software-engineer/list/kafka-vs-pulsar-ordering/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/kafka-vs-pulsar-ordering/</guid>
