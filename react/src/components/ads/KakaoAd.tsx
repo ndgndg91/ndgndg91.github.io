@@ -46,7 +46,7 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
 
       // 카카오 광고 실행 트리거 (Adfit 객체 가용성 체크 및 재시도)
       let retryCount = 0;
-      const MAX_RETRIES = 10; // 재시도 횟수 상향 (5 -> 10)
+      const MAX_RETRIES = 15; // 4.5초까지 대기 시간 상향
 
       const triggerAdfit = () => {
         const adfit = (window as any).adfit;
@@ -58,10 +58,19 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
           }
         } else if (retryCount < MAX_RETRIES) {
           retryCount++;
-          // 300ms 간격으로 더 조밀하게 체크
+          
+          // 만약 스크립트 자체가 누락된 경우를 대비한 최후의 수단
+          const script = document.querySelector('script[src*="kas/static/ba.min.js"]');
+          if (!script) {
+             const newScript = document.createElement('script');
+             newScript.src = "https://t1.daumcdn.net/kas/static/ba.min.js";
+             newScript.async = true;
+             document.head.appendChild(newScript);
+          }
+          
           setTimeout(triggerAdfit, 300);
         } else {
-          console.warn('Kakao AdFit script failed to initialize after maximum retries.');
+          console.warn('Kakao AdFit script failed to initialize after 4.5s retries.');
         }
       };
 
@@ -73,7 +82,6 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
 
     initializeAd();
 
-    // Cleanup: 광고 단위 변경 시 초기화 상태 초기화
     return () => {
       adInitializedRef.current = false;
     };
