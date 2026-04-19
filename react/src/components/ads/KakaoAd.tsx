@@ -21,6 +21,7 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
   // useLayoutEffect를 사용하여 DOM이 완전히 구성된 후 즉시 실행
   useLayoutEffect(() => {
     if (adInitializedRef.current) return;
+    if (navigator.userAgent === 'ReactSnap') return; // 프리렌더링(빌드) 시 무시
 
     const initializeAd = () => {
       const insElement = adRef.current;
