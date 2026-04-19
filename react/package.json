@@ -139,7 +139,9 @@
       "--disable-dev-shm-usage"
     ],
     "minifyHtml": true,
-    "inlineCss": true,
-    "fixWebpackChunksIssue": false
+    "inlineCss": false,
+    "fixWebpackChunksIssue": true,
+    "viewport": "1200x800",
+    "waitOnMode": "networkidle0"
   }
 }

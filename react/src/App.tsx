@@ -79,25 +79,26 @@ function App() {
   };
 
   // Determine if we should show desktop ad based on current route
-  // Hydration 안전을 위해 초기 상태는 안정적으로 유지합니다.
-  const [shouldShowDesktopAd, setShouldShowDesktopAd] = useState(false);
+  // Hydration 안전을 위해 첫 렌더링 시점에 즉시 판단 가능한 로직으로 복구합니다.
+  const checkShouldShowAd = (path: string) => {
+    const normalizedPath = path.endsWith('/') ? path : `${path}/`;
+    return (
+      path === '/' ||
+      path === '/index.html' ||
+      normalizedPath.startsWith('/tools/encode-decode/') ||
+      normalizedPath.startsWith('/tools/string/') ||
+      normalizedPath.startsWith('/tools/time/') ||
+      normalizedPath.startsWith('/tools/image/') ||
+      normalizedPath.startsWith('/tools/token/') ||
+      normalizedPath.startsWith('/tools/hash/') ||
+      normalizedPath.startsWith('/tools/encrypt-decrypt/') ||
+      normalizedPath.startsWith('/tools/fun/') ||
+      normalizedPath.startsWith('/tools/network/') ||
+      normalizedPath.startsWith('/blog/')
+    );
+  };
 
-  useEffect(() => {
-    const showAd =
-        window.location.pathname === '/' ||
-        window.location.pathname === '/index.html' ||
-        window.location.pathname.startsWith('/tools/encode-decode/') ||
-        window.location.pathname.startsWith('/tools/string/') ||
-        window.location.pathname.startsWith('/tools/time/') ||
-        window.location.pathname.startsWith('/tools/image/') ||
-        window.location.pathname.startsWith('/tools/token/') ||
-        window.location.pathname.startsWith('/tools/hash/') ||
-        window.location.pathname.startsWith('/tools/encrypt-decrypt/') ||
-        window.location.pathname.startsWith('/tools/fun/') ||
-        window.location.pathname.startsWith('/tools/network/') ||
-        window.location.pathname.startsWith('/blog/');
-    setShouldShowDesktopAd(showAd);
-  }, [location.pathname]);
+  const shouldShowDesktopAd = checkShouldShowAd(location.pathname);
 
   return (
       <div 
