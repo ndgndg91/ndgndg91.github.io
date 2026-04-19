@@ -140,8 +140,11 @@
     ],
     "minifyHtml": true,
     "inlineCss": false,
-    "fixWebpackChunksIssue": true,
-    "viewport": "1200x800",
+    "fixWebpackChunksIssue": false,
+    "viewport": {
+      "width": 1200,
+      "height": 800
+    },
     "waitOnMode": "networkidle0"
   }
 }
