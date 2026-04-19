@@ -201,6 +201,11 @@ export const seoData = {
       title: 'Why 100% Event Ordering in Kafka is an Illusion | Developer Playground',
       description: 'A deep dive into why relying solely on Kafka for perfect event ordering in microservices is an illusion, the underlying causes, and practical design patterns to ensure data consistency.',
       keywords: 'Kafka, Microservices, Event-Driven Architecture, EDA, Concurrency, Distributed Systems'
+    },
+    'spring-boot-was-undertow-eks-optimization': {
+      title: 'Comparing Spring Boot WAS Thread Models & Undertow Optimization in EKS | Developer Playground',
+      description: 'A deep dive comparing Tomcat, Jetty, and Undertow thread models, their queueing behaviors, and how to implement dynamic thread allocation and fail-fast strategies to prevent OOMKilled cascading failures in EKS.',
+      keywords: 'Spring Boot, Undertow, Tomcat, Jetty, EKS, Kubernetes, Thread Model, OOMKilled, Fail-fast, Performance optimization'
     }
   },
   regexCheatsheet: {

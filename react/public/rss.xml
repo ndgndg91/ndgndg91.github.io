@@ -17,6 +17,18 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>Comparing Spring Boot WAS Thread Models & Undertow Optimization in EKS</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/spring-boot-was-undertow-eks-optimization/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/spring-boot-was-undertow-eks-optimization/</guid>
+      <pubDate>Sun, 19 Apr 2026 13:22:00 GMT</pubDate>
+      <description>A deep dive comparing Tomcat, Jetty, and Undertow thread models, their queueing behaviors, and how to implement dynamic thread allocation and fail-fast strategies to prevent OOMKilled cascading failures in EKS.</description>
+      <category>Spring Boot</category>
+      <category>Undertow</category>
+      <category>EKS</category>
+      <category>OOMKilled</category>
+      <category>Tomcat</category>
+    </item>
+    <item>
       <title>Why 100% Event Ordering in Kafka is an Illusion</title>
       <link>https://developer-playground.com/blog/software-engineer/list/kafka-event-ordering-illusion/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/kafka-event-ordering-illusion/</guid>
