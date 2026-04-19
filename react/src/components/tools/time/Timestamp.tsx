@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import useTimestamp from '../../../hooks/useTimestamp';
 import { Copy, Check, X } from 'lucide-react';
 import AdSection from '../../ads/AdSection';
@@ -6,6 +6,12 @@ import {seoData} from "../../../data/seoData.ts";
 import SEOHead from "../../SEOHead.tsx";
 
 const Timestamp: React.FC = () => {
+  const [isMounted, setIsMounted] = useState(false);
+  
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const {
     currentTimestamp,
     currentTimezone,
@@ -29,6 +35,11 @@ const Timestamp: React.FC = () => {
     handleCopyDatetime,
     handleCopyConvertedTimestamp
   } = useTimestamp();
+
+  // 하이드레이션 불일치 방지: 마운트 전에는 빈 값 또는 정적 텍스트 반환
+  const displayTimestamp = isMounted ? currentTimestamp : 'Loading...';
+  const displayTimezone = isMounted ? currentTimezone : 'Detecting...';
+  const displayDatetime = isMounted ? currentDatetime : 'Calculating...';
   
   // Set current timestamp
   const handleSetToNow = useCallback(() => {
@@ -76,7 +87,7 @@ const Timestamp: React.FC = () => {
           </h2>
           <div className="flex items-center gap-4">
             <span className="text-2xl font-mono text-gray-700 dark:text-gray-300">
-              {currentTimestamp}
+              {displayTimestamp}
             </span>
             <button
               onClick={handleCopyTimestamp}
@@ -105,7 +116,7 @@ const Timestamp: React.FC = () => {
           </h2>
           <div className="mb-4">
             <span className="text-gray-700 dark:text-gray-300">
-              {currentTimezone}
+              {displayTimezone}
             </span>
           </div>
           
@@ -129,7 +140,7 @@ const Timestamp: React.FC = () => {
           
           <div className="flex items-center gap-4">
             <span className="text-gray-700 dark:text-gray-300">
-              {currentDatetime}
+              {displayDatetime}
             </span>
             <button
               onClick={handleCopyDatetime}

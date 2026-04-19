@@ -17,11 +17,16 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const adInitializedRef = useRef(false);
+  const [isMounted, setIsMounted] = React.useState(false);
   const isReactSnap = typeof window !== 'undefined' && window.navigator && window.navigator.userAgent === 'ReactSnap';
 
   useEffect(() => {
-    // 빌드(캡처) 시점에는 아무것도 하지 않음
-    if (isReactSnap) return;
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // 빌드(캡처) 시점이나 마운트 전에는 아무것도 하지 않음
+    if (isReactSnap || !isMounted) return;
     if (adInitializedRef.current) return;
 
     const initializeAd = () => {

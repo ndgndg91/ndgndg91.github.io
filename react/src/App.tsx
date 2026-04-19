@@ -30,6 +30,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rightMobileMenuOpen, setRightMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // 정적 파일 체크
   const isStaticFile = STATIC_FILE_EXTENSIONS.some(ext => location.pathname.endsWith(ext));
@@ -39,6 +40,7 @@ function App() {
 
   // Check for dark mode preference on initial load
   useEffect(() => {
+    setIsMounted(true);
     if (
         localStorage.theme === 'dark' ||
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -98,7 +100,7 @@ function App() {
     );
   };
 
-  const shouldShowDesktopAd = checkShouldShowAd(location.pathname);
+  const shouldShowDesktopAd = isMounted ? checkShouldShowAd(location.pathname) : false;
 
   return (
       <div 
