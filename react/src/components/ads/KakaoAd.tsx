@@ -73,7 +73,8 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
         minWidth: `${width}px`,
         minHeight: `${height}px`,
         display: 'block',
-        ...style
+        ...style,
+        backgroundColor: 'transparent' // 초기 배경색 제거 (로딩 전까지 투명)
       }}
     >
       {/* 

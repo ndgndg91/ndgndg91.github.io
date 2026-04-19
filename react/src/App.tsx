@@ -32,10 +32,10 @@ function App() {
   const [rightMobileMenuOpen, setRightMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  // 정적 파일 체크
-  const isStaticFile = STATIC_FILE_EXTENSIONS.some(ext => location.pathname.endsWith(ext));
-  if (isStaticFile) {
-    return null; // 정적 파일은 라우터를 통과하지 않음
+  // 정적 파일 체크 (이미지, 스타일시트 등 실제 파일들만)
+  const isActualStaticFile = STATIC_FILE_EXTENSIONS.filter(ext => ext !== '.html').some(ext => location.pathname.endsWith(ext));
+  if (isActualStaticFile) {
+    return null;
   }
 
   // Check for dark mode preference on initial load
@@ -100,7 +100,7 @@ function App() {
     );
   };
 
-  const shouldShowDesktopAd = isMounted ? checkShouldShowAd(location.pathname) : false;
+  const shouldShowDesktopAd = checkShouldShowAd(location.pathname);
 
   return (
       <div 

@@ -60,7 +60,7 @@ const AdSection: React.FC<AdSectionProps> = ({
             className="border border-gray-200 rounded-lg dark:border-gray-700"
             style={{
               ...adConfig.style,
-              backgroundColor: '#f8f9fa'
+              backgroundColor: 'transparent'
             }}
           />
         </div>
