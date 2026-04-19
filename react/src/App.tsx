@@ -103,11 +103,11 @@ function App() {
 
   const shouldShowDesktopAd = checkShouldShowAd(location.pathname);
 
+  // 다크모드 클래스 결정 (하이드레이션 불일치 방지를 위해 isMounted 체크 필수)
+  const appClassName = `min-h-screen flex flex-col ${isMounted && darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`;
+
   return (
-      <div 
-        className={`min-h-screen flex flex-col ${isMounted && darkMode ? 'dark' : ''} bg-white dark:bg-gray-900`}
-        suppressHydrationWarning={true}
-      >
+      <div className={appClassName}>
         <Layout
             key={location.pathname}
             header={

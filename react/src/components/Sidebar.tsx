@@ -44,7 +44,7 @@ const Sidebar: React.FC<SidebarProps> = ({
     }, [mobileMenuOpen, onCloseMobileMenu]);
 
     return (
-        <div className="p-6 pb-24" suppressHydrationWarning={true}>
+        <div className="p-6 pb-24">
             <nav className="flex flex-col gap-8">
                 {children || (
                     <div className="flex flex-col gap-3" data-autoscroll="true">

@@ -14,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({
   onToggleRightMobileMenu 
 }) => {
   return (
-    <div className="fixed inset-x-0 top-0 z-50 h-14" suppressHydrationWarning={true}>
+    <div className="fixed inset-x-0 top-0 z-50 h-14">
       {/* 상단 로고 및 메뉴 영역 - 항상 최상위에 표시 */}
       <div className="bg-white dark:bg-gray-950 border-b border-gray-950/5 dark:border-white/10 h-full">
         <div className="flex h-full items-center justify-between gap-8 px-4 sm:px-6">

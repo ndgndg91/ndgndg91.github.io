@@ -1,24 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 
 /**
- * React 18 하이드레이션 에러(#418) 방지를 위한 안전한 마운트 감지 훅
- * 빌드(react-snap) 시점에는 항상 false를 반환하여 정적 HTML에는 초기 UI(Loading/Skeleton)만 저장되도록 보장합니다.
+ * React 18 하이드레이션 불일치(#418)를 원천 차단하는 표준 훅
+ * 정적 HTML(react-snap)과 클라이언트의 첫 번째 렌더링 결과를 100% 일치시킵니다.
  */
+const emptySubscribe = () => () => {};
+
 export const useIsMounted = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    // react-snap 크롤러인지 확인
-    const isReactSnap = typeof window !== 'undefined' && 
-                        window.navigator && 
-                        window.navigator.userAgent === 'ReactSnap';
-
-    // 크롤러가 아닐 때만 마운트 완료 처리
-    // 이를 통해 빌드 결과물(정적 HTML)은 항상 '첫 번째 렌더링' 상태를 유지함
-    if (!isReactSnap) {
-      setIsMounted(true);
-    }
-  }, []);
-
-  return isMounted;
+  // 서버와 첫 렌더링에서는 항상 false를 반환하도록 고정
+  // 클라이언트에서 두 번째 렌더링(Effect 이후)에서만 true를 반환
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,    // Client side value
+    () => false    // Server/Build side value
+  );
 };

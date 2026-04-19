@@ -21,15 +21,18 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
   const isMounted = useIsMounted();
 
   useEffect(() => {
-    // 마운트 전에는 아무것도 하지 않음 (빌드 시점 포함)
+    // 1. 마운트 전(빌드 시점 포함)에는 절대 아무것도 하지 않음 (전시 결과 100% 일치 보장)
     if (!isMounted) return;
-    if (adInitializedRef.current) return;
+
+    // 2. 이미 초기화된 경우와 컨테이너 부재 시 중단
+    if (adInitializedRef.current || !containerRef.current) return;
 
     const initializeAd = () => {
       if (!containerRef.current) return;
 
       console.log('Imperatively injecting Kakao Ad:', adUnit);
 
+      // ins 태그 생성 및 주입
       const ins = document.createElement('ins');
       ins.className = 'kakao_ad_area';
       ins.style.display = 'none';
@@ -41,9 +44,9 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
       containerRef.current.appendChild(ins);
       adInitializedRef.current = true;
 
-      // 카카오 광고 실행 트리거 (안전하게 재시도)
+      // 카카오 광고 실행 트리거 (Adfit 객체 가용성 체크 및 재시도)
       let retryCount = 0;
-      const MAX_RETRIES = 5;
+      const MAX_RETRIES = 10; // 재시도 횟수 상향 (5 -> 10)
 
       const triggerAdfit = () => {
         const adfit = (window as any).adfit;
@@ -55,46 +58,40 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
           }
         } else if (retryCount < MAX_RETRIES) {
           retryCount++;
-          console.log(`Adfit not ready, retrying... (${retryCount}/${MAX_RETRIES})`);
-          setTimeout(triggerAdfit, 500);
+          // 300ms 간격으로 더 조밀하게 체크
+          setTimeout(triggerAdfit, 300);
         } else {
-          // 마지막 수단: 스크립트 강제 로드
-          const existingScript = document.querySelector('script[src*="kas/static/ba.min.js"]');
-          if (!existingScript) {
-            const newScript = document.createElement('script');
-            newScript.type = 'text/javascript';
-            newScript.src = 'https://t1.daumcdn.net/kas/static/ba.min.js';
-            newScript.async = true;
-            document.head.appendChild(newScript);
-          }
+          console.warn('Kakao AdFit script failed to initialize after maximum retries.');
         }
       };
 
-      setTimeout(triggerAdfit, 200);
+      // DOM에 ins가 붙은 후 다음 프레임에서 실행 보장
+      requestAnimationFrame(() => {
+        setTimeout(triggerAdfit, 100);
+      });
     };
 
     initializeAd();
+
+    // Cleanup: 광고 단위 변경 시 초기화 상태 초기화
+    return () => {
+      adInitializedRef.current = false;
+    };
   }, [adUnit, width, height, isMounted]);
 
   return (
     <div 
       className={`kakao-ad-wrapper ${className}`}
-      suppressHydrationWarning={true}
       style={{
         minWidth: `${width}px`,
         minHeight: `${height}px`,
         display: 'block',
         ...style,
-        backgroundColor: 'transparent' // 초기 배경색 제거 (로딩 전까지 투명)
+        backgroundColor: 'transparent'
       }}
     >
-      {/* 
-        React에 의해 관리되지 않는 영역임을 명시 (dangerouslySetInnerHTML)
-        서버와 클라이언트 모두 초기 렌더링 시에는 빈 div를 반환하므로 Mismatch가 발생하지 않음
-      */}
       <div 
         ref={containerRef} 
-        dangerouslySetInnerHTML={{ __html: '' }} 
         style={{ width: '100%', height: '100%' }}
       />
     </div>
