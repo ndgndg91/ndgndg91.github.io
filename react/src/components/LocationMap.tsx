@@ -20,6 +20,21 @@ interface LocationMapProps {
 
 const LocationMap: React.FC<LocationMapProps> = ({ latitude, longitude, city }) => {
   const position: [number, number] = [latitude, longitude];
+  const [isMounted, setIsMounted] = React.useState(false);
+  const isReactSnap = typeof window !== 'undefined' && window.navigator && window.navigator.userAgent === 'ReactSnap';
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // 빌드 시점이나 마운트 전에는 지도를 렌더링하지 않음 (하이드레이션 불일치 방지)
+  if (isReactSnap || !isMounted) {
+    return (
+      <div className="h-[400px] w-full rounded-lg bg-gray-100 dark:bg-gray-800 animate-pulse flex items-center justify-center border border-gray-200 dark:border-gray-700">
+        <span className="text-gray-500 dark:text-gray-400">Loading map...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="h-[400px] w-full rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">

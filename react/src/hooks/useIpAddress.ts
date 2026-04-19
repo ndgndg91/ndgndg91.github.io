@@ -21,7 +21,11 @@ export const useIpAddress = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const isReactSnap = typeof window !== 'undefined' && window.navigator && window.navigator.userAgent === 'ReactSnap';
+    
     const fetchData = async () => {
+      if (isReactSnap) return;
+      
       try {
         // Get IP address and detailed information
         const ipResponse = await fetch('https://api.ipify.org?format=json');

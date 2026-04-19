@@ -47,23 +47,34 @@ const KakaoAd: React.FC<KakaoAdProps> = ({
       containerRef.current.appendChild(ins);
       adInitializedRef.current = true;
 
-      // 카카오 광고 스크립트 재로드 및 실행 트리거
-      const reloadKakaoScript = () => {
-        const existingScripts = document.querySelectorAll('script[src*="kas/static/ba.min.js"]');
-        existingScripts.forEach(script => script.parentNode?.removeChild(script));
-
-        const newScript = document.createElement('script');
-        newScript.type = 'text/javascript';
-        newScript.src = 'https://t1.daumcdn.net/kas/static/ba.min.js';
-        newScript.async = true;
-        document.head.appendChild(newScript);
+      // 카카오 광고 스크립트 실행 트리거
+      const triggerAdfit = () => {
+        if ((window as any).adfit) {
+          try {
+            (window as any).adfit.display();
+          } catch (e) {
+            console.error('Adfit display error:', e);
+          }
+        } else {
+          // 스크립트가 아직 없는 경우에만 로드
+          const existingScript = document.querySelector('script[src*="kas/static/ba.min.js"]');
+          if (!existingScript) {
+            const newScript = document.createElement('script');
+            newScript.type = 'text/javascript';
+            newScript.src = 'https://t1.daumcdn.net/kas/static/ba.min.js';
+            newScript.async = true;
+            document.head.appendChild(newScript);
+          }
+        }
       };
 
-      setTimeout(reloadKakaoScript, 100);
+      // 마운트 후 약간의 지연을 주어 DOM 안착 보장
+      const timer = setTimeout(triggerAdfit, 200);
+      return () => clearTimeout(timer);
     };
 
     initializeAd();
-  }, [adUnit, width, height, isReactSnap]);
+  }, [adUnit, width, height, isReactSnap, isMounted]);
 
   return (
     <div 

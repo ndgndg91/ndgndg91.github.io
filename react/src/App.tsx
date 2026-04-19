@@ -234,6 +234,9 @@ function App() {
 
                 <Route path="/blog/other/list.html" element={<Navigate to="/blog/other/list" replace />} />
                 <Route path="/blog/other/list" element={<BlogListPage />} />
+                
+                {/* Catch-all route to prevent 418 mismatches on undefined routes during crawl */}
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
             </main>
             <Footer />
