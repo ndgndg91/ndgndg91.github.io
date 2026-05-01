@@ -216,6 +216,11 @@ export const seoData = {
       title: 'Spring Redis @Cacheable(sync=true): The Distributed Lock Misconception and the Salvation of JDK 25 | Developer Playground',
       description: 'Debunking the myth that sync=true enables distributed locks in Spring Redis, exploring its true local-lock nature in EKS, and unveiling how JDK 25 resolves the Virtual Thread Pinning nightmare.',
       keywords: 'Spring Boot, Redis, Caching, Virtual Threads, Java 25, Kubernetes, EKS, Architecture, Cacheable, sync=true'
+    },
+    'k8s-cgroup-v2-jvm-memory': {
+      title: 'Understanding Kubernetes cgroup v2 & Deep Dive into JVM Pod Memory Issues | Developer Playground',
+      description: 'Explore the shift from cgroup v1 to v2 in Kubernetes and dive deep into how this architectural change triggers severe Out-Of-Memory (OOM) issues in JVM-based applications.',
+      keywords: 'Kubernetes, cgroup v2, JVM, Java, Spring Boot, OOM, OutOfMemory, Memory Management, Linux'
     }
   },
   regexCheatsheet: {

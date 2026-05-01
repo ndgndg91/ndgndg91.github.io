@@ -22,6 +22,7 @@ import BlogListPage from './pages/BlogListPage';
 import PrivacyPolicy from './pages/policy/PrivacyPolicy';
 import TermsOfService from './pages/policy/TermsOfService';
 import About from './pages/About';
+import CookieConsent from './components/CookieConsent';
 
 // 정적 파일 확장자 목록
 const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];
@@ -224,6 +225,7 @@ function App() {
               </Routes>
             </main>
             <Footer />
+            {isMounted && <CookieConsent />}
             {isMounted && <Toaster position="bottom-right" />}
         </Layout>
   );

@@ -350,4 +350,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- k8s cgroup v2 -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/k8s-cgroup-v2-jvm-memory/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset> 

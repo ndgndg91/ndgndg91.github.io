@@ -375,5 +375,17 @@
       <category>Fintech</category>
       <category>Settlement</category>
     </item>
+    <item>
+      <title>Understanding Kubernetes cgroup v2 &amp; Deep Dive into JVM Pod Memory Issues</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/k8s-cgroup-v2-jvm-memory/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/k8s-cgroup-v2-jvm-memory/</guid>
+      <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
+      <description>Explore the shift from cgroup v1 to v2 in Kubernetes and dive deep into how this architectural change triggers severe Out-Of-Memory (OOM) issues in JVM-based applications.</description>
+      <category>Kubernetes</category>
+      <category>JVM</category>
+      <category>cgroup v2</category>
+      <category>OOM</category>
+      <category>Spring Boot</category>
+    </item>
   </channel>
 </rss>
