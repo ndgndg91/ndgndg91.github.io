@@ -204,7 +204,24 @@ const SHA2Page: React.FC = () => {
         </div>
         
         {/* Bottom Ad */}
-              </div>
+        
+        <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is SHA-2?</h2>
+          <p className="mb-4">
+            SHA-2 (Secure Hash Algorithm 2) is a set of cryptographic hash functions designed by the United States National Security Agency (NSA) and first published in 2001. Cryptographic hash functions are mathematical operations run on digital data; by comparing the computed "hash" (the execution output) to a known and expected hash value, a person can determine the data's integrity.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is HMAC?</h2>
+          <p className="mb-4">
+            HMAC (Hash-based Message Authentication Code) is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key. It may be used to simultaneously verify both the data integrity and the authentication of a message.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+          <p className="mb-4">
+            First, select your desired mode: <strong>Hash</strong> for standard hashing, or <strong>HMAC</strong> if you need to use a secret key. Then, choose the SHA-2 variant (224, 256, 384, or 512). 
+            <br />
+            Select your preferred output format (Hexadecimal or Base64). Finally, type or paste your text into the Input area and click <strong>Generate Hash</strong>. The result will be instantly calculated and displayed in the Output box, ready to be copied.
+          </p>
+        </div>
+      </div>
         </>
   );
 };

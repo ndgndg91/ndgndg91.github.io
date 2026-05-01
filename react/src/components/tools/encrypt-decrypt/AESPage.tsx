@@ -297,7 +297,25 @@ const AESPage: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is AES Encryption?</h2>
+        <p className="mb-4">
+          The Advanced Encryption Standard (AES) is a symmetric block cipher chosen by the U.S. government to protect classified information. AES is implemented in software and hardware throughout the world to encrypt sensitive data. It is essential for government computer security, cybersecurity, and electronic data protection.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Understanding Modes and Key Sizes</h2>
+        <p className="mb-4">
+          <strong>Modes:</strong> CBC (Cipher Block Chaining) is generally recommended over ECB (Electronic Codebook) as it provides better security by using an Initialization Vector (IV) to ensure identical plaintexts encrypt to different ciphertexts.
+          <br />
+          <strong>Key Sizes:</strong> AES supports key sizes of 128, 192, and 256 bits (16, 24, and 32 bytes respectively). Larger key sizes provide stronger security but may be slightly slower to process.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this AES Tool</h2>
+        <p className="mb-4">
+          To encrypt your text, select your preferred mode and key size. Enter a secret key (and an IV if using CBC mode). Type your plain text into the Input area and click <strong>Encrypt</strong>. 
+          To decrypt, enter the encrypted text, select the exact same mode, key size, key, and IV used during encryption, and click <strong>Decrypt</strong>.
+        </p>
+      </div>
+    </div>
         </>
   );
 };

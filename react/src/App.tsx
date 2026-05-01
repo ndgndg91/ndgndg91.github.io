@@ -19,7 +19,9 @@ import Layout from './components/layout/Layout';
 import { Toaster } from 'react-hot-toast';
 import BlogPage from './pages/BlogPage';
 import BlogListPage from './pages/BlogListPage';
-
+import PrivacyPolicy from './pages/policy/PrivacyPolicy';
+import TermsOfService from './pages/policy/TermsOfService';
+import About from './pages/About';
 
 // 정적 파일 확장자 목록
 const STATIC_FILE_EXTENSIONS = ['.xml', '.txt', '.ico', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.css', '.js', '.json', '.webmanifest'];
@@ -110,6 +112,13 @@ function App() {
           <main className="flex-1 min-h-[calc(100vh-6.5rem)]" suppressHydrationWarning={true}>
               <Routes>
                 <Route path="/" element={<MainContent />} />
+
+                {/* Policy & About Routes */}
+                <Route path="/about" element={<About />} />
+                <Route path="/policy/privacy.html" element={<Navigate to="/policy/privacy" replace />} />
+                <Route path="/policy/privacy" element={<PrivacyPolicy />} />
+                <Route path="/policy/terms.html" element={<Navigate to="/policy/terms" replace />} />
+                <Route path="/policy/terms" element={<TermsOfService />} />
 
                 {/* IP Address Tool Routes */}
                 <Route path="/tools/network/ip-address.html" element={<Navigate to="/tools/network/ip-address" replace />}/>

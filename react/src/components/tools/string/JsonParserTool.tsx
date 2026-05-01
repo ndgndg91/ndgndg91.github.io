@@ -182,7 +182,21 @@ const JsonParserTool: React.FC = () => {
       
       {/* Bottom Ad */}
       
-        </div>
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is JSON?</h2>
+        <p className="mb-4">
+          JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and easy for machines to parse and generate. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this JSON Parser</h2>
+        <p className="mb-4">
+          Paste your minified or unformatted JSON string into the <strong>Input</strong> area. Select your preferred indentation level (2, 4, or 8 spaces), and click <strong>Parse JSON</strong>. The formatted and color-coded JSON will be displayed in the <strong>Output</strong> area. If there are any syntax errors in your JSON, a helpful error message will be shown instead.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why format JSON?</h2>
+        <p className="mb-4">
+          Raw JSON data is often minified (all whitespace removed) to reduce file size for network transfer. While this is great for machines, it makes the data nearly impossible for humans to read or debug. A JSON parser and formatter reconstructs the structural indentation, making the data hierarchy clear and easy to understand.
+        </p>
+      </div>
+    </div>
         </>
   );
 };

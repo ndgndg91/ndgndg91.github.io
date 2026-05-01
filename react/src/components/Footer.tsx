@@ -1,5 +1,6 @@
 import React from 'react';
 import { useIsMounted } from '../hooks/useIsMounted';
+import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
   const isMounted = useIsMounted();
@@ -53,14 +54,20 @@ const Footer: React.FC = () => {
             <h3 className="font-semibold text-gray-900 dark:text-white">Blog</h3>
             <ul className="mt-2 space-y-2">
               <li>
-                <a 
-                  href="https://ndgndg91.blogspot.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <Link 
+                  to="/blog/software-engineer/list" 
                   className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
                 >
-                  ndgndg91.blogspot.com
-                </a>
+                  Software Engineering
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/blog/other/list" 
+                  className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                >
+                  Other
+                </Link>
               </li>
             </ul>
           </div>
@@ -70,14 +77,17 @@ const Footer: React.FC = () => {
             <p className="text-gray-500 dark:text-gray-400 text-sm">
               © {currentYear} Giri Labs Inc. All rights reserved.
             </p>
-            {/* <div className="mt-4 sm:mt-0 flex space-x-6">
-              <a href="#" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm">
+            <div className="mt-4 sm:mt-0 flex flex-wrap gap-x-6 gap-y-2 justify-center sm:justify-end">
+              <Link to="/about" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm">
+                About
+              </Link>
+              <Link to="/policy/privacy" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm">
+              </Link>
+              <Link to="/policy/terms" className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-sm">
                 Terms of Service
-              </a>
-            </div> */}
+              </Link>
+            </div>
           </div>
         </div>
       </div>

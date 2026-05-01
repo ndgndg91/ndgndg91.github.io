@@ -86,7 +86,22 @@ const Base64Tool: React.FC = () => {
                 </div>
                 
                 {/* Bottom Ad */}
-                            </div>
+                
+                <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is Base64 Encoding?</h2>
+                    <p className="mb-4">
+                        Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The term Base64 originates from a specific MIME content transfer encoding. Each Base64 digit represents exactly 6 bits of data.
+                    </p>
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+                    <p className="mb-4">
+                        Simply paste your text or Base64 string into the <strong>Input</strong> text area above. Click the <strong>Encode</strong> button to convert your plain text into Base64 format. Alternatively, click the <strong>Decode</strong> button to convert a Base64 encoded string back to plain text. The result will appear in the <strong>Output</strong> area where you can easily copy it to your clipboard.
+                    </p>
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Is my data secure?</h2>
+                    <p className="mb-4">
+                        Yes! This Base64 encoder and decoder works entirely within your web browser using JavaScript. Your input data is never sent to any external server, ensuring your sensitive information remains private and secure on your own device.
+                    </p>
+                </div>
+            </div>
         </>
     );
 };
