@@ -316,7 +316,22 @@ const Timestamp: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is a Unix Timestamp?</h2>
+        <p className="mb-4">
+          A Unix Timestamp (also known as Epoch Time) is a way to track time as a running total of seconds. It represents the exact number of seconds that have elapsed since January 1, 1970, at 00:00:00 UTC (the Unix Epoch), excluding leap seconds. This standardized format makes it incredibly easy for computer systems to calculate time differences and sort data chronologically.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why use Unix Timestamps?</h2>
+        <p className="mb-4">
+          Unlike formatted dates (e.g., <code>2024-02-25 14:30:00</code>), which are subject to messy complications like time zones, daylight saving time, and localization, a Unix timestamp is absolute. It is the exact same number everywhere in the world simultaneously, making it the perfect standard for backend databases and API communications.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          You can instantly view the current Unix Timestamp at the top of the page. Use the <strong>Timestamp Converter</strong> section to translate a specific numeric timestamp into a human-readable date. Conversely, you can type a standard date (YYYY MM DD HH MM SS) and convert it back into seconds. You can even adjust the timezone in real-time to see how the local time changes while the Epoch remains constant.
+        </p>
+      </div>
+    </div>
       </>
   );
 };

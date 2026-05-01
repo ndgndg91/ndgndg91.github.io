@@ -320,7 +320,22 @@ const ImageConverter: React.FC = () => {
       )}
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why convert image formats?</h2>
+        <p className="mb-4">
+          Different image formats serve different purposes on the web. <strong>JPEG</strong> is best for photographs where small file sizes are preferred over perfect pixel accuracy. <strong>PNG</strong> is ideal for images that require transparent backgrounds or crisp text and graphics. <strong>WebP</strong> is a modern format developed by Google that provides superior lossless and lossy compression, resulting in significantly smaller file sizes without sacrificing quality.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Privacy & Security</h2>
+        <p className="mb-4">
+          Unlike many online image converters that upload your photos to external servers, this tool processes everything <strong>100% locally in your web browser</strong> using the HTML5 Canvas API. Your images never leave your device, ensuring complete privacy and fast conversion speeds even without an internet connection.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          Drag and drop an image (or click to select one from your files). Once loaded, you'll see a preview and its original specifications. Choose your desired output format (JPEG, PNG, or WebP) and adjust the quality slider if applicable. Click <strong>Convert Image</strong>, and you can instantly download the new file while comparing the compression ratio.
+        </p>
+      </div>
+    </div>
       </>
   );
 };

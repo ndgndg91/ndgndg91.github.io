@@ -150,7 +150,22 @@ const XmlParserTool: React.FC = () => {
       </div>
 
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is XML?</h2>
+        <p className="mb-4">
+          Extensible Markup Language (XML) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable. It is widely used for data representation, configuration files, and data exchange over the web (such as RSS feeds and SOAP protocols).
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why use an XML Parser and Formatter?</h2>
+        <p className="mb-4">
+          Raw XML data from APIs or configuration files is often minified to save space, making it extremely difficult to read or debug. This XML Parser takes your compressed or poorly formatted XML string and adds proper indentation, line breaks, and syntax highlighting. This allows you to quickly understand the hierarchical structure of the data and spot any syntax errors.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          Simply paste your XML string into the <strong>Input</strong> box and click <strong>Parse XML</strong>. The beautifully formatted and color-coded XML will instantly appear in the <strong>Output</strong> section, ready to be copied. If there's an error in your XML structure, a clear error message will guide you to fix it.
+        </p>
+      </div>
+    </div>
       </>
   );
 };

@@ -265,7 +265,18 @@ const UuidGenerator: React.FC = () => {
       )}
       
       {/* Bottom Ad */}
-            </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is a UUID?</h2>
+        <p className="mb-4">
+          A UUID (Universally Unique Identifier) is a 128-bit number used to identify information in computer systems. When generated according to standard methods, UUIDs are for practical purposes unique, without depending on a central registration authority. They are widely used as database primary keys and transaction IDs.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Which version should I use?</h2>
+        <p className="mb-4">
+          <strong>UUID v4</strong> is completely random and is the most common choice for general purposes. <strong>UUID v7</strong> is highly recommended for database keys because it includes a time-based component, meaning new IDs are sequentially sorted, preventing database fragmentation. <strong>UUID v1</strong> is time-based but exposes the MAC address of the generator. <strong>UUID v3 and v5</strong> are deterministic, meaning the same input (namespace + name) will always produce the same UUID.
+        </p>
+      </div>
+    </div>
     </>
   );
 };

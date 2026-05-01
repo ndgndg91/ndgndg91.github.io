@@ -99,7 +99,22 @@ const ByteCounter: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why count bytes instead of characters?</h2>
+        <p className="mb-4">
+          In modern programming and database design, the number of characters in a string does not always equal the number of bytes it occupies. For example, standard English letters (ASCII) take 1 byte each, but characters in Korean, Japanese, Chinese, or Emojis can take 3 to 4 bytes each in UTF-8 encoding.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">When is this useful?</h2>
+        <p className="mb-4">
+          This tool is essential for developers designing database schemas (like VARCHAR lengths in MySQL), configuring message brokers (like Kafka payload limits), or building APIs with strict payload size restrictions. Knowing the exact UTF-8 byte size helps prevent unexpected truncation errors and <code>Data too long for column</code> exceptions.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this Byte Counter</h2>
+        <p className="mb-4">
+          Simply type or paste your text into the Input box. The tool will automatically calculate both the standard character length and the precise UTF-8 byte size in real-time. No clicking required!
+        </p>
+      </div>
+    </div>
       </>
   );
 };

@@ -186,7 +186,22 @@ const SHA1Page: React.FC = () => {
         </div>
         
         {/* Bottom Ad */}
-              </div>
+        
+        <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is SHA-1?</h2>
+          <p className="mb-4">
+            SHA-1 (Secure Hash Algorithm 1) is a cryptographic hash function that takes an input and produces a 160-bit (20-byte) hash value, typically rendered as a 40-digit hexadecimal number. Designed by the United States National Security Agency (NSA), it was widely used in security protocols like TLS, SSL, and SSH.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why is SHA-1 no longer recommended?</h2>
+          <p className="mb-4">
+            Over time, cryptanalysts discovered ways to generate "collisions" in SHA-1, meaning they could find two completely different files that produce the exact same SHA-1 hash. Because of this critical vulnerability, major tech companies (including Google and Microsoft) officially deprecated SHA-1. Modern applications should use SHA-2 (like SHA-256) or SHA-3 instead.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+          <p className="mb-4">
+            While not recommended for security purposes, SHA-1 is still useful for checksums, Git commit hashes, or interacting with legacy systems. Simply select your mode (Hash or HMAC), choose an output format (Hex or Base64), and type your input text to instantly generate the SHA-1 hash.
+          </p>
+        </div>
+      </div>
         </>
   );
 };

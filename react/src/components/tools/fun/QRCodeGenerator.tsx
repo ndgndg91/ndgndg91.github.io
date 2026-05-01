@@ -216,6 +216,20 @@ const QRCodeGenerator: React.FC = () => {
             </div>
           </div>
         </div>
+        <div className="mt-12 p-6 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is a QR Code?</h2>
+          <p className="mb-4">
+            A QR (Quick Response) code is a type of two-dimensional matrix barcode invented in 1994. Unlike standard barcodes that only hold information horizontally, QR codes store data both vertically and horizontally, allowing them to hold significantly more information—such as URLs, contact details, WiFi passwords, or long blocks of text.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Common Use Cases</h2>
+          <p className="mb-4">
+            QR codes bridge the gap between the physical and digital worlds. You can print them on business cards to instantly share your contact info, place them on restaurant tables to open digital menus, or use them to let guests automatically connect to your WiFi network without typing long passwords.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+          <p className="mb-4">
+            Type or paste any text, URL, phone number, or email into the input box. The QR code will automatically generate in real-time as you type. Once you're satisfied, click <strong>Download</strong> to save the QR code as a high-quality PNG image that you can share digitally or print.
+          </p>
+        </div>
       </div>
     </div>
         </>

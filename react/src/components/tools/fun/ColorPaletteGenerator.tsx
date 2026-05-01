@@ -500,6 +500,23 @@ ${currentPalette.colors.map((color, index) =>
             </div>
           </div>
         </div>
+        <div className="mt-12 p-6 bg-gray-50 dark:bg-gray-700 rounded-lg prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why use a Color Palette Generator?</h2>
+          <p className="mb-4">
+            Choosing the right colors is one of the most critical aspects of web design, branding, and digital art. A harmonious color palette improves user experience, conveys the right emotions, and ensures readability. A generator helps you instantly visualize color combinations based on specific themes or mathematical color theories.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Color Themes Explained</h2>
+          <p className="mb-4">
+            <strong>Pastel:</strong> Soft, desaturated colors perfect for calming, spring-like designs.<br />
+            <strong>Vibrant:</strong> High-saturation colors that grab attention and add energy.<br />
+            <strong>Monochrome:</strong> Variations of a single base hue, ensuring absolute harmony.<br />
+            <strong>Ocean/Forest/Sunset:</strong> Nature-inspired palettes that evoke specific environments and moods.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+          <p className="mb-4">
+            Select a theme and adjust the number of colors you want (between 3 and 8). Click <strong>Generate New Palette</strong> to instantly see a new combination. Click any color block to copy its HEX code to your clipboard. You can toggle the <strong>Detailed View</strong> to see RGB and HSL values, save your favorite palettes to your local collection, or export the palette directly as a CSS or JSON file for your projects.
+          </p>
+        </div>
       </div>
     </div>
       </>

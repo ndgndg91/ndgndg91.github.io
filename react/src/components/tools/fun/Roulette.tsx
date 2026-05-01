@@ -646,6 +646,20 @@ export default function Roulette() {
           onChange={loadRoulette}
           className="hidden"
         />
+        <div className="mt-12 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is the Random Roulette?</h2>
+          <p className="mb-4">
+            The Random Roulette (or Wheel of Fortune) is a fun, interactive decision-making tool. When you are stuck deciding what to eat for lunch, who goes first in a game, or what movie to watch, you can input your options and let random chance make the decision for you.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Features</h2>
+          <p className="mb-4">
+            This digital roulette wheel offers physics-based spinning animations and sound effects for an authentic experience. It includes <strong>Quick Presets</strong> for common dilemmas (like Food or Activities). You can fully customize every slice of the wheel, including text and colors, and view a history of your past spins.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+          <p className="mb-4">
+            Start by adding your options in the <strong>Add Item</strong> section, or click one of the <strong>Quick Settings</strong> presets. Click the gear icon to customize the text and color of individual items. Once your wheel is ready, click the <strong>Spin the Roulette!</strong> button. You can also save your custom wheel configuration to a file and load it back later.
+          </p>
+        </div>
       </div>
     </div>
         </>

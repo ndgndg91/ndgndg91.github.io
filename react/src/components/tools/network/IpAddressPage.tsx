@@ -144,6 +144,21 @@ const IpAddressPage: React.FC = () => {
           </>
         )}
       </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is an IP Address?</h2>
+        <p className="mb-4">
+          An IP (Internet Protocol) address is a unique numerical label assigned to every device connected to a computer network that uses the Internet Protocol for communication. It serves two principal functions: identifying the host (or network interface) and providing the location of the host in the network, much like a return address on a piece of physical mail.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">IPv4 vs IPv6</h2>
+        <p className="mb-4">
+          <strong>IPv4</strong> is the older, more common version, formatted as four sets of numbers separated by dots (e.g., <code>192.168.1.1</code>). Because we ran out of IPv4 addresses, <strong>IPv6</strong> was created, which uses longer alphanumeric strings separated by colons (e.g., <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>), ensuring we will never run out of addresses again.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          Simply open this page, and the tool will automatically detect your current public IP address (both IPv4 and IPv6 if available) by pinging a secure external server. It also attempts to identify your Internet Service Provider (ISP) and your approximate geographical location (city, region, and country) and displays it on an interactive map.
+        </p>
+      </div>
     </div>
         </>
   );

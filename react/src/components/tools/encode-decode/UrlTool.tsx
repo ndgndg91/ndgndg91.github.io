@@ -86,7 +86,22 @@ const UrlTool: React.FC = () => {
         </div>
         
         {/* Bottom Ad */}
-              </div>
+        
+        <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is URL Encoding?</h2>
+          <p className="mb-4">
+            URL encoding, also known as Percent-encoding, is a mechanism for encoding information in a Uniform Resource Identifier (URI). Since URLs can only be sent over the Internet using the ASCII character-set, any characters outside this set must be converted. URL encoding replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why is it necessary?</h2>
+          <p className="mb-4">
+            URLs often contain characters that have special meanings (like <code>?</code>, <code>&amp;</code>, <code>=</code>, or spaces). If you want to include these characters as data rather than structural parts of the URL, they must be encoded. For example, a space is encoded as <code>%20</code>.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+          <p className="mb-4">
+            Paste your URL or text into the Input area. Click <strong>Encode</strong> to convert special characters into their percent-encoded equivalents. Click <strong>Decode</strong> to revert a percent-encoded string back into readable text. The result will be displayed in the Output area.
+          </p>
+        </div>
+      </div>
     </>
   );
 };

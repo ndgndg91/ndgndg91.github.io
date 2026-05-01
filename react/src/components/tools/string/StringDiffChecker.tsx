@@ -240,7 +240,22 @@ const StringDiffChecker: React.FC = () => {
       )}
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why use a String Diff Checker?</h2>
+        <p className="mb-4">
+          A String Diff Checker (Difference Checker) is an essential tool for developers, writers, and editors to compare two text snippets side-by-side. It quickly highlights exactly what was added, removed, or changed between the two versions, saving you from the tedious task of reading line-by-line manually.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Common Use Cases</h2>
+        <p className="mb-4">
+          Developers use it to compare code versions before committing changes, finding exactly where a typo was introduced in a config file, or verifying API responses. Writers use it to track revisions in documents, while students can use it to compare copied texts to find discrepancies.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          Paste your original text in the <strong>First Text</strong> box and the modified text in the <strong>Second Text</strong> box. Click the <strong>Compare Texts</strong> button. The tool will instantly generate a color-coded output below, where <span className="bg-green-100 text-green-900 px-1 rounded">green</span> indicates additions and <span className="bg-red-100 text-red-900 line-through px-1 rounded">red</span> indicates removals.
+        </p>
+      </div>
+    </div>
       </>
   );
 };

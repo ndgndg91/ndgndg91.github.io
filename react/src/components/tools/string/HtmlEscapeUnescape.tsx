@@ -125,7 +125,22 @@ const HtmlEscapeUnescape: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why Escape HTML?</h2>
+        <p className="mb-4">
+          HTML escaping is a critical security measure used to prevent Cross-Site Scripting (XSS) attacks. By converting special characters (like <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>&quot;</code>, and <code>&#39;</code>) into HTML entities, you ensure that web browsers treat user input as safe text rather than executable code or HTML markup.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">When to Unescape HTML?</h2>
+        <p className="mb-4">
+          You might encounter text that has been heavily escaped (e.g., in database exports, JSON API responses, or legacy systems). Unescaping HTML converts entities like <code>&amp;lt;</code> back to their original characters (<code>&lt;</code>), making the text readable and usable for further processing.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          Enter your raw HTML or text into the Input area. Click <strong>Escape HTML</strong> to safely encode characters for web display. Click <strong>Unescape HTML</strong> to decode previously escaped text back to its original form. You can also use the <strong>Load Test Example</strong> button to see how it works instantly.
+        </p>
+      </div>
+    </div>
       </>
   );
 };

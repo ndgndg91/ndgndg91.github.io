@@ -123,7 +123,22 @@ const RandomHexGenerator: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is a Hexadecimal String?</h2>
+        <p className="mb-4">
+          A hexadecimal (or hex) string is a sequence of characters using a base-16 numbering system. It consists of numbers from 0 to 9 and letters from A to F. Hexadecimal strings are commonly used in computing to represent binary data in a more human-readable format.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Common Use Cases for Random Hex</h2>
+        <p className="mb-4">
+          Developers frequently need random hex strings to generate secure session tokens, API keys, cryptographic salts, initial vectors (IV) for encryption, or random color codes (e.g., 6-character hex like <code>#FF5733</code>).
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          Enter your desired length (number of characters) in the input box and click <strong>Generate Hex</strong>. The tool securely generates a completely random hexadecimal sequence of the exact length you specified, ready to be copied to your clipboard.
+        </p>
+      </div>
+    </div>
       </>
   );
 };

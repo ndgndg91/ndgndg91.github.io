@@ -86,7 +86,23 @@ const RSAPage: React.FC = () => {
       </div>
       
       {/* Bottom Ad */}
-          </div>
+      
+      <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is RSA Encryption?</h2>
+        <p className="mb-4">
+          RSA (Rivest-Shamir-Adleman) is one of the oldest and most widely used public-key cryptographic systems. It relies on a mathematical process that involves generating two distinct keys: a <strong>Public Key</strong> (which can be shared with anyone to encrypt data) and a <strong>Private Key</strong> (which must be kept secret to decrypt data).
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Encryption vs. Digital Signatures</h2>
+        <p className="mb-4">
+          <strong>Encryption:</strong> Someone uses your Public Key to encrypt a message. Only you can decrypt it using your Private Key. This ensures data confidentiality.<br />
+          <strong>Digital Signatures:</strong> You use your Private Key to "sign" a message. Anyone can use your Public Key to verify the signature. This proves that the message indeed came from you and hasn't been altered.
+        </p>
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+        <p className="mb-4">
+          Click <strong>Generate Key Pair</strong> to instantly create a new 2048-bit RSA key pair in your browser. You can then use the generated keys (or paste your own) into the sections below to encrypt/decrypt messages or create/verify digital signatures securely.
+        </p>
+      </div>
+    </div>
         </>
   );
 };

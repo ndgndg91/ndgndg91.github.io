@@ -183,7 +183,22 @@ const SHA3Page: React.FC = () => {
         </div>
         
         {/* Bottom Ad */}
-              </div>
+        
+        <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is SHA-3?</h2>
+          <p className="mb-4">
+            SHA-3 (Secure Hash Algorithm 3) is the latest member of the Secure Hash Algorithm family of standards, released by NIST in 2015. Unlike SHA-1 and SHA-2, which were built on the Merkle-Damgård construction, SHA-3 is fundamentally different. It is based on a cryptographic sponge construction called Keccak.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why use SHA-3 instead of SHA-2?</h2>
+          <p className="mb-4">
+            While SHA-2 (e.g., SHA-256) remains highly secure and is currently unbroken, NIST standardized SHA-3 to serve as a robust alternative. If a mathematical breakthrough were ever to compromise the underlying structure of SHA-2, SHA-3 would remain secure due to its entirely different Keccak architecture.
+          </p>
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+          <p className="mb-4">
+            Select standard <strong>Hash</strong> mode or <strong>HMAC</strong> mode if you have a secret key. Choose your preferred variant (SHA3-224, 256, 384, or 512) and output format. Type or paste your text into the Input area, then click <strong>Generate Hash</strong> to compute the highly secure SHA-3 hash.
+          </p>
+        </div>
+      </div>
         </>
   );
 };

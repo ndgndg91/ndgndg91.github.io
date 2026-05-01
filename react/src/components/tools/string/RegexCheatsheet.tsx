@@ -396,7 +396,13 @@ const RegexCheatsheet: React.FC = () => {
       </div>
 
       {/* Bottom Ad */}
-          </Box>
+      
+      <div className="mt-8 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
+        <p>
+          Bookmark this regex cheatsheet to quickly look up common regular expressions across different programming languages including JavaScript, Python, Java, Go, and Rust. Regular expressions are a fundamental skill for any developer dealing with string validation, parsing, and text processing.
+        </p>
+      </div>
+    </Box>
   );
 };
 
