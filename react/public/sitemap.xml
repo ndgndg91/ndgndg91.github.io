@@ -358,4 +358,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-</urlset> 
+
+  <!-- AWS DocumentDB Forced Maintenance -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/aws-docdb-forced-maintenance/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Spring Boot + Spring Data MongoDB + Kafka, No Message Loss -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/spring-mongo-kafka-no-message-loss/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- CircuitBreaker Tuning for DocDB Failover -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/circuit-breaker-tuning-for-failover/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

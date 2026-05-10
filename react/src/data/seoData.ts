@@ -221,6 +221,21 @@ export const seoData = {
       title: 'Understanding Kubernetes cgroup v2 & Deep Dive into JVM Pod Memory Issues | Developer Playground',
       description: 'Explore the shift from cgroup v1 to v2 in Kubernetes and dive deep into how this architectural change triggers severe Out-Of-Memory (OOM) issues in JVM-based applications.',
       keywords: 'Kubernetes, cgroup v2, JVM, Java, Spring Boot, OOM, OutOfMemory, Memory Management, Linux'
+    },
+    'aws-docdb-forced-maintenance': {
+      title: 'The AWS DocumentDB Maintenance Trap: Why You Cannot Postpone Forever | Developer Playground',
+      description: 'AWS DocumentDB maintenance can only be postponed a finite number of times before AWS force-applies it on a date you do not control. Plus the critical distinction between cluster and instance maintenance that nobody explains until you hit it in production.',
+      keywords: 'AWS, DocumentDB, MongoDB, Maintenance, Failover, SRE, Production Operations, Cluster Maintenance, Instance Maintenance, Spring Boot, Spring Data MongoDB'
+    },
+    'spring-mongo-kafka-no-message-loss': {
+      title: 'Surviving DocDB Failover with Spring Data MongoDB and Kafka: The One-Line Throw That Saved Our Messages | Developer Playground',
+      description: 'When a MongoDB primary fails over during peak traffic, the difference between losing every message and retrying every message is exactly one line of Kotlin. The silent-fallback anti-pattern, the fix, and production data from two real DocumentDB maintenances.',
+      keywords: 'Spring Boot, Spring Data MongoDB, Kafka, CircuitBreaker, Resilience4j, Kotlin, DocumentDB, MongoDB, Failover, Message Loss, DLT, Dead Letter Topic, Production Operations'
+    },
+    'circuit-breaker-tuning-for-failover': {
+      title: 'When Your CircuitBreaker Never Opens: Lessons from Two Production DocDB Failovers | Developer Playground',
+      description: 'Resilience4j defaults that look reasonable on paper will never fire during a real DocumentDB failover. Plus the MongoDB driver setting that silently blocks every request for 30 seconds. The exact tuning that fixes both.',
+      keywords: 'Resilience4j, CircuitBreaker, MongoDB, Spring Data MongoDB, DocumentDB, Failover, Tuning, serverSelectionTimeout, MongoConnectionPoolClearedException, minimumNumberOfCalls, Production Operations'
     }
   },
   regexCheatsheet: {
