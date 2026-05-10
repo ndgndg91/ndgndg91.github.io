@@ -413,5 +413,19 @@
       <category>Resilience4j</category>
       <category>Kotlin</category>
     </item>
+    <item>
+      <title>When Your CircuitBreaker Never Opens: Lessons from Two Production DocDB Failovers</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/circuit-breaker-tuning-for-failover/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/circuit-breaker-tuning-for-failover/</guid>
+      <pubDate>Wed, 13 May 2026 00:00:00 GMT</pubDate>
+      <description>Resilience4j defaults that look reasonable on paper will never fire during a real DocumentDB failover. Plus the MongoDB driver setting that silently blocks every request for 30 seconds. The exact tuning that fixes both.</description>
+      <category>Resilience4j</category>
+      <category>CircuitBreaker</category>
+      <category>MongoDB</category>
+      <category>Spring Data MongoDB</category>
+      <category>DocumentDB</category>
+      <category>Failover</category>
+      <category>Tuning</category>
+    </item>
   </channel>
 </rss>

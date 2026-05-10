@@ -231,6 +231,11 @@ export const seoData = {
       title: 'Surviving DocDB Failover with Spring Data MongoDB and Kafka: The One-Line Throw That Saved Our Messages | Developer Playground',
       description: 'When a MongoDB primary fails over during peak traffic, the difference between losing every message and retrying every message is exactly one line of Kotlin. The silent-fallback anti-pattern, the fix, and production data from two real DocumentDB maintenances.',
       keywords: 'Spring Boot, Spring Data MongoDB, Kafka, CircuitBreaker, Resilience4j, Kotlin, DocumentDB, MongoDB, Failover, Message Loss, DLT, Dead Letter Topic, Production Operations'
+    },
+    'circuit-breaker-tuning-for-failover': {
+      title: 'When Your CircuitBreaker Never Opens: Lessons from Two Production DocDB Failovers | Developer Playground',
+      description: 'Resilience4j defaults that look reasonable on paper will never fire during a real DocumentDB failover. Plus the MongoDB driver setting that silently blocks every request for 30 seconds. The exact tuning that fixes both.',
+      keywords: 'Resilience4j, CircuitBreaker, MongoDB, Spring Data MongoDB, DocumentDB, Failover, Tuning, serverSelectionTimeout, MongoConnectionPoolClearedException, minimumNumberOfCalls, Production Operations'
     }
   },
   regexCheatsheet: {
