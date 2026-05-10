@@ -400,5 +400,18 @@
       <category>Failover</category>
       <category>SRE</category>
     </item>
+    <item>
+      <title>Surviving DocDB Failover with Spring Data MongoDB and Kafka: The One-Line Throw That Saved Our Messages</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/spring-mongo-kafka-no-message-loss/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/spring-mongo-kafka-no-message-loss/</guid>
+      <pubDate>Tue, 12 May 2026 00:00:00 GMT</pubDate>
+      <description>When a MongoDB primary fails over during peak traffic, the difference between losing every message and retrying every message is exactly one line of Kotlin. The silent-fallback anti-pattern, the fix, and production data from two real DocumentDB maintenances.</description>
+      <category>Spring Boot</category>
+      <category>Spring Data MongoDB</category>
+      <category>Kafka</category>
+      <category>CircuitBreaker</category>
+      <category>Resilience4j</category>
+      <category>Kotlin</category>
+    </item>
   </channel>
 </rss>

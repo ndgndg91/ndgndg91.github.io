@@ -366,4 +366,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-</urlset> 
+
+  <!-- Spring Boot + Spring Data MongoDB + Kafka, No Message Loss -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/spring-mongo-kafka-no-message-loss/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

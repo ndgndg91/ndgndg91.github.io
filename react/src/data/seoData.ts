@@ -226,6 +226,11 @@ export const seoData = {
       title: 'The AWS DocumentDB Maintenance Trap: Why You Cannot Postpone Forever | Developer Playground',
       description: 'AWS DocumentDB maintenance can only be postponed a finite number of times before AWS force-applies it on a date you do not control. Plus the critical distinction between cluster and instance maintenance that nobody explains until you hit it in production.',
       keywords: 'AWS, DocumentDB, MongoDB, Maintenance, Failover, SRE, Production Operations, Cluster Maintenance, Instance Maintenance, Spring Boot, Spring Data MongoDB'
+    },
+    'spring-mongo-kafka-no-message-loss': {
+      title: 'Surviving DocDB Failover with Spring Data MongoDB and Kafka: The One-Line Throw That Saved Our Messages | Developer Playground',
+      description: 'When a MongoDB primary fails over during peak traffic, the difference between losing every message and retrying every message is exactly one line of Kotlin. The silent-fallback anti-pattern, the fix, and production data from two real DocumentDB maintenances.',
+      keywords: 'Spring Boot, Spring Data MongoDB, Kafka, CircuitBreaker, Resilience4j, Kotlin, DocumentDB, MongoDB, Failover, Message Loss, DLT, Dead Letter Topic, Production Operations'
     }
   },
   regexCheatsheet: {
