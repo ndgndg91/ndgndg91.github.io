@@ -8,7 +8,7 @@ export const circuitBreakerTuningForFailover: BlogPost = {
   date: '2026-05-13',
   updatedDate: '2026-05-13',
   tags: ['Resilience4j', 'CircuitBreaker', 'MongoDB', 'Spring Data MongoDB', 'DocumentDB', 'Failover', 'Tuning', 'Production Operations'],
-  image: 'distributed-lock-redis.webp',
+  image: 'documentdb-cons.webp',
   content: `
     <nav class="mb-4" aria-label="Breadcrumb">
       <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
