@@ -221,6 +221,11 @@ export const seoData = {
       title: 'Understanding Kubernetes cgroup v2 & Deep Dive into JVM Pod Memory Issues | Developer Playground',
       description: 'Explore the shift from cgroup v1 to v2 in Kubernetes and dive deep into how this architectural change triggers severe Out-Of-Memory (OOM) issues in JVM-based applications.',
       keywords: 'Kubernetes, cgroup v2, JVM, Java, Spring Boot, OOM, OutOfMemory, Memory Management, Linux'
+    },
+    'aws-docdb-forced-maintenance': {
+      title: 'The AWS DocumentDB Maintenance Trap: Why You Cannot Postpone Forever | Developer Playground',
+      description: 'AWS DocumentDB maintenance can only be postponed a finite number of times before AWS force-applies it on a date you do not control. Plus the critical distinction between cluster and instance maintenance that nobody explains until you hit it in production.',
+      keywords: 'AWS, DocumentDB, MongoDB, Maintenance, Failover, SRE, Production Operations, Cluster Maintenance, Instance Maintenance, Spring Boot, Spring Data MongoDB'
     }
   },
   regexCheatsheet: {

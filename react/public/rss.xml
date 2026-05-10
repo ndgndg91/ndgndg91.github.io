@@ -387,5 +387,18 @@
       <category>OOM</category>
       <category>Spring Boot</category>
     </item>
+    <item>
+      <title>The AWS DocumentDB Maintenance Trap: Why You Cannot Postpone Forever</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/aws-docdb-forced-maintenance/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/aws-docdb-forced-maintenance/</guid>
+      <pubDate>Mon, 11 May 2026 00:00:00 GMT</pubDate>
+      <description>AWS DocumentDB maintenance can only be postponed a finite number of times before AWS force-applies it on a date you do not control. Plus the critical distinction between cluster and instance maintenance that nobody explains until you hit it in production.</description>
+      <category>AWS</category>
+      <category>DocumentDB</category>
+      <category>MongoDB</category>
+      <category>Maintenance</category>
+      <category>Failover</category>
+      <category>SRE</category>
+    </item>
   </channel>
 </rss>
