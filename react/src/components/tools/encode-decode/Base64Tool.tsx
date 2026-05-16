@@ -90,12 +90,39 @@ const Base64Tool: React.FC = () => {
                 <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
                     <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is Base64 Encoding?</h2>
                     <p className="mb-4">
-                        Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. The term Base64 originates from a specific MIME content transfer encoding. Each Base64 digit represents exactly 6 bits of data.
+                        Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format. It is commonly used when there is a need to encode binary data that needs to be stored and transferred over media that are designed to deal with textual data. This ensures that the data remains intact without modification during transport.
                     </p>
-                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
+
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">How Base64 Works</h3>
                     <p className="mb-4">
-                        Simply paste your text or Base64 string into the <strong>Input</strong> text area above. Click the <strong>Encode</strong> button to convert your plain text into Base64 format. Alternatively, click the <strong>Decode</strong> button to convert a Base64 encoded string back to plain text. The result will appear in the <strong>Output</strong> area where you can easily copy it to your clipboard.
+                        The encoding process works by dividing every 3 bytes (24 bits) of data into four 6-bit units. Each 6-bit unit is then mapped to one of the 64 characters in the Base64 alphabet (A-Z, a-z, 0-9, <code>+</code>, <code>/</code>).
                     </p>
+                    <ul className="list-disc pl-6 mb-4">
+                        <li><strong>Input:</strong> 3 Bytes = 24 Bits</li>
+                        <li><strong>Processing:</strong> 4 units of 6 Bits</li>
+                        <li><strong>Output:</strong> 4 ASCII Characters</li>
+                    </ul>
+
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">The Meaning of Padding (=)</h3>
+                    <p className="mb-4">
+                        You may often see one or two <code>=</code> characters at the end of a Base64 string. This is called <strong>padding</strong>. Since Base64 expects units of 3 bytes, if the input data is not a multiple of 3, extra bits are added and represented by the <code>=</code> sign to ensure the final string has the correct length.
+                    </p>
+
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Encoding vs. Encryption</h2>
+                    <div className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-4 mb-6">
+                        <p className="text-amber-800 dark:text-amber-200 font-bold">Important Notice:</p>
+                        <p className="text-amber-700 dark:text-amber-300">
+                            Base64 is <strong>NOT encryption</strong>. It is a simple data transformation. Anyone can easily decode a Base64 string back to its original form. Never use Base64 to "hide" or "secure" sensitive passwords or private data. For actual security, use the <a href="/tools/encrypt-decrypt/aes" className="underline">AES Encryption Tool</a>.
+                        </p>
+                    </div>
+
+                    <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Common Use Cases</h2>
+                    <ul className="list-disc pl-6 mb-4">
+                        <li><strong>Data URIs:</strong> Embedding small images or fonts directly into CSS or HTML files.</li>
+                        <li><strong>Email Attachments:</strong> Sending non-text files via SMTP (which is text-based).</li>
+                        <li><strong>Basic Auth:</strong> Sending usernames and passwords in HTTP headers (always use with HTTPS!).</li>
+                    </ul>
+
                     <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Is my data secure?</h2>
                     <p className="mb-4">
                         Yes! This Base64 encoder and decoder works entirely within your web browser using JavaScript. Your input data is never sent to any external server, ensuring your sensitive information remains private and secure on your own device.

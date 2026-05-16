@@ -269,12 +269,46 @@ const UuidGenerator: React.FC = () => {
       <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is a UUID?</h2>
         <p className="mb-4">
-          A UUID (Universally Unique Identifier) is a 128-bit number used to identify information in computer systems. When generated according to standard methods, UUIDs are for practical purposes unique, without depending on a central registration authority. They are widely used as database primary keys and transaction IDs.
+          A UUID (Universally Unique Identifier) is a 128-bit label used for information in computer systems. The intent of UUIDs is to enable distributed systems to uniquely identify information without significant central coordination. In its canonical textual representation, the 16 octets of a UUID are represented as 32 hexadecimal digits, displayed in five groups separated by hyphens (<code>8-4-4-4-12</code>).
         </p>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Which version should I use?</h2>
+
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">Understanding UUID Versions</h3>
+        <div className="space-y-6">
+          <section>
+            <h4 className="font-bold text-lg">UUID v4 (Random)</h4>
+            <p>Version 4 UUIDs are generated using random or pseudo-random numbers. Out of the 128 bits, 122 bits are random. This is the most common version used in modern applications where simple uniqueness is required.</p>
+          </section>
+
+          <section>
+            <h4 className="font-bold text-lg">UUID v7 (Time-Ordered)</h4>
+            <p>The new <strong>UUID v7</strong> is specifically designed for use as database primary keys. It combines a 48-bit Unix timestamp with random bits. Because the first part is time-based, UUID v7 values are <strong>monotonically increasing</strong>, which drastically improves database B-tree indexing performance by reducing page splits.</p>
+          </section>
+
+          <section>
+            <h4 className="font-bold text-lg">UUID v1 (Time & MAC)</h4>
+            <p>Version 1 uses the current timestamp and the MAC address of the generating computer. While extremely unique, it has fallen out of favor because it leaks the hardware identity and the exact time of creation.</p>
+          </section>
+
+          <section>
+            <h4 className="font-bold text-lg">UUID v3 & v5 (Deterministic)</h4>
+            <p>These are name-based UUIDs. Version 3 uses MD5 hashing, and Version 5 uses SHA-1. They are useful when you need to generate a consistent ID for the same input string within a specific namespace.</p>
+          </section>
+        </div>
+
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">Probability of Collision</h2>
         <p className="mb-4">
-          <strong>UUID v4</strong> is completely random and is the most common choice for general purposes. <strong>UUID v7</strong> is highly recommended for database keys because it includes a time-based component, meaning new IDs are sequentially sorted, preventing database fragmentation. <strong>UUID v1</strong> is time-based but exposes the MAC address of the generator. <strong>UUID v3 and v5</strong> are deterministic, meaning the same input (namespace + name) will always produce the same UUID.
+          How likely is it to generate two identical UUIDs? For UUID v4, the probability is astronomical. To have a 50% chance of a collision, you would need to generate <strong>1 billion UUIDs per second for about 85 years</strong>. For most practical applications, the risk is effectively zero.
         </p>
+
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Database Optimization Tips</h2>
+        <p className="mb-4">
+          When using UUIDs as primary keys in databases like MySQL, PostgreSQL, or MongoDB:
+        </p>
+        <ul className="list-disc pl-6 mb-4">
+          <li><strong>Prefer UUID v7:</strong> As mentioned, its time-ordered nature is much friendlier to indexes than the completely random UUID v4.</li>
+          <li><strong>Store as Binary:</strong> Instead of storing UUIDs as 36-character strings (which take 36 bytes), store them in a native <code>UUID</code> type or a <code>BINARY(16)</code> column to save space and improve performance.</li>
+          <li><strong>Avoid v1 in Public APIs:</strong> Since v1 contains the MAC address, it can pose a security risk if exposed to users.</li>
+        </ul>
       </div>
     </div>
     </>

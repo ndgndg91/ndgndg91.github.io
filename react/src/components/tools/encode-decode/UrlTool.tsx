@@ -90,15 +90,56 @@ const UrlTool: React.FC = () => {
         <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">What is URL Encoding?</h2>
           <p className="mb-4">
-            URL encoding, also known as Percent-encoding, is a mechanism for encoding information in a Uniform Resource Identifier (URI). Since URLs can only be sent over the Internet using the ASCII character-set, any characters outside this set must be converted. URL encoding replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.
+            URL encoding, also known as <strong>Percent-encoding</strong>, is a mechanism for encoding information in a Uniform Resource Identifier (URI). Since URLs can only be sent over the Internet using the ASCII character-set, any characters outside this set must be converted into a valid ASCII format.
           </p>
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why is it necessary?</h2>
+
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">Reserved vs. Unreserved Characters</h3>
+          <p className="mb-4">Characters in a URL are divided into two categories:</p>
+          <ul className="list-disc pl-6 mb-4">
+            <li><strong>Unreserved:</strong> Characters that have no special meaning and can be used directly (A-Z, a-z, 0-9, <code>-</code>, <code>.</code>, <code>_</code>, <code>~</code>).</li>
+            <li><strong>Reserved:</strong> Characters that have special structural meanings (<code>:</code>, <code>/</code>, <code>?</code>, <code>#</code>, <code>[</code>, <code>]</code>, <code>@</code>, <code>!</code>, <code>$</code>, <code>&</code>, <code>'</code>, <code>(</code>, <code>)</code>, <code>*</code>, <code>+</code>, <code>,</code>, <code>;</code>, <code>=</code>). These must be encoded if used as data.</li>
+          </ul>
+
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">encodeURI() vs. encodeURIComponent()</h3>
+          <p className="mb-4">In web development, choosing the right encoding method is critical:</p>
+          <ul className="list-disc pl-6 mb-4">
+            <li><strong>encodeURI():</strong> Used for encoding a full URL. It ignores structural characters like <code>http://</code>, <code>/</code>, and <code>?</code>.</li>
+            <li><strong>encodeURIComponent():</strong> Used for encoding a single component of a URL (like a query parameter). It encodes almost all non-ASCII and reserved characters, ensuring data doesn't break the URL structure.</li>
+          </ul>
+
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Common Encoding Examples</h2>
+          <div className="overflow-x-auto mb-6">
+            <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-800">
+                  <th className="border border-gray-300 dark:border-gray-700 p-2">Character</th>
+                  <th className="border border-gray-300 dark:border-gray-700 p-2">Encoded Value</th>
+                  <th className="border border-gray-300 dark:border-gray-700 p-2">Reason</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2">Space</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2"><code>%20</code> or <code>+</code></td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2">Not allowed in raw URLs</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2">&amp;</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2"><code>%26</code></td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2">Used as parameter separator</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2">=</td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2"><code>%3D</code></td>
+                  <td className="border border-gray-300 dark:border-gray-700 p-2">Used for key-value assignment</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Security and Performance</h2>
           <p className="mb-4">
-            URLs often contain characters that have special meanings (like <code>?</code>, <code>&amp;</code>, <code>=</code>, or spaces). If you want to include these characters as data rather than structural parts of the URL, they must be encoded. For example, a space is encoded as <code>%20</code>.
-          </p>
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
-          <p className="mb-4">
-            Paste your URL or text into the Input area. Click <strong>Encode</strong> to convert special characters into their percent-encoded equivalents. Click <strong>Decode</strong> to revert a percent-encoded string back into readable text. The result will be displayed in the Output area.
+            Improper URL encoding can lead to serious security vulnerabilities such as <strong>Open Redirects</strong> or <strong>Parameter Pollution</strong>. Always encode user-provided data before appending it to a URL string. Additionally, modern browsers handle some encoding automatically, but server-side processing still relies on standardized percent-encoding for data integrity.
           </p>
         </div>
       </div>

@@ -61,14 +61,6 @@ const Footer: React.FC = () => {
                   Software Engineering
                 </Link>
               </li>
-              <li>
-                <Link 
-                  to="/blog/other/list" 
-                  className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
-                >
-                  Other
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

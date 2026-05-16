@@ -187,14 +187,78 @@ const JsonParserTool: React.FC = () => {
         <p className="mb-4">
           JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write, and easy for machines to parse and generate. JSON is a text format that is completely language independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Perl, Python, and many others.
         </p>
+
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">Supported JSON Data Types</h3>
+        <p className="mb-4">Standard JSON supports the following six basic data types:</p>
+        <ul className="list-disc pl-6 mb-4">
+          <li><strong>String:</strong> A sequence of zero or more Unicode characters, wrapped in double quotes.</li>
+          <li><strong>Number:</strong> A signed decimal number that may contain a fractional part and use exponential E notation.</li>
+          <li><strong>Object:</strong> An unordered set of name/value pairs (keys must be strings).</li>
+          <li><strong>Array:</strong> An ordered collection of values.</li>
+          <li><strong>Boolean:</strong> Either <code>true</code> or <code>false</code>.</li>
+          <li><strong>Null:</strong> An empty value, using the word <code>null</code>.</li>
+        </ul>
+
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">JSON vs. XML: Why Choose JSON?</h3>
+        <div className="overflow-x-auto mb-6">
+          <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-300 dark:border-gray-700 p-2">Feature</th>
+                <th className="border border-gray-300 dark:border-gray-700 p-2">JSON</th>
+                <th className="border border-gray-300 dark:border-gray-700 p-2">XML</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Readability</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Higher (concise)</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Lower (verbose)</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Data Types</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Strings, Numbers, Arrays</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">All data is Strings</td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Parsing Speed</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Faster (Native JS support)</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Slower</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this JSON Parser</h2>
         <p className="mb-4">
           Paste your minified or unformatted JSON string into the <strong>Input</strong> area. Select your preferred indentation level (2, 4, or 8 spaces), and click <strong>Parse JSON</strong>. The formatted and color-coded JSON will be displayed in the <strong>Output</strong> area. If there are any syntax errors in your JSON, a helpful error message will be shown instead.
         </p>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why format JSON?</h2>
+
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">JSON Security Best Practices</h2>
         <p className="mb-4">
-          Raw JSON data is often minified (all whitespace removed) to reduce file size for network transfer. While this is great for machines, it makes the data nearly impossible for humans to read or debug. A JSON parser and formatter reconstructs the structural indentation, making the data hierarchy clear and easy to understand.
+          When working with JSON in your own applications, follow these security guidelines:
         </p>
+        <ul className="list-disc pl-6 mb-4">
+          <li><strong>Never use eval():</strong> To convert a JSON string into an object, always use <code>JSON.parse()</code>. Using <code>eval()</code> can execute malicious scripts embedded in the data.</li>
+          <li><strong>Sanitize Inputs:</strong> Even if the data is valid JSON, validate the actual content before using it in database queries or UI rendering to prevent XSS.</li>
+          <li><strong>Secure Transmission:</strong> Always send JSON over HTTPS to prevent man-in-the-middle attacks from intercepting sensitive data.</li>
+        </ul>
+
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Frequently Asked Questions (FAQ)</h2>
+        <div className="space-y-4 mb-8">
+          <div>
+            <h4 className="font-bold">Can JSON have comments?</h4>
+            <p>The official JSON standard (RFC 8259) does not support comments. However, some variants like JSONC (JSON with Comments) allow them, but standard parsers will throw an error.</p>
+          </div>
+          <div>
+            <h4 className="font-bold">What is the difference between JSON and a JavaScript Object?</h4>
+            <p>JSON is a <strong>string format</strong> used for data transfer, while a JavaScript Object is a <strong>data structure</strong> in memory. JSON requires double quotes for keys and has stricter syntax rules.</p>
+          </div>
+          <div>
+            <h4 className="font-bold">Is there a size limit for JSON?</h4>
+            <p>Theoretically, no. However, practical limits depend on the memory of the system parsing the JSON and the maximum string size of the language being used.</p>
+          </div>
+        </div>
       </div>
     </div>
         </>

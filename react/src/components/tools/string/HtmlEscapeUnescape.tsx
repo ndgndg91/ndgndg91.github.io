@@ -129,12 +129,70 @@ const HtmlEscapeUnescape: React.FC = () => {
       <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why Escape HTML?</h2>
         <p className="mb-4">
-          HTML escaping is a critical security measure used to prevent Cross-Site Scripting (XSS) attacks. By converting special characters (like <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>&quot;</code>, and <code>&#39;</code>) into HTML entities, you ensure that web browsers treat user input as safe text rather than executable code or HTML markup.
+          HTML escaping is a critical security measure used to prevent <strong>Cross-Site Scripting (XSS)</strong> attacks. By converting special characters (like <code>&lt;</code>, <code>&gt;</code>, <code>&amp;</code>, <code>&quot;</code>, and <code>&#39;</code>) into HTML entities, you ensure that web browsers treat user input as <strong>plain text</strong> rather than executable code or HTML markup.
         </p>
-        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">When to Unescape HTML?</h2>
+
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">How XSS Prevention Works</h3>
         <p className="mb-4">
-          You might encounter text that has been heavily escaped (e.g., in database exports, JSON API responses, or legacy systems). Unescaping HTML converts entities like <code>&amp;lt;</code> back to their original characters (<code>&lt;</code>), making the text readable and usable for further processing.
+          Imagine a user enters a comment: <code>&lt;script&gt;alert('Hacked!')&lt;/script&gt;</code>. If your site displays this directly, the browser will execute the script. By escaping it, the text becomes:
+          <br />
+          <code>&amp;lt;script&amp;gt;alert(&amp;#39;Hacked!&amp;#39;)&amp;lt;/script&amp;gt;</code>
+          <br />
+          The browser will now safely display the literal characters instead of running the code.
         </p>
+
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">Common HTML Entities Table</h3>
+        <div className="overflow-x-auto mb-6">
+          <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-300 dark:border-gray-700 p-2">Character</th>
+                <th className="border border-gray-300 dark:border-gray-700 p-2">Entity Name</th>
+                <th className="border border-gray-300 dark:border-gray-700 p-2">Entity Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&lt;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;lt;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;#60;</code></td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&gt;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;gt;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;#62;</code></td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;amp;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;#38;</code></td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&quot;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;quot;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;#34;</code></td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&#39;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;apos;</code></td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>&amp;#39;</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Escaping vs. Sanitizing</h2>
+        <p className="mb-4">
+          It's important to understand the difference between these two security concepts:
+        </p>
+        <ul className="list-disc pl-6 mb-4">
+          <li><strong>Escaping:</strong> Converts all special characters into safe entities. The output will display exactly as the input but cannot be rendered as HTML.</li>
+          <li><strong>Sanitizing:</strong> Removes or strips out dangerous HTML tags and attributes (like <code>&lt;script&gt;</code> or <code>onclick</code>) while allowing "safe" tags like <code>&lt;b&gt;</code> or <code>&lt;i&gt;</code> to remain. This is used when you want to allow some rich-text formatting.</li>
+        </ul>
+        <p className="mb-4 italic text-sm">
+          Recommendation: Always <strong>Escape</strong> by default. Only use <strong>Sanitization</strong> (via libraries like DOMPurify) if you explicitly need to render user-provided HTML.
+        </p>
+
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this tool</h2>
         <p className="mb-4">
           Enter your raw HTML or text into the Input area. Click <strong>Escape HTML</strong> to safely encode characters for web display. Click <strong>Unescape HTML</strong> to decode previously escaped text back to its original form. You can also use the <strong>Load Test Example</strong> button to see how it works instantly.

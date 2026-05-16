@@ -103,15 +103,51 @@ const ByteCounter: React.FC = () => {
       <div className="mt-12 prose prose-gray dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Why count bytes instead of characters?</h2>
         <p className="mb-4">
-          In modern programming and database design, the number of characters in a string does not always equal the number of bytes it occupies. For example, standard English letters (ASCII) take 1 byte each, but characters in Korean, Japanese, Chinese, or Emojis can take 3 to 4 bytes each in UTF-8 encoding.
+          In modern programming and database design, the number of characters in a string does not always equal the number of bytes it occupies. For example, standard English letters (ASCII) take 1 byte each, but characters in Korean, Japanese, Chinese, or Emojis can take 3 to 4 bytes each in <strong>UTF-8 encoding</strong>.
         </p>
+
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mt-8 mb-4">UTF-8 Byte Size by Character Type</h3>
+        <div className="overflow-x-auto mb-6">
+          <table className="min-w-full border-collapse border border-gray-300 dark:border-gray-700">
+            <thead>
+              <tr className="bg-gray-100 dark:bg-gray-800">
+                <th className="border border-gray-300 dark:border-gray-700 p-2">Character Type</th>
+                <th className="border border-gray-300 dark:border-gray-700 p-2">Byte Size</th>
+                <th className="border border-gray-300 dark:border-gray-700 p-2">Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">ASCII (English, Numbers, Symbols)</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">1 Byte</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>a, 1, !, @</code></td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Latin Extended, Greek, Hebrew</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">2 Bytes</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>ñ, é, Ω</code></td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">CJK (Korean, Japanese, Chinese)</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">3 Bytes</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>한, 글, あ, 你</code></td>
+              </tr>
+              <tr>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">Emojis and rare symbols</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2">4 Bytes</td>
+                <td className="border border-gray-300 dark:border-gray-700 p-2"><code>🚀, 🔥, 🌈</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">When is this useful?</h2>
         <p className="mb-4">
-          This tool is essential for developers designing database schemas (like VARCHAR lengths in MySQL), configuring message brokers (like Kafka payload limits), or building APIs with strict payload size restrictions. Knowing the exact UTF-8 byte size helps prevent unexpected truncation errors and <code>Data too long for column</code> exceptions.
+          This tool is essential for developers designing database schemas (like <code>VARCHAR</code> lengths in MySQL), configuring message brokers (like Kafka payload limits), or building APIs with strict payload size restrictions. Knowing the exact UTF-8 byte size helps prevent unexpected truncation errors and <code>Data too long for column</code> exceptions.
         </p>
         <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">How to use this Byte Counter</h2>
         <p className="mb-4">
-          Simply type or paste your text into the Input box. The tool will automatically calculate both the standard character length and the precise UTF-8 byte size in real-time. No clicking required!
+          Simply type or paste your text into the Input box. The tool will automatically calculate both the standard character length and the precise UTF-8 byte size in real-time. This is particularly useful for verifying SMS message limits (usually 80-160 bytes) or Twitter-like character/byte constraints.
         </p>
       </div>
     </div>
