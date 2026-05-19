@@ -236,6 +236,11 @@ export const seoData = {
       title: 'When Your CircuitBreaker Never Opens: Lessons from Two Production DocDB Failovers | Developer Playground',
       description: 'Resilience4j defaults that look reasonable on paper will never fire during a real DocumentDB failover. Plus the MongoDB driver setting that silently blocks every request for 30 seconds. The exact tuning that fixes both.',
       keywords: 'Resilience4j, CircuitBreaker, MongoDB, Spring Data MongoDB, DocumentDB, Failover, Tuning, serverSelectionTimeout, MongoConnectionPoolClearedException, minimumNumberOfCalls, Production Operations'
+    },
+    'csrf-httponly-danger': {
+      title: 'The Hidden Danger of HttpOnly CSRF Cookies in Django | Developer Playground',
+      description: 'Learn why setting your CSRF cookie to HttpOnly can break the Double Submit Cookie pattern and how to properly secure your web application.',
+      keywords: 'Security, CSRF, Django, Web Development, Incident Report, HttpOnly, Double Submit Cookie'
     }
   },
   regexCheatsheet: {
