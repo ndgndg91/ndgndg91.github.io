@@ -132,7 +132,8 @@
       "/blog/software-engineer/list/kafka-consumer-direct-memory-oom",
       "/blog/software-engineer/list/kafka-vs-pulsar-ordering",
       "/blog/software-engineer/list/spring-cacheable-sync-jdk25",
-      "/blog/software-engineer/list/csrf-httponly-danger"
+      "/blog/software-engineer/list/csrf-httponly-danger",
+      "/blog/software-engineer/list/idempotent-kafka-consumer-mongo-upsert"
     ],
     "skipThirdPartyRequests": true,
     "cacheAjaxRequests": false,

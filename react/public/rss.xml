@@ -5,7 +5,7 @@
     <link>https://developer-playground.com/</link>
     <description>Developer tools and technical blog for software engineers with articles on Kafka, JVM, MongoDB and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 29 May 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://developer-playground.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://developer-playground.com/img/developer-playground-logo.webp</url>
@@ -16,6 +16,19 @@
     <category>Programming</category>
     <category>Web Development</category>
     <category>Developer Tools</category>
+    <item>
+      <title>The Day an MSK Upgrade Duplicated Every Outbound Record: Why Your Kafka Consumer Needs Idempotency, Not Just Your Producer</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/idempotent-kafka-consumer-mongo-upsert/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/idempotent-kafka-consumer-mongo-upsert/</guid>
+      <pubDate>Fri, 29 May 2026 10:00:00 GMT</pubDate>
+      <description>A managed Kafka cluster upgrade rolled brokers, our consumer re-processed already-handled records, and Mongo happily inserted them again because we never set _id. Multiple DLTs, a duplicate-document mess, and the one-line fix that one of our sibling pipelines had been quietly using all along.</description>
+      <category>Kafka</category>
+      <category>MSK</category>
+      <category>Spring Boot</category>
+      <category>MongoDB</category>
+      <category>Idempotency</category>
+      <category>Production Operations</category>
+    </item>
     <item>
       <title>The Hidden Danger of HttpOnly CSRF Cookies in Django</title>
       <link>https://developer-playground.com/blog/software-engineer/list/csrf-httponly-danger/</link>

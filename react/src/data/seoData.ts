@@ -241,6 +241,11 @@ export const seoData = {
       title: 'The Hidden Danger of HttpOnly CSRF Cookies in Django | Developer Playground',
       description: 'Learn why setting your CSRF cookie to HttpOnly can break the Double Submit Cookie pattern and how to properly secure your web application.',
       keywords: 'Security, CSRF, Django, Web Development, Incident Report, HttpOnly, Double Submit Cookie'
+    },
+    'idempotent-kafka-consumer-mongo-upsert': {
+      title: 'The Day an MSK Upgrade Duplicated Every Outbound Record: Why Your Kafka Consumer Needs Idempotency, Not Just Your Producer | Developer Playground',
+      description: 'A managed Kafka cluster upgrade rolled brokers, our consumer re-processed already-handled records, and Mongo happily inserted them again because we never set _id. Multiple DLTs, a duplicate-document mess, and the one-line fix that one of our sibling pipelines had been quietly using all along.',
+      keywords: 'Kafka, MSK, Spring Boot, Spring Data MongoDB, Kotlin, Idempotency, At-Least-Once, Consumer Group Rebalance, Offset Commit, DLT, Dead Letter Topic, MongoDB Upsert, replaceOne, Production Operations, Postmortem'
     }
   },
   regexCheatsheet: {
