@@ -17,6 +17,71 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>Fixing an OOM Only to Create Zombie Batch Pods: The JVM Non-Daemon Thread Trap</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/async-threadpool-batch-pod-zombie/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/async-threadpool-batch-pod-zombie/</guid>
+      <pubDate>Mon, 13 Jul 2026 10:00:00 GMT</pubDate>
+      <description>How replacing Spring's default SimpleAsyncTaskExecutor with a bounded ThreadPoolTaskExecutor to fix an OOM caused our CronJob pods to never terminate, creating connection leaks and database exhaustion.</description>
+      <category>JVM</category>
+      <category>Spring Boot</category>
+      <category>Spring Batch</category>
+      <category>Threading</category>
+      <category>Kubernetes</category>
+      <category>Thread Pool</category>
+      <category>Production Operations</category>
+    </item>
+    <item>
+      <title>Funnel Data Collection: Log vs. Kafka — An Engineering Decision Record</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/funnel-log-vs-kafka-collection/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/funnel-log-vs-kafka-collection/</guid>
+      <pubDate>Thu, 09 Jul 2026 10:00:00 GMT</pubDate>
+      <description>When a data team requests Kafka for funnel event collection, is it really the right tool for the job? An engineering post-mortem on how we decoupled the schema requirement from the transport channel.</description>
+      <category>Architecture</category>
+      <category>Data Pipeline</category>
+      <category>Logging</category>
+      <category>Kafka</category>
+      <category>Fluentd</category>
+      <category>Decision Record</category>
+    </item>
+    <item>
+      <title>Defense in Depth: Password Salt, Pepper, and Client-Side Hashing Explained</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/password-salt-pepper-client-side-hashing/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/password-salt-pepper-client-side-hashing/</guid>
+      <pubDate>Thu, 09 Jul 2026 10:00:00 GMT</pubDate>
+      <description>Salt, Pepper, Client-side Hashing, TLS, and slow KDFs are not rivals. They are complementary layers of defense protecting against different password compromise scenarios.</description>
+      <category>Security</category>
+      <category>Cryptography</category>
+      <category>Password Hashing</category>
+      <category>Bcrypt</category>
+      <category>Web Architecture</category>
+    </item>
+    <item>
+      <title>Optimizing External API Consumption with Negative Caching</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/optimizing-external-api-negative-cache/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/optimizing-external-api-negative-cache/</guid>
+      <pubDate>Tue, 07 Jul 2026 10:00:00 GMT</pubDate>
+      <description>When 98% of outbound calls fail with 400 Bad Request because users aren't registered on the downstream chat platform, how do you protect your latency? A look into negative caching and cache eviction strategies.</description>
+      <category>Caching</category>
+      <category>Redis</category>
+      <category>Performance Tuning</category>
+      <category>Resilience</category>
+      <category>API Design</category>
+      <category>Spring Boot</category>
+    </item>
+    <item>
+      <title>Preventing OOM in Large Data Rendering Workers: Chunking and PDF Merging</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/jvm-worker-oom-troubleshooting/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/jvm-worker-oom-troubleshooting/</guid>
+      <pubDate>Wed, 01 Jul 2026 10:00:00 GMT</pubDate>
+      <description>How loading 4 years of history into memory caused our JVM workers to run out of heap, and how we solved it using paginated chunking and PDF merging.</description>
+      <category>JVM</category>
+      <category>Memory Management</category>
+      <category>PDF Rendering</category>
+      <category>Troubleshooting</category>
+      <category>Kotlin</category>
+      <category>OOM</category>
+    </item>
+    <item>
       <title>The Day an MSK Upgrade Duplicated Every Outbound Record: Why Your Kafka Consumer Needs Idempotency, Not Just Your Producer</title>
       <link>https://developer-playground.com/blog/software-engineer/list/idempotent-kafka-consumer-mongo-upsert/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/idempotent-kafka-consumer-mongo-upsert/</guid>
@@ -39,6 +104,33 @@
       <category>CSRF</category>
       <category>Django</category>
       <category>Web Development</category>
+    </item>
+    <item>
+      <title>The EBS PV Availability Zone Trap During EKS Upgrades</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/eks-upgrade-pv-az-affinity/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/eks-upgrade-pv-az-affinity/</guid>
+      <pubDate>Mon, 11 May 2026 10:00:00 GMT</pubDate>
+      <description>How a legacy gp2 Persistent Volume locked our stateful services to a single AZ, leading to infinite scheduling pending loops during a Kubernetes cluster upgrade.</description>
+      <category>Kubernetes</category>
+      <category>EKS Upgrade</category>
+      <category>AWS</category>
+      <category>EBS</category>
+      <category>Persistent Volumes</category>
+      <category>SRE</category>
+      <category>Production Operations</category>
+    </item>
+    <item>
+      <title>The Spring Batch COMPLETED Trap: Why It Doesn't Guarantee Business Success</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/spring-batch-completed-trap/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/spring-batch-completed-trap/</guid>
+      <pubDate>Mon, 11 May 2026 10:00:00 GMT</pubDate>
+      <description>Swallowing exceptions in Batch writers creates a silent-failure anti-pattern where a batch is marked COMPLETED even when 100% of rows fail. How to implement proper monitoring and step execution listener controls.</description>
+      <category>Java</category>
+      <category>Spring Batch</category>
+      <category>Kotlin</category>
+      <category>Monitoring</category>
+      <category>Batch Processing</category>
+      <category>Software Design</category>
     </item>
     <item>
       <title>Spring Redis @Cacheable(sync=true): The Distributed Lock Misconception and the Salvation of JDK 25</title>

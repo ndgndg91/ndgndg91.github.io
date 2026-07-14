@@ -246,6 +246,41 @@ export const seoData = {
       title: 'The Day an MSK Upgrade Duplicated Every Outbound Record: Why Your Kafka Consumer Needs Idempotency, Not Just Your Producer | Developer Playground',
       description: 'A managed Kafka cluster upgrade rolled brokers, our consumer re-processed already-handled records, and Mongo happily inserted them again because we never set _id. Multiple DLTs, a duplicate-document mess, and the one-line fix that one of our sibling pipelines had been quietly using all along.',
       keywords: 'Kafka, MSK, Spring Boot, Spring Data MongoDB, Kotlin, Idempotency, At-Least-Once, Consumer Group Rebalance, Offset Commit, DLT, Dead Letter Topic, MongoDB Upsert, replaceOne, Production Operations, Postmortem'
+    },
+    'async-threadpool-batch-pod-zombie': {
+      title: 'Fixing an OOM Only to Create Zombie Batch Pods: The JVM Non-Daemon Thread Trap | Developer Playground',
+      description: 'How replacing Spring\'s default SimpleAsyncTaskExecutor with a bounded ThreadPoolTaskExecutor to fix an OOM caused our CronJob pods to never terminate, creating connection leaks and database exhaustion.',
+      keywords: 'JVM, Spring Boot, Spring Batch, Threading, Kubernetes, Thread Pool, Incident Report'
+    },
+    'eks-upgrade-pv-az-affinity': {
+      title: 'The EBS PV Availability Zone Trap During EKS Upgrades | Developer Playground',
+      description: 'How a legacy gp2 Persistent Volume locked our stateful services to a single AZ, leading to infinite scheduling pending loops during a Kubernetes cluster upgrade.',
+      keywords: 'Kubernetes, EKS Upgrade, AWS, EBS, Persistent Volumes, SRE, Incident Report'
+    },
+    'jvm-worker-oom-troubleshooting': {
+      title: 'Preventing OOM in Large Data Rendering Workers: Chunking and PDF Merging | Developer Playground',
+      description: 'How loading 4 years of history into memory caused our JVM workers to run out of heap, and how we solved it using paginated chunking and PDF merging.',
+      keywords: 'JVM, Memory Management, PDF Rendering, Troubleshooting, Kotlin, OOM'
+    },
+    'funnel-log-vs-kafka-collection': {
+      title: 'Funnel Data Collection: Log vs. Kafka — An Engineering Decision Record | Developer Playground',
+      description: 'When a data team requests Kafka for funnel event collection, is it really the right tool for the job? An engineering post-mortem on how we decoupled the schema requirement from the transport channel.',
+      keywords: 'Architecture, Data Pipeline, Logging, Kafka, Fluentd, Decision Record'
+    },
+    'password-salt-pepper-client-side-hashing': {
+      title: 'Defense in Depth: Password Salt, Pepper, and Client-Side Hashing Explained | Developer Playground',
+      description: 'Salt, Pepper, Client-side Hashing, TLS, and slow KDFs are not rivals. They are complementary layers of defense protecting against different password compromise scenarios.',
+      keywords: 'Security, Cryptography, Password Hashing, Bcrypt, Web Architecture'
+    },
+    'optimizing-external-api-negative-cache': {
+      title: 'Optimizing External API Consumption with Negative Caching | Developer Playground',
+      description: 'When 98% of outbound calls fail with 400 Bad Request because users aren\'t registered on the downstream chat platform, how do you protect your latency? A look into negative caching and cache eviction strategies.',
+      keywords: 'Caching, Redis, Performance Tuning, Resilience, API Design, Spring Boot'
+    },
+    'spring-batch-completed-trap': {
+      title: 'The Spring Batch COMPLETED Trap: Why It Doesn\'t Guarantee Business Success | Developer Playground',
+      description: 'Swallowing exceptions in Batch writers creates a silent-failure anti-pattern where a batch is marked COMPLETED even when 100% of rows fail. How to implement proper monitoring and step execution listener controls.',
+      keywords: 'Java, Spring Batch, Kotlin, Monitoring, Batch Processing, Software Design'
     }
   },
   regexCheatsheet: {

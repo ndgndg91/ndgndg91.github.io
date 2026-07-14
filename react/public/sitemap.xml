@@ -396,4 +396,48 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- New posts added in July and May 2026 -->
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/async-threadpool-batch-pod-zombie/</loc>
+    <lastmod>2026-07-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/funnel-log-vs-kafka-collection/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/password-salt-pepper-client-side-hashing/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/optimizing-external-api-negative-cache/</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/jvm-worker-oom-troubleshooting/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/eks-upgrade-pv-az-affinity/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/spring-batch-completed-trap/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
