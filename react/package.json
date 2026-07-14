@@ -133,7 +133,14 @@
       "/blog/software-engineer/list/kafka-vs-pulsar-ordering",
       "/blog/software-engineer/list/spring-cacheable-sync-jdk25",
       "/blog/software-engineer/list/csrf-httponly-danger",
-      "/blog/software-engineer/list/idempotent-kafka-consumer-mongo-upsert"
+      "/blog/software-engineer/list/idempotent-kafka-consumer-mongo-upsert",
+      "/blog/software-engineer/list/async-threadpool-batch-pod-zombie",
+      "/blog/software-engineer/list/eks-upgrade-pv-az-affinity",
+      "/blog/software-engineer/list/jvm-worker-oom-troubleshooting",
+      "/blog/software-engineer/list/funnel-log-vs-kafka-collection",
+      "/blog/software-engineer/list/password-salt-pepper-client-side-hashing",
+      "/blog/software-engineer/list/optimizing-external-api-negative-cache",
+      "/blog/software-engineer/list/spring-batch-completed-trap"
     ],
     "skipThirdPartyRequests": true,
     "cacheAjaxRequests": false,
