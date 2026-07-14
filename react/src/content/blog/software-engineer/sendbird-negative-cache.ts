@@ -118,6 +118,9 @@ export const sendbirdNegativeCache: BlogPost = {
           <li><strong>Block Command:</strong> If a user attempts to block another user, clear both users\' negative cache keys before executing the command.</li>
           <li><strong>TTL Fallback:</strong> The 7-day TTL acts as a safety net in case of failed evict commands.</li>
         </ul>
+        <blockquote class="border-l-4 border-indigo-500 dark:border-indigo-400 pl-4 italic text-gray-700 dark:text-gray-300 my-6">
+          <strong>Scale Warning:</strong> Under ultra-high traffic, hitting Redis for every timeline request can introduce Redis network overhead. To scale this further, consider implementing a <strong>2-Tier Caching strategy</strong> (using a short-lived local In-Memory cache like Caffeine before fallback to Redis) or storing a registration status flag (e.g., <code>is_registered_on_chat</code>) directly in your primary User Database.
+        </blockquote>
       </section>
 
       <section class="mb-8">

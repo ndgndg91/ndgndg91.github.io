@@ -115,19 +115,16 @@ render-html: success (6038 ms)                  &larr; 6 seconds
 <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono leading-relaxed">
 02:19:35.263 worker [Attempt 1] EVENT_RECV (messageId=a303feee)
 02:19:35.270 worker [Attempt 1] calls /api/fetch -> returns 200 OK
-02:19:35.582 worker [Attempt 1] PDF generated successfully
-02:19:35.644 worker [Attempt 1] calls /api/complete -> returns 200 OK (Sends Success Email)
-02:19:35.650 worker [Attempt 2] EVENT_RECV (messageId=a303feee) *Re-delivered*
-02:19:35.654 worker [Attempt 2] calls /api/fetch -> returns 500 (Status is already COMPLETED)
-02:19:35.665 worker [Attempt 2] fails with FeignException
-02:19:35.688 worker [Attempt 2] calls /api/fail -> returns 200 OK (Sends Failure Email & marks failed)
+02:22:45.582 worker [Attempt 1] PDF generated successfully
+02:22:45.644 worker [Attempt 1] calls /api/complete -> returns 200 OK (Sends Success Email)
+02:22:45.650 worker [Attempt 2] EVENT_RECV (messageId=a303feee) *Re-delivered*
+02:22:45.654 worker [Attempt 2] calls /api/fetch -> returns 500 (Status is already COMPLETED)
+02:22:45.665 worker [Attempt 2] fails with FeignException
+02:22:45.688 worker [Attempt 2] calls /api/fail -> returns 200 OK (Sends Failure Email & marks failed)
 </pre>
         </div>
         <p class="mb-4 text-gray-900 dark:text-gray-100">
           <strong>What happened:</strong> Because the generation took over 3 minutes, the Kafka broker sometimes assumed the consumer was dead and initiated a consumer group rebalance. This caused the message to be re-delivered to another worker.
-        </p>
-        <p class="mb-4 text-gray-900 dark:text-gray-100">
-          While Attempt 1 completed successfully, Attempt 2 started processing the same message. When Attempt 2 called the server to fetch the job metadata, the server returned an error because the job status was already marked as <code>COMPLETED</code>. The worker treated this error as a processing failure and incorrectly called the <code>/fail</code> endpoint, overwriting the successful state and triggering the failure email.
         </p>
         <p class="mb-4 text-gray-900 dark:text-gray-100">
           <strong>The fix:</strong> We updated the worker and the server API to be idempotent:
@@ -136,6 +133,9 @@ render-html: success (6038 ms)                  &larr; 6 seconds
           <li>If the API returns a status showing the job is already completed, the worker skips processing and immediately acknowledges the Kafka offset.</li>
           <li>The server refuses to overwrite a <code>COMPLETED</code> status with a <code>FAILED</code> status.</li>
         </ul>
+        <blockquote class="border-l-4 border-indigo-500 dark:border-indigo-400 pl-4 italic text-gray-700 dark:text-gray-300 my-6">
+          <strong>Tip:</strong> To prevent Kafka rebalances on long-running operations, you should also increase <code>max.poll.interval.ms</code> or decouple the Kafka consumer thread from the actual processing thread by passing the task to a background thread pool while keeping the consumer thread polling.
+        </blockquote>
       </section>
 
       <section class="mb-8">

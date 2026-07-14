@@ -117,6 +117,9 @@ export const passwordSaltPepperClientHash: BlogPost = {
           <li><strong>Server memory exposure:</strong> Hackers exploiting server-level memory leaks (e.g., Heartbleed-style attacks) only read the hashed representation.</li>
           <li><strong>Password reuse compromise:</strong> Even if the server configuration is fully breached and hashes are cracked, the attacker only gets the SHA-256 digest. The user\'s original plaintext password—which they likely reused on other websites—remains secure.</li>
         </ul>
+        <blockquote class="border-l-4 border-indigo-500 dark:border-indigo-400 pl-4 italic text-gray-700 dark:text-gray-300 my-6">
+          <strong>Pro Tip:</strong> To eliminate the Pass-the-Hash risk entirely, consider upgrading from static client hashing to cryptographic protocols like <strong>Secure Remote Password (SRP)</strong> or <strong>OPAQUE PAKE (Password Authenticated Key Exchange)</strong>. These protocols allow the server to verify the password without the user ever sending the raw password or a static hash over the network.
+        </blockquote>
       </section>
 
       <section class="mb-8 border-b border-gray-100 dark:border-gray-800 pb-8">

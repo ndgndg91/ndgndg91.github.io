@@ -133,7 +133,7 @@ export const asyncThreadpoolBatchPodZombie: BlogPost = {
     <span class="text-purple-400">val</span> executor = <span class="text-yellow-300">ThreadPoolTaskExecutor</span>()
     executor.corePoolSize = <span class="text-orange-400">10</span>
     executor.maxPoolSize = <span class="text-orange-400">20</span>
-    <span class="text-orange-400">executor.setDaemon(true)</span>  # Threads will not block JVM exit
+    <span class="text-orange-400">executor.setDaemon(true)</span>  <span class="text-green-500">// Threads will not block JVM exit</span>
     executor.initialize()
     <span class="text-purple-400">return</span> executor
 }

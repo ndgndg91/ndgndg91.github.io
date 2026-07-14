@@ -106,6 +106,9 @@ export const logVsKafkaFunnelCollection: BlogPost = {
         <p class="mb-4 text-gray-900 dark:text-gray-100">
           This pattern achieved zero application-level cost. The backend services printed standard logs, while the logging agent handled Kafka publishing. The data team received their structured JSON events on their Kafka topic, and the backend team avoided managing additional client dependencies in legacy services.
         </p>
+        <blockquote class="border-l-4 border-indigo-500 dark:border-indigo-400 pl-4 italic text-gray-700 dark:text-gray-300 my-6">
+          <strong>Important:</strong> Relying on stdout logging under high traffic can cause performance bottlenecks due to synchronous I/O blocking. Ensure you configure your application to use asynchronous logging (such as Logback\'s <code>AsyncAppender</code> or Log4j2\'s LMAX Disruptor-based <code>AsyncLogger</code>) to prevent logging from slowing down application throughput.
+        </blockquote>
       </section>
 
       <section class="mb-8">

@@ -129,9 +129,9 @@ kubectl get pv -A -o custom-columns=\'NAME:.metadata.name,CLAIM:.spec.claimRef.n
 </pre>
         </div>
 
-        <h3 class="text-xl font-bold mb-4 text-indigo-600 dark:text-indigo-300 mt-6">C. Transition to Multi-AZ-aware Storage (gp3 or EFS)</h3>
+        <h3 class="text-xl font-bold mb-4 text-indigo-600 dark:text-indigo-300 mt-6">C. Use Multi-AZ-aware Storage (EFS) or WaitForFirstConsumer</h3>
         <p class="mb-4 text-gray-900 dark:text-gray-100">
-          Whenever possible, migrate legacy <code>gp2</code> volumes to <code>gp3</code> or use storage backends that support dynamic scheduling across multiple zones. If you must use single-AZ EBS volumes, ensure that your StatefulSet replicas are distributed across different AZs with corresponding PVs.
+          While migrating legacy <code>gp2</code> to <code>gp3</code> is recommended for performance and cost, gp3 is still an EBS volume and remains physically bound to a single AZ. To avoid AZ locks, use multi-AZ-aware storage like AWS EFS, or configure your StorageClass with <code>volumeBindingMode: WaitForFirstConsumer</code>. This delays volume binding until the pod is scheduled, ensuring the pod and volume are provisioned in the same AZ.
         </p>
       </section>
 

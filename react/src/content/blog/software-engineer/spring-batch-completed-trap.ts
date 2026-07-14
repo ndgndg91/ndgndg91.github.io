@@ -87,61 +87,65 @@ export const springBatchCompletedTrap: BlogPost = {
           To ensure that batches do not fail silently, we must track and propagate row-level failures.
         </p>
 
-        <h3 class="text-xl font-bold mb-4 text-indigo-600 dark:text-indigo-300 mt-6">Step 1: Track Failures inside the Writer</h3>
+        <h3 class="text-xl font-bold mb-4 text-indigo-600 dark:text-indigo-300 mt-6">Step 1: Track Failures and Store in ExecutionContext</h3>
         <p class="mb-4 text-gray-900 dark:text-gray-100">
-          Use an <code>AtomicInteger</code> to count failures during chunk writing:
+          Create a writer class that implements <code>StepExecutionListener</code> to retrieve the <code>StepExecution</code> and record failure counts in the thread-safe <code>ExecutionContext</code>:
         </p>
         <div class="my-6">
 <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono leading-relaxed">
-<span class="text-purple-400">@Bean</span>
+<span class="text-purple-400">@Component</span>
 <span class="text-purple-400">@StepScope</span>
-<span class="text-purple-400">fun</span> <span class="text-blue-400">accountSyncWriter</span>(): <span class="text-yellow-300">ItemWriter</span>&lt;<span class="text-yellow-300">UserAccount</span>&gt; {
-    <span class="text-purple-400">val</span> failedCount = <span class="text-yellow-300">AtomicInteger</span>(<span class="text-orange-400">0</span>)
-    <span class="text-purple-400">return</span> <span class="text-yellow-300">ItemWriter</span> { items -&gt;
-        items.forEach { item -&gt;
+<span class="text-purple-400">class</span> <span class="text-yellow-300">AccountSyncWriter</span>(
+    <span class="text-purple-400">private val</span> externalDatabaseService: <span class="text-yellow-300">ExternalDatabaseService</span>
+) : <span class="text-yellow-300">ItemWriter</span>&lt;<span class="text-yellow-300">UserAccount</span>&gt;, <span class="text-yellow-300">StepExecutionListener</span> {
+
+    <span class="text-purple-400">private val</span> failedCount = <span class="text-yellow-300">AtomicInteger</span>(<span class="text-orange-400">0</span>)
+    <span class="text-purple-400">private lateinit var</span> stepExecution: <span class="text-yellow-300">StepExecution</span>
+
+    <span class="text-purple-400">override fun</span> <span class="text-blue-400">beforeStep</span>(stepExecution: <span class="text-yellow-300">StepExecution</span>) {
+        <span class="text-purple-400">this</span>.stepExecution = stepExecution
+    }
+
+    <span class="text-purple-400">override fun</span> <span class="text-blue-400">write</span>(chunk: <span class="text-yellow-300">Chunk</span>&lt;<span class="text-purple-400">out</span> <span class="text-yellow-300">UserAccount</span>&gt;) {
+        chunk.forEach { item -&gt;
             <span class="text-purple-400">try</span> {
                 externalDatabaseService.update(item)
             } <span class="text-purple-400">catch</span> (e: <span class="text-yellow-300">Exception</span>) {
                 failedCount.incrementAndGet()
+                stepExecution.executionContext.putInt(<span class="text-green-400">"failedCount"</span>, failedCount.get())
                 logger.error(<span class="text-green-400">"Failed to sync \${item.id}"</span>, e)
-                <span class="text-purple-400">return</span><span class="text-purple-400">@forEach</span>
             }
+        }
+    }
+
+    <span class="text-purple-400">override fun</span> <span class="text-blue-400">afterStep</span>(stepExecution: <span class="text-yellow-300">StepExecution</span>): <span class="text-yellow-300">ExitStatus?</span> {
+        <span class="text-purple-400">val</span> failed = failedCount.get()
+        <span class="text-purple-400">val</span> read = stepExecution.readCount
+        
+        <span class="text-gray-500">// Step 3: Force Custom Exit Statuses when failure threshold exceeded</span>
+        <span class="text-purple-400">return when</span> {
+            failed &gt; <span class="text-orange-400">0</span> &amp;&amp; failed &gt;= (read * <span class="text-orange-400">0.1</span>) -&gt; <span class="text-yellow-300">ExitStatus</span>(<span class="text-green-400">"COMPLETED_WITH_FAILURES"</span>)
+            <span class="text-purple-400">else</span> -&gt; stepExecution.exitStatus
         }
     }
 }
 </pre>
         </div>
-
+ 
         <h3 class="text-xl font-bold mb-4 text-indigo-600 dark:text-indigo-300 mt-6">Step 2: Expose failures in the Step Summary</h3>
         <p class="mb-4 text-gray-900 dark:text-gray-100">
-          Add the failure count to your <code>StepExecutionListener</code> so it is surfaced in Slack notifications and logs:
+          Add the failure count retrieved from the execution context to your notification layout:
         </p>
         <div class="my-6">
 <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono leading-relaxed">
+<span class="text-purple-400">val</span> failedCount = stepExecution.executionContext.getInt(<span class="text-green-400">"failedCount"</span>, <span class="text-orange-400">0</span>)
 <span class="text-purple-400">val</span> summaryMessage = <span class="text-green-400">"""
     *Batch Step Run Summary*
     - Read Count: \${stepExecution.readCount}
     - Write Count: \${stepExecution.writeCount}
-    - Failed Count: \${failedCount.get()}
+    - Failed Count: \$failedCount
     - Status: \${stepExecution.status}
 """</span>.trimIndent()
-</pre>
-        </div>
-
-        <h3 class="text-xl font-bold mb-4 text-indigo-600 dark:text-indigo-300 mt-6">Step 3: Force Custom Exit Statuses</h3>
-        <p class="mb-4 text-gray-900 dark:text-gray-100">
-          If the failure count exceeds a threshold (e.g., 10% of read items), force the step exit status to fail:
-        </p>
-        <div class="my-6">
-<pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm font-mono leading-relaxed">
-<span class="text-purple-400">override fun</span> <span class="text-blue-400">afterStep</span>(stepExecution: <span class="text-yellow-300">StepExecution</span>): <span class="text-yellow-300">ExitStatus</span> {
-    <span class="text-purple-400">val</span> failed = failedCount.get()
-    <span class="text-purple-400">val</span> read = stepExecution.readCount
-    <span class="text-purple-400">return when</span> {
-        failed &gt; <span class="text-orange-400">0</span> &amp;&amp; failed &gt;= (read * <span class="text-orange-400">0.1</span>) -&gt; <span class="text-yellow-300">ExitStatus</span>(<span class="text-green-400">"COMPLETED_WITH_FAILURES"</span>)
-        <span class="text-purple-400">else</span> -&gt; stepExecution.exitStatus
-    }
-}
 </pre>
         </div>
       </section>
