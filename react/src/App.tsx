@@ -13,6 +13,7 @@ import SHA3Page from './components/tools/hash/SHA3Page';
 import AESPage from './components/tools/encrypt-decrypt/AESPage';
 import RSAPage from './components/tools/encrypt-decrypt/RSAPage';
 import Roulette from './components/tools/fun/Roulette';
+import CarDashboard from './components/tools/fun/CarDashboard';
 import IpAddressPage from './components/tools/network/IpAddressPage';
 import ColorPaletteGenerator from './components/tools/fun/ColorPaletteGenerator';
 import Layout from './components/layout/Layout';
@@ -208,6 +209,10 @@ function App() {
                 {/* Roulette Tool Routes */}
                 <Route path="/tools/fun/roulette.html" element={<Navigate to="/tools/fun/roulette" replace />} />
                 <Route path="/tools/fun/roulette" element={<Roulette />} />
+
+                {/* Car Dashboard Tool Routes */}
+                <Route path="/tools/fun/car-dashboard.html" element={<Navigate to="/tools/fun/car-dashboard" replace />} />
+                <Route path="/tools/fun/car-dashboard" element={<CarDashboard />} />
 
                 {/* Color Palette Generator Tool Routes */}
                 <Route path="/tools/fun/color-palette.html" element={<Navigate to="/tools/fun/color-palette" replace />} />
