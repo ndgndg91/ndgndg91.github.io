@@ -440,4 +440,40 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/sto-vs-rwa-concept-and-landscape/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/sto-rwa-regulatory-frameworks-korea-vs-us/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/blackrock-buidl-ondo-rwa-case-study/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/erc3643-trex-token-standard-deep-dive/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/rwa-oracles-proof-of-reserve-and-nav-feeds/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://developer-playground.com/blog/software-engineer/list/korean-securities-sto-infrastructure-and-dvp-settlement/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

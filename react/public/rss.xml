@@ -17,6 +17,86 @@
     <category>Web Development</category>
     <category>Developer Tools</category>
     <item>
+      <title>Enterprise STO Architecture: Securities Firm Infrastructure, Dual-Ledger Sync &amp; DvP Settlement</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/korean-securities-sto-infrastructure-and-dvp-settlement/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/korean-securities-sto-infrastructure-and-dvp-settlement/</guid>
+      <pubDate>Fri, 28 Aug 2026 10:00:00 GMT</pubDate>
+      <description>A deep-dive technical architecture analysis of enterprise token securities systems in securities brokerages — exploring core banking integration, distributed ledger node deployment, dual-ledger synchronization, and atomic DvP.</description>
+      <category>Blockchain</category>
+      <category>STO</category>
+      <category>Enterprise Architecture</category>
+      <category>Hyperledger Besu</category>
+      <category>DvP</category>
+      <category>Fintech</category>
+    </item>
+    <item>
+      <title>Bridging Physical Truth to Code: Chainlink Proof of Reserve (PoR) &amp; Off-Chain NAV Oracles</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/rwa-oracles-proof-of-reserve-and-nav-feeds/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/rwa-oracles-proof-of-reserve-and-nav-feeds/</guid>
+      <pubDate>Fri, 28 Aug 2026 10:00:00 GMT</pubDate>
+      <description>An architectural deep dive into solving the RWA Oracle Problem — examining Chainlink Proof of Reserve (PoR) cryptographic attestation flows, programmatic mint prevention, and real-time Net Asset Value (NAV) feeds.</description>
+      <category>Blockchain</category>
+      <category>RWA</category>
+      <category>Oracle</category>
+      <category>Chainlink</category>
+      <category>Proof of Reserve</category>
+      <category>Smart Contracts</category>
+    </item>
+    <item>
+      <title>Under the Hood of Permissioned Tokens: ERC-3643 (T-REX) Compliance Engine &amp; ONCHAINID</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/erc3643-trex-token-standard-deep-dive/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/erc3643-trex-token-standard-deep-dive/</guid>
+      <pubDate>Fri, 28 Aug 2026 10:00:00 GMT</pubDate>
+      <description>A comprehensive technical deep dive into ERC-3643 (formerly T-REX), the open-source Ethereum standard for permissioned security tokens — examining ONCHAINID, Identity Registry, and modular Compliance Engine.</description>
+      <category>Blockchain</category>
+      <category>Solidity</category>
+      <category>Smart Contracts</category>
+      <category>ERC-3643</category>
+      <category>Compliance</category>
+      <category>Security Tokens</category>
+    </item>
+    <item>
+      <title>Reverse-Engineering Institutional RWA: BlackRock BUIDL &amp; Ondo Finance Architecture</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/blackrock-buidl-ondo-rwa-case-study/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/blackrock-buidl-ondo-rwa-case-study/</guid>
+      <pubDate>Fri, 28 Aug 2026 10:00:00 GMT</pubDate>
+      <description>A deep-dive technical and financial architectural analysis of BlackRock BUIDL, Securitize integration, Ondo Finance USDY/OUSG mechanics, rebasing vs value-accumulating yield tokens, and 24/7 Circle USDC liquidity.</description>
+      <category>Blockchain</category>
+      <category>RWA</category>
+      <category>BlackRock</category>
+      <category>BUIDL</category>
+      <category>Ondo Finance</category>
+      <category>Securitize</category>
+      <category>USDC</category>
+    </item>
+    <item>
+      <title>RWA &amp; STO Regulatory Frameworks: Korea Capital Markets Act vs US SEC Securities Laws</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/sto-rwa-regulatory-frameworks-korea-vs-us/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/sto-rwa-regulatory-frameworks-korea-vs-us/</guid>
+      <pubDate>Fri, 28 Aug 2026 10:00:00 GMT</pubDate>
+      <description>A deep-dive technical and legal analysis of tokenized securities regulation — dissecting the Howey Test, SEC Reg D/S/A+ exemptions, Korea FSC Token Securities Guidelines, and the Issuer-Exchange separation principle.</description>
+      <category>Blockchain</category>
+      <category>RWA</category>
+      <category>STO</category>
+      <category>Regulation</category>
+      <category>Capital Markets Act</category>
+      <category>SEC</category>
+      <category>Howey Test</category>
+    </item>
+    <item>
+      <title>STO vs RWA: Are They the Same? Demystifying Tokenized Real-World Assets &amp; Securities</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/sto-vs-rwa-concept-and-landscape/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/sto-vs-rwa-concept-and-landscape/</guid>
+      <pubDate>Fri, 28 Aug 2026 10:00:00 GMT</pubDate>
+      <description>A deep-dive engineering and regulatory comparison between Security Token Offerings (STO) and Real-World Assets (RWA) — examining architectural differences, legal boundaries, and institutional adoption.</description>
+      <category>Blockchain</category>
+      <category>RWA</category>
+      <category>STO</category>
+      <category>Tokenization</category>
+      <category>Smart Contracts</category>
+      <category>DeFi</category>
+    </item>
+    <item>
       <title>Fixing an OOM Only to Create Zombie Batch Pods: The JVM Non-Daemon Thread Trap</title>
       <link>https://developer-playground.com/blog/software-engineer/list/async-threadpool-batch-pod-zombie/</link>
       <guid>https://developer-playground.com/blog/software-engineer/list/async-threadpool-batch-pod-zombie/</guid>
