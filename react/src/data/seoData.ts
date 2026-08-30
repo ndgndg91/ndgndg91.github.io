@@ -281,6 +281,36 @@ export const seoData = {
       title: 'The Spring Batch COMPLETED Trap: Why It Doesn\'t Guarantee Business Success | Developer Playground',
       description: 'Swallowing exceptions in Batch writers creates a silent-failure anti-pattern where a batch is marked COMPLETED even when 100% of rows fail. How to implement proper monitoring and step execution listener controls.',
       keywords: 'Java, Spring Batch, Kotlin, Monitoring, Batch Processing, Software Design'
+    },
+    'sto-vs-rwa-concept-and-landscape': {
+      title: 'STO vs RWA: Are They the Same? Demystifying Tokenized Real-World Assets & Securities | Developer Playground',
+      description: 'A deep-dive engineering and regulatory comparison between Security Token Offerings (STO) and Real-World Assets (RWA) — examining architectural differences, legal boundaries, bankruptcy remoteness, and institutional adoption.',
+      keywords: 'Blockchain, RWA, STO, Tokenization, Real World Assets, Security Token Offering, Fintech, Smart Contracts, DeFi'
+    },
+    'sto-rwa-regulatory-frameworks-korea-vs-us': {
+      title: 'RWA & STO Regulatory Frameworks: Korea Capital Markets Act vs US SEC Securities Laws | Developer Playground',
+      description: 'A technical and legal analysis of tokenized securities regulation — dissecting the Howey Test, SEC Reg D/S/A+ exemptions, Korea FSC Token Securities Guidelines, and Issuer-Exchange separation.',
+      keywords: 'Blockchain, RWA, STO, Regulation, Capital Markets Act, SEC, Howey Test, Compliance, FSC, Distributed Ledger'
+    },
+    'blackrock-buidl-ondo-rwa-case-study': {
+      title: 'Reverse-Engineering Institutional RWA: BlackRock BUIDL & Ondo Finance Architecture | Developer Playground',
+      description: 'A deep-dive technical and financial architectural analysis of BlackRock BUIDL, Securitize integration, Ondo Finance USDY/OUSG mechanics, rebasing vs value-accumulating yield tokens, and 24/7 Circle USDC liquidity.',
+      keywords: 'Blockchain, RWA, BlackRock, BUIDL, Ondo Finance, Securitize, USDC, DeFi, Institutional Finance, US Treasuries'
+    },
+    'erc3643-trex-token-standard-deep-dive': {
+      title: 'Under the Hood of Permissioned Tokens: ERC-3643 (T-REX) Compliance Engine & ONCHAINID | Developer Playground',
+      description: 'A comprehensive technical deep dive into ERC-3643, the open-source Ethereum standard for permissioned security tokens — examining ONCHAINID, Identity Registry, modular Compliance Engine, and forced transfer recovery.',
+      keywords: 'Blockchain, Solidity, Smart Contracts, ERC-3643, T-REX, ONCHAINID, Compliance Engine, Identity, Security Tokens'
+    },
+    'rwa-oracles-proof-of-reserve-and-nav-feeds': {
+      title: 'Bridging Physical Truth to Code: Chainlink Proof of Reserve (PoR) & Off-Chain NAV Oracles | Developer Playground',
+      description: 'An architectural deep dive into solving the RWA Oracle Problem — examining Chainlink Proof of Reserve (PoR) cryptographic attestation flows, programmatic mint prevention, and real-time NAV feeds.',
+      keywords: 'Blockchain, RWA, Oracle, Chainlink, Proof of Reserve, PoR, NAV, Smart Contracts, DeFi, Decentralized Oracles'
+    },
+    'korean-securities-sto-infrastructure-and-dvp-settlement': {
+      title: 'Enterprise STO Architecture: Securities Firm Infrastructure, Dual-Ledger Sync & DvP Settlement | Developer Playground',
+      description: 'A deep-dive technical architecture analysis of enterprise token securities systems in securities brokerages — exploring core banking integration, Hyperledger Besu/Quorum, dual-ledger sync, atomic DvP, and CBDC settlement.',
+      keywords: 'Blockchain, STO, Enterprise Architecture, Hyperledger Besu, Quorum, DvP, Fintech, Securities, Core Banking, CBDC'
     }
   },
   regexCheatsheet: {
