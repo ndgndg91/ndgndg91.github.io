@@ -5,7 +5,7 @@
     <link>https://developer-playground.com/</link>
     <description>Developer tools and technical blog for software engineers with articles on Kafka, JVM, MongoDB and more.</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 May 2026 00:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 14 Sep 2026 00:00:00 GMT</lastBuildDate>
     <atom:link href="https://developer-playground.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://developer-playground.com/img/developer-playground-logo.webp</url>
@@ -16,6 +16,19 @@
     <category>Programming</category>
     <category>Web Development</category>
     <category>Developer Tools</category>
+    <item>
+      <title>From WAL to Kafka: Why Jay Kreps' "The Log" Redefined Event-Driven Architecture</title>
+      <link>https://developer-playground.com/blog/software-engineer/list/from-wal-to-kafka-the-log/</link>
+      <guid>https://developer-playground.com/blog/software-engineer/list/from-wal-to-kafka-the-log/</guid>
+      <pubDate>Mon, 14 Sep 2026 10:00:00 GMT</pubDate>
+      <description>Did Kafka invent Event Sourcing? An architectural dissection tracing the lineage from 500-year-old double-entry ledgers and database Write-Ahead Logs (WAL) to Jay Kreps' distributed commit log, and why conflating Event Sourcing with Event Streaming is a critical system design mistake.</description>
+      <category>Kafka</category>
+      <category>Distributed Systems</category>
+      <category>Architecture</category>
+      <category>Event Sourcing</category>
+      <category>CQRS</category>
+      <category>Database</category>
+    </item>
     <item>
       <title>Enterprise STO Architecture: Securities Firm Infrastructure, Dual-Ledger Sync &amp; DvP Settlement</title>
       <link>https://developer-playground.com/blog/software-engineer/list/korean-securities-sto-infrastructure-and-dvp-settlement/</link>

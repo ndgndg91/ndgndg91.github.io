@@ -142,7 +142,8 @@
       "/blog/software-engineer/list/funnel-log-vs-kafka-collection",
       "/blog/software-engineer/list/password-salt-pepper-client-side-hashing",
       "/blog/software-engineer/list/optimizing-external-api-negative-cache",
-      "/blog/software-engineer/list/spring-batch-completed-trap"
+      "/blog/software-engineer/list/spring-batch-completed-trap",
+      "/blog/software-engineer/list/from-wal-to-kafka-the-log"
     ],
     "skipThirdPartyRequests": true,
     "cacheAjaxRequests": false,
