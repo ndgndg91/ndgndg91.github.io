@@ -311,6 +311,11 @@ export const seoData = {
       title: 'Enterprise STO Architecture: Securities Firm Infrastructure, Dual-Ledger Sync & DvP Settlement | Developer Playground',
       description: 'A deep-dive technical architecture analysis of enterprise token securities systems in securities brokerages — exploring core banking integration, Hyperledger Besu/Quorum, dual-ledger sync, atomic DvP, and CBDC settlement.',
       keywords: 'Blockchain, STO, Enterprise Architecture, Hyperledger Besu, Quorum, DvP, Fintech, Securities, Core Banking, CBDC'
+    },
+    'from-wal-to-kafka-the-log': {
+      title: 'From WAL to Kafka: Why Jay Kreps\' "The Log" Redefined Event-Driven Architecture | Developer Playground',
+      description: 'Did Kafka invent Event Sourcing? An architectural dissection tracing the lineage from 500-year-old double-entry ledgers and database Write-Ahead Logs (WAL) to Jay Kreps\' distributed commit log, and why conflating Event Sourcing with Event Streaming is a critical system design mistake.',
+      keywords: 'Kafka, Distributed Systems, Architecture, Event Sourcing, CQRS, Database, WAL, Stream Processing, Jay Kreps, Debezium, Outbox Pattern'
     }
   },
   regexCheatsheet: {
